@@ -13,7 +13,7 @@
 ### 1. Clone Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Alexi5000/ClawKeeper.git
 cd clawkeeper
 ```
 
