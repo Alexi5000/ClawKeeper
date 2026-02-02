@@ -1,0 +1,249 @@
+// file: src/demo/generate/customers.ts
+// description: Generate customer master data
+// reference: generate/index.ts
+
+export interface Customer {
+  name: string;
+  email: string;
+  phone: string;
+  industry: string;
+  billing_address: string;
+  city: string;
+  state: string;
+  zip: string;
+  payment_terms: string;
+  credit_limit: number; // in dollars
+  monthly_value: number; // average monthly billing
+  status: 'active' | 'inactive';
+  notes: string | null;
+}
+
+export function generate_customers(): Customer[] {
+  return [
+    {
+      name: 'Acme Corporation',
+      email: 'accounts@acmecorp.example',
+      phone: '+1-713-555-0100',
+      industry: 'Manufacturing',
+      billing_address: '1234 Industrial Blvd',
+      city: 'Houston',
+      state: 'TX',
+      zip: '77001',
+      payment_terms: 'Net 30',
+      credit_limit: 100000,
+      monthly_value: 25000,
+      status: 'active',
+      notes: 'Major client - ERP system integration project'
+    },
+    {
+      name: 'TechStart Ventures',
+      email: 'billing@techstart.example',
+      phone: '+1-415-555-0200',
+      industry: 'Venture Capital',
+      billing_address: '500 Sand Hill Road',
+      city: 'Menlo Park',
+      state: 'CA',
+      zip: '94025',
+      payment_terms: 'Net 45',
+      credit_limit: 75000,
+      monthly_value: 18000,
+      status: 'active',
+      notes: 'Portfolio company IT consulting - 12 month contract'
+    },
+    {
+      name: 'Lone Star Medical',
+      email: 'ap@lonestarmed.example',
+      phone: '+1-512-555-0300',
+      industry: 'Healthcare',
+      billing_address: '2500 Medical Center Drive',
+      city: 'Austin',
+      state: 'TX',
+      zip: '78705',
+      payment_terms: 'Net 60',
+      credit_limit: 80000,
+      monthly_value: 15000,
+      status: 'active',
+      notes: 'HIPAA-compliant infrastructure management'
+    },
+    {
+      name: 'Austin City Schools',
+      email: 'procurement@austinschools.example',
+      phone: '+1-512-555-0400',
+      industry: 'Education',
+      billing_address: '1111 Red River Street',
+      city: 'Austin',
+      state: 'TX',
+      zip: '78701',
+      payment_terms: 'Net 45',
+      credit_limit: 50000,
+      monthly_value: 12000,
+      status: 'active',
+      notes: 'Student information system migration'
+    },
+    {
+      name: 'Greenfield Properties',
+      email: 'accounting@greenfieldprop.example',
+      phone: '+1-214-555-0500',
+      industry: 'Real Estate',
+      billing_address: '3333 McKinney Avenue',
+      city: 'Dallas',
+      state: 'TX',
+      zip: '75204',
+      payment_terms: 'Net 30',
+      credit_limit: 40000,
+      monthly_value: 10000,
+      status: 'active',
+      notes: 'Property management software development'
+    },
+    {
+      name: 'Summit Financial Advisors',
+      email: 'billing@summitfinancial.example',
+      phone: '+1-303-555-0600',
+      industry: 'Financial Services',
+      billing_address: '1700 Broadway',
+      city: 'Denver',
+      state: 'CO',
+      zip: '80202',
+      payment_terms: 'Net 30',
+      credit_limit: 35000,
+      monthly_value: 8000,
+      status: 'active',
+      notes: 'SEC-compliant reporting system'
+    },
+    {
+      name: 'Coastal Logistics LLC',
+      email: 'ap@coastallogistics.example',
+      phone: '+1-619-555-0700',
+      industry: 'Transportation',
+      billing_address: '4500 Harbor Drive',
+      city: 'San Diego',
+      state: 'CA',
+      zip: '92101',
+      payment_terms: 'Net 30',
+      credit_limit: 30000,
+      monthly_value: 7500,
+      status: 'active',
+      notes: 'Fleet management system integration'
+    },
+    {
+      name: 'BlueWave Marketing',
+      email: 'finance@bluewavemarketing.example',
+      phone: '+1-512-555-0800',
+      industry: 'Marketing Agency',
+      billing_address: '789 Congress Avenue',
+      city: 'Austin',
+      state: 'TX',
+      zip: '78701',
+      payment_terms: 'Net 15',
+      credit_limit: 25000,
+      monthly_value: 6000,
+      status: 'active',
+      notes: 'Marketing automation platform development'
+    },
+    {
+      name: 'PrecisionCraft Manufacturing',
+      email: 'accounting@precisioncraft.example',
+      phone: '+1-414-555-0900',
+      industry: 'Manufacturing',
+      billing_address: '2200 Industrial Court',
+      city: 'Milwaukee',
+      state: 'WI',
+      zip: '53202',
+      payment_terms: 'Net 30',
+      credit_limit: 35000,
+      monthly_value: 5500,
+      status: 'active',
+      notes: 'Quality control system implementation'
+    },
+    {
+      name: 'DataDriven Analytics',
+      email: 'billing@datadriven.example',
+      phone: '+1-206-555-1000',
+      industry: 'Technology',
+      billing_address: '1001 4th Avenue',
+      city: 'Seattle',
+      state: 'WA',
+      zip: '98154',
+      payment_terms: 'Net 30',
+      credit_limit: 20000,
+      monthly_value: 5000,
+      status: 'active',
+      notes: 'AWS infrastructure optimization'
+    },
+    {
+      name: 'Heritage Bank & Trust',
+      email: 'it-procurement@heritagebank.example',
+      phone: '+1-602-555-1100',
+      industry: 'Banking',
+      billing_address: '555 Central Avenue',
+      city: 'Phoenix',
+      state: 'AZ',
+      zip: '85004',
+      payment_terms: 'Net 60',
+      credit_limit: 50000,
+      monthly_value: 4500,
+      status: 'active',
+      notes: 'Core banking system support - quarterly project'
+    },
+    {
+      name: 'Riverside Restaurant Group',
+      email: 'accounting@riversiderg.example',
+      phone: '+1-512-555-1200',
+      industry: 'Hospitality',
+      billing_address: '888 Riverside Drive',
+      city: 'Austin',
+      state: 'TX',
+      zip: '78704',
+      payment_terms: 'Net 30',
+      credit_limit: 15000,
+      monthly_value: 3500,
+      status: 'active',
+      notes: 'POS system integration for 8 locations'
+    },
+    {
+      name: 'Nexus Telecommunications',
+      email: 'ap@nexustel.example',
+      phone: '+1-972-555-1300',
+      industry: 'Telecommunications',
+      billing_address: '9999 Telecom Parkway',
+      city: 'Richardson',
+      state: 'TX',
+      zip: '75082',
+      payment_terms: 'Net 45',
+      credit_limit: 25000,
+      monthly_value: 3000,
+      status: 'active',
+      notes: 'Network monitoring dashboard - monthly retainer'
+    },
+    {
+      name: 'Urban Development Corp',
+      email: 'finance@urbandev.example',
+      phone: '+1-512-555-1400',
+      industry: 'Real Estate Development',
+      billing_address: '1200 Lamar Boulevard',
+      city: 'Austin',
+      state: 'TX',
+      zip: '78703',
+      payment_terms: 'Net 30',
+      credit_limit: 20000,
+      monthly_value: 2500,
+      status: 'active',
+      notes: 'Project management platform customization'
+    },
+    {
+      name: 'Mountain View Clinic',
+      email: 'billing@mountainviewclinic.example',
+      phone: '+1-801-555-1500',
+      industry: 'Healthcare',
+      billing_address: '4400 Medical Drive',
+      city: 'Salt Lake City',
+      state: 'UT',
+      zip: '84101',
+      payment_terms: 'Net 45',
+      credit_limit: 15000,
+      monthly_value: 2000,
+      status: 'active',
+      notes: 'Small practice - telehealth integration'
+    }
+  ];
+}

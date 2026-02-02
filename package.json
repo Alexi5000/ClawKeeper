@@ -1,0 +1,71 @@
+{
+  "name": "clawkeeper",
+  "version": "0.1.0",
+  "description": "Autonomous AI Bookkeeping for SMBs",
+  "type": "module",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "packageManager": "bun@1.x",
+  "scripts": {
+    "dev": "bun run --watch src/index.ts",
+    "start": "bun run src/index.ts",
+    "test": "bun test",
+    "lint": "eslint src/",
+    "typecheck": "tsc --noEmit",
+    "db:migrate": "psql $DATABASE_URL -f db/schema.sql",
+    "db:rls": "psql $DATABASE_URL -f db/rls.sql",
+    "db:rbac": "psql $DATABASE_URL -f db/rbac.sql",
+    "db:seed": "psql $DATABASE_URL -f db/seed.sql",
+    "db:setup": "bun run db:migrate && bun run db:rls && bun run db:rbac && bun run db:seed",
+    "dashboard:dev": "cd dashboard && bun run dev",
+    "dashboard:build": "cd dashboard && bun run build",
+    "demo:download": "cd src/demo/download && pip install -r requirements.txt && python download_datasets.py",
+    "demo:transform": "bun run src/demo/transform/index.ts",
+    "demo:generate": "bun run src/demo/generate/index.ts",
+    "demo:seed": "bun run src/demo/seed/index.ts",
+    "demo:setup": "bun run demo:download && bun run demo:transform && bun run demo:generate && bun run demo:seed",
+    "demo:quick": "bun run demo:transform && bun run demo:generate && bun run demo:seed"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "@hono/node-server": "^1.19.9",
+    "@types/ws": "^8.18.1",
+    "dotenv": "^17.2.3",
+    "hono": "^4.11.7",
+    "opik": "^1.0.0",
+    "postgres": "^3.4.5",
+    "uuid": "^9.0.0",
+    "ws": "^8.19.0",
+    "zod": "^3.22.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/uuid": "^9.0.0",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.5",
+    "tsx": "^4.21.0",
+    "typescript": "^5.3.0",
+    "eslint": "^8.56.0"
+  },
+  "keywords": [
+    "ai",
+    "bookkeeping",
+    "accounting",
+    "automation",
+    "invoices",
+    "reconciliation",
+    "financial-reporting",
+    "multi-tenant",
+    "smb",
+    "claude",
+    "bun"
+  ],
+  "author": "ClawKeeper Contributors",
+  "license": "MIT",
+  "engines": {
+    "bun": ">=1.0.0",
+    "node": ">=20.0.0"
+  }
+}

@@ -1,0 +1,368 @@
+[
+  {
+    "filing_type": "941",
+    "period": "2022-Q1",
+    "due_date": "2022-04-30",
+    "filed_date": "2022-04-18",
+    "status": "filed",
+    "amount": "4703557",
+    "details": {
+      "wages": "27029101",
+      "federal_income_tax": "4516118",
+      "social_security_tax": "3427860",
+      "medicare_tax": "370798"
+    }
+  },
+  {
+    "filing_type": "941",
+    "period": "2022-Q2",
+    "due_date": "2022-07-31",
+    "filed_date": "2022-07-26",
+    "status": "filed",
+    "amount": "3428457",
+    "details": {
+      "wages": "36223202",
+      "federal_income_tax": "2991886",
+      "social_security_tax": "1627367",
+      "medicare_tax": "896949"
+    }
+  },
+  {
+    "filing_type": "941",
+    "period": "2022-Q3",
+    "due_date": "2022-10-31",
+    "filed_date": "2022-10-21",
+    "status": "filed",
+    "amount": "4659421",
+    "details": {
+      "wages": "18698627",
+      "federal_income_tax": "1571242",
+      "social_security_tax": "2136187",
+      "medicare_tax": "418549"
+    }
+  },
+  {
+    "filing_type": "941",
+    "period": "2022-Q4",
+    "due_date": "2023-01-31",
+    "filed_date": "2023-01-19",
+    "status": "filed",
+    "amount": "6492250",
+    "details": {
+      "wages": "23760173",
+      "federal_income_tax": "4199687",
+      "social_security_tax": "2613466",
+      "medicare_tax": "550267"
+    }
+  },
+  {
+    "filing_type": "941",
+    "period": "2023-Q1",
+    "due_date": "2023-04-30",
+    "filed_date": "2023-04-19",
+    "status": "filed",
+    "amount": "4572288",
+    "details": {
+      "wages": "34441676",
+      "federal_income_tax": "5217929",
+      "social_security_tax": "1112014",
+      "medicare_tax": "775398"
+    }
+  },
+  {
+    "filing_type": "941",
+    "period": "2023-Q2",
+    "due_date": "2023-07-31",
+    "filed_date": "2023-07-27",
+    "status": "filed",
+    "amount": "5731501",
+    "details": {
+      "wages": "18981007",
+      "federal_income_tax": "3442305",
+      "social_security_tax": "1373849",
+      "medicare_tax": "748188"
+    }
+  },
+  {
+    "filing_type": "941",
+    "period": "2023-Q3",
+    "due_date": "2023-10-31",
+    "filed_date": "2023-10-17",
+    "status": "filed",
+    "amount": "6649608",
+    "details": {
+      "wages": "22070534",
+      "federal_income_tax": "2581432",
+      "social_security_tax": "3135178",
+      "medicare_tax": "348128"
+    }
+  },
+  {
+    "filing_type": "941",
+    "period": "2023-Q4",
+    "due_date": "2024-01-31",
+    "filed_date": "2024-01-25",
+    "status": "filed",
+    "amount": "6826397",
+    "details": {
+      "wages": "37759483",
+      "federal_income_tax": "3605398",
+      "social_security_tax": "1230919",
+      "medicare_tax": "778958"
+    }
+  },
+  {
+    "filing_type": "941",
+    "period": "2024-Q1",
+    "due_date": "2024-04-30",
+    "filed_date": "2024-04-23",
+    "status": "filed",
+    "amount": "5555009",
+    "details": {
+      "wages": "43834650",
+      "federal_income_tax": "2014980",
+      "social_security_tax": "3130141",
+      "medicare_tax": "328153"
+    }
+  },
+  {
+    "filing_type": "941",
+    "period": "2024-Q2",
+    "due_date": "2024-07-31",
+    "filed_date": "2024-07-14",
+    "status": "filed",
+    "amount": "2906032",
+    "details": {
+      "wages": "26074001",
+      "federal_income_tax": "2293147",
+      "social_security_tax": "1137181",
+      "medicare_tax": "757261"
+    }
+  },
+  {
+    "filing_type": "941",
+    "period": "2024-Q3",
+    "due_date": "2024-10-31",
+    "filed_date": "2024-10-19",
+    "status": "filed",
+    "amount": "2692629",
+    "details": {
+      "wages": "26045179",
+      "federal_income_tax": "3453357",
+      "social_security_tax": "2862848",
+      "medicare_tax": "491035"
+    }
+  },
+  {
+    "filing_type": "941",
+    "period": "2024-Q4",
+    "due_date": "2025-01-31",
+    "filed_date": "2025-01-25",
+    "status": "filed",
+    "amount": "2620035",
+    "details": {
+      "wages": "36595687",
+      "federal_income_tax": "3823376",
+      "social_security_tax": "3424821",
+      "medicare_tax": "662066"
+    }
+  },
+  {
+    "filing_type": "annual",
+    "period": "2022",
+    "due_date": "2023-03-15",
+    "filed_date": "2023-02-25",
+    "status": "filed",
+    "amount": null,
+    "details": {
+      "revenue": "371482045",
+      "expenses": "266829863",
+      "net_income": "27860263",
+      "tax_owed": "7688907"
+    }
+  },
+  {
+    "filing_type": "annual",
+    "period": "2023",
+    "due_date": "2024-03-15",
+    "filed_date": "2024-03-01",
+    "status": "filed",
+    "amount": null,
+    "details": {
+      "revenue": "360875799",
+      "expenses": "248792563",
+      "net_income": "36540483",
+      "tax_owed": "8589975"
+    }
+  },
+  {
+    "filing_type": "annual",
+    "period": "2024",
+    "due_date": "2025-03-15",
+    "filed_date": null,
+    "status": "pending",
+    "amount": null,
+    "details": {
+      "revenue": "296486578",
+      "expenses": "182165862",
+      "net_income": "35293466",
+      "tax_owed": "8920155"
+    }
+  },
+  {
+    "filing_type": "sales_tax",
+    "period": "2025-01",
+    "due_date": "2025-02-20",
+    "filed_date": null,
+    "status": "pending",
+    "amount": "58639",
+    "details": {
+      "taxable_sales": "2778453",
+      "tax_rate": 0.0825,
+      "tax_collected": "211174"
+    }
+  },
+  {
+    "filing_type": "sales_tax",
+    "period": "2024-12",
+    "due_date": "2024-13-20",
+    "filed_date": null,
+    "status": "pending",
+    "amount": "212516",
+    "details": {
+      "taxable_sales": "1105023",
+      "tax_rate": 0.0825,
+      "tax_collected": "159549"
+    }
+  },
+  {
+    "filing_type": "sales_tax",
+    "period": "2024-12",
+    "due_date": "2024-13-20",
+    "filed_date": null,
+    "status": "pending",
+    "amount": "199679",
+    "details": {
+      "taxable_sales": "3472156",
+      "tax_rate": 0.0825,
+      "tax_collected": "212251"
+    }
+  },
+  {
+    "filing_type": "sales_tax",
+    "period": "2024-10",
+    "due_date": "2024-11-20",
+    "filed_date": "2024-11-16",
+    "status": "filed",
+    "amount": "68161",
+    "details": {
+      "taxable_sales": "1102664",
+      "tax_rate": 0.0825,
+      "tax_collected": "159234"
+    }
+  },
+  {
+    "filing_type": "sales_tax",
+    "period": "2024-10",
+    "due_date": "2024-11-20",
+    "filed_date": "2024-11-11",
+    "status": "filed",
+    "amount": "73555",
+    "details": {
+      "taxable_sales": "3303907",
+      "tax_rate": 0.0825,
+      "tax_collected": "164640"
+    }
+  },
+  {
+    "filing_type": "sales_tax",
+    "period": "2024-08",
+    "due_date": "2024-09-20",
+    "filed_date": "2024-09-20",
+    "status": "filed",
+    "amount": "125959",
+    "details": {
+      "taxable_sales": "2710783",
+      "tax_rate": 0.0825,
+      "tax_collected": "187031"
+    }
+  },
+  {
+    "filing_type": "sales_tax",
+    "period": "2024-07",
+    "due_date": "2024-08-20",
+    "filed_date": "2024-08-04",
+    "status": "filed",
+    "amount": "224707",
+    "details": {
+      "taxable_sales": "1788674",
+      "tax_rate": 0.0825,
+      "tax_collected": "125269"
+    }
+  },
+  {
+    "filing_type": "sales_tax",
+    "period": "2024-07",
+    "due_date": "2024-08-20",
+    "filed_date": "2024-08-11",
+    "status": "filed",
+    "amount": "70715",
+    "details": {
+      "taxable_sales": "1989345",
+      "tax_rate": 0.0825,
+      "tax_collected": "172750"
+    }
+  },
+  {
+    "filing_type": "sales_tax",
+    "period": "2024-05",
+    "due_date": "2024-06-20",
+    "filed_date": "2024-06-20",
+    "status": "filed",
+    "amount": "203190",
+    "details": {
+      "taxable_sales": "3354817",
+      "tax_rate": 0.0825,
+      "tax_collected": "129744"
+    }
+  },
+  {
+    "filing_type": "sales_tax",
+    "period": "2024-05",
+    "due_date": "2024-06-20",
+    "filed_date": "2024-06-03",
+    "status": "filed",
+    "amount": "130120",
+    "details": {
+      "taxable_sales": "3254533",
+      "tax_rate": 0.0825,
+      "tax_collected": "106880"
+    }
+  },
+  {
+    "filing_type": "sales_tax",
+    "period": "2024-03",
+    "due_date": "2024-04-20",
+    "filed_date": "2024-04-01",
+    "status": "filed",
+    "amount": "146944",
+    "details": {
+      "taxable_sales": "2295475",
+      "tax_rate": 0.0825,
+      "tax_collected": "106151"
+    }
+  },
+  {
+    "filing_type": "sales_tax",
+    "period": "2024-03",
+    "due_date": "2024-04-20",
+    "filed_date": "2024-04-14",
+    "status": "filed",
+    "amount": "241577",
+    "details": {
+      "taxable_sales": "2446207",
+      "tax_rate": 0.0825,
+      "tax_collected": "183817"
+    }
+  }
+]

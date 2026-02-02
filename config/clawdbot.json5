@@ -1,0 +1,113 @@
+// ClawKeeper Clawdbot Configuration (Development Mode)
+// 
+// DEV MODE: For internal TechTide development ecosystem
+// - ClawKeeper runs under Axel (TechTide CEO agent) orchestration
+// - Uses shared development gateway and resources
+// - Suitable for development, testing, and integration work
+//
+// For customer/production deployments, use clawdbot.prod.json5 instead
+
+{
+  // Routing configuration
+  routing: {
+    agents: {
+      clawkeeper: {
+        name: "ClawKeeper",
+        workspace: "~/clawkeeper",
+        sandbox: { mode: "off" },
+        // In dev mode, ClawKeeper reports to Axel (TechTide ecosystem)
+        parent: "axel"
+      }
+    },
+    defaults: {
+      sandbox: { mode: "non-main" }
+    }
+  },
+
+  // Session configuration
+  session: {
+    mainKey: "main",  // Axel is main in dev mode
+    agentKey: "clawkeeper"  // ClawKeeper's session key
+  },
+
+  // Heartbeat
+  heartbeat: {
+    enabled: true,
+    interval: "4h"
+  },
+
+  // Gateway (dev mode uses Axel's gateway)
+  gateway: {
+    bind: "loopback",
+    port: 18789,  // Connect to Axel's gateway
+    controlUi: { enabled: false }  // Axel has UI
+  },
+
+  // Channels (inherited from Axel)
+  channels: {
+    discord: {
+      enabled: false  // Managed by Axel
+    }
+  },
+
+  // Tools
+  tools: {
+    elevated: { enabled: true }
+  },
+
+  // Browser
+  browser: {
+    enabled: true
+  },
+
+  // Models
+  models: {
+    default: "anthropic/claude-sonnet-4",
+    providers: {
+      anthropic: {
+        apiKey: "SET_VIA_ANTHROPIC_API_KEY_ENV",
+        models: ["claude-opus-4-20250514", "claude-sonnet-4-20250514"]
+      },
+      google: {
+        apiKey: "SET_VIA_GOOGLE_API_KEY_ENV",
+        models: ["gemini-2.0-pro", "gemini-2.0-flash"]
+      }
+    },
+    fallback: {
+      primary: "anthropic/claude-sonnet-4",
+      secondary: "google/gemini-2.0-pro"
+    }
+  },
+
+  // ClawKeeper-specific settings
+  clawkeeper: {
+    mode: "dev",
+    api_port: 4004,
+    dashboard_port: 5174,
+    database_url: "SET_VIA_DATABASE_URL_ENV",
+    
+    // Financial settings
+    default_currency: "USD",
+    approval_thresholds: {
+      accountant: 100000,  // $1,000 in cents
+      tenant_admin: 500000,  // $5,000 in cents
+      super_admin: Infinity
+    },
+    
+    // Integration settings
+    integrations: {
+      plaid: {
+        env: "sandbox",
+        client_id: "SET_VIA_PLAID_CLIENT_ID_ENV",
+        secret: "SET_VIA_PLAID_SECRET_ENV"
+      },
+      stripe: {
+        secret_key: "SET_VIA_STRIPE_SECRET_KEY_ENV"
+      },
+      quickbooks: {
+        client_id: "SET_VIA_QUICKBOOKS_CLIENT_ID_ENV",
+        client_secret: "SET_VIA_QUICKBOOKS_CLIENT_SECRET_ENV"
+      }
+    }
+  }
+}

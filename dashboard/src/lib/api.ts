@@ -1,0 +1,111 @@
+// API client for ClawKeeper dashboard
+
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:4004';
+
+class ApiClient {
+  private get_headers(): HeadersInit {
+    const token = localStorage.getItem('clawkeeper_token');
+    return {
+      'Content-Type': 'application/json',
+      ...(token ? { 'Authorization': `Bearer ${token}` } : {}),
+    };
+  }
+
+  private async fetch_json<T>(path: string, options: RequestInit = {}): Promise<T> {
+    const response = await fetch(`${BASE_URL}${path}`, {
+      ...options,
+      headers: {
+        ...this.get_headers(),
+        ...options.headers,
+      },
+    });
+
+    if (!response.ok) {
+      const error = await response.json().catch(() => ({ message: 'Request failed' }));
+      throw new Error(error.message || `HTTP ${response.status}`);
+    }
+
+    return response.json();
+  }
+
+  // Authentication
+  async login(email: string, password: string) {
+    return this.fetch_json('/api/auth/login', {
+      method: 'POST',
+      body: JSON.stringify({ email, password }),
+    });
+  }
+
+  async get_current_user() {
+    return this.fetch_json('/api/auth/me');
+  }
+
+  // Invoices
+  async get_invoices(filters?: { status?: string; limit?: number }) {
+    const params = new URLSearchParams(filters as any);
+    return this.fetch_json(`/api/invoices?${params}`);
+  }
+
+  async upload_invoice(file: File) {
+    const form_data = new FormData();
+    form_data.append('file', file);
+
+    const token = localStorage.getItem('clawkeeper_token');
+    const response = await fetch(`${BASE_URL}/api/invoices/upload`, {
+      method: 'POST',
+      headers: token ? { 'Authorization': `Bearer ${token}` } : {},
+      body: form_data,
+    });
+
+    if (!response.ok) {
+      throw new Error('Upload failed');
+    }
+
+    return response.json();
+  }
+
+  async approve_invoice(invoice_id: string) {
+    return this.fetch_json(`/api/invoices/${invoice_id}/approve`, {
+      method: 'POST',
+    });
+  }
+
+  async pay_invoice(invoice_id: string, payment_method: string = 'stripe') {
+    return this.fetch_json(`/api/invoices/${invoice_id}/pay`, {
+      method: 'POST',
+      body: JSON.stringify({ payment_method }),
+    });
+  }
+
+  // Reports
+  async generate_report(type: string, start_date: string, end_date: string) {
+    return this.fetch_json(`/api/reports/${type}`, {
+      method: 'POST',
+      body: JSON.stringify({ start_date, end_date }),
+    });
+  }
+
+  // Reconciliation
+  async start_reconciliation(account_id: string, start_date: string, end_date: string) {
+    return this.fetch_json('/api/reconciliation/start', {
+      method: 'POST',
+      body: JSON.stringify({ account_id, start_date, end_date }),
+    });
+  }
+
+  async get_reconciliation_status(task_id: string) {
+    return this.fetch_json(`/api/reconciliation/${task_id}/status`);
+  }
+
+  // Agents
+  async get_agent_status() {
+    return this.fetch_json('/api/agents/status');
+  }
+
+  // Accounts
+  async get_accounts() {
+    return this.fetch_json('/api/accounts');
+  }
+}
+
+export const api = new ApiClient();

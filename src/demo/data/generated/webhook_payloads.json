@@ -1,0 +1,19 @@
+{
+  "plaid": {
+    "webhook_type": "TRANSACTIONS",
+    "webhook_code": "DEFAULT_UPDATE",
+    "item_id": "item_plaid_001",
+    "new_transactions": 15,
+    "removed_transactions": 0
+  },
+  "stripe": {
+    "type": "invoice.paid",
+    "data": {
+      "object": {
+        "id": "in_test_invoice",
+        "amount_paid": 5000,
+        "customer": "cus_acme"
+      }
+    }
+  }
+}

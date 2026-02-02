@@ -1,0 +1,76 @@
+// file: src/demo/generate/vendors.ts
+// description: Generate vendor master data
+// reference: generate/index.ts
+
+export interface Vendor {
+  name: string;
+  email: string;
+  phone: string | null;
+  category: string;
+  gl_account: number;
+  payment_terms: string;
+  address: string | null;
+  notes: string | null;
+}
+
+export function generate_vendors(): Vendor[] {
+  return [
+    // Cloud/SaaS Vendors
+    { name: 'Amazon Web Services', email: 'billing@aws.amazon.com', phone: '+1-206-266-4064', category: 'Cloud Services', gl_account: 6210, payment_terms: 'Net 30', address: '410 Terry Ave N, Seattle, WA 98109', notes: 'Primary cloud infrastructure provider' },
+    { name: 'Microsoft Corporation', email: 'billing@microsoft.com', phone: '+1-800-642-7676', category: 'Software', gl_account: 6200, payment_terms: 'Net 30', address: 'One Microsoft Way, Redmond, WA 98052', notes: 'Microsoft 365 Enterprise' },
+    { name: 'GitHub Inc', email: 'billing@github.com', phone: null, category: 'Software', gl_account: 6200, payment_terms: 'Net 15', address: '88 Colin P Kelly Jr St, San Francisco, CA 94107', notes: 'Enterprise GitHub subscription' },
+    { name: 'Slack Technologies', email: 'billing@slack.com', phone: null, category: 'Software', gl_account: 6200, payment_terms: 'Net 30', address: '500 Howard St, San Francisco, CA 94105', notes: 'Team communication platform' },
+    { name: 'Atlassian', email: 'billing@atlassian.com', phone: null, category: 'Software', gl_account: 6200, payment_terms: 'Net 30', address: '431 El Camino Real, San Mateo, CA 94402', notes: 'Jira and Confluence licenses' },
+    { name: 'Zoom Video Communications', email: 'billing@zoom.us', phone: null, category: 'Software', gl_account: 6200, payment_terms: 'Net 30', address: '55 Almaden Blvd, San Jose, CA 95113', notes: 'Video conferencing' },
+    
+    // Office/Facilities Vendors
+    { name: 'WeWork Companies', email: 'billing@wework.com', phone: '+1-888-935-3675', category: 'Rent', gl_account: 6100, payment_terms: 'Net 15', address: '115 W 18th St, New York, NY 10011', notes: 'Co-working space lease' },
+    { name: 'Office Depot', email: 'accounts@officedepot.com', phone: '+1-800-463-3768', category: 'Supplies', gl_account: 6600, payment_terms: 'Net 30', address: '6600 N Military Trail, Boca Raton, FL 33496', notes: 'Office supplies and furniture' },
+    { name: 'Staples Inc', email: 'billing@staples.com', phone: '+1-800-378-2753', category: 'Supplies', gl_account: 6600, payment_terms: 'Net 30', address: '500 Staples Dr, Framingham, MA 01702', notes: 'Alternative office supplies' },
+    { name: 'FedEx Corporation', email: 'billing@fedex.com', phone: '+1-800-463-3339', category: 'Shipping', gl_account: 6900, payment_terms: 'Net 30', address: '942 S Shady Grove Rd, Memphis, TN 38120', notes: 'Shipping and logistics' },
+    { name: 'UPS', email: 'billing@ups.com', phone: '+1-800-742-5877', category: 'Shipping', gl_account: 6900, payment_terms: 'Net 30', address: '55 Glenlake Parkway NE, Atlanta, GA 30328', notes: 'Package delivery' },
+    
+    // Utilities/Internet Vendors
+    { name: 'Comcast Business', email: 'billing@comcast.com', phone: '+1-800-391-3000', category: 'Internet', gl_account: 6110, payment_terms: 'Net 15', address: '1701 JFK Blvd, Philadelphia, PA 19103', notes: 'Business internet and phone' },
+    { name: 'AT&T Business', email: 'billing@att.com', phone: '+1-800-288-2020', category: 'Utilities', gl_account: 6110, payment_terms: 'Net 15', address: '208 S Akard St, Dallas, TX 75202', notes: 'Phone and data services' },
+    { name: 'Austin Energy', email: 'billing@austinenergy.com', phone: '+1-512-494-9400', category: 'Utilities', gl_account: 6110, payment_terms: 'Net 15', address: '4815 Mueller Blvd, Austin, TX 78723', notes: 'Electric utility' },
+    
+    // Professional Services Vendors
+    { name: 'Gusto Inc', email: 'billing@gusto.com', phone: '+1-800-936-0383', category: 'Payroll', gl_account: 6300, payment_terms: 'Net 15', address: '525 20th St, San Francisco, CA 94107', notes: 'Payroll processing service' },
+    { name: 'ADP Tax Services', email: 'billing@adp.com', phone: '+1-800-225-5237', category: 'Professional Services', gl_account: 6300, payment_terms: 'Net 30', address: 'One ADP Blvd, Roseland, NJ 07068', notes: 'Tax filing and compliance' },
+    { name: 'Wilson & Associates CPA', email: 'info@wilsoncpa.example', phone: '+1-512-555-0100', category: 'Professional Services', gl_account: 6300, payment_terms: 'Net 30', address: '789 Congress Ave, Austin, TX 78701', notes: 'Accounting and tax services' },
+    { name: 'Bennett Law Group', email: 'billing@bennettlaw.example', phone: '+1-512-555-0200', category: 'Professional Services', gl_account: 6300, payment_terms: 'Net 30', address: '456 Guadalupe St, Austin, TX 78701', notes: 'Corporate legal counsel' },
+    
+    // Insurance Vendors
+    { name: 'State Farm Insurance', email: 'commercial@statefarm.com', phone: '+1-800-782-8332', category: 'Insurance', gl_account: 6700, payment_terms: 'Net 15', address: 'One State Farm Plaza, Bloomington, IL 61710', notes: 'Business liability insurance' },
+    { name: 'Hiscox Insurance', email: 'billing@hiscox.com', phone: '+1-888-484-7269', category: 'Insurance', gl_account: 6700, payment_terms: 'Net 30', address: '233 N Michigan Ave, Chicago, IL 60601', notes: 'Professional liability/E&O' },
+    
+    // Equipment/Technology Vendors
+    { name: 'Dell Technologies', email: 'sales@dell.com', phone: '+1-800-289-3355', category: 'Equipment', gl_account: 1500, payment_terms: 'Net 30', address: 'One Dell Way, Round Rock, TX 78682', notes: 'Computer hardware' },
+    { name: 'Apple Inc', email: 'business@apple.com', phone: '+1-800-692-7753', category: 'Equipment', gl_account: 1500, payment_terms: 'Net 30', address: 'One Apple Park Way, Cupertino, CA 95014', notes: 'MacBooks and accessories' },
+    { name: 'Best Buy Business', email: 'business@bestbuy.com', phone: '+1-888-237-8289', category: 'Equipment', gl_account: 1500, payment_terms: 'Net 30', address: '7601 Penn Ave S, Richfield, MN 55423', notes: 'Electronics and accessories' },
+    
+    // Travel Vendors
+    { name: 'Delta Airlines', email: 'corporate@delta.com', phone: '+1-800-221-1212', category: 'Travel', gl_account: 6500, payment_terms: 'Immediate', address: '1030 Delta Blvd, Atlanta, GA 30354', notes: 'Business air travel' },
+    { name: 'American Airlines', email: 'business@aa.com', phone: '+1-800-433-7300', category: 'Travel', gl_account: 6500, payment_terms: 'Immediate', address: '4333 Amon Carter Blvd, Fort Worth, TX 76155', notes: 'Alternative airline' },
+    { name: 'Marriott Hotels', email: 'corporate@marriott.com', phone: '+1-800-228-9290', category: 'Travel', gl_account: 6500, payment_terms: 'Immediate', address: '10400 Fernwood Rd, Bethesda, MD 20817', notes: 'Hotel accommodations' },
+    { name: 'Hilton Hotels', email: 'corporate@hilton.com', phone: '+1-800-445-8667', category: 'Travel', gl_account: 6500, payment_terms: 'Immediate', address: '7930 Jones Branch Dr, McLean, VA 22102', notes: 'Alternative hotels' },
+    { name: 'Enterprise Rent-A-Car', email: 'business@enterprise.com', phone: '+1-800-261-7331', category: 'Travel', gl_account: 6500, payment_terms: 'Net 15', address: '600 Corporate Park Dr, Clayton, MO 63105', notes: 'Car rentals' },
+    
+    // Marketing/Advertising Vendors
+    { name: 'Google Ads', email: 'billing@google.com', phone: '+1-866-246-6453', category: 'Marketing', gl_account: 6400, payment_terms: 'Immediate', address: '1600 Amphitheatre Parkway, Mountain View, CA 94043', notes: 'Online advertising' },
+    { name: 'LinkedIn Marketing Solutions', email: 'billing@linkedin.com', phone: null, category: 'Marketing', gl_account: 6400, payment_terms: 'Net 15', address: '1000 W Maude Ave, Sunnyvale, CA 94085', notes: 'B2B advertising' },
+    { name: 'Mailchimp', email: 'billing@mailchimp.com', phone: null, category: 'Marketing', gl_account: 6400, payment_terms: 'Net 15', address: '675 Ponce de Leon Ave NE, Atlanta, GA 30308', notes: 'Email marketing platform' },
+    
+    // Contractors/Freelancers
+    { name: 'Sarah Martinez Consulting', email: 'sarah@smartinez.example', phone: '+1-512-555-0300', category: 'Contractors', gl_account: 5000, payment_terms: 'Net 15', address: null, notes: 'Senior developer contractor' },
+    { name: 'Chen Software Solutions', email: 'mike@chensoftware.example', phone: '+1-512-555-0400', category: 'Contractors', gl_account: 5000, payment_terms: 'Net 15', address: null, notes: 'Database specialist' },
+    { name: 'Taylor Design Studio', email: 'alex@taylordesign.example', phone: '+1-512-555-0500', category: 'Contractors', gl_account: 5000, payment_terms: 'Net 30', address: null, notes: 'UI/UX designer' },
+    
+    // Financial Services
+    { name: 'Chase Bank', email: 'business@chase.com', phone: '+1-800-935-9935', category: 'Banking', gl_account: 6810, payment_terms: 'Immediate', address: '270 Park Ave, New York, NY 10017', notes: 'Primary business bank' },
+    { name: 'American Express', email: 'business@amex.com', phone: '+1-800-528-2122', category: 'Banking', gl_account: 6810, payment_terms: 'Net 15', address: '200 Vesey St, New York, NY 10285', notes: 'Business credit card' },
+    { name: 'PayPal Business', email: 'business@paypal.com', phone: '+1-888-221-1161', category: 'Payment Processing', gl_account: 6810, payment_terms: 'Immediate', address: '2211 North First St, San Jose, CA 95131', notes: 'Payment gateway' },
+    { name: 'Stripe Inc', email: 'billing@stripe.com', phone: '+1-888-926-2289', category: 'Payment Processing', gl_account: 6810, payment_terms: 'Immediate', address: '510 Townsend St, San Francisco, CA 94103', notes: 'Online payment processor' }
+  ];
+}

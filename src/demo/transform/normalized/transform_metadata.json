@@ -1,0 +1,35 @@
+{
+  "transformed_at": "2026-02-02T21:19:50.521Z",
+  "results": [
+    {
+      "dataset": "transactions",
+      "input_file": "transactions.parquet",
+      "output_file": "transactions.json",
+      "input_rows": 10000,
+      "output_rows": 10000,
+      "success": true
+    },
+    {
+      "dataset": "invoices",
+      "input_file": "invoices.parquet",
+      "output_file": "invoices.json",
+      "input_rows": 500,
+      "output_rows": 500,
+      "success": true
+    },
+    {
+      "dataset": "support",
+      "input_file": "support_tickets.parquet",
+      "output_file": "support_tickets.json",
+      "input_rows": 200,
+      "output_rows": 200,
+      "success": true
+    }
+  ],
+  "summary": {
+    "total_datasets": 3,
+    "successful": 3,
+    "failed": 0,
+    "total_rows": 10700
+  }
+}

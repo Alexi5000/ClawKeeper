@@ -1,0 +1,82 @@
+[
+  {
+    "contractor_name": "Sarah Martinez Consulting",
+    "ein": "12-3456780",
+    "address": "456 Oak St, Austin, TX 78701",
+    "total_paid": "8500000",
+    "year": 2024,
+    "requires_1099": true
+  },
+  {
+    "contractor_name": "Chen Software Solutions",
+    "ein": "12-3456781",
+    "address": "789 Pine St, Austin, TX 78702",
+    "total_paid": "6200000",
+    "year": 2024,
+    "requires_1099": true
+  },
+  {
+    "contractor_name": "Taylor Design Studio",
+    "ein": "12-3456782",
+    "address": "123 Elm St, Austin, TX 78703",
+    "total_paid": "4500000",
+    "year": 2024,
+    "requires_1099": true
+  },
+  {
+    "contractor_name": "Johnson DevOps LLC",
+    "ein": "12-3456783",
+    "address": "321 Maple Ave, Austin, TX 78704",
+    "total_paid": "3800000",
+    "year": 2024,
+    "requires_1099": true
+  },
+  {
+    "contractor_name": "Smith Security Consulting",
+    "ein": "12-3456784",
+    "address": "654 Cedar Ln, Austin, TX 78705",
+    "total_paid": "2800000",
+    "year": 2024,
+    "requires_1099": true
+  },
+  {
+    "contractor_name": "Davis Data Analytics",
+    "ein": "12-3456785",
+    "address": "987 Birch Rd, Austin, TX 78706",
+    "total_paid": "2200000",
+    "year": 2024,
+    "requires_1099": true
+  },
+  {
+    "contractor_name": "Wilson QA Services",
+    "ein": "12-3456786",
+    "address": "147 Spruce Dr, Austin, TX 78707",
+    "total_paid": "1800000",
+    "year": 2024,
+    "requires_1099": true
+  },
+  {
+    "contractor_name": "Brown Project Management",
+    "ein": "12-3456787",
+    "address": "258 Ash Ct, Austin, TX 78708",
+    "total_paid": "1500000",
+    "year": 2024,
+    "requires_1099": true
+  },
+  {
+    "contractor_name": "Garcia Technical Writing",
+    "ein": "12-3456788",
+    "address": "369 Willow Way, Austin, TX 78709",
+    "total_paid": "1200000",
+    "year": 2024,
+    "requires_1099": true
+  },
+  {
+    "contractor_name": "Miller Graphic Design",
+    "ein": "12-3456789",
+    "address": "741 Poplar Pl, Austin, TX 78710",
+    "total_paid": "850000",
+    "year": 2024,
+    "requires_1099": true
+  }
+]

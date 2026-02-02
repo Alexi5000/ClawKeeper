@@ -1,0 +1,32 @@
+{
+  "generated_at": "2026-02-02T21:18:44.963Z",
+  "company": "Meridian Tech Solutions, LLC",
+  "datasets": {
+    "company_profile": 1,
+    "chart_of_accounts": 50,
+    "vendors": 40,
+    "customers": 15,
+    "budgets": 648,
+    "tax_filings": 27,
+    "contractor_payments": 10,
+    "policy_violations": 25,
+    "plaid_accounts": 3,
+    "plaid_transactions": 5000,
+    "stripe_invoices": 500,
+    "stripe_subscriptions": 20,
+    "agent_scenarios": 22
+  },
+  "total_records": 6311,
+  "agent_coverage": {
+    "cfo": 8,
+    "accounts_payable": 15,
+    "accounts_receivable": 15,
+    "reconciliation": 12,
+    "compliance": 10,
+    "reporting": 12,
+    "integration": 12,
+    "data_etl": 10,
+    "support": 6,
+    "total": 110
+  }
+}

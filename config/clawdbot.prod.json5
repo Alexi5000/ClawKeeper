@@ -1,0 +1,141 @@
+// ClawKeeper Clawdbot Configuration (Production Mode)
+//
+// PRODUCTION MODE: For standalone customer deployments
+// - ClawKeeper runs as independent CEO agent (not under Axel)
+// - Operates own gateway and control UI
+// - Suitable for customer installations and production environments
+//
+// For TechTide internal development, use clawdbot.json5 instead
+
+{
+  // Routing configuration
+  routing: {
+    agents: {
+      main: {
+        name: "ClawKeeper",
+        workspace: "~/clawkeeper",
+        sandbox: { mode: "off" }
+      }
+    },
+    defaults: {
+      sandbox: { mode: "non-main" }
+    }
+  },
+
+  // Session configuration
+  session: {
+    mainKey: "main"  // ClawKeeper is main in prod mode
+  },
+
+  // Heartbeat
+  heartbeat: {
+    enabled: true,
+    interval: "4h"
+  },
+
+  // Gateway (prod mode runs its own gateway)
+  gateway: {
+    bind: "0.0.0.0",  // Accept external connections
+    port: 19789,  // Different port from Axel
+    controlUi: { 
+      enabled: true,
+      port: 19790
+    }
+  },
+
+  // Channels (can enable Discord for customer support)
+  channels: {
+    discord: {
+      enabled: true,
+      token: "SET_VIA_DISCORD_TOKEN_ENV",
+      dm: {
+        enabled: true,
+        policy: "allowlist",
+        allowFrom: []  // Configure per tenant
+      },
+      groupPolicy: "allowlist"
+    }
+  },
+
+  // Tools
+  tools: {
+    elevated: { enabled: true }
+  },
+
+  // Browser
+  browser: {
+    enabled: true
+  },
+
+  // Models
+  models: {
+    default: "anthropic/claude-sonnet-4",
+    providers: {
+      anthropic: {
+        apiKey: "SET_VIA_ANTHROPIC_API_KEY_ENV",
+        models: ["claude-opus-4-20250514", "claude-sonnet-4-20250514"]
+      },
+      google: {
+        apiKey: "SET_VIA_GOOGLE_API_KEY_ENV",
+        models: ["gemini-2.0-pro", "gemini-2.0-flash"]
+      }
+    },
+    fallback: {
+      primary: "anthropic/claude-sonnet-4",
+      secondary: "google/gemini-2.0-pro"
+    }
+  },
+
+  // ClawKeeper-specific settings
+  clawkeeper: {
+    mode: "prod",
+    api_port: 4004,
+    dashboard_port: 5174,
+    database_url: "SET_VIA_DATABASE_URL_ENV",
+    
+    // Multi-tenant configuration
+    multi_tenant: true,
+    
+    // Financial settings
+    default_currency: "USD",
+    approval_thresholds: {
+      accountant: 100000,
+      tenant_admin: 500000,
+      super_admin: Infinity
+    },
+    
+    // Integration settings
+    integrations: {
+      plaid: {
+        env: "production",
+        client_id: "SET_VIA_PLAID_CLIENT_ID_ENV",
+        secret: "SET_VIA_PLAID_SECRET_ENV"
+      },
+      stripe: {
+        secret_key: "SET_VIA_STRIPE_SECRET_KEY_ENV"
+      },
+      quickbooks: {
+        client_id: "SET_VIA_QUICKBOOKS_CLIENT_ID_ENV",
+        client_secret: "SET_VIA_QUICKBOOKS_CLIENT_SECRET_ENV"
+      },
+      xero: {
+        client_id: "SET_VIA_XERO_CLIENT_ID_ENV",
+        client_secret: "SET_VIA_XERO_CLIENT_SECRET_ENV"
+      }
+    },
+    
+    // Security
+    security: {
+      rate_limiting: {
+        enabled: true,
+        requests_per_minute: 60,
+        requests_per_hour: 1000
+      },
+      circuit_breaker: {
+        enabled: true,
+        failure_threshold: 5,
+        timeout_seconds: 30
+      }
+    }
+  }
+}

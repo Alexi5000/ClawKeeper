@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Security Vulnerability
+    url: https://github.com/clawkeeper/clawkeeper/security
+    about: Please report security vulnerabilities through our Security Policy
+  - name: Questions & Discussions
+    url: https://github.com/clawkeeper/clawkeeper/discussions
+    about: Ask questions and discuss ideas with the community
+  - name: Documentation
+    url: https://github.com/clawkeeper/clawkeeper/tree/main/docs
+    about: Read the documentation for usage guides and API references

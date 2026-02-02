@@ -1,0 +1,2002 @@
+[
+  {
+    "subject": "Transaction import error",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Transaction import error. Please assist with resolution.",
+    "category": "technical",
+    "priority": "medium",
+    "status": "open",
+    "created_at": "2025-02-01T00:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Export to Excel",
+    "description": "I would like to request a new feature to improve my workflow. Ticket details: Export to Excel. Please assist with resolution.",
+    "category": "feature_request",
+    "priority": "medium",
+    "status": "in_progress",
+    "created_at": "2025-01-29T00:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Change subscription plan",
+    "description": "I need assistance with my account settings and configuration. Ticket details: Change subscription plan. Please assist with resolution.",
+    "category": "account",
+    "priority": "medium",
+    "status": "in_progress",
+    "created_at": "2025-01-28T00:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Refund request",
+    "description": "I have a question about my recent invoice and payment processing. Ticket details: Refund request. Please assist with resolution.",
+    "category": "billing",
+    "priority": "medium",
+    "status": "in_progress",
+    "created_at": "2025-01-28T00:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Bank feed delayed",
+    "description": "I am having trouble with external system integration. Ticket details: Bank feed delayed. Please assist with resolution.",
+    "category": "integration",
+    "priority": "low",
+    "status": "in_progress",
+    "created_at": "2025-01-27T00:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Change subscription plan",
+    "description": "I need assistance with my account settings and configuration. Ticket details: Change subscription plan. Please assist with resolution.",
+    "category": "account",
+    "priority": "medium",
+    "status": "in_progress",
+    "created_at": "2025-01-26T00:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Export to Excel",
+    "description": "I would like to request a new feature to improve my workflow. Ticket details: Export to Excel. Please assist with resolution.",
+    "category": "feature_request",
+    "priority": "medium",
+    "status": "in_progress",
+    "created_at": "2025-01-25T00:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Report generation timeout",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Report generation timeout. Please assist with resolution.",
+    "category": "technical",
+    "priority": "critical",
+    "status": "resolved",
+    "created_at": "2025-01-24T00:00:00.000Z",
+    "user_email": "sarah.johnson@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Mobile app needed",
+    "description": "I would like to request a new feature to improve my workflow. Ticket details: Mobile app needed. Please assist with resolution.",
+    "category": "feature_request",
+    "priority": "medium",
+    "status": "resolved",
+    "created_at": "2025-01-24T00:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Delete old data",
+    "description": "I need assistance with my account settings and configuration. Ticket details: Delete old data. Please assist with resolution.",
+    "category": "account",
+    "priority": "medium",
+    "status": "resolved",
+    "created_at": "2025-01-22T00:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Stripe sync issues",
+    "description": "I am having trouble with external system integration. Ticket details: Stripe sync issues. Please assist with resolution.",
+    "category": "integration",
+    "priority": "medium",
+    "status": "resolved",
+    "created_at": "2025-01-21T00:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Stripe sync issues",
+    "description": "I am having trouble with external system integration. Ticket details: Stripe sync issues. Please assist with resolution.",
+    "category": "integration",
+    "priority": "low",
+    "status": "resolved",
+    "created_at": "2025-01-20T00:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Change subscription plan",
+    "description": "I need assistance with my account settings and configuration. Ticket details: Change subscription plan. Please assist with resolution.",
+    "category": "account",
+    "priority": "medium",
+    "status": "resolved",
+    "created_at": "2025-01-18T00:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Duplicate transactions appearing",
+    "description": "I found an issue that needs to be fixed in the application. Ticket details: Duplicate transactions appearing. Please assist with resolution.",
+    "category": "bug",
+    "priority": "high",
+    "status": "resolved",
+    "created_at": "2025-01-17T00:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Cannot log in to account",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Cannot log in to account. Please assist with resolution.",
+    "category": "technical",
+    "priority": "high",
+    "status": "resolved",
+    "created_at": "2025-01-17T00:00:00.000Z",
+    "user_email": "sarah.johnson@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Add new user",
+    "description": "I need assistance with my account settings and configuration. Ticket details: Add new user. Please assist with resolution.",
+    "category": "account",
+    "priority": "low",
+    "status": "resolved",
+    "created_at": "2025-01-16T00:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Bank feed delayed",
+    "description": "I am having trouble with external system integration. Ticket details: Bank feed delayed. Please assist with resolution.",
+    "category": "integration",
+    "priority": "medium",
+    "status": "resolved",
+    "created_at": "2025-01-16T00:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Cannot log in to account",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Cannot log in to account. Please assist with resolution.",
+    "category": "technical",
+    "priority": "medium",
+    "status": "resolved",
+    "created_at": "2025-01-15T00:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Bank connection failed",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Bank connection failed. Please assist with resolution.",
+    "category": "technical",
+    "priority": "critical",
+    "status": "resolved",
+    "created_at": "2025-01-15T00:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Stripe sync issues",
+    "description": "I am having trouble with external system integration. Ticket details: Stripe sync issues. Please assist with resolution.",
+    "category": "integration",
+    "priority": "low",
+    "status": "resolved",
+    "created_at": "2025-01-13T00:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Cannot log in to account",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Cannot log in to account. Please assist with resolution.",
+    "category": "technical",
+    "priority": "low",
+    "status": "resolved",
+    "created_at": "2025-01-12T00:00:00.000Z",
+    "user_email": "sarah.johnson@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Invoice payment question",
+    "description": "I have a question about my recent invoice and payment processing. Ticket details: Invoice payment question. Please assist with resolution.",
+    "category": "billing",
+    "priority": "medium",
+    "status": "resolved",
+    "created_at": "2025-01-11T00:00:00.000Z",
+    "user_email": "sarah.johnson@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Need billing statement",
+    "description": "I have a question about my recent invoice and payment processing. Ticket details: Need billing statement. Please assist with resolution.",
+    "category": "billing",
+    "priority": "high",
+    "status": "resolved",
+    "created_at": "2025-01-11T00:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Email notifications not sending",
+    "description": "I found an issue that needs to be fixed in the application. Ticket details: Email notifications not sending. Please assist with resolution.",
+    "category": "bug",
+    "priority": "high",
+    "status": "resolved",
+    "created_at": "2025-01-11T00:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Need billing statement",
+    "description": "I have a question about my recent invoice and payment processing. Ticket details: Need billing statement. Please assist with resolution.",
+    "category": "billing",
+    "priority": "medium",
+    "status": "resolved",
+    "created_at": "2025-01-11T00:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Cannot log in to account",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Cannot log in to account. Please assist with resolution.",
+    "category": "technical",
+    "priority": "medium",
+    "status": "resolved",
+    "created_at": "2025-01-11T00:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Change subscription plan",
+    "description": "I need assistance with my account settings and configuration. Ticket details: Change subscription plan. Please assist with resolution.",
+    "category": "account",
+    "priority": "medium",
+    "status": "resolved",
+    "created_at": "2025-01-10T00:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Subscription cancellation",
+    "description": "I have a question about my recent invoice and payment processing. Ticket details: Subscription cancellation. Please assist with resolution.",
+    "category": "billing",
+    "priority": "medium",
+    "status": "resolved",
+    "created_at": "2025-01-10T00:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Duplicate transactions appearing",
+    "description": "I found an issue that needs to be fixed in the application. Ticket details: Duplicate transactions appearing. Please assist with resolution.",
+    "category": "bug",
+    "priority": "medium",
+    "status": "resolved",
+    "created_at": "2025-01-09T00:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Bank feed delayed",
+    "description": "I am having trouble with external system integration. Ticket details: Bank feed delayed. Please assist with resolution.",
+    "category": "integration",
+    "priority": "medium",
+    "status": "resolved",
+    "created_at": "2025-01-07T00:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Subscription cancellation",
+    "description": "I have a question about my recent invoice and payment processing. Ticket details: Subscription cancellation. Please assist with resolution.",
+    "category": "billing",
+    "priority": "medium",
+    "status": "resolved",
+    "created_at": "2025-01-06T00:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Date format incorrect",
+    "description": "I found an issue that needs to be fixed in the application. Ticket details: Date format incorrect. Please assist with resolution.",
+    "category": "bug",
+    "priority": "low",
+    "status": "resolved",
+    "created_at": "2025-01-05T00:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Mobile app needed",
+    "description": "I would like to request a new feature to improve my workflow. Ticket details: Mobile app needed. Please assist with resolution.",
+    "category": "feature_request",
+    "priority": "medium",
+    "status": "resolved",
+    "created_at": "2025-01-05T00:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Export to Excel",
+    "description": "I would like to request a new feature to improve my workflow. Ticket details: Export to Excel. Please assist with resolution.",
+    "category": "feature_request",
+    "priority": "low",
+    "status": "resolved",
+    "created_at": "2025-01-02T00:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Invoice payment question",
+    "description": "I have a question about my recent invoice and payment processing. Ticket details: Invoice payment question. Please assist with resolution.",
+    "category": "billing",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2025-01-01T00:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Plaid connection broken",
+    "description": "I am having trouble with external system integration. Ticket details: Plaid connection broken. Please assist with resolution.",
+    "category": "integration",
+    "priority": "high",
+    "status": "closed",
+    "created_at": "2025-01-01T00:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Delete old data",
+    "description": "I need assistance with my account settings and configuration. Ticket details: Delete old data. Please assist with resolution.",
+    "category": "account",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-12-31T00:00:00.000Z",
+    "user_email": "sarah.johnson@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Add multi-currency support",
+    "description": "I would like to request a new feature to improve my workflow. Ticket details: Add multi-currency support. Please assist with resolution.",
+    "category": "feature_request",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-12-31T00:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Cannot log in to account",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Cannot log in to account. Please assist with resolution.",
+    "category": "technical",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-12-30T00:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Reset password request",
+    "description": "I need assistance with my account settings and configuration. Ticket details: Reset password request. Please assist with resolution.",
+    "category": "account",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-12-29T00:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Delete old data",
+    "description": "I need assistance with my account settings and configuration. Ticket details: Delete old data. Please assist with resolution.",
+    "category": "account",
+    "priority": "high",
+    "status": "closed",
+    "created_at": "2024-12-29T00:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Change subscription plan",
+    "description": "I need assistance with my account settings and configuration. Ticket details: Change subscription plan. Please assist with resolution.",
+    "category": "account",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-12-27T00:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "API authentication error",
+    "description": "I am having trouble with external system integration. Ticket details: API authentication error. Please assist with resolution.",
+    "category": "integration",
+    "priority": "high",
+    "status": "closed",
+    "created_at": "2024-12-26T00:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Invoice payment question",
+    "description": "I have a question about my recent invoice and payment processing. Ticket details: Invoice payment question. Please assist with resolution.",
+    "category": "billing",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-12-25T00:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Reset password request",
+    "description": "I need assistance with my account settings and configuration. Ticket details: Reset password request. Please assist with resolution.",
+    "category": "account",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-12-23T00:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Dashboard showing wrong totals",
+    "description": "I found an issue that needs to be fixed in the application. Ticket details: Dashboard showing wrong totals. Please assist with resolution.",
+    "category": "bug",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-12-22T00:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Reset password request",
+    "description": "I need assistance with my account settings and configuration. Ticket details: Reset password request. Please assist with resolution.",
+    "category": "account",
+    "priority": "high",
+    "status": "closed",
+    "created_at": "2024-12-20T00:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Export file corrupted",
+    "description": "I found an issue that needs to be fixed in the application. Ticket details: Export file corrupted. Please assist with resolution.",
+    "category": "bug",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-12-20T00:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Dashboard showing wrong totals",
+    "description": "I found an issue that needs to be fixed in the application. Ticket details: Dashboard showing wrong totals. Please assist with resolution.",
+    "category": "bug",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-12-19T00:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Recurring invoice templates",
+    "description": "I would like to request a new feature to improve my workflow. Ticket details: Recurring invoice templates. Please assist with resolution.",
+    "category": "feature_request",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-12-18T00:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Export file corrupted",
+    "description": "I found an issue that needs to be fixed in the application. Ticket details: Export file corrupted. Please assist with resolution.",
+    "category": "bug",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-12-18T00:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Recurring invoice templates",
+    "description": "I would like to request a new feature to improve my workflow. Ticket details: Recurring invoice templates. Please assist with resolution.",
+    "category": "feature_request",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-12-17T00:00:00.000Z",
+    "user_email": "sarah.johnson@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Report generation timeout",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Report generation timeout. Please assist with resolution.",
+    "category": "technical",
+    "priority": "low",
+    "status": "closed",
+    "created_at": "2024-12-15T00:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Bank connection failed",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Bank connection failed. Please assist with resolution.",
+    "category": "technical",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-12-14T00:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Reset password request",
+    "description": "I need assistance with my account settings and configuration. Ticket details: Reset password request. Please assist with resolution.",
+    "category": "account",
+    "priority": "low",
+    "status": "closed",
+    "created_at": "2024-12-14T00:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Email notifications not sending",
+    "description": "I found an issue that needs to be fixed in the application. Ticket details: Email notifications not sending. Please assist with resolution.",
+    "category": "bug",
+    "priority": "high",
+    "status": "closed",
+    "created_at": "2024-12-09T00:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Report generation timeout",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Report generation timeout. Please assist with resolution.",
+    "category": "technical",
+    "priority": "low",
+    "status": "closed",
+    "created_at": "2024-12-08T00:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Subscription cancellation",
+    "description": "I have a question about my recent invoice and payment processing. Ticket details: Subscription cancellation. Please assist with resolution.",
+    "category": "billing",
+    "priority": "low",
+    "status": "closed",
+    "created_at": "2024-12-05T00:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Credit card charge error",
+    "description": "I have a question about my recent invoice and payment processing. Ticket details: Credit card charge error. Please assist with resolution.",
+    "category": "billing",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-12-05T00:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Export to Excel",
+    "description": "I would like to request a new feature to improve my workflow. Ticket details: Export to Excel. Please assist with resolution.",
+    "category": "feature_request",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-12-03T00:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Recurring invoice templates",
+    "description": "I would like to request a new feature to improve my workflow. Ticket details: Recurring invoice templates. Please assist with resolution.",
+    "category": "feature_request",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-12-03T00:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Plaid connection broken",
+    "description": "I am having trouble with external system integration. Ticket details: Plaid connection broken. Please assist with resolution.",
+    "category": "integration",
+    "priority": "low",
+    "status": "closed",
+    "created_at": "2024-12-03T00:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Delete old data",
+    "description": "I need assistance with my account settings and configuration. Ticket details: Delete old data. Please assist with resolution.",
+    "category": "account",
+    "priority": "low",
+    "status": "closed",
+    "created_at": "2024-12-02T00:00:00.000Z",
+    "user_email": "sarah.johnson@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Add new user",
+    "description": "I need assistance with my account settings and configuration. Ticket details: Add new user. Please assist with resolution.",
+    "category": "account",
+    "priority": "high",
+    "status": "closed",
+    "created_at": "2024-12-01T00:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Reset password request",
+    "description": "I need assistance with my account settings and configuration. Ticket details: Reset password request. Please assist with resolution.",
+    "category": "account",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-11-30T00:00:00.000Z",
+    "user_email": "sarah.johnson@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Export to Excel",
+    "description": "I would like to request a new feature to improve my workflow. Ticket details: Export to Excel. Please assist with resolution.",
+    "category": "feature_request",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-11-30T00:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Date format incorrect",
+    "description": "I found an issue that needs to be fixed in the application. Ticket details: Date format incorrect. Please assist with resolution.",
+    "category": "bug",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-11-29T00:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Email notifications not sending",
+    "description": "I found an issue that needs to be fixed in the application. Ticket details: Email notifications not sending. Please assist with resolution.",
+    "category": "bug",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-11-29T00:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Bank connection failed",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Bank connection failed. Please assist with resolution.",
+    "category": "technical",
+    "priority": "high",
+    "status": "closed",
+    "created_at": "2024-11-28T00:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Reconciliation not working",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Reconciliation not working. Please assist with resolution.",
+    "category": "technical",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-11-28T00:00:00.000Z",
+    "user_email": "sarah.johnson@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Need billing statement",
+    "description": "I have a question about my recent invoice and payment processing. Ticket details: Need billing statement. Please assist with resolution.",
+    "category": "billing",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-11-27T00:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Report generation timeout",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Report generation timeout. Please assist with resolution.",
+    "category": "technical",
+    "priority": "high",
+    "status": "closed",
+    "created_at": "2024-11-27T00:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "API authentication error",
+    "description": "I am having trouble with external system integration. Ticket details: API authentication error. Please assist with resolution.",
+    "category": "integration",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-11-26T00:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Bank feed delayed",
+    "description": "I am having trouble with external system integration. Ticket details: Bank feed delayed. Please assist with resolution.",
+    "category": "integration",
+    "priority": "low",
+    "status": "closed",
+    "created_at": "2024-11-26T00:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Stripe sync issues",
+    "description": "I am having trouble with external system integration. Ticket details: Stripe sync issues. Please assist with resolution.",
+    "category": "integration",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-11-26T00:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Mobile app needed",
+    "description": "I would like to request a new feature to improve my workflow. Ticket details: Mobile app needed. Please assist with resolution.",
+    "category": "feature_request",
+    "priority": "low",
+    "status": "closed",
+    "created_at": "2024-11-24T00:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Dashboard showing wrong totals",
+    "description": "I found an issue that needs to be fixed in the application. Ticket details: Dashboard showing wrong totals. Please assist with resolution.",
+    "category": "bug",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-11-24T00:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Change subscription plan",
+    "description": "I need assistance with my account settings and configuration. Ticket details: Change subscription plan. Please assist with resolution.",
+    "category": "account",
+    "priority": "low",
+    "status": "closed",
+    "created_at": "2024-11-24T00:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Recurring invoice templates",
+    "description": "I would like to request a new feature to improve my workflow. Ticket details: Recurring invoice templates. Please assist with resolution.",
+    "category": "feature_request",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-11-23T00:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Need billing statement",
+    "description": "I have a question about my recent invoice and payment processing. Ticket details: Need billing statement. Please assist with resolution.",
+    "category": "billing",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-11-21T00:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Credit card charge error",
+    "description": "I have a question about my recent invoice and payment processing. Ticket details: Credit card charge error. Please assist with resolution.",
+    "category": "billing",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-11-20T00:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Stripe sync issues",
+    "description": "I am having trouble with external system integration. Ticket details: Stripe sync issues. Please assist with resolution.",
+    "category": "integration",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-11-19T00:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Update company information",
+    "description": "I need assistance with my account settings and configuration. Ticket details: Update company information. Please assist with resolution.",
+    "category": "account",
+    "priority": "low",
+    "status": "closed",
+    "created_at": "2024-11-19T00:00:00.000Z",
+    "user_email": "sarah.johnson@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Mobile app needed",
+    "description": "I would like to request a new feature to improve my workflow. Ticket details: Mobile app needed. Please assist with resolution.",
+    "category": "feature_request",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-11-17T00:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Cannot log in to account",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Cannot log in to account. Please assist with resolution.",
+    "category": "technical",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-11-16T00:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Bank connection failed",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Bank connection failed. Please assist with resolution.",
+    "category": "technical",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-11-15T00:00:00.000Z",
+    "user_email": "sarah.johnson@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Transaction import error",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Transaction import error. Please assist with resolution.",
+    "category": "technical",
+    "priority": "low",
+    "status": "closed",
+    "created_at": "2024-11-15T00:00:00.000Z",
+    "user_email": "sarah.johnson@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Bank connection failed",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Bank connection failed. Please assist with resolution.",
+    "category": "technical",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-11-15T00:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Bank feed delayed",
+    "description": "I am having trouble with external system integration. Ticket details: Bank feed delayed. Please assist with resolution.",
+    "category": "integration",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-11-15T00:00:00.000Z",
+    "user_email": "sarah.johnson@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Export file corrupted",
+    "description": "I found an issue that needs to be fixed in the application. Ticket details: Export file corrupted. Please assist with resolution.",
+    "category": "bug",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-11-15T00:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "API authentication error",
+    "description": "I am having trouble with external system integration. Ticket details: API authentication error. Please assist with resolution.",
+    "category": "integration",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-11-14T00:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Export file corrupted",
+    "description": "I found an issue that needs to be fixed in the application. Ticket details: Export file corrupted. Please assist with resolution.",
+    "category": "bug",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-11-14T00:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Export to Excel",
+    "description": "I would like to request a new feature to improve my workflow. Ticket details: Export to Excel. Please assist with resolution.",
+    "category": "feature_request",
+    "priority": "critical",
+    "status": "closed",
+    "created_at": "2024-11-11T00:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Email notifications not sending",
+    "description": "I found an issue that needs to be fixed in the application. Ticket details: Email notifications not sending. Please assist with resolution.",
+    "category": "bug",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-11-11T00:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Report generation timeout",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Report generation timeout. Please assist with resolution.",
+    "category": "technical",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-11-10T00:00:00.000Z",
+    "user_email": "sarah.johnson@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Reconciliation not working",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Reconciliation not working. Please assist with resolution.",
+    "category": "technical",
+    "priority": "high",
+    "status": "closed",
+    "created_at": "2024-11-08T00:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Bank connection failed",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Bank connection failed. Please assist with resolution.",
+    "category": "technical",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-11-08T00:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Dashboard showing wrong totals",
+    "description": "I found an issue that needs to be fixed in the application. Ticket details: Dashboard showing wrong totals. Please assist with resolution.",
+    "category": "bug",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-11-08T00:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Update company information",
+    "description": "I need assistance with my account settings and configuration. Ticket details: Update company information. Please assist with resolution.",
+    "category": "account",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-11-07T00:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Mobile app needed",
+    "description": "I would like to request a new feature to improve my workflow. Ticket details: Mobile app needed. Please assist with resolution.",
+    "category": "feature_request",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-11-06T00:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Change subscription plan",
+    "description": "I need assistance with my account settings and configuration. Ticket details: Change subscription plan. Please assist with resolution.",
+    "category": "account",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-11-06T00:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Add multi-currency support",
+    "description": "I would like to request a new feature to improve my workflow. Ticket details: Add multi-currency support. Please assist with resolution.",
+    "category": "feature_request",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-11-04T00:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Email notifications not sending",
+    "description": "I found an issue that needs to be fixed in the application. Ticket details: Email notifications not sending. Please assist with resolution.",
+    "category": "bug",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-11-01T23:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Email notifications not sending",
+    "description": "I found an issue that needs to be fixed in the application. Ticket details: Email notifications not sending. Please assist with resolution.",
+    "category": "bug",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-11-01T23:00:00.000Z",
+    "user_email": "sarah.johnson@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Custom report builder",
+    "description": "I would like to request a new feature to improve my workflow. Ticket details: Custom report builder. Please assist with resolution.",
+    "category": "feature_request",
+    "priority": "high",
+    "status": "closed",
+    "created_at": "2024-11-01T23:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Stripe sync issues",
+    "description": "I am having trouble with external system integration. Ticket details: Stripe sync issues. Please assist with resolution.",
+    "category": "integration",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-10-31T23:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Dashboard showing wrong totals",
+    "description": "I found an issue that needs to be fixed in the application. Ticket details: Dashboard showing wrong totals. Please assist with resolution.",
+    "category": "bug",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-10-31T23:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Plaid connection broken",
+    "description": "I am having trouble with external system integration. Ticket details: Plaid connection broken. Please assist with resolution.",
+    "category": "integration",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-10-29T23:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Delete old data",
+    "description": "I need assistance with my account settings and configuration. Ticket details: Delete old data. Please assist with resolution.",
+    "category": "account",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-10-29T23:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Cannot log in to account",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Cannot log in to account. Please assist with resolution.",
+    "category": "technical",
+    "priority": "low",
+    "status": "closed",
+    "created_at": "2024-10-28T23:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Credit card charge error",
+    "description": "I have a question about my recent invoice and payment processing. Ticket details: Credit card charge error. Please assist with resolution.",
+    "category": "billing",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-10-28T23:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Recurring invoice templates",
+    "description": "I would like to request a new feature to improve my workflow. Ticket details: Recurring invoice templates. Please assist with resolution.",
+    "category": "feature_request",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-10-27T23:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Duplicate transactions appearing",
+    "description": "I found an issue that needs to be fixed in the application. Ticket details: Duplicate transactions appearing. Please assist with resolution.",
+    "category": "bug",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-10-26T23:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Dashboard showing wrong totals",
+    "description": "I found an issue that needs to be fixed in the application. Ticket details: Dashboard showing wrong totals. Please assist with resolution.",
+    "category": "bug",
+    "priority": "high",
+    "status": "closed",
+    "created_at": "2024-10-26T23:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Date format incorrect",
+    "description": "I found an issue that needs to be fixed in the application. Ticket details: Date format incorrect. Please assist with resolution.",
+    "category": "bug",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-10-24T23:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Delete old data",
+    "description": "I need assistance with my account settings and configuration. Ticket details: Delete old data. Please assist with resolution.",
+    "category": "account",
+    "priority": "low",
+    "status": "closed",
+    "created_at": "2024-10-24T23:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Delete old data",
+    "description": "I need assistance with my account settings and configuration. Ticket details: Delete old data. Please assist with resolution.",
+    "category": "account",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-10-23T23:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Cannot log in to account",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Cannot log in to account. Please assist with resolution.",
+    "category": "technical",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-10-21T23:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Report generation timeout",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Report generation timeout. Please assist with resolution.",
+    "category": "technical",
+    "priority": "high",
+    "status": "closed",
+    "created_at": "2024-10-21T23:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Duplicate transactions appearing",
+    "description": "I found an issue that needs to be fixed in the application. Ticket details: Duplicate transactions appearing. Please assist with resolution.",
+    "category": "bug",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-10-18T23:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Add multi-currency support",
+    "description": "I would like to request a new feature to improve my workflow. Ticket details: Add multi-currency support. Please assist with resolution.",
+    "category": "feature_request",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-10-18T23:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Report generation timeout",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Report generation timeout. Please assist with resolution.",
+    "category": "technical",
+    "priority": "low",
+    "status": "closed",
+    "created_at": "2024-10-18T23:00:00.000Z",
+    "user_email": "sarah.johnson@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Plaid connection broken",
+    "description": "I am having trouble with external system integration. Ticket details: Plaid connection broken. Please assist with resolution.",
+    "category": "integration",
+    "priority": "low",
+    "status": "closed",
+    "created_at": "2024-10-17T23:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Transaction import error",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Transaction import error. Please assist with resolution.",
+    "category": "technical",
+    "priority": "high",
+    "status": "closed",
+    "created_at": "2024-10-17T23:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Dashboard showing wrong totals",
+    "description": "I found an issue that needs to be fixed in the application. Ticket details: Dashboard showing wrong totals. Please assist with resolution.",
+    "category": "bug",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-10-16T23:00:00.000Z",
+    "user_email": "sarah.johnson@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Cannot log in to account",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Cannot log in to account. Please assist with resolution.",
+    "category": "technical",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-10-15T23:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Subscription cancellation",
+    "description": "I have a question about my recent invoice and payment processing. Ticket details: Subscription cancellation. Please assist with resolution.",
+    "category": "billing",
+    "priority": "low",
+    "status": "closed",
+    "created_at": "2024-10-15T23:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Update company information",
+    "description": "I need assistance with my account settings and configuration. Ticket details: Update company information. Please assist with resolution.",
+    "category": "account",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-10-13T23:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Export to Excel",
+    "description": "I would like to request a new feature to improve my workflow. Ticket details: Export to Excel. Please assist with resolution.",
+    "category": "feature_request",
+    "priority": "high",
+    "status": "closed",
+    "created_at": "2024-10-12T23:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Bank feed delayed",
+    "description": "I am having trouble with external system integration. Ticket details: Bank feed delayed. Please assist with resolution.",
+    "category": "integration",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-10-12T23:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Invoice payment question",
+    "description": "I have a question about my recent invoice and payment processing. Ticket details: Invoice payment question. Please assist with resolution.",
+    "category": "billing",
+    "priority": "low",
+    "status": "closed",
+    "created_at": "2024-10-11T23:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Stripe sync issues",
+    "description": "I am having trouble with external system integration. Ticket details: Stripe sync issues. Please assist with resolution.",
+    "category": "integration",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-10-10T23:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Subscription cancellation",
+    "description": "I have a question about my recent invoice and payment processing. Ticket details: Subscription cancellation. Please assist with resolution.",
+    "category": "billing",
+    "priority": "low",
+    "status": "closed",
+    "created_at": "2024-10-10T23:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Plaid connection broken",
+    "description": "I am having trouble with external system integration. Ticket details: Plaid connection broken. Please assist with resolution.",
+    "category": "integration",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-10-08T23:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Invoice payment question",
+    "description": "I have a question about my recent invoice and payment processing. Ticket details: Invoice payment question. Please assist with resolution.",
+    "category": "billing",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-10-05T23:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Plaid connection broken",
+    "description": "I am having trouble with external system integration. Ticket details: Plaid connection broken. Please assist with resolution.",
+    "category": "integration",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-10-05T23:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Reset password request",
+    "description": "I need assistance with my account settings and configuration. Ticket details: Reset password request. Please assist with resolution.",
+    "category": "account",
+    "priority": "high",
+    "status": "closed",
+    "created_at": "2024-10-03T23:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Invoice payment question",
+    "description": "I have a question about my recent invoice and payment processing. Ticket details: Invoice payment question. Please assist with resolution.",
+    "category": "billing",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-10-01T23:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Transaction import error",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Transaction import error. Please assist with resolution.",
+    "category": "technical",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-10-01T23:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Transaction import error",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Transaction import error. Please assist with resolution.",
+    "category": "technical",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-09-29T23:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Export to Excel",
+    "description": "I would like to request a new feature to improve my workflow. Ticket details: Export to Excel. Please assist with resolution.",
+    "category": "feature_request",
+    "priority": "high",
+    "status": "closed",
+    "created_at": "2024-09-28T23:00:00.000Z",
+    "user_email": "sarah.johnson@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Bank connection failed",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Bank connection failed. Please assist with resolution.",
+    "category": "technical",
+    "priority": "high",
+    "status": "closed",
+    "created_at": "2024-09-27T23:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "API authentication error",
+    "description": "I am having trouble with external system integration. Ticket details: API authentication error. Please assist with resolution.",
+    "category": "integration",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-09-26T23:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Update company information",
+    "description": "I need assistance with my account settings and configuration. Ticket details: Update company information. Please assist with resolution.",
+    "category": "account",
+    "priority": "critical",
+    "status": "closed",
+    "created_at": "2024-09-25T23:00:00.000Z",
+    "user_email": "sarah.johnson@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Refund request",
+    "description": "I have a question about my recent invoice and payment processing. Ticket details: Refund request. Please assist with resolution.",
+    "category": "billing",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-09-24T23:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Export to Excel",
+    "description": "I would like to request a new feature to improve my workflow. Ticket details: Export to Excel. Please assist with resolution.",
+    "category": "feature_request",
+    "priority": "critical",
+    "status": "closed",
+    "created_at": "2024-09-24T23:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "API authentication error",
+    "description": "I am having trouble with external system integration. Ticket details: API authentication error. Please assist with resolution.",
+    "category": "integration",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-09-24T23:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Bank feed delayed",
+    "description": "I am having trouble with external system integration. Ticket details: Bank feed delayed. Please assist with resolution.",
+    "category": "integration",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-09-23T23:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Need billing statement",
+    "description": "I have a question about my recent invoice and payment processing. Ticket details: Need billing statement. Please assist with resolution.",
+    "category": "billing",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-09-22T23:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Delete old data",
+    "description": "I need assistance with my account settings and configuration. Ticket details: Delete old data. Please assist with resolution.",
+    "category": "account",
+    "priority": "high",
+    "status": "closed",
+    "created_at": "2024-09-21T23:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Transaction import error",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Transaction import error. Please assist with resolution.",
+    "category": "technical",
+    "priority": "low",
+    "status": "closed",
+    "created_at": "2024-09-19T23:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Duplicate transactions appearing",
+    "description": "I found an issue that needs to be fixed in the application. Ticket details: Duplicate transactions appearing. Please assist with resolution.",
+    "category": "bug",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-09-19T23:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Bank connection failed",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Bank connection failed. Please assist with resolution.",
+    "category": "technical",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-09-17T23:00:00.000Z",
+    "user_email": "sarah.johnson@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Duplicate transactions appearing",
+    "description": "I found an issue that needs to be fixed in the application. Ticket details: Duplicate transactions appearing. Please assist with resolution.",
+    "category": "bug",
+    "priority": "high",
+    "status": "closed",
+    "created_at": "2024-09-16T23:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Recurring invoice templates",
+    "description": "I would like to request a new feature to improve my workflow. Ticket details: Recurring invoice templates. Please assist with resolution.",
+    "category": "feature_request",
+    "priority": "low",
+    "status": "closed",
+    "created_at": "2024-09-16T23:00:00.000Z",
+    "user_email": "sarah.johnson@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Need billing statement",
+    "description": "I have a question about my recent invoice and payment processing. Ticket details: Need billing statement. Please assist with resolution.",
+    "category": "billing",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-09-16T23:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Bank connection failed",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Bank connection failed. Please assist with resolution.",
+    "category": "technical",
+    "priority": "low",
+    "status": "closed",
+    "created_at": "2024-09-15T23:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Export file corrupted",
+    "description": "I found an issue that needs to be fixed in the application. Ticket details: Export file corrupted. Please assist with resolution.",
+    "category": "bug",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-09-13T23:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Delete old data",
+    "description": "I need assistance with my account settings and configuration. Ticket details: Delete old data. Please assist with resolution.",
+    "category": "account",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-09-12T23:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Email notifications not sending",
+    "description": "I found an issue that needs to be fixed in the application. Ticket details: Email notifications not sending. Please assist with resolution.",
+    "category": "bug",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-09-11T23:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Cannot log in to account",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Cannot log in to account. Please assist with resolution.",
+    "category": "technical",
+    "priority": "low",
+    "status": "closed",
+    "created_at": "2024-09-10T23:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Export file corrupted",
+    "description": "I found an issue that needs to be fixed in the application. Ticket details: Export file corrupted. Please assist with resolution.",
+    "category": "bug",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-09-10T23:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Credit card charge error",
+    "description": "I have a question about my recent invoice and payment processing. Ticket details: Credit card charge error. Please assist with resolution.",
+    "category": "billing",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-09-08T23:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Cannot log in to account",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Cannot log in to account. Please assist with resolution.",
+    "category": "technical",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-09-08T23:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Add multi-currency support",
+    "description": "I would like to request a new feature to improve my workflow. Ticket details: Add multi-currency support. Please assist with resolution.",
+    "category": "feature_request",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-09-07T23:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Bank feed delayed",
+    "description": "I am having trouble with external system integration. Ticket details: Bank feed delayed. Please assist with resolution.",
+    "category": "integration",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-09-07T23:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Add new user",
+    "description": "I need assistance with my account settings and configuration. Ticket details: Add new user. Please assist with resolution.",
+    "category": "account",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-09-06T23:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Cannot log in to account",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Cannot log in to account. Please assist with resolution.",
+    "category": "technical",
+    "priority": "low",
+    "status": "closed",
+    "created_at": "2024-09-05T23:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Bank connection failed",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Bank connection failed. Please assist with resolution.",
+    "category": "technical",
+    "priority": "high",
+    "status": "closed",
+    "created_at": "2024-09-02T23:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Need billing statement",
+    "description": "I have a question about my recent invoice and payment processing. Ticket details: Need billing statement. Please assist with resolution.",
+    "category": "billing",
+    "priority": "high",
+    "status": "closed",
+    "created_at": "2024-09-01T23:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Recurring invoice templates",
+    "description": "I would like to request a new feature to improve my workflow. Ticket details: Recurring invoice templates. Please assist with resolution.",
+    "category": "feature_request",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-09-01T23:00:00.000Z",
+    "user_email": "sarah.johnson@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Transaction import error",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Transaction import error. Please assist with resolution.",
+    "category": "technical",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-08-31T23:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Add new user",
+    "description": "I need assistance with my account settings and configuration. Ticket details: Add new user. Please assist with resolution.",
+    "category": "account",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-08-29T23:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Refund request",
+    "description": "I have a question about my recent invoice and payment processing. Ticket details: Refund request. Please assist with resolution.",
+    "category": "billing",
+    "priority": "high",
+    "status": "closed",
+    "created_at": "2024-08-29T23:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Recurring invoice templates",
+    "description": "I would like to request a new feature to improve my workflow. Ticket details: Recurring invoice templates. Please assist with resolution.",
+    "category": "feature_request",
+    "priority": "high",
+    "status": "closed",
+    "created_at": "2024-08-27T23:00:00.000Z",
+    "user_email": "sarah.johnson@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Transaction import error",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Transaction import error. Please assist with resolution.",
+    "category": "technical",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-08-26T23:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Custom report builder",
+    "description": "I would like to request a new feature to improve my workflow. Ticket details: Custom report builder. Please assist with resolution.",
+    "category": "feature_request",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-08-25T23:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Recurring invoice templates",
+    "description": "I would like to request a new feature to improve my workflow. Ticket details: Recurring invoice templates. Please assist with resolution.",
+    "category": "feature_request",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-08-24T23:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "API authentication error",
+    "description": "I am having trouble with external system integration. Ticket details: API authentication error. Please assist with resolution.",
+    "category": "integration",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-08-20T23:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Report generation timeout",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Report generation timeout. Please assist with resolution.",
+    "category": "technical",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-08-18T23:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Export file corrupted",
+    "description": "I found an issue that needs to be fixed in the application. Ticket details: Export file corrupted. Please assist with resolution.",
+    "category": "bug",
+    "priority": "low",
+    "status": "closed",
+    "created_at": "2024-08-18T23:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Subscription cancellation",
+    "description": "I have a question about my recent invoice and payment processing. Ticket details: Subscription cancellation. Please assist with resolution.",
+    "category": "billing",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-08-17T23:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Report generation timeout",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Report generation timeout. Please assist with resolution.",
+    "category": "technical",
+    "priority": "low",
+    "status": "closed",
+    "created_at": "2024-08-17T23:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Delete old data",
+    "description": "I need assistance with my account settings and configuration. Ticket details: Delete old data. Please assist with resolution.",
+    "category": "account",
+    "priority": "high",
+    "status": "closed",
+    "created_at": "2024-08-17T23:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "API authentication error",
+    "description": "I am having trouble with external system integration. Ticket details: API authentication error. Please assist with resolution.",
+    "category": "integration",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-08-16T23:00:00.000Z",
+    "user_email": "sarah.johnson@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Custom report builder",
+    "description": "I would like to request a new feature to improve my workflow. Ticket details: Custom report builder. Please assist with resolution.",
+    "category": "feature_request",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-08-15T23:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "API authentication error",
+    "description": "I am having trouble with external system integration. Ticket details: API authentication error. Please assist with resolution.",
+    "category": "integration",
+    "priority": "high",
+    "status": "closed",
+    "created_at": "2024-08-15T23:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Invoice payment question",
+    "description": "I have a question about my recent invoice and payment processing. Ticket details: Invoice payment question. Please assist with resolution.",
+    "category": "billing",
+    "priority": "low",
+    "status": "closed",
+    "created_at": "2024-08-15T23:00:00.000Z",
+    "user_email": "sarah.johnson@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Bank connection failed",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Bank connection failed. Please assist with resolution.",
+    "category": "technical",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-08-14T23:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Refund request",
+    "description": "I have a question about my recent invoice and payment processing. Ticket details: Refund request. Please assist with resolution.",
+    "category": "billing",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-08-13T23:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Recurring invoice templates",
+    "description": "I would like to request a new feature to improve my workflow. Ticket details: Recurring invoice templates. Please assist with resolution.",
+    "category": "feature_request",
+    "priority": "high",
+    "status": "closed",
+    "created_at": "2024-08-11T23:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Stripe sync issues",
+    "description": "I am having trouble with external system integration. Ticket details: Stripe sync issues. Please assist with resolution.",
+    "category": "integration",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-08-11T23:00:00.000Z",
+    "user_email": "sarah.johnson@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Export file corrupted",
+    "description": "I found an issue that needs to be fixed in the application. Ticket details: Export file corrupted. Please assist with resolution.",
+    "category": "bug",
+    "priority": "high",
+    "status": "closed",
+    "created_at": "2024-08-11T23:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": "Support Agent - Jordan"
+  },
+  {
+    "subject": "Stripe sync issues",
+    "description": "I am having trouble with external system integration. Ticket details: Stripe sync issues. Please assist with resolution.",
+    "category": "integration",
+    "priority": "low",
+    "status": "closed",
+    "created_at": "2024-08-10T23:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Mobile app needed",
+    "description": "I would like to request a new feature to improve my workflow. Ticket details: Mobile app needed. Please assist with resolution.",
+    "category": "feature_request",
+    "priority": "low",
+    "status": "closed",
+    "created_at": "2024-08-10T23:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": "Support Agent - Alex"
+  },
+  {
+    "subject": "Need billing statement",
+    "description": "I have a question about my recent invoice and payment processing. Ticket details: Need billing statement. Please assist with resolution.",
+    "category": "billing",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-08-10T23:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Email notifications not sending",
+    "description": "I found an issue that needs to be fixed in the application. Ticket details: Email notifications not sending. Please assist with resolution.",
+    "category": "bug",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-08-07T23:00:00.000Z",
+    "user_email": "john.smith@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Cannot log in to account",
+    "description": "I am experiencing technical difficulties with the system functionality. Ticket details: Cannot log in to account. Please assist with resolution.",
+    "category": "technical",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-08-06T23:00:00.000Z",
+    "user_email": "mike.chen@meridiantech.example",
+    "agent_assigned": null
+  },
+  {
+    "subject": "Update company information",
+    "description": "I need assistance with my account settings and configuration. Ticket details: Update company information. Please assist with resolution.",
+    "category": "account",
+    "priority": "medium",
+    "status": "closed",
+    "created_at": "2024-08-06T23:00:00.000Z",
+    "user_email": "emily.davis@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  },
+  {
+    "subject": "Reset password request",
+    "description": "I need assistance with my account settings and configuration. Ticket details: Reset password request. Please assist with resolution.",
+    "category": "account",
+    "priority": "low",
+    "status": "closed",
+    "created_at": "2024-08-05T23:00:00.000Z",
+    "user_email": "robert.wilson@meridiantech.example",
+    "agent_assigned": "Support Agent - Sam"
+  }
+]

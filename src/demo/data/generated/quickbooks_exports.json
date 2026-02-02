@@ -1,0 +1,11 @@
+[
+  {
+    "format": "IIF",
+    "content": "!TRNS\tTRNSID\tTRNSTYPE\tDATE\tACCNT\tNAME\tAMOUNT\tMEMO\n!SPL\tSPLID\tTRNSTYPE\tDATE\tACCNT\tAMOUNT\tMEMO\n!ENDTRNS\nTRNS\t1\tINVOICE\t01/15/2025\tAccounts Receivable\tAcme Corporation\t5000.00\tConsulting Services\nSPL\t1\tINVOICE\t01/15/2025\tConsulting Revenue\t-5000.00\tProject ABC - Phase 1\nENDTRNS",
+    "entity_type": "invoice",
+    "metadata": {
+      "record_count": 1,
+      "total_amount": 5000
+    }
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "account_id": "plaid_acc_checking_001",
+    "account_name": "Business Checking",
+    "account_type": "depository",
+    "account_subtype": "checking",
+    "mask": "4321",
+    "current_balance": 125000,
+    "available_balance": 123500,
+    "currency": "USD",
+    "institution_name": "Chase Bank",
+    "institution_id": "ins_56"
+  },
+  {
+    "account_id": "plaid_acc_savings_002",
+    "account_name": "Business Savings",
+    "account_type": "depository",
+    "account_subtype": "savings",
+    "mask": "8765",
+    "current_balance": 250000,
+    "available_balance": 250000,
+    "currency": "USD",
+    "institution_name": "Chase Bank",
+    "institution_id": "ins_56"
+  },
+  {
+    "account_id": "plaid_acc_credit_003",
+    "account_name": "Chase Ink Business",
+    "account_type": "credit",
+    "account_subtype": "credit card",
+    "mask": "1234",
+    "current_balance": -8500,
+    "available_balance": 41500,
+    "currency": "USD",
+    "institution_name": "Chase Bank",
+    "institution_id": "ins_56"
+  }
+]
