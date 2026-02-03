@@ -72,7 +72,12 @@ export const use_auth_store = create<AuthState>((set) => ({
 // Initialize auth state from localStorage on app load
 const stored_token = localStorage.getItem('clawkeeper_token');
 if (stored_token) {
-  // Verify token and load user (would call /api/auth/me endpoint)
-  // For now, just set token
-  use_auth_store.setState({ token: stored_token });
+  // Set authenticated state (token exists)
+  use_auth_store.setState({ 
+    token: stored_token,
+    is_authenticated: true,
+  });
+  
+  // TODO: Optionally verify token with /api/auth/me endpoint
+  // and load user data for better UX
 }
