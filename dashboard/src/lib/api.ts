@@ -1,6 +1,6 @@
 // API client for ClawKeeper dashboard
 
-const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:4005';
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:4004';
 
 class ApiClient {
   private get_headers(): HeadersInit {

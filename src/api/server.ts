@@ -6,6 +6,8 @@ import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 import { logger } from 'hono/logger';
 import postgres from 'postgres';
+import jwt from 'jsonwebtoken';
+import { guardrails_middleware } from '../guardrails';
 import { auth_routes } from './routes/auth';
 import { invoice_routes } from './routes/invoices';
 import { report_routes } from './routes/reports';
@@ -32,6 +34,9 @@ const app = new Hono<AppEnv>();
 app.use('*', cors());
 app.use('*', logger());
 
+// Guardrails middleware (rate limiting, PII detection, injection detection)
+app.use('/api/*', guardrails_middleware);
+
 // Tenant context middleware
 app.use('/api/*', async (c, next) => {
   const auth_header = c.req.header('Authorization');
@@ -47,10 +52,19 @@ app.use('/api/*', async (c, next) => {
 
   const token = auth_header.substring(7);
   
-  // Verify JWT and extract user info (simplified for now)
-  // In full implementation, verify signature and expiration
+  // Verify JWT signature and expiration
   try {
-    const decoded = JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
+    const jwt_secret = process.env.JWT_SECRET;
+    if (!jwt_secret) {
+      console.error('[Auth] JWT_SECRET not configured');
+      return c.json({ error: 'Server configuration error' }, 500);
+    }
+
+    const decoded = jwt.verify(token, jwt_secret) as {
+      tenant_id: string;
+      user_id: string;
+      role: string;
+    };
     
     // Set context for this request
     c.set('tenant_id', decoded.tenant_id);
@@ -64,7 +78,14 @@ app.use('/api/*', async (c, next) => {
     
     return next();
   } catch (error) {
-    return c.json({ error: 'Invalid token' }, 401);
+    if (error instanceof jwt.JsonWebTokenError) {
+      return c.json({ error: 'Invalid token' }, 401);
+    }
+    if (error instanceof jwt.TokenExpiredError) {
+      return c.json({ error: 'Token expired' }, 401);
+    }
+    console.error('[Auth] Token verification error:', error);
+    return c.json({ error: 'Authentication failed' }, 401);
   }
 });
 
@@ -91,9 +112,13 @@ app.route('/api/vendors', create_vendor_routes(sql));
 app.route('/api/customers', create_customer_routes(sql));
 app.route('/api/metrics', create_metrics_routes(sql));
 
-// WebSocket endpoint (placeholder)
+// WebSocket endpoint (NOT IMPLEMENTED)
 app.get('/ws', (c) => {
-  return c.json({ message: 'WebSocket endpoint - to be implemented' });
+  // TODO: Implement WebSocket support for real-time agent updates
+  return c.json({
+    error: 'WebSocket not yet implemented',
+    message: 'This endpoint will provide real-time agent status updates',
+  }, 501);
 });
 
 // Start server

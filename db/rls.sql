@@ -12,6 +12,9 @@ ALTER TABLE financial_reports ENABLE ROW LEVEL SECURITY;
 ALTER TABLE compliance_checks ENABLE ROW LEVEL SECURITY;
 ALTER TABLE audit_log ENABLE ROW LEVEL SECURITY;
 ALTER TABLE agent_runs ENABLE ROW LEVEL SECURITY;
+ALTER TABLE vendors ENABLE ROW LEVEL SECURITY;
+ALTER TABLE customers ENABLE ROW LEVEL SECURITY;
+ALTER TABLE activity_log ENABLE ROW LEVEL SECURITY;
 
 -- ============================================================================
 -- Helper Functions
@@ -171,6 +174,104 @@ CREATE POLICY agent_run_tenant_isolation ON agent_runs
     USING (
         is_super_admin() OR tenant_id = current_tenant_id()
     );
+
+-- ============================================================================
+-- Vendor Policies
+-- ============================================================================
+
+CREATE POLICY vendor_tenant_isolation ON vendors
+    FOR ALL
+    USING (
+        is_super_admin() OR tenant_id = current_tenant_id()
+    );
+
+-- Viewers can only read vendors
+CREATE POLICY vendor_viewer_read ON vendors
+    FOR SELECT
+    USING (
+        tenant_id = current_tenant_id() AND current_user_role() IN ('viewer', 'accountant', 'tenant_admin', 'super_admin')
+    );
+
+-- Only accountants and admins can modify vendors
+CREATE POLICY vendor_accountant_write ON vendors
+    FOR INSERT
+    WITH CHECK (
+        tenant_id = current_tenant_id() AND current_user_role() IN ('accountant', 'tenant_admin', 'super_admin')
+    );
+
+CREATE POLICY vendor_accountant_update ON vendors
+    FOR UPDATE
+    USING (
+        tenant_id = current_tenant_id() AND current_user_role() IN ('accountant', 'tenant_admin', 'super_admin')
+    );
+
+CREATE POLICY vendor_admin_delete ON vendors
+    FOR DELETE
+    USING (
+        tenant_id = current_tenant_id() AND current_user_role() IN ('tenant_admin', 'super_admin')
+    );
+
+-- ============================================================================
+-- Customer Policies
+-- ============================================================================
+
+CREATE POLICY customer_tenant_isolation ON customers
+    FOR ALL
+    USING (
+        is_super_admin() OR tenant_id = current_tenant_id()
+    );
+
+-- Viewers can only read customers
+CREATE POLICY customer_viewer_read ON customers
+    FOR SELECT
+    USING (
+        tenant_id = current_tenant_id() AND current_user_role() IN ('viewer', 'accountant', 'tenant_admin', 'super_admin')
+    );
+
+-- Only accountants and admins can modify customers
+CREATE POLICY customer_accountant_write ON customers
+    FOR INSERT
+    WITH CHECK (
+        tenant_id = current_tenant_id() AND current_user_role() IN ('accountant', 'tenant_admin', 'super_admin')
+    );
+
+CREATE POLICY customer_accountant_update ON customers
+    FOR UPDATE
+    USING (
+        tenant_id = current_tenant_id() AND current_user_role() IN ('accountant', 'tenant_admin', 'super_admin')
+    );
+
+CREATE POLICY customer_admin_delete ON customers
+    FOR DELETE
+    USING (
+        tenant_id = current_tenant_id() AND current_user_role() IN ('tenant_admin', 'super_admin')
+    );
+
+-- ============================================================================
+-- Activity Log Policies
+-- ============================================================================
+
+CREATE POLICY activity_log_tenant_isolation ON activity_log
+    FOR ALL
+    USING (
+        is_super_admin() OR tenant_id = current_tenant_id()
+    );
+
+-- All authenticated users can read activity log
+CREATE POLICY activity_log_read ON activity_log
+    FOR SELECT
+    USING (
+        tenant_id = current_tenant_id()
+    );
+
+-- Anyone can insert activity log entries
+CREATE POLICY activity_log_insert ON activity_log
+    FOR INSERT
+    WITH CHECK (
+        tenant_id = current_tenant_id()
+    );
+
+-- No updates or deletes allowed (activity log is append-only)
 
 -- ============================================================================
 -- Bypass Policies for Service Role

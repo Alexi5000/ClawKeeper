@@ -12,11 +12,11 @@ export default defineConfig({
   server: {
     port: 5174,
     host: true,
-    proxy: {
-      '/api': {
-        target: 'http://localhost:4005',
-        changeOrigin: true,
+      proxy: {
+        '/api': {
+          target: 'http://localhost:4004',
+          changeOrigin: true,
+        },
       },
-    },
   },
 });

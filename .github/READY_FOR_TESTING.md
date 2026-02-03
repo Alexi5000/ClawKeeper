@@ -24,9 +24,9 @@
 
 ### ✅ API Server
 - **Status**: ✅ RUNNING
-- **Port**: 4005
-- **Health**: http://localhost:4005/health
-- **Agents**: http://localhost:4005/api/agents/status
+- **Port**: 4004
+- **Health**: http://localhost:4004/health
+- **Agents**: http://localhost:4004/api/agents/status
 - **Process**: PID 92368
 - **Features**:
   - ClawKeeper CEO agent: ONLINE
@@ -40,7 +40,7 @@
 - **Port**: 5176 (auto-selected)
 - **Process**: PID 91532
 - **Build**: ✅ Production build complete
-- **Proxy**: Configured to API on port 4005
+- **Proxy**: Configured to API on port 4004
 - **Hot Reload**: Enabled
 
 ## Test the System
@@ -75,17 +75,17 @@ After login, you can:
 
 ### Health Check
 ```bash
-curl http://localhost:4005/health
+curl http://localhost:4004/health
 ```
 
 ### Agent Status
 ```bash
-curl http://localhost:4005/api/agents/status
+curl http://localhost:4004/api/agents/status
 ```
 
 ### Login
 ```bash
-curl -X POST http://localhost:4005/api/auth/login \
+curl -X POST http://localhost:4004/api/auth/login \
   -H "Content-Type: application/json" \
   -d '{"email":"admin@demo.com","password":"password123"}'
 ```
@@ -103,11 +103,11 @@ ClawKeeper System (ONLINE)
 ├── API Server (Bun)
 │   ├── ClawKeeper CEO Agent: ONLINE
 │   ├── Accounts Payable Lead: ONLINE  
-│   ├── Port: 4005
+│   ├── Port: 4004
 │   └── Health: ✅ healthy
 └── Dashboard (Vite + React)
     ├── Port: 5176
-    ├── Proxy: → API :4005
+    ├── Proxy: → API :4004
     └── Status: ✅ ready
 ```
 
@@ -150,7 +150,7 @@ ClawKeeper System (ONLINE)
 
 1. **Verify API server is running**:
    ```bash
-   curl http://localhost:4005/health
+   curl http://localhost:4004/health
    ```
 
 2. **Check database users**:
@@ -160,7 +160,7 @@ ClawKeeper System (ONLINE)
 
 3. **Check browser console** (F12) for error messages
 
-4. **Verify proxy**: Dashboard should proxy `/api` requests to `http://localhost:4005`
+4. **Verify proxy**: Dashboard should proxy `/api` requests to `http://localhost:4004`
 
 ### If Dashboard Won't Load
 
@@ -170,7 +170,7 @@ ClawKeeper System (ONLINE)
 
 ### If API Server Won't Start
 
-1. Check port 4005 is available: `netstat -ano | findstr :4005`
+1. Check port 4004 is available: `netstat -ano | findstr :4004`
 2. Verify DATABASE_URL in .env
 3. Check PostgreSQL is running: `docker ps | findstr postgres`
 
