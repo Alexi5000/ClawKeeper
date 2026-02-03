@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS users (
     role VARCHAR(50) NOT NULL CHECK (role IN ('super_admin', 'tenant_admin', 'accountant', 'viewer')),
     name VARCHAR(255) NOT NULL,
     created_at TIMESTAMPTZ DEFAULT NOW(),
+    updated_at TIMESTAMPTZ DEFAULT NOW(),
     last_login TIMESTAMPTZ,
     UNIQUE(tenant_id, email)
 );
