@@ -47,7 +47,7 @@ export function LoginPage() {
                 type="email"
                 value={email}
                 onChange={(e) => set_email(e.target.value)}
-                placeholder="admin@demo.com"
+                placeholder="admin@meridiantech.example"
                 className="w-full px-3 py-2 border rounded-md bg-background"
                 required
               />
@@ -78,7 +78,7 @@ export function LoginPage() {
           </form>
 
           <p className="text-xs text-muted-foreground mt-4 text-center">
-            Demo: admin@demo.com / password123
+            Demo: admin@meridiantech.example / Demo123!
           </p>
         </CardContent>
       </Card>
