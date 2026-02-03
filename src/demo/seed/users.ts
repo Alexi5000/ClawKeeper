@@ -5,7 +5,7 @@
 import type { Sql } from 'postgres';
 import bcrypt from 'bcryptjs';
 
-export async function seed_users(sql: Sql<Record<string, unknown>>, tenant_id: string): Promise<void> {
+export async function seed_users(sql: Sql<Record<string, unknown>>, tenant_id: string): Promise<string> {
   const password_hash = await bcrypt.hash('Demo123!', 10);
   
   const users = [
@@ -36,8 +36,10 @@ export async function seed_users(sql: Sql<Record<string, unknown>>, tenant_id: s
     }
   ];
   
+  let admin_user_id: string = '';
+  
   for (const user of users) {
-    await sql`
+    const [result] = await sql`
       INSERT INTO users (tenant_id, email, password_hash, role, name, created_at, last_login)
       VALUES (
         ${tenant_id},
@@ -52,6 +54,13 @@ export async function seed_users(sql: Sql<Record<string, unknown>>, tenant_id: s
       SET password_hash = EXCLUDED.password_hash,
           name = EXCLUDED.name,
           role = EXCLUDED.role
+      RETURNING id
     `;
+    
+    if (user.email === 'admin@meridiantech.example') {
+      admin_user_id = result.id;
+    }
   }
+  
+  return admin_user_id;
 }

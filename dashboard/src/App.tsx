@@ -9,6 +9,7 @@ import { ReconciliationPage } from './pages/reconciliation/ReconciliationPage';
 import { SettingsPage } from './pages/settings/SettingsPage';
 import { CustomersPage } from './pages/customers/CustomersPage';
 import { VendorsPage } from './pages/vendors/VendorsPage';
+import { AgentsPage } from './pages/agents/AgentsPage';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { is_authenticated } = use_auth_store();
@@ -39,6 +40,7 @@ function App() {
         <Route path="/vendors" element={<ProtectedRoute><VendorsPage /></ProtectedRoute>} />
         
         {/* System */}
+        <Route path="/agents" element={<ProtectedRoute><AgentsPage /></ProtectedRoute>} />
         <Route path="/settings" element={<ProtectedRoute><SettingsPage /></ProtectedRoute>} />
         
         {/* Catch-all redirect */}

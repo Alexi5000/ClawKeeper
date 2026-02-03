@@ -5,10 +5,10 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "8500000",
-    "actual_amount": "8154720",
-    "variance": "-345280",
-    "variance_percentage": -4.062117647058824,
-    "notes": null
+    "actual_amount": "7977654",
+    "variance": "-522346",
+    "variance_percentage": -6.1452470588235295,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-01",
@@ -16,9 +16,9 @@
     "category": "Software Subscriptions",
     "gl_account": 6200,
     "budgeted_amount": "800000",
-    "actual_amount": "800404",
-    "variance": "404",
-    "variance_percentage": 0.0505,
+    "actual_amount": "827803",
+    "variance": "27803",
+    "variance_percentage": 3.475375,
     "notes": null
   },
   {
@@ -27,10 +27,10 @@
     "category": "Cloud Services - Internal",
     "gl_account": 6210,
     "budgeted_amount": "300000",
-    "actual_amount": "331361",
-    "variance": "31361",
-    "variance_percentage": 10.453666666666667,
-    "notes": "Over budget - requires review"
+    "actual_amount": "304778",
+    "variance": "4778",
+    "variance_percentage": 1.5926666666666665,
+    "notes": null
   },
   {
     "month": "2024-01",
@@ -38,9 +38,9 @@
     "category": "Equipment",
     "gl_account": 1500,
     "budgeted_amount": "500000",
-    "actual_amount": "509450",
-    "variance": "9450",
-    "variance_percentage": 1.8900000000000001,
+    "actual_amount": "477729",
+    "variance": "-22271",
+    "variance_percentage": -4.4542,
     "notes": null
   },
   {
@@ -49,10 +49,10 @@
     "category": "Training",
     "gl_account": 6200,
     "budgeted_amount": "200000",
-    "actual_amount": "205478",
-    "variance": "5478",
-    "variance_percentage": 2.7390000000000003,
-    "notes": null
+    "actual_amount": "235843",
+    "variance": "35843",
+    "variance_percentage": 17.9215,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-01",
@@ -60,10 +60,10 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "4500000",
-    "actual_amount": "4218439",
-    "variance": "-281561",
-    "variance_percentage": -6.256911111111112,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "4392201",
+    "variance": "-107799",
+    "variance_percentage": -2.3955333333333333,
+    "notes": null
   },
   {
     "month": "2024-01",
@@ -71,10 +71,10 @@
     "category": "Marketing & Advertising",
     "gl_account": 6400,
     "budgeted_amount": "1200000",
-    "actual_amount": "1215407",
-    "variance": "15407",
-    "variance_percentage": 1.2839166666666668,
-    "notes": null
+    "actual_amount": "1410603",
+    "variance": "210603",
+    "variance_percentage": 17.550250000000002,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-01",
@@ -82,10 +82,10 @@
     "category": "Travel & Entertainment",
     "gl_account": 6500,
     "budgeted_amount": "800000",
-    "actual_amount": "774644",
-    "variance": "-25356",
-    "variance_percentage": -3.1695,
-    "notes": null
+    "actual_amount": "744137",
+    "variance": "-55863",
+    "variance_percentage": -6.982875,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-01",
@@ -93,10 +93,10 @@
     "category": "Software Subscriptions",
     "gl_account": 6200,
     "budgeted_amount": "300000",
-    "actual_amount": "305843",
-    "variance": "5843",
-    "variance_percentage": 1.9476666666666667,
-    "notes": null
+    "actual_amount": "358918",
+    "variance": "58918",
+    "variance_percentage": 19.639333333333333,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-01",
@@ -104,10 +104,10 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "3800000",
-    "actual_amount": "3287352",
-    "variance": "-512648",
-    "variance_percentage": -13.490736842105264,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "3790188",
+    "variance": "-9812",
+    "variance_percentage": -0.25821052631578945,
+    "notes": null
   },
   {
     "month": "2024-01",
@@ -115,10 +115,10 @@
     "category": "Rent",
     "gl_account": 6100,
     "budgeted_amount": "800000",
-    "actual_amount": "889156",
-    "variance": "89156",
-    "variance_percentage": 11.1445,
-    "notes": "Over budget - requires review"
+    "actual_amount": "719012",
+    "variance": "-80988",
+    "variance_percentage": -10.1235,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-01",
@@ -126,9 +126,9 @@
     "category": "Utilities",
     "gl_account": 6110,
     "budgeted_amount": "150000",
-    "actual_amount": "152996",
-    "variance": "2996",
-    "variance_percentage": 1.9973333333333332,
+    "actual_amount": "151082",
+    "variance": "1082",
+    "variance_percentage": 0.7213333333333334,
     "notes": null
   },
   {
@@ -137,10 +137,10 @@
     "category": "Office Supplies",
     "gl_account": 6600,
     "budgeted_amount": "100000",
-    "actual_amount": "97192",
-    "variance": "-2808",
-    "variance_percentage": -2.8080000000000003,
-    "notes": null
+    "actual_amount": "85955",
+    "variance": "-14045",
+    "variance_percentage": -14.045,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-01",
@@ -148,9 +148,9 @@
     "category": "Insurance",
     "gl_account": 6700,
     "budgeted_amount": "250000",
-    "actual_amount": "248026",
-    "variance": "-1974",
-    "variance_percentage": -0.7896000000000001,
+    "actual_amount": "252388",
+    "variance": "2388",
+    "variance_percentage": 0.9551999999999999,
     "notes": null
   },
   {
@@ -159,9 +159,9 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "2000000",
-    "actual_amount": "1919028",
-    "variance": "-80972",
-    "variance_percentage": -4.0486,
+    "actual_amount": "1950189",
+    "variance": "-49811",
+    "variance_percentage": -2.4905500000000003,
     "notes": null
   },
   {
@@ -170,10 +170,10 @@
     "category": "Professional Services",
     "gl_account": 6300,
     "budgeted_amount": "400000",
-    "actual_amount": "374849",
-    "variance": "-25151",
-    "variance_percentage": -6.28775,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "401019",
+    "variance": "1019",
+    "variance_percentage": 0.25475,
+    "notes": null
   },
   {
     "month": "2024-01",
@@ -181,10 +181,10 @@
     "category": "Bank Fees",
     "gl_account": 6810,
     "budgeted_amount": "50000",
-    "actual_amount": "54365",
-    "variance": "4365",
-    "variance_percentage": 8.73,
-    "notes": "Over budget - requires review"
+    "actual_amount": "48735",
+    "variance": "-1265",
+    "variance_percentage": -2.53,
+    "notes": null
   },
   {
     "month": "2024-01",
@@ -192,10 +192,10 @@
     "category": "Miscellaneous",
     "gl_account": 6900,
     "budgeted_amount": "100000",
-    "actual_amount": "99314",
-    "variance": "-686",
-    "variance_percentage": -0.6859999999999999,
-    "notes": null
+    "actual_amount": "85241",
+    "variance": "-14759",
+    "variance_percentage": -14.759,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-03",
@@ -203,10 +203,10 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "8962188",
-    "actual_amount": "7897584",
-    "variance": "-1064604",
-    "variance_percentage": -11.878840301051484,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "8960058",
+    "variance": "-2130",
+    "variance_percentage": -0.023766517729822228,
+    "notes": null
   },
   {
     "month": "2024-03",
@@ -214,9 +214,9 @@
     "category": "Software Subscriptions",
     "gl_account": 6200,
     "budgeted_amount": "843500",
-    "actual_amount": "826421",
-    "variance": "-17079",
-    "variance_percentage": -2.0247777119146413,
+    "actual_amount": "834575",
+    "variance": "-8925",
+    "variance_percentage": -1.058091286307054,
     "notes": null
   },
   {
@@ -225,9 +225,9 @@
     "category": "Cloud Services - Internal",
     "gl_account": 6210,
     "budgeted_amount": "316313",
-    "actual_amount": "298966",
-    "variance": "-17347",
-    "variance_percentage": -5.484124901600629,
+    "actual_amount": "284033",
+    "variance": "-32280",
+    "variance_percentage": -10.205081675429085,
     "notes": "Under budget - cost savings achieved"
   },
   {
@@ -236,9 +236,9 @@
     "category": "Equipment",
     "gl_account": 1500,
     "budgeted_amount": "527188",
-    "actual_amount": "507581",
-    "variance": "-19607",
-    "variance_percentage": -3.7191665971152608,
+    "actual_amount": "507653",
+    "variance": "-19535",
+    "variance_percentage": -3.705509230103872,
     "notes": null
   },
   {
@@ -247,9 +247,9 @@
     "category": "Training",
     "gl_account": 6200,
     "budgeted_amount": "210875",
-    "actual_amount": "194425",
-    "variance": "-16450",
-    "variance_percentage": -7.800829875518672,
+    "actual_amount": "190025",
+    "variance": "-20850",
+    "variance_percentage": -9.88737403675163,
     "notes": "Under budget - cost savings achieved"
   },
   {
@@ -258,10 +258,10 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "4744688",
-    "actual_amount": "4760554",
-    "variance": "15866",
-    "variance_percentage": 0.33439501185325565,
-    "notes": null
+    "actual_amount": "5369777",
+    "variance": "625089",
+    "variance_percentage": 13.17450167429344,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-03",
@@ -269,10 +269,10 @@
     "category": "Marketing & Advertising",
     "gl_account": 6400,
     "budgeted_amount": "1265250",
-    "actual_amount": "1183409",
-    "variance": "-81841",
-    "variance_percentage": -6.468365935585853,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "1280152",
+    "variance": "14902",
+    "variance_percentage": 1.177790950405058,
+    "notes": null
   },
   {
     "month": "2024-03",
@@ -280,9 +280,9 @@
     "category": "Travel & Entertainment",
     "gl_account": 6500,
     "budgeted_amount": "843500",
-    "actual_amount": "821999",
-    "variance": "-21501",
-    "variance_percentage": -2.549021932424422,
+    "actual_amount": "849759",
+    "variance": "6259",
+    "variance_percentage": 0.7420272673384707,
     "notes": null
   },
   {
@@ -291,10 +291,10 @@
     "category": "Software Subscriptions",
     "gl_account": 6200,
     "budgeted_amount": "316313",
-    "actual_amount": "311900",
-    "variance": "-4413",
-    "variance_percentage": -1.3951370952189763,
-    "notes": null
+    "actual_amount": "370268",
+    "variance": "53955",
+    "variance_percentage": 17.057471555073615,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-03",
@@ -302,10 +302,10 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "4006625",
-    "actual_amount": "3690188",
-    "variance": "-316437",
-    "variance_percentage": -7.897844195551118,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "4798256",
+    "variance": "791631",
+    "variance_percentage": 19.758050728480953,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-03",
@@ -313,10 +313,10 @@
     "category": "Rent",
     "gl_account": 6100,
     "budgeted_amount": "843500",
-    "actual_amount": "803059",
-    "variance": "-40441",
-    "variance_percentage": -4.7944279786603445,
-    "notes": null
+    "actual_amount": "985215",
+    "variance": "141715",
+    "variance_percentage": 16.800829875518673,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-03",
@@ -324,9 +324,9 @@
     "category": "Utilities",
     "gl_account": 6110,
     "budgeted_amount": "158156",
-    "actual_amount": "137710",
-    "variance": "-20446",
-    "variance_percentage": -12.92774222919143,
+    "actual_amount": "136089",
+    "variance": "-22067",
+    "variance_percentage": -13.952679632767648,
     "notes": "Under budget - cost savings achieved"
   },
   {
@@ -335,9 +335,9 @@
     "category": "Office Supplies",
     "gl_account": 6600,
     "budgeted_amount": "105438",
-    "actual_amount": "106694",
-    "variance": "1256",
-    "variance_percentage": 1.1912213812856844,
+    "actual_amount": "108307",
+    "variance": "2869",
+    "variance_percentage": 2.7210303685578254,
     "notes": null
   },
   {
@@ -346,9 +346,9 @@
     "category": "Insurance",
     "gl_account": 6700,
     "budgeted_amount": "263594",
-    "actual_amount": "230465",
-    "variance": "-33129",
-    "variance_percentage": -12.568191992230476,
+    "actual_amount": "245585",
+    "variance": "-18009",
+    "variance_percentage": -6.83209784744721,
     "notes": "Under budget - cost savings achieved"
   },
   {
@@ -357,10 +357,10 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "2108750",
-    "actual_amount": "2325021",
-    "variance": "216271",
-    "variance_percentage": 10.255886188500297,
-    "notes": "Over budget - requires review"
+    "actual_amount": "2029348",
+    "variance": "-79402",
+    "variance_percentage": -3.765358624777712,
+    "notes": null
   },
   {
     "month": "2024-03",
@@ -368,9 +368,9 @@
     "category": "Professional Services",
     "gl_account": 6300,
     "budgeted_amount": "421750",
-    "actual_amount": "442719",
-    "variance": "20969",
-    "variance_percentage": 4.97190278601067,
+    "actual_amount": "420991",
+    "variance": "-759",
+    "variance_percentage": -0.17996443390634262,
     "notes": null
   },
   {
@@ -379,10 +379,10 @@
     "category": "Bank Fees",
     "gl_account": 6810,
     "budgeted_amount": "52719",
-    "actual_amount": "61312",
-    "variance": "8593",
-    "variance_percentage": 16.299626320681348,
-    "notes": "Over budget - requires review"
+    "actual_amount": "47458",
+    "variance": "-5261",
+    "variance_percentage": -9.979324342267494,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-03",
@@ -390,10 +390,10 @@
     "category": "Miscellaneous",
     "gl_account": 6900,
     "budgeted_amount": "105438",
-    "actual_amount": "91536",
-    "variance": "-13902",
-    "variance_percentage": -13.1849997154726,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "117944",
+    "variance": "12506",
+    "variance_percentage": 11.860998880858894,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-03",
@@ -401,9 +401,9 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "9313089",
-    "actual_amount": "8166715",
-    "variance": "-1146374",
-    "variance_percentage": -12.309277834669034,
+    "actual_amount": "8256871",
+    "variance": "-1056218",
+    "variance_percentage": -11.34122094183788,
     "notes": "Under budget - cost savings achieved"
   },
   {
@@ -412,10 +412,10 @@
     "category": "Software Subscriptions",
     "gl_account": 6200,
     "budgeted_amount": "876526",
-    "actual_amount": "803881",
-    "variance": "-72645",
-    "variance_percentage": -8.287831735738587,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "877967",
+    "variance": "1441",
+    "variance_percentage": 0.16439900242548425,
+    "notes": null
   },
   {
     "month": "2024-03",
@@ -423,10 +423,10 @@
     "category": "Cloud Services - Internal",
     "gl_account": 6210,
     "budgeted_amount": "328697",
-    "actual_amount": "290088",
-    "variance": "-38609",
-    "variance_percentage": -11.746076173497173,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "320200",
+    "variance": "-8497",
+    "variance_percentage": -2.5850555374706796,
+    "notes": null
   },
   {
     "month": "2024-03",
@@ -434,9 +434,9 @@
     "category": "Equipment",
     "gl_account": 1500,
     "budgeted_amount": "547829",
-    "actual_amount": "627598",
-    "variance": "79769",
-    "variance_percentage": 14.56093050933777,
+    "actual_amount": "612933",
+    "variance": "65104",
+    "variance_percentage": 11.884000299363487,
     "notes": "Over budget - requires review"
   },
   {
@@ -445,9 +445,9 @@
     "category": "Training",
     "gl_account": 6200,
     "budgeted_amount": "219132",
-    "actual_amount": "188795",
-    "variance": "-30337",
-    "variance_percentage": -13.84416698610883,
+    "actual_amount": "188386",
+    "variance": "-30746",
+    "variance_percentage": -14.030812478323568,
     "notes": "Under budget - cost savings achieved"
   },
   {
@@ -456,9 +456,9 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "4930459",
-    "actual_amount": "4517505",
-    "variance": "-412954",
-    "variance_percentage": -8.375569090017786,
+    "actual_amount": "4551832",
+    "variance": "-378627",
+    "variance_percentage": -7.679345878345201,
     "notes": "Under budget - cost savings achieved"
   },
   {
@@ -467,10 +467,10 @@
     "category": "Marketing & Advertising",
     "gl_account": 6400,
     "budgeted_amount": "1314789",
-    "actual_amount": "1222088",
-    "variance": "-92701",
-    "variance_percentage": -7.050637022366327,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "1508240",
+    "variance": "193451",
+    "variance_percentage": 14.713463529129008,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-03",
@@ -478,10 +478,10 @@
     "category": "Travel & Entertainment",
     "gl_account": 6500,
     "budgeted_amount": "876526",
-    "actual_amount": "878460",
-    "variance": "1934",
-    "variance_percentage": 0.22064376869596566,
-    "notes": null
+    "actual_amount": "991643",
+    "variance": "115117",
+    "variance_percentage": 13.133324054277912,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-03",
@@ -489,10 +489,10 @@
     "category": "Software Subscriptions",
     "gl_account": 6200,
     "budgeted_amount": "328697",
-    "actual_amount": "298235",
-    "variance": "-30462",
-    "variance_percentage": -9.26750168087935,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "327158",
+    "variance": "-1539",
+    "variance_percentage": -0.4682123657958545,
+    "notes": null
   },
   {
     "month": "2024-03",
@@ -500,9 +500,9 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "4163499",
-    "actual_amount": "3955513",
-    "variance": "-207986",
-    "variance_percentage": -4.995461749840699,
+    "actual_amount": "4306083",
+    "variance": "142584",
+    "variance_percentage": 3.42461953275358,
     "notes": null
   },
   {
@@ -511,9 +511,9 @@
     "category": "Rent",
     "gl_account": 6100,
     "budgeted_amount": "876526",
-    "actual_amount": "845546",
-    "variance": "-30980",
-    "variance_percentage": -3.534407422027413,
+    "actual_amount": "840915",
+    "variance": "-35611",
+    "variance_percentage": -4.062743147379542,
     "notes": null
   },
   {
@@ -522,9 +522,9 @@
     "category": "Utilities",
     "gl_account": 6110,
     "budgeted_amount": "164349",
-    "actual_amount": "176668",
-    "variance": "12319",
-    "variance_percentage": 7.495634290442899,
+    "actual_amount": "176175",
+    "variance": "11826",
+    "variance_percentage": 7.195662888122227,
     "notes": "Over budget - requires review"
   },
   {
@@ -533,10 +533,10 @@
     "category": "Office Supplies",
     "gl_account": 6600,
     "budgeted_amount": "109566",
-    "actual_amount": "109786",
-    "variance": "220",
-    "variance_percentage": 0.2007922165635325,
-    "notes": null
+    "actual_amount": "97351",
+    "variance": "-12215",
+    "variance_percentage": -11.148531478743406,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-03",
@@ -544,10 +544,10 @@
     "category": "Insurance",
     "gl_account": 6700,
     "budgeted_amount": "273914",
-    "actual_amount": "244438",
-    "variance": "-29476",
-    "variance_percentage": -10.761041786838204,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "290036",
+    "variance": "16122",
+    "variance_percentage": 5.885788970260738,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-03",
@@ -555,9 +555,9 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "2191315",
-    "actual_amount": "1932002",
-    "variance": "-259313",
-    "variance_percentage": -11.833670649815293,
+    "actual_amount": "2076118",
+    "variance": "-115197",
+    "variance_percentage": -5.256980397615131,
     "notes": "Under budget - cost savings achieved"
   },
   {
@@ -566,10 +566,10 @@
     "category": "Professional Services",
     "gl_account": 6300,
     "budgeted_amount": "438263",
-    "actual_amount": "443355",
-    "variance": "5092",
-    "variance_percentage": 1.1618594314372876,
-    "notes": null
+    "actual_amount": "402844",
+    "variance": "-35419",
+    "variance_percentage": -8.081676983911487,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-03",
@@ -577,10 +577,10 @@
     "category": "Bank Fees",
     "gl_account": 6810,
     "budgeted_amount": "54783",
-    "actual_amount": "53614",
-    "variance": "-1169",
-    "variance_percentage": -2.133873646934268,
-    "notes": null
+    "actual_amount": "51781",
+    "variance": "-3002",
+    "variance_percentage": -5.479802128397496,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-03",
@@ -588,10 +588,10 @@
     "category": "Miscellaneous",
     "gl_account": 6900,
     "budgeted_amount": "109566",
-    "actual_amount": "95793",
-    "variance": "-13773",
-    "variance_percentage": -12.570505448770605,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "109163",
+    "variance": "-403",
+    "variance_percentage": -0.3678148330686527,
+    "notes": null
   },
   {
     "month": "2024-05",
@@ -599,9 +599,9 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "9466875",
-    "actual_amount": "9714046",
-    "variance": "247171",
-    "variance_percentage": 2.610903809335182,
+    "actual_amount": "9019880",
+    "variance": "-446995",
+    "variance_percentage": -4.721674258929161,
     "notes": null
   },
   {
@@ -610,10 +610,10 @@
     "category": "Software Subscriptions",
     "gl_account": 6200,
     "budgeted_amount": "891000",
-    "actual_amount": "891887",
-    "variance": "887",
-    "variance_percentage": 0.09955106621773288,
-    "notes": null
+    "actual_amount": "791303",
+    "variance": "-99697",
+    "variance_percentage": -11.189337822671156,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-05",
@@ -621,9 +621,9 @@
     "category": "Cloud Services - Internal",
     "gl_account": 6210,
     "budgeted_amount": "334125",
-    "actual_amount": "350505",
-    "variance": "16380",
-    "variance_percentage": 4.902356902356902,
+    "actual_amount": "348544",
+    "variance": "14419",
+    "variance_percentage": 4.315450804339694,
     "notes": null
   },
   {
@@ -632,9 +632,9 @@
     "category": "Equipment",
     "gl_account": 1500,
     "budgeted_amount": "556875",
-    "actual_amount": "539756",
-    "variance": "-17119",
-    "variance_percentage": -3.074118967452301,
+    "actual_amount": "560276",
+    "variance": "3401",
+    "variance_percentage": 0.6107295173961841,
     "notes": null
   },
   {
@@ -643,9 +643,9 @@
     "category": "Training",
     "gl_account": 6200,
     "budgeted_amount": "222750",
-    "actual_amount": "227405",
-    "variance": "4655",
-    "variance_percentage": 2.089786756453423,
+    "actual_amount": "211707",
+    "variance": "-11043",
+    "variance_percentage": -4.957575757575758,
     "notes": null
   },
   {
@@ -654,10 +654,10 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "5011875",
-    "actual_amount": "5028628",
-    "variance": "16753",
-    "variance_percentage": 0.33426611796982164,
-    "notes": null
+    "actual_amount": "5912508",
+    "variance": "900633",
+    "variance_percentage": 17.96998129442574,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-05",
@@ -665,9 +665,9 @@
     "category": "Marketing & Advertising",
     "gl_account": 6400,
     "budgeted_amount": "1336500",
-    "actual_amount": "1378422",
-    "variance": "41922",
-    "variance_percentage": 3.1367003367003368,
+    "actual_amount": "1383352",
+    "variance": "46852",
+    "variance_percentage": 3.5055742611298166,
     "notes": null
   },
   {
@@ -676,10 +676,10 @@
     "category": "Travel & Entertainment",
     "gl_account": 6500,
     "budgeted_amount": "891000",
-    "actual_amount": "757689",
-    "variance": "-133311",
-    "variance_percentage": -14.961952861952863,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "900364",
+    "variance": "9364",
+    "variance_percentage": 1.0509539842873177,
+    "notes": null
   },
   {
     "month": "2024-05",
@@ -687,10 +687,10 @@
     "category": "Software Subscriptions",
     "gl_account": 6200,
     "budgeted_amount": "334125",
-    "actual_amount": "364911",
-    "variance": "30786",
-    "variance_percentage": 9.213916947250281,
-    "notes": "Over budget - requires review"
+    "actual_amount": "306356",
+    "variance": "-27769",
+    "variance_percentage": -8.310961466517023,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-05",
@@ -698,9 +698,9 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "4232250",
-    "actual_amount": "4031899",
-    "variance": "-200351",
-    "variance_percentage": -4.73391222163152,
+    "actual_amount": "4245890",
+    "variance": "13640",
+    "variance_percentage": 0.3222871994801819,
     "notes": null
   },
   {
@@ -709,10 +709,10 @@
     "category": "Rent",
     "gl_account": 6100,
     "budgeted_amount": "891000",
-    "actual_amount": "831993",
-    "variance": "-59007",
-    "variance_percentage": -6.622558922558923,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "917786",
+    "variance": "26786",
+    "variance_percentage": 3.00628507295174,
+    "notes": null
   },
   {
     "month": "2024-05",
@@ -720,9 +720,9 @@
     "category": "Utilities",
     "gl_account": 6110,
     "budgeted_amount": "167063",
-    "actual_amount": "168593",
-    "variance": "1530",
-    "variance_percentage": 0.9158221748681635,
+    "actual_amount": "168113",
+    "variance": "1050",
+    "variance_percentage": 0.6285054141252103,
     "notes": null
   },
   {
@@ -731,10 +731,10 @@
     "category": "Office Supplies",
     "gl_account": 6600,
     "budgeted_amount": "111375",
-    "actual_amount": "102996",
-    "variance": "-8379",
-    "variance_percentage": -7.523232323232324,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "106963",
+    "variance": "-4412",
+    "variance_percentage": -3.9613916947250276,
+    "notes": null
   },
   {
     "month": "2024-05",
@@ -742,10 +742,10 @@
     "category": "Insurance",
     "gl_account": 6700,
     "budgeted_amount": "278438",
-    "actual_amount": "328720",
-    "variance": "50282",
-    "variance_percentage": 18.058598323504693,
-    "notes": "Over budget - requires review"
+    "actual_amount": "269277",
+    "variance": "-9161",
+    "variance_percentage": -3.290139995259268,
+    "notes": null
   },
   {
     "month": "2024-05",
@@ -753,9 +753,9 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "2227500",
-    "actual_amount": "2305762",
-    "variance": "78262",
-    "variance_percentage": 3.5134455667789,
+    "actual_amount": "2191311",
+    "variance": "-36189",
+    "variance_percentage": -1.6246464646464647,
     "notes": null
   },
   {
@@ -764,10 +764,10 @@
     "category": "Professional Services",
     "gl_account": 6300,
     "budgeted_amount": "445500",
-    "actual_amount": "452632",
-    "variance": "7132",
-    "variance_percentage": 1.6008978675645342,
-    "notes": null
+    "actual_amount": "386590",
+    "variance": "-58910",
+    "variance_percentage": -13.22334455667789,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-05",
@@ -775,9 +775,9 @@
     "category": "Bank Fees",
     "gl_account": 6810,
     "budgeted_amount": "55688",
-    "actual_amount": "63248",
-    "variance": "7560",
-    "variance_percentage": 13.575635684528084,
+    "actual_amount": "63119",
+    "variance": "7431",
+    "variance_percentage": 13.34398793276828,
     "notes": "Over budget - requires review"
   },
   {
@@ -786,10 +786,10 @@
     "category": "Miscellaneous",
     "gl_account": 6900,
     "budgeted_amount": "111375",
-    "actual_amount": "129331",
-    "variance": "17956",
-    "variance_percentage": 16.122109988776657,
-    "notes": "Over budget - requires review"
+    "actual_amount": "111227",
+    "variance": "-148",
+    "variance_percentage": -0.1328843995510662,
+    "notes": null
   },
   {
     "month": "2024-05",
@@ -797,10 +797,10 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "9390057",
-    "actual_amount": "9805390",
-    "variance": "415333",
-    "variance_percentage": 4.423114790463998,
-    "notes": null
+    "actual_amount": "10484562",
+    "variance": "1094505",
+    "variance_percentage": 11.65599953227121,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-05",
@@ -808,10 +808,10 @@
     "category": "Software Subscriptions",
     "gl_account": 6200,
     "budgeted_amount": "883770",
-    "actual_amount": "871849",
-    "variance": "-11921",
-    "variance_percentage": -1.3488803648007965,
-    "notes": null
+    "actual_amount": "954815",
+    "variance": "71045",
+    "variance_percentage": 8.038856263507475,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-05",
@@ -819,10 +819,10 @@
     "category": "Cloud Services - Internal",
     "gl_account": 6210,
     "budgeted_amount": "331414",
-    "actual_amount": "323623",
-    "variance": "-7791",
-    "variance_percentage": -2.3508361143464067,
-    "notes": null
+    "actual_amount": "385326",
+    "variance": "53912",
+    "variance_percentage": 16.2672669229423,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-05",
@@ -830,10 +830,10 @@
     "category": "Equipment",
     "gl_account": 1500,
     "budgeted_amount": "552356",
-    "actual_amount": "594353",
-    "variance": "41997",
-    "variance_percentage": 7.603248629507058,
-    "notes": "Over budget - requires review"
+    "actual_amount": "576342",
+    "variance": "23986",
+    "variance_percentage": 4.34248926417021,
+    "notes": null
   },
   {
     "month": "2024-05",
@@ -841,9 +841,9 @@
     "category": "Training",
     "gl_account": 6200,
     "budgeted_amount": "220943",
-    "actual_amount": "215702",
-    "variance": "-5241",
-    "variance_percentage": -2.3721050225623803,
+    "actual_amount": "224307",
+    "variance": "3364",
+    "variance_percentage": 1.5225646433695568,
     "notes": null
   },
   {
@@ -852,10 +852,10 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "4971207",
-    "actual_amount": "4815987",
-    "variance": "-155220",
-    "variance_percentage": -3.1223805405809895,
-    "notes": null
+    "actual_amount": "5957781",
+    "variance": "986574",
+    "variance_percentage": 19.845763815507983,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-05",
@@ -863,10 +863,10 @@
     "category": "Marketing & Advertising",
     "gl_account": 6400,
     "budgeted_amount": "1325655",
-    "actual_amount": "1309079",
-    "variance": "-16576",
-    "variance_percentage": -1.2504007452919499,
-    "notes": null
+    "actual_amount": "1234475",
+    "variance": "-91180",
+    "variance_percentage": -6.878109312000483,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-05",
@@ -874,10 +874,10 @@
     "category": "Travel & Entertainment",
     "gl_account": 6500,
     "budgeted_amount": "883770",
-    "actual_amount": "885930",
-    "variance": "2160",
-    "variance_percentage": 0.24440748158457518,
-    "notes": null
+    "actual_amount": "932034",
+    "variance": "48264",
+    "variance_percentage": 5.461149394073119,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-05",
@@ -885,9 +885,9 @@
     "category": "Software Subscriptions",
     "gl_account": 6200,
     "budgeted_amount": "331414",
-    "actual_amount": "342508",
-    "variance": "11094",
-    "variance_percentage": 3.347474759666158,
+    "actual_amount": "343571",
+    "variance": "12157",
+    "variance_percentage": 3.6682216200884694,
     "notes": null
   },
   {
@@ -896,9 +896,9 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "4197908",
-    "actual_amount": "4289711",
-    "variance": "91803",
-    "variance_percentage": 2.1868749863027013,
+    "actual_amount": "4133246",
+    "variance": "-64662",
+    "variance_percentage": -1.5403386639249834,
     "notes": null
   },
   {
@@ -907,9 +907,9 @@
     "category": "Rent",
     "gl_account": 6100,
     "budgeted_amount": "883770",
-    "actual_amount": "887035",
-    "variance": "3265",
-    "variance_percentage": 0.3694400126729805,
+    "actual_amount": "883161",
+    "variance": "-609",
+    "variance_percentage": -0.06890933161342884,
     "notes": null
   },
   {
@@ -918,10 +918,10 @@
     "category": "Utilities",
     "gl_account": 6110,
     "budgeted_amount": "165707",
-    "actual_amount": "167924",
-    "variance": "2217",
-    "variance_percentage": 1.3379036492121636,
-    "notes": null
+    "actual_amount": "155897",
+    "variance": "-9810",
+    "variance_percentage": -5.920087865932037,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-05",
@@ -929,10 +929,10 @@
     "category": "Office Supplies",
     "gl_account": 6600,
     "budgeted_amount": "110471",
-    "actual_amount": "108181",
-    "variance": "-2290",
-    "variance_percentage": -2.07294222013017,
-    "notes": null
+    "actual_amount": "96836",
+    "variance": "-13635",
+    "variance_percentage": -12.34260575173575,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-05",
@@ -940,10 +940,10 @@
     "category": "Insurance",
     "gl_account": 6700,
     "budgeted_amount": "276178",
-    "actual_amount": "289253",
-    "variance": "13075",
-    "variance_percentage": 4.7342655823418225,
-    "notes": null
+    "actual_amount": "300888",
+    "variance": "24710",
+    "variance_percentage": 8.947128301312922,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-05",
@@ -951,10 +951,10 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "2209425",
-    "actual_amount": "1882164",
-    "variance": "-327261",
-    "variance_percentage": -14.812043857564753,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "2169708",
+    "variance": "-39717",
+    "variance_percentage": -1.7976170270545502,
+    "notes": null
   },
   {
     "month": "2024-05",
@@ -962,10 +962,10 @@
     "category": "Professional Services",
     "gl_account": 6300,
     "budgeted_amount": "441885",
-    "actual_amount": "430598",
-    "variance": "-11287",
-    "variance_percentage": -2.5542844857825,
-    "notes": null
+    "actual_amount": "384307",
+    "variance": "-57578",
+    "variance_percentage": -13.030087013589508,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-05",
@@ -973,9 +973,9 @@
     "category": "Bank Fees",
     "gl_account": 6810,
     "budgeted_amount": "55236",
-    "actual_amount": "56268",
-    "variance": "1032",
-    "variance_percentage": 1.8683467303932217,
+    "actual_amount": "53282",
+    "variance": "-1954",
+    "variance_percentage": -3.537547975957709,
     "notes": null
   },
   {
@@ -984,10 +984,10 @@
     "category": "Miscellaneous",
     "gl_account": 6900,
     "budgeted_amount": "110471",
-    "actual_amount": "130629",
-    "variance": "20158",
-    "variance_percentage": 18.247322826805227,
-    "notes": "Over budget - requires review"
+    "actual_amount": "109397",
+    "variance": "-1074",
+    "variance_percentage": -0.9722008490916167,
+    "notes": null
   },
   {
     "month": "2024-07",
@@ -995,10 +995,10 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "9110938",
-    "actual_amount": "10605826",
-    "variance": "1494888",
-    "variance_percentage": 16.407619061835348,
-    "notes": "Over budget - requires review"
+    "actual_amount": "9402704",
+    "variance": "291766",
+    "variance_percentage": 3.2023706011389828,
+    "notes": null
   },
   {
     "month": "2024-07",
@@ -1006,10 +1006,10 @@
     "category": "Software Subscriptions",
     "gl_account": 6200,
     "budgeted_amount": "857500",
-    "actual_amount": "846868",
-    "variance": "-10632",
-    "variance_percentage": -1.2398833819241983,
-    "notes": null
+    "actual_amount": "757473",
+    "variance": "-100027",
+    "variance_percentage": -11.664956268221575,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-07",
@@ -1017,9 +1017,9 @@
     "category": "Cloud Services - Internal",
     "gl_account": 6210,
     "budgeted_amount": "321562",
-    "actual_amount": "305411",
-    "variance": "-16151",
-    "variance_percentage": -5.022670589186533,
+    "actual_amount": "282022",
+    "variance": "-39540",
+    "variance_percentage": -12.296229032037367,
     "notes": "Under budget - cost savings achieved"
   },
   {
@@ -1028,9 +1028,9 @@
     "category": "Equipment",
     "gl_account": 1500,
     "budgeted_amount": "535938",
-    "actual_amount": "534431",
-    "variance": "-1507",
-    "variance_percentage": -0.2811892420391911,
+    "actual_amount": "515932",
+    "variance": "-20006",
+    "variance_percentage": -3.7328944765999053,
     "notes": null
   },
   {
@@ -1039,9 +1039,9 @@
     "category": "Training",
     "gl_account": 6200,
     "budgeted_amount": "214375",
-    "actual_amount": "217151",
-    "variance": "2776",
-    "variance_percentage": 1.294927113702624,
+    "actual_amount": "216284",
+    "variance": "1909",
+    "variance_percentage": 0.8904956268221573,
     "notes": null
   },
   {
@@ -1050,10 +1050,10 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "4823438",
-    "actual_amount": "4484065",
-    "variance": "-339373",
-    "variance_percentage": -7.035915046487588,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "4827715",
+    "variance": "4277",
+    "variance_percentage": 0.08867119262235774,
+    "notes": null
   },
   {
     "month": "2024-07",
@@ -1061,9 +1061,9 @@
     "category": "Marketing & Advertising",
     "gl_account": 6400,
     "budgeted_amount": "1286250",
-    "actual_amount": "1320435",
-    "variance": "34185",
-    "variance_percentage": 2.657725947521866,
+    "actual_amount": "1248699",
+    "variance": "-37551",
+    "variance_percentage": -2.9194169096209914,
     "notes": null
   },
   {
@@ -1072,9 +1072,9 @@
     "category": "Travel & Entertainment",
     "gl_account": 6500,
     "budgeted_amount": "857500",
-    "actual_amount": "891823",
-    "variance": "34323",
-    "variance_percentage": 4.00268221574344,
+    "actual_amount": "827920",
+    "variance": "-29580",
+    "variance_percentage": -3.4495626822157432,
     "notes": null
   },
   {
@@ -1083,10 +1083,10 @@
     "category": "Software Subscriptions",
     "gl_account": 6200,
     "budgeted_amount": "321562",
-    "actual_amount": "332305",
-    "variance": "10743",
-    "variance_percentage": 3.3408798303282103,
-    "notes": null
+    "actual_amount": "274837",
+    "variance": "-46725",
+    "variance_percentage": -14.530634838693626,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-07",
@@ -1094,10 +1094,10 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "4073125",
-    "actual_amount": "3602531",
-    "variance": "-470594",
-    "variance_percentage": -11.55363510817861,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "4093217",
+    "variance": "20092",
+    "variance_percentage": 0.49328218505447285,
+    "notes": null
   },
   {
     "month": "2024-07",
@@ -1105,9 +1105,9 @@
     "category": "Rent",
     "gl_account": 6100,
     "budgeted_amount": "857500",
-    "actual_amount": "866016",
-    "variance": "8516",
-    "variance_percentage": 0.9931195335276968,
+    "actual_amount": "842195",
+    "variance": "-15305",
+    "variance_percentage": -1.7848396501457726,
     "notes": null
   },
   {
@@ -1116,10 +1116,10 @@
     "category": "Utilities",
     "gl_account": 6110,
     "budgeted_amount": "160781",
-    "actual_amount": "137770",
-    "variance": "-23011",
-    "variance_percentage": -14.312014479322805,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "182784",
+    "variance": "22003",
+    "variance_percentage": 13.68507472897917,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-07",
@@ -1127,9 +1127,9 @@
     "category": "Office Supplies",
     "gl_account": 6600,
     "budgeted_amount": "107188",
-    "actual_amount": "107151",
-    "variance": "-37",
-    "variance_percentage": -0.03451878941672575,
+    "actual_amount": "107865",
+    "variance": "677",
+    "variance_percentage": 0.6316005523006307,
     "notes": null
   },
   {
@@ -1138,10 +1138,10 @@
     "category": "Insurance",
     "gl_account": 6700,
     "budgeted_amount": "267969",
-    "actual_amount": "311939",
-    "variance": "43970",
-    "variance_percentage": 16.408614429281,
-    "notes": "Over budget - requires review"
+    "actual_amount": "231853",
+    "variance": "-36116",
+    "variance_percentage": -13.477678388171766,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-07",
@@ -1149,9 +1149,9 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "2143750",
-    "actual_amount": "2129383",
-    "variance": "-14367",
-    "variance_percentage": -0.6701807580174927,
+    "actual_amount": "2096587",
+    "variance": "-47163",
+    "variance_percentage": -2.2000233236151603,
     "notes": null
   },
   {
@@ -1160,10 +1160,10 @@
     "category": "Professional Services",
     "gl_account": 6300,
     "budgeted_amount": "428750",
-    "actual_amount": "378573",
-    "variance": "-50177",
-    "variance_percentage": -11.703090379008746,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "433638",
+    "variance": "4888",
+    "variance_percentage": 1.1400583090379008,
+    "notes": null
   },
   {
     "month": "2024-07",
@@ -1171,9 +1171,9 @@
     "category": "Bank Fees",
     "gl_account": 6810,
     "budgeted_amount": "53594",
-    "actual_amount": "53239",
-    "variance": "-355",
-    "variance_percentage": -0.662387580699332,
+    "actual_amount": "51634",
+    "variance": "-1960",
+    "variance_percentage": -3.6571257976639173,
     "notes": null
   },
   {
@@ -1182,10 +1182,10 @@
     "category": "Miscellaneous",
     "gl_account": 6900,
     "budgeted_amount": "107188",
-    "actual_amount": "91242",
-    "variance": "-15946",
-    "variance_percentage": -14.876665298354293,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "109325",
+    "variance": "2137",
+    "variance_percentage": 1.9936933238795387,
+    "notes": null
   },
   {
     "month": "2024-07",
@@ -1193,10 +1193,10 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "8712500",
-    "actual_amount": "7641555",
-    "variance": "-1070945",
-    "variance_percentage": -12.292051649928263,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "9692005",
+    "variance": "979505",
+    "variance_percentage": 11.242525107604017,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-07",
@@ -1204,10 +1204,10 @@
     "category": "Software Subscriptions",
     "gl_account": 6200,
     "budgeted_amount": "820000",
-    "actual_amount": "926646",
-    "variance": "106646",
-    "variance_percentage": 13.005609756097561,
-    "notes": "Over budget - requires review"
+    "actual_amount": "840055",
+    "variance": "20055",
+    "variance_percentage": 2.4457317073170732,
+    "notes": null
   },
   {
     "month": "2024-07",
@@ -1215,10 +1215,10 @@
     "category": "Cloud Services - Internal",
     "gl_account": 6210,
     "budgeted_amount": "307500",
-    "actual_amount": "303197",
-    "variance": "-4303",
-    "variance_percentage": -1.399349593495935,
-    "notes": null
+    "actual_amount": "290220",
+    "variance": "-17280",
+    "variance_percentage": -5.619512195121952,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-07",
@@ -1226,9 +1226,9 @@
     "category": "Equipment",
     "gl_account": 1500,
     "budgeted_amount": "512500",
-    "actual_amount": "533121",
-    "variance": "20621",
-    "variance_percentage": 4.023609756097561,
+    "actual_amount": "526094",
+    "variance": "13594",
+    "variance_percentage": 2.652487804878049,
     "notes": null
   },
   {
@@ -1237,10 +1237,10 @@
     "category": "Training",
     "gl_account": 6200,
     "budgeted_amount": "205000",
-    "actual_amount": "181834",
-    "variance": "-23166",
-    "variance_percentage": -11.300487804878049,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "223954",
+    "variance": "18954",
+    "variance_percentage": 9.245853658536586,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-07",
@@ -1248,9 +1248,9 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "4612500",
-    "actual_amount": "4638966",
-    "variance": "26466",
-    "variance_percentage": 0.5737886178861789,
+    "actual_amount": "4581951",
+    "variance": "-30549",
+    "variance_percentage": -0.6623089430894309,
     "notes": null
   },
   {
@@ -1259,9 +1259,9 @@
     "category": "Marketing & Advertising",
     "gl_account": 6400,
     "budgeted_amount": "1230000",
-    "actual_amount": "1264395",
-    "variance": "34395",
-    "variance_percentage": 2.796341463414634,
+    "actual_amount": "1245222",
+    "variance": "15222",
+    "variance_percentage": 1.237560975609756,
     "notes": null
   },
   {
@@ -1270,10 +1270,10 @@
     "category": "Travel & Entertainment",
     "gl_account": 6500,
     "budgeted_amount": "820000",
-    "actual_amount": "852848",
-    "variance": "32848",
-    "variance_percentage": 4.005853658536585,
-    "notes": null
+    "actual_amount": "928262",
+    "variance": "108262",
+    "variance_percentage": 13.202682926829269,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-07",
@@ -1281,9 +1281,9 @@
     "category": "Software Subscriptions",
     "gl_account": 6200,
     "budgeted_amount": "307500",
-    "actual_amount": "316613",
-    "variance": "9113",
-    "variance_percentage": 2.963577235772358,
+    "actual_amount": "318240",
+    "variance": "10740",
+    "variance_percentage": 3.4926829268292687,
     "notes": null
   },
   {
@@ -1292,9 +1292,9 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "3895000",
-    "actual_amount": "3521447",
-    "variance": "-373553",
-    "variance_percentage": -9.590577663671374,
+    "actual_amount": "3656274",
+    "variance": "-238726",
+    "variance_percentage": -6.129037227214377,
     "notes": "Under budget - cost savings achieved"
   },
   {
@@ -1303,10 +1303,10 @@
     "category": "Rent",
     "gl_account": 6100,
     "budgeted_amount": "820000",
-    "actual_amount": "730826",
-    "variance": "-89174",
-    "variance_percentage": -10.874878048780488,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "840783",
+    "variance": "20783",
+    "variance_percentage": 2.534512195121951,
+    "notes": null
   },
   {
     "month": "2024-07",
@@ -1314,9 +1314,9 @@
     "category": "Utilities",
     "gl_account": 6110,
     "budgeted_amount": "153750",
-    "actual_amount": "151978",
-    "variance": "-1772",
-    "variance_percentage": -1.152520325203252,
+    "actual_amount": "157997",
+    "variance": "4247",
+    "variance_percentage": 2.7622764227642276,
     "notes": null
   },
   {
@@ -1325,9 +1325,9 @@
     "category": "Office Supplies",
     "gl_account": 6600,
     "budgeted_amount": "102500",
-    "actual_amount": "105510",
-    "variance": "3010",
-    "variance_percentage": 2.9365853658536585,
+    "actual_amount": "101461",
+    "variance": "-1039",
+    "variance_percentage": -1.0136585365853659,
     "notes": null
   },
   {
@@ -1336,10 +1336,10 @@
     "category": "Insurance",
     "gl_account": 6700,
     "budgeted_amount": "256250",
-    "actual_amount": "273645",
-    "variance": "17395",
-    "variance_percentage": 6.788292682926829,
-    "notes": "Over budget - requires review"
+    "actual_amount": "248325",
+    "variance": "-7925",
+    "variance_percentage": -3.0926829268292684,
+    "notes": null
   },
   {
     "month": "2024-07",
@@ -1347,9 +1347,9 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "2050000",
-    "actual_amount": "1957135",
-    "variance": "-92865",
-    "variance_percentage": -4.53,
+    "actual_amount": "2081170",
+    "variance": "31170",
+    "variance_percentage": 1.5204878048780488,
     "notes": null
   },
   {
@@ -1358,9 +1358,9 @@
     "category": "Professional Services",
     "gl_account": 6300,
     "budgeted_amount": "410000",
-    "actual_amount": "414280",
-    "variance": "4280",
-    "variance_percentage": 1.0439024390243903,
+    "actual_amount": "400749",
+    "variance": "-9251",
+    "variance_percentage": -2.256341463414634,
     "notes": null
   },
   {
@@ -1369,10 +1369,10 @@
     "category": "Bank Fees",
     "gl_account": 6810,
     "budgeted_amount": "51250",
-    "actual_amount": "53070",
-    "variance": "1820",
-    "variance_percentage": 3.5512195121951216,
-    "notes": null
+    "actual_amount": "44578",
+    "variance": "-6672",
+    "variance_percentage": -13.018536585365853,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-07",
@@ -1380,10 +1380,10 @@
     "category": "Miscellaneous",
     "gl_account": 6900,
     "budgeted_amount": "102500",
-    "actual_amount": "116405",
-    "variance": "13905",
-    "variance_percentage": 13.565853658536586,
-    "notes": "Over budget - requires review"
+    "actual_amount": "104341",
+    "variance": "1841",
+    "variance_percentage": 1.7960975609756096,
+    "notes": null
   },
   {
     "month": "2024-08",
@@ -1391,9 +1391,9 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "8310521",
-    "actual_amount": "8186681",
-    "variance": "-123840",
-    "variance_percentage": -1.4901592812291793,
+    "actual_amount": "8467399",
+    "variance": "156878",
+    "variance_percentage": 1.887703550716014,
     "notes": null
   },
   {
@@ -1402,10 +1402,10 @@
     "category": "Software Subscriptions",
     "gl_account": 6200,
     "budgeted_amount": "782167",
-    "actual_amount": "751963",
-    "variance": "-30204",
-    "variance_percentage": -3.861579432525279,
-    "notes": null
+    "actual_amount": "864558",
+    "variance": "82391",
+    "variance_percentage": 10.533683983088011,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-08",
@@ -1413,9 +1413,9 @@
     "category": "Cloud Services - Internal",
     "gl_account": 6210,
     "budgeted_amount": "293312",
-    "actual_amount": "303233",
-    "variance": "9921",
-    "variance_percentage": 3.38240508400611,
+    "actual_amount": "292094",
+    "variance": "-1218",
+    "variance_percentage": -0.4152574732707834,
     "notes": null
   },
   {
@@ -1424,10 +1424,10 @@
     "category": "Equipment",
     "gl_account": 1500,
     "budgeted_amount": "488854",
-    "actual_amount": "515604",
-    "variance": "26750",
-    "variance_percentage": 5.471981409582411,
-    "notes": "Over budget - requires review"
+    "actual_amount": "480978",
+    "variance": "-7876",
+    "variance_percentage": -1.6111149750232177,
+    "notes": null
   },
   {
     "month": "2024-08",
@@ -1435,10 +1435,10 @@
     "category": "Training",
     "gl_account": 6200,
     "budgeted_amount": "195542",
-    "actual_amount": "203613",
-    "variance": "8071",
-    "variance_percentage": 4.127502020026388,
-    "notes": null
+    "actual_amount": "167237",
+    "variance": "-28305",
+    "variance_percentage": -14.4751511184298,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-08",
@@ -1446,10 +1446,10 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "4399687",
-    "actual_amount": "4178047",
-    "variance": "-221640",
-    "variance_percentage": -5.037631086029529,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "4460574",
+    "variance": "60887",
+    "variance_percentage": 1.3838938997251395,
+    "notes": null
   },
   {
     "month": "2024-08",
@@ -1457,9 +1457,9 @@
     "category": "Marketing & Advertising",
     "gl_account": 6400,
     "budgeted_amount": "1173250",
-    "actual_amount": "1124412",
-    "variance": "-48838",
-    "variance_percentage": -4.162625186447901,
+    "actual_amount": "1130898",
+    "variance": "-42352",
+    "variance_percentage": -3.609801832516514,
     "notes": null
   },
   {
@@ -1468,9 +1468,9 @@
     "category": "Travel & Entertainment",
     "gl_account": 6500,
     "budgeted_amount": "782167",
-    "actual_amount": "772907",
-    "variance": "-9260",
-    "variance_percentage": -1.1838903968078427,
+    "actual_amount": "749197",
+    "variance": "-32970",
+    "variance_percentage": -4.215212352349306,
     "notes": null
   },
   {
@@ -1479,9 +1479,9 @@
     "category": "Software Subscriptions",
     "gl_account": 6200,
     "budgeted_amount": "293312",
-    "actual_amount": "271300",
-    "variance": "-22012",
-    "variance_percentage": -7.504636700850971,
+    "actual_amount": "258832",
+    "variance": "-34480",
+    "variance_percentage": -11.755400392755837,
     "notes": "Under budget - cost savings achieved"
   },
   {
@@ -1490,10 +1490,10 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "3715292",
-    "actual_amount": "3787304",
-    "variance": "72012",
-    "variance_percentage": 1.9382594961580408,
-    "notes": null
+    "actual_amount": "4134759",
+    "variance": "419467",
+    "variance_percentage": 11.290283509344622,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-08",
@@ -1501,10 +1501,10 @@
     "category": "Rent",
     "gl_account": 6100,
     "budgeted_amount": "782167",
-    "actual_amount": "673852",
-    "variance": "-108315",
-    "variance_percentage": -13.848065694410527,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "815287",
+    "variance": "33120",
+    "variance_percentage": 4.234389842578375,
+    "notes": null
   },
   {
     "month": "2024-08",
@@ -1512,10 +1512,10 @@
     "category": "Utilities",
     "gl_account": 6110,
     "budgeted_amount": "146656",
-    "actual_amount": "150163",
-    "variance": "3507",
-    "variance_percentage": 2.3913102771110624,
-    "notes": null
+    "actual_amount": "127254",
+    "variance": "-19402",
+    "variance_percentage": -13.229598516255727,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-08",
@@ -1523,9 +1523,9 @@
     "category": "Office Supplies",
     "gl_account": 6600,
     "budgeted_amount": "97771",
-    "actual_amount": "87353",
-    "variance": "-10418",
-    "variance_percentage": -10.655511347945708,
+    "actual_amount": "86223",
+    "variance": "-11548",
+    "variance_percentage": -11.811273281443373,
     "notes": "Under budget - cost savings achieved"
   },
   {
@@ -1534,9 +1534,9 @@
     "category": "Insurance",
     "gl_account": 6700,
     "budgeted_amount": "244427",
-    "actual_amount": "256342",
-    "variance": "11915",
-    "variance_percentage": 4.874666055713976,
+    "actual_amount": "241149",
+    "variance": "-3278",
+    "variance_percentage": -1.3410957054662538,
     "notes": null
   },
   {
@@ -1545,10 +1545,10 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "1955417",
-    "actual_amount": "1919024",
-    "variance": "-36393",
-    "variance_percentage": -1.8611375476432903,
-    "notes": null
+    "actual_amount": "2177305",
+    "variance": "221888",
+    "variance_percentage": 11.347349440042711,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-08",
@@ -1556,9 +1556,9 @@
     "category": "Professional Services",
     "gl_account": 6300,
     "budgeted_amount": "391083",
-    "actual_amount": "385134",
-    "variance": "-5949",
-    "variance_percentage": -1.5211604697724013,
+    "actual_amount": "410225",
+    "variance": "19142",
+    "variance_percentage": 4.894613163957523,
     "notes": null
   },
   {
@@ -1567,10 +1567,10 @@
     "category": "Bank Fees",
     "gl_account": 6810,
     "budgeted_amount": "48885",
-    "actual_amount": "50961",
-    "variance": "2076",
-    "variance_percentage": 4.246701442160171,
-    "notes": null
+    "actual_amount": "43353",
+    "variance": "-5532",
+    "variance_percentage": -11.316354710033753,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-08",
@@ -1578,10 +1578,10 @@
     "category": "Miscellaneous",
     "gl_account": 6900,
     "budgeted_amount": "97771",
-    "actual_amount": "91462",
-    "variance": "-6309",
-    "variance_percentage": -6.452833662333411,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "98114",
+    "variance": "343",
+    "variance_percentage": 0.35081977273424636,
+    "notes": null
   },
   {
     "month": "2024-10",
@@ -1589,9 +1589,9 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "8022674",
-    "actual_amount": "8042022",
-    "variance": "19348",
-    "variance_percentage": 0.24116647392128857,
+    "actual_amount": "7701565",
+    "variance": "-321109",
+    "variance_percentage": -4.002518362331562,
     "notes": null
   },
   {
@@ -1600,9 +1600,9 @@
     "category": "Software Subscriptions",
     "gl_account": 6200,
     "budgeted_amount": "755075",
-    "actual_amount": "750629",
-    "variance": "-4446",
-    "variance_percentage": -0.5888156805615335,
+    "actual_amount": "731807",
+    "variance": "-23268",
+    "variance_percentage": -3.081548190577095,
     "notes": null
   },
   {
@@ -1611,10 +1611,10 @@
     "category": "Cloud Services - Internal",
     "gl_account": 6210,
     "budgeted_amount": "283153",
-    "actual_amount": "283419",
-    "variance": "266",
-    "variance_percentage": 0.09394214435305294,
-    "notes": null
+    "actual_amount": "268061",
+    "variance": "-15092",
+    "variance_percentage": -5.329980611189003,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-10",
@@ -1622,10 +1622,10 @@
     "category": "Equipment",
     "gl_account": 1500,
     "budgeted_amount": "471922",
-    "actual_amount": "402379",
-    "variance": "-69543",
-    "variance_percentage": -14.736121647221362,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "448629",
+    "variance": "-23293",
+    "variance_percentage": -4.935773284568212,
+    "notes": null
   },
   {
     "month": "2024-10",
@@ -1633,10 +1633,10 @@
     "category": "Training",
     "gl_account": 6200,
     "budgeted_amount": "188769",
-    "actual_amount": "210229",
-    "variance": "21460",
-    "variance_percentage": 11.368392055899008,
-    "notes": "Over budget - requires review"
+    "actual_amount": "195294",
+    "variance": "6525",
+    "variance_percentage": 3.4566056926719964,
+    "notes": null
   },
   {
     "month": "2024-10",
@@ -1644,9 +1644,9 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "4247298",
-    "actual_amount": "4160046",
-    "variance": "-87252",
-    "variance_percentage": -2.054294283094805,
+    "actual_amount": "4329723",
+    "variance": "82425",
+    "variance_percentage": 1.940645558658705,
     "notes": null
   },
   {
@@ -1655,10 +1655,10 @@
     "category": "Marketing & Advertising",
     "gl_account": 6400,
     "budgeted_amount": "1132613",
-    "actual_amount": "1108364",
-    "variance": "-24249",
-    "variance_percentage": -2.140978427759526,
-    "notes": null
+    "actual_amount": "1000777",
+    "variance": "-131836",
+    "variance_percentage": -11.63998647375582,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-10",
@@ -1666,10 +1666,10 @@
     "category": "Travel & Entertainment",
     "gl_account": 6500,
     "budgeted_amount": "755075",
-    "actual_amount": "749358",
-    "variance": "-5717",
-    "variance_percentage": -0.7571433301327684,
-    "notes": null
+    "actual_amount": "816220",
+    "variance": "61145",
+    "variance_percentage": 8.097871072410026,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-10",
@@ -1677,9 +1677,9 @@
     "category": "Software Subscriptions",
     "gl_account": 6200,
     "budgeted_amount": "283153",
-    "actual_amount": "250760",
-    "variance": "-32393",
-    "variance_percentage": -11.440104819655804,
+    "actual_amount": "268130",
+    "variance": "-15023",
+    "variance_percentage": -5.305612160210204,
     "notes": "Under budget - cost savings achieved"
   },
   {
@@ -1688,9 +1688,9 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "3586607",
-    "actual_amount": "3554331",
-    "variance": "-32276",
-    "variance_percentage": -0.899903446349154,
+    "actual_amount": "3465939",
+    "variance": "-120668",
+    "variance_percentage": -3.3644054115770143,
     "notes": null
   },
   {
@@ -1699,10 +1699,10 @@
     "category": "Rent",
     "gl_account": 6100,
     "budgeted_amount": "755075",
-    "actual_amount": "679167",
-    "variance": "-75908",
-    "variance_percentage": -10.053041088633579,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "785550",
+    "variance": "30475",
+    "variance_percentage": 4.036022911631295,
+    "notes": null
   },
   {
     "month": "2024-10",
@@ -1710,10 +1710,10 @@
     "category": "Utilities",
     "gl_account": 6110,
     "budgeted_amount": "141577",
-    "actual_amount": "132174",
-    "variance": "-9403",
-    "variance_percentage": -6.641615516644653,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "148556",
+    "variance": "6979",
+    "variance_percentage": 4.9294730076212945,
+    "notes": null
   },
   {
     "month": "2024-10",
@@ -1721,10 +1721,10 @@
     "category": "Office Supplies",
     "gl_account": 6600,
     "budgeted_amount": "94384",
-    "actual_amount": "98591",
-    "variance": "4207",
-    "variance_percentage": 4.457323275131378,
-    "notes": null
+    "actual_amount": "102029",
+    "variance": "7645",
+    "variance_percentage": 8.099889811832513,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-10",
@@ -1732,10 +1732,10 @@
     "category": "Insurance",
     "gl_account": 6700,
     "budgeted_amount": "235961",
-    "actual_amount": "280454",
-    "variance": "44493",
-    "variance_percentage": 18.856082149168717,
-    "notes": "Over budget - requires review"
+    "actual_amount": "226283",
+    "variance": "-9678",
+    "variance_percentage": -4.1015252520543655,
+    "notes": null
   },
   {
     "month": "2024-10",
@@ -1743,10 +1743,10 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "1887688",
-    "actual_amount": "1683507",
-    "variance": "-204181",
-    "variance_percentage": -10.816459075864232,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "2037288",
+    "variance": "149600",
+    "variance_percentage": 7.925038459745466,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-10",
@@ -1754,10 +1754,10 @@
     "category": "Professional Services",
     "gl_account": 6300,
     "budgeted_amount": "377538",
-    "actual_amount": "376214",
-    "variance": "-1324",
-    "variance_percentage": -0.3506931752565305,
-    "notes": null
+    "actual_amount": "355652",
+    "variance": "-21886",
+    "variance_percentage": -5.797032351710292,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-10",
@@ -1765,10 +1765,10 @@
     "category": "Bank Fees",
     "gl_account": 6810,
     "budgeted_amount": "47192",
-    "actual_amount": "44611",
-    "variance": "-2581",
-    "variance_percentage": -5.469147313103916,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "45607",
+    "variance": "-1585",
+    "variance_percentage": -3.3586201051025597,
+    "notes": null
   },
   {
     "month": "2024-10",
@@ -1776,10 +1776,10 @@
     "category": "Miscellaneous",
     "gl_account": 6900,
     "budgeted_amount": "94384",
-    "actual_amount": "80373",
-    "variance": "-14011",
-    "variance_percentage": -14.844677063909137,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "91483",
+    "variance": "-2901",
+    "variance_percentage": -3.0736141718935412,
+    "notes": null
   },
   {
     "month": "2024-10",
@@ -1787,9 +1787,9 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "7936875",
-    "actual_amount": "7965896",
-    "variance": "29021",
-    "variance_percentage": 0.36564768879439324,
+    "actual_amount": "8019347",
+    "variance": "82472",
+    "variance_percentage": 1.039099141664698,
     "notes": null
   },
   {
@@ -1798,10 +1798,10 @@
     "category": "Software Subscriptions",
     "gl_account": 6200,
     "budgeted_amount": "747000",
-    "actual_amount": "699537",
-    "variance": "-47463",
-    "variance_percentage": -6.3538152610441765,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "718301",
+    "variance": "-28699",
+    "variance_percentage": -3.8419009370816597,
+    "notes": null
   },
   {
     "month": "2024-10",
@@ -1809,10 +1809,10 @@
     "category": "Cloud Services - Internal",
     "gl_account": 6210,
     "budgeted_amount": "280125",
-    "actual_amount": "278278",
-    "variance": "-1847",
-    "variance_percentage": -0.6593485051316377,
-    "notes": null
+    "actual_amount": "238649",
+    "variance": "-41476",
+    "variance_percentage": -14.80624721106649,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-10",
@@ -1820,10 +1820,10 @@
     "category": "Equipment",
     "gl_account": 1500,
     "budgeted_amount": "466875",
-    "actual_amount": "398790",
-    "variance": "-68085",
-    "variance_percentage": -14.583132530120482,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "485652",
+    "variance": "18777",
+    "variance_percentage": 4.021847389558233,
+    "notes": null
   },
   {
     "month": "2024-10",
@@ -1831,10 +1831,10 @@
     "category": "Training",
     "gl_account": 6200,
     "budgeted_amount": "186750",
-    "actual_amount": "164706",
-    "variance": "-22044",
-    "variance_percentage": -11.804016064257027,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "199669",
+    "variance": "12919",
+    "variance_percentage": 6.917804551539492,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-10",
@@ -1842,10 +1842,10 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "4201875",
-    "actual_amount": "3992215",
-    "variance": "-209660",
-    "variance_percentage": -4.989677227428231,
-    "notes": null
+    "actual_amount": "3606877",
+    "variance": "-594998",
+    "variance_percentage": -14.16029748624126,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-10",
@@ -1853,9 +1853,9 @@
     "category": "Marketing & Advertising",
     "gl_account": 6400,
     "budgeted_amount": "1120500",
-    "actual_amount": "1105101",
-    "variance": "-15399",
-    "variance_percentage": -1.3742971887550202,
+    "actual_amount": "1096612",
+    "variance": "-23888",
+    "variance_percentage": -2.131905399375279,
     "notes": null
   },
   {
@@ -1864,10 +1864,10 @@
     "category": "Travel & Entertainment",
     "gl_account": 6500,
     "budgeted_amount": "747000",
-    "actual_amount": "726743",
-    "variance": "-20257",
-    "variance_percentage": -2.711780455153949,
-    "notes": null
+    "actual_amount": "693640",
+    "variance": "-53360",
+    "variance_percentage": -7.143239625167336,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-10",
@@ -1875,9 +1875,9 @@
     "category": "Software Subscriptions",
     "gl_account": 6200,
     "budgeted_amount": "280125",
-    "actual_amount": "280325",
-    "variance": "200",
-    "variance_percentage": 0.071396697902722,
+    "actual_amount": "277383",
+    "variance": "-2742",
+    "variance_percentage": -0.9788487282463186,
     "notes": null
   },
   {
@@ -1886,10 +1886,10 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "3548250",
-    "actual_amount": "3557803",
-    "variance": "9553",
-    "variance_percentage": 0.26923131120975125,
-    "notes": null
+    "actual_amount": "3330348",
+    "variance": "-217902",
+    "variance_percentage": -6.141111815683788,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-10",
@@ -1897,9 +1897,9 @@
     "category": "Rent",
     "gl_account": 6100,
     "budgeted_amount": "747000",
-    "actual_amount": "731655",
-    "variance": "-15345",
-    "variance_percentage": -2.0542168674698797,
+    "actual_amount": "723794",
+    "variance": "-23206",
+    "variance_percentage": -3.1065595716198127,
     "notes": null
   },
   {
@@ -1908,9 +1908,9 @@
     "category": "Utilities",
     "gl_account": 6110,
     "budgeted_amount": "140063",
-    "actual_amount": "140669",
-    "variance": "606",
-    "variance_percentage": 0.4326624447570022,
+    "actual_amount": "146037",
+    "variance": "5974",
+    "variance_percentage": 4.265223506564904,
     "notes": null
   },
   {
@@ -1919,9 +1919,9 @@
     "category": "Office Supplies",
     "gl_account": 6600,
     "budgeted_amount": "93375",
-    "actual_amount": "93807",
-    "variance": "432",
-    "variance_percentage": 0.4626506024096385,
+    "actual_amount": "94811",
+    "variance": "1436",
+    "variance_percentage": 1.5378848728246317,
     "notes": null
   },
   {
@@ -1930,10 +1930,10 @@
     "category": "Insurance",
     "gl_account": 6700,
     "budgeted_amount": "233438",
-    "actual_amount": "212111",
-    "variance": "-21327",
-    "variance_percentage": -9.136044688525432,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "267361",
+    "variance": "33923",
+    "variance_percentage": 14.531909971812643,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-10",
@@ -1941,9 +1941,9 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "1867500",
-    "actual_amount": "1864450",
-    "variance": "-3050",
-    "variance_percentage": -0.16331994645247658,
+    "actual_amount": "1867531",
+    "variance": "31",
+    "variance_percentage": 0.0016599732262382865,
     "notes": null
   },
   {
@@ -1952,9 +1952,9 @@
     "category": "Professional Services",
     "gl_account": 6300,
     "budgeted_amount": "373500",
-    "actual_amount": "368628",
-    "variance": "-4872",
-    "variance_percentage": -1.304417670682731,
+    "actual_amount": "360934",
+    "variance": "-12566",
+    "variance_percentage": -3.3643908969210172,
     "notes": null
   },
   {
@@ -1963,9 +1963,9 @@
     "category": "Bank Fees",
     "gl_account": 6810,
     "budgeted_amount": "46688",
-    "actual_amount": "48088",
-    "variance": "1400",
-    "variance_percentage": 2.9986291980808772,
+    "actual_amount": "48475",
+    "variance": "1787",
+    "variance_percentage": 3.8275359835503773,
     "notes": null
   },
   {
@@ -1974,10 +1974,10 @@
     "category": "Miscellaneous",
     "gl_account": 6900,
     "budgeted_amount": "93375",
-    "actual_amount": "92494",
-    "variance": "-881",
-    "variance_percentage": -0.9435073627844712,
-    "notes": null
+    "actual_amount": "108623",
+    "variance": "15248",
+    "variance_percentage": 16.329852744310575,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-12",
@@ -1985,10 +1985,10 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "8087373",
-    "actual_amount": "7888883",
-    "variance": "-198490",
-    "variance_percentage": -2.454319839087427,
-    "notes": null
+    "actual_amount": "9314703",
+    "variance": "1227330",
+    "variance_percentage": 15.175879732516357,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-12",
@@ -1996,9 +1996,9 @@
     "category": "Software Subscriptions",
     "gl_account": 6200,
     "budgeted_amount": "761165",
-    "actual_amount": "793204",
-    "variance": "32039",
-    "variance_percentage": 4.209205625587093,
+    "actual_amount": "726986",
+    "variance": "-34179",
+    "variance_percentage": -4.490353602701123,
     "notes": null
   },
   {
@@ -2007,9 +2007,9 @@
     "category": "Cloud Services - Internal",
     "gl_account": 6210,
     "budgeted_amount": "285437",
-    "actual_amount": "284182",
-    "variance": "-1255",
-    "variance_percentage": -0.4396767062434092,
+    "actual_amount": "284868",
+    "variance": "-569",
+    "variance_percentage": -0.19934346283067716,
     "notes": null
   },
   {
@@ -2018,10 +2018,10 @@
     "category": "Equipment",
     "gl_account": 1500,
     "budgeted_amount": "475728",
-    "actual_amount": "419495",
-    "variance": "-56233",
-    "variance_percentage": -11.820409982174688,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "536555",
+    "variance": "60827",
+    "variance_percentage": 12.786087848518482,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-12",
@@ -2029,10 +2029,10 @@
     "category": "Training",
     "gl_account": 6200,
     "budgeted_amount": "190291",
-    "actual_amount": "175029",
-    "variance": "-15262",
-    "variance_percentage": -8.02034778313215,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "215070",
+    "variance": "24779",
+    "variance_percentage": 13.02163528490575,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-12",
@@ -2040,10 +2040,10 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "4281551",
-    "actual_amount": "4940520",
-    "variance": "658969",
-    "variance_percentage": 15.390894561340037,
-    "notes": "Over budget - requires review"
+    "actual_amount": "3816810",
+    "variance": "-464741",
+    "variance_percentage": -10.854501090843014,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-12",
@@ -2051,10 +2051,10 @@
     "category": "Marketing & Advertising",
     "gl_account": 6400,
     "budgeted_amount": "1141747",
-    "actual_amount": "1084678",
-    "variance": "-57069",
-    "variance_percentage": -4.998392813819524,
-    "notes": null
+    "actual_amount": "1015804",
+    "variance": "-125943",
+    "variance_percentage": -11.030727472898988,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-12",
@@ -2062,9 +2062,9 @@
     "category": "Travel & Entertainment",
     "gl_account": 6500,
     "budgeted_amount": "761165",
-    "actual_amount": "789583",
-    "variance": "28418",
-    "variance_percentage": 3.7334874830030285,
+    "actual_amount": "747982",
+    "variance": "-13183",
+    "variance_percentage": -1.731950365558059,
     "notes": null
   },
   {
@@ -2073,10 +2073,10 @@
     "category": "Software Subscriptions",
     "gl_account": 6200,
     "budgeted_amount": "285437",
-    "actual_amount": "277783",
-    "variance": "-7654",
-    "variance_percentage": -2.6815023980773343,
-    "notes": null
+    "actual_amount": "309062",
+    "variance": "23625",
+    "variance_percentage": 8.276782617530314,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-12",
@@ -2084,10 +2084,10 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "3615532",
-    "actual_amount": "3768825",
-    "variance": "153293",
-    "variance_percentage": 4.239846307542016,
-    "notes": null
+    "actual_amount": "3121170",
+    "variance": "-494362",
+    "variance_percentage": -13.673285148630962,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-12",
@@ -2095,10 +2095,10 @@
     "category": "Rent",
     "gl_account": 6100,
     "budgeted_amount": "761165",
-    "actual_amount": "777642",
-    "variance": "16477",
-    "variance_percentage": 2.1647080462186254,
-    "notes": null
+    "actual_amount": "850305",
+    "variance": "89140",
+    "variance_percentage": 11.710995644833906,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-12",
@@ -2106,10 +2106,10 @@
     "category": "Utilities",
     "gl_account": 6110,
     "budgeted_amount": "142718",
-    "actual_amount": "135140",
-    "variance": "-7578",
-    "variance_percentage": -5.3097717176529935,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "145540",
+    "variance": "2822",
+    "variance_percentage": 1.97732591544164,
+    "notes": null
   },
   {
     "month": "2024-12",
@@ -2117,10 +2117,10 @@
     "category": "Office Supplies",
     "gl_account": 6600,
     "budgeted_amount": "95146",
-    "actual_amount": "94967",
-    "variance": "-179",
-    "variance_percentage": -0.18813192357009229,
-    "notes": null
+    "actual_amount": "81670",
+    "variance": "-13476",
+    "variance_percentage": -14.163496100729406,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-12",
@@ -2128,10 +2128,10 @@
     "category": "Insurance",
     "gl_account": 6700,
     "budgeted_amount": "237864",
-    "actual_amount": "249811",
-    "variance": "11947",
-    "variance_percentage": 5.022617966569132,
-    "notes": "Over budget - requires review"
+    "actual_amount": "244191",
+    "variance": "6327",
+    "variance_percentage": 2.6599233175259815,
+    "notes": null
   },
   {
     "month": "2024-12",
@@ -2139,10 +2139,10 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "1902911",
-    "actual_amount": "1802934",
-    "variance": "-99977",
-    "variance_percentage": -5.2538978438823465,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "1811936",
+    "variance": "-90975",
+    "variance_percentage": -4.780833155097637,
+    "notes": null
   },
   {
     "month": "2024-12",
@@ -2150,9 +2150,9 @@
     "category": "Professional Services",
     "gl_account": 6300,
     "budgeted_amount": "380582",
-    "actual_amount": "371055",
-    "variance": "-9527",
-    "variance_percentage": -2.5032713055267983,
+    "actual_amount": "377880",
+    "variance": "-2702",
+    "variance_percentage": -0.7099652637276592,
     "notes": null
   },
   {
@@ -2161,9 +2161,9 @@
     "category": "Bank Fees",
     "gl_account": 6810,
     "budgeted_amount": "47573",
-    "actual_amount": "48608",
-    "variance": "1035",
-    "variance_percentage": 2.1756038088831904,
+    "actual_amount": "49901",
+    "variance": "2328",
+    "variance_percentage": 4.893532045487987,
     "notes": null
   },
   {
@@ -2172,10 +2172,10 @@
     "category": "Miscellaneous",
     "gl_account": 6900,
     "budgeted_amount": "95146",
-    "actual_amount": "92488",
-    "variance": "-2658",
-    "variance_percentage": -2.7936014125659514,
-    "notes": null
+    "actual_amount": "104904",
+    "variance": "9758",
+    "variance_percentage": 10.255817375402014,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-12",
@@ -2183,9 +2183,9 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "8445104",
-    "actual_amount": "8468097",
-    "variance": "22993",
-    "variance_percentage": 0.2722642610440322,
+    "actual_amount": "8521873",
+    "variance": "76769",
+    "variance_percentage": 0.9090355784842911,
     "notes": null
   },
   {
@@ -2194,10 +2194,10 @@
     "category": "Software Subscriptions",
     "gl_account": 6200,
     "budgeted_amount": "794833",
-    "actual_amount": "789975",
-    "variance": "-4858",
-    "variance_percentage": -0.6111975723202232,
-    "notes": null
+    "actual_amount": "744659",
+    "variance": "-50174",
+    "variance_percentage": -6.312520994976303,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-12",
@@ -2205,10 +2205,10 @@
     "category": "Cloud Services - Internal",
     "gl_account": 6210,
     "budgeted_amount": "298063",
-    "actual_amount": "351375",
-    "variance": "53312",
-    "variance_percentage": 17.886151585403088,
-    "notes": "Over budget - requires review"
+    "actual_amount": "276347",
+    "variance": "-21716",
+    "variance_percentage": -7.285708055008505,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-12",
@@ -2216,10 +2216,10 @@
     "category": "Equipment",
     "gl_account": 1500,
     "budgeted_amount": "496771",
-    "actual_amount": "504354",
-    "variance": "7583",
-    "variance_percentage": 1.526457864891469,
-    "notes": null
+    "actual_amount": "537111",
+    "variance": "40340",
+    "variance_percentage": 8.120441813229839,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-12",
@@ -2227,9 +2227,9 @@
     "category": "Training",
     "gl_account": 6200,
     "budgeted_amount": "198708",
-    "actual_amount": "171004",
-    "variance": "-27704",
-    "variance_percentage": -13.942065744710833,
+    "actual_amount": "171038",
+    "variance": "-27670",
+    "variance_percentage": -13.924955210660869,
     "notes": "Under budget - cost savings achieved"
   },
   {
@@ -2238,10 +2238,10 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "4470938",
-    "actual_amount": "4519899",
-    "variance": "48961",
-    "variance_percentage": 1.095094586415647,
-    "notes": null
+    "actual_amount": "4980363",
+    "variance": "509425",
+    "variance_percentage": 11.394141453091052,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-12",
@@ -2249,9 +2249,9 @@
     "category": "Marketing & Advertising",
     "gl_account": 6400,
     "budgeted_amount": "1192250",
-    "actual_amount": "1082370",
-    "variance": "-109880",
-    "variance_percentage": -9.216187880058712,
+    "actual_amount": "1098236",
+    "variance": "-94014",
+    "variance_percentage": -7.885426714195848,
     "notes": "Under budget - cost savings achieved"
   },
   {
@@ -2260,9 +2260,9 @@
     "category": "Travel & Entertainment",
     "gl_account": 6500,
     "budgeted_amount": "794833",
-    "actual_amount": "711421",
-    "variance": "-83412",
-    "variance_percentage": -10.494279930501124,
+    "actual_amount": "727994",
+    "variance": "-66839",
+    "variance_percentage": -8.40918784197435,
     "notes": "Under budget - cost savings achieved"
   },
   {
@@ -2271,9 +2271,9 @@
     "category": "Software Subscriptions",
     "gl_account": 6200,
     "budgeted_amount": "298063",
-    "actual_amount": "301759",
-    "variance": "3696",
-    "variance_percentage": 1.2400063073913903,
+    "actual_amount": "290749",
+    "variance": "-7314",
+    "variance_percentage": -2.453843650503417,
     "notes": null
   },
   {
@@ -2282,9 +2282,9 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "3775458",
-    "actual_amount": "3358183",
-    "variance": "-417275",
-    "variance_percentage": -11.052301469119772,
+    "actual_amount": "3508979",
+    "variance": "-266479",
+    "variance_percentage": -7.058190026216687,
     "notes": "Under budget - cost savings achieved"
   },
   {
@@ -2293,10 +2293,10 @@
     "category": "Rent",
     "gl_account": 6100,
     "budgeted_amount": "794833",
-    "actual_amount": "760979",
-    "variance": "-33854",
-    "variance_percentage": -4.2592594922455405,
-    "notes": null
+    "actual_amount": "691024",
+    "variance": "-103809",
+    "variance_percentage": -13.060479371138339,
+    "notes": "Under budget - cost savings achieved"
   },
   {
     "month": "2024-12",
@@ -2304,10 +2304,10 @@
     "category": "Utilities",
     "gl_account": 6110,
     "budgeted_amount": "149031",
-    "actual_amount": "149267",
-    "variance": "236",
-    "variance_percentage": 0.15835631512906712,
-    "notes": null
+    "actual_amount": "168469",
+    "variance": "19438",
+    "variance_percentage": 13.042923955418672,
+    "notes": "Over budget - requires review"
   },
   {
     "month": "2024-12",
@@ -2315,10 +2315,10 @@
     "category": "Office Supplies",
     "gl_account": 6600,
     "budgeted_amount": "99354",
-    "actual_amount": "93862",
-    "variance": "-5492",
-    "variance_percentage": -5.52770900014091,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "99920",
+    "variance": "566",
+    "variance_percentage": 0.569680133663466,
+    "notes": null
   },
   {
     "month": "2024-12",
@@ -2326,10 +2326,10 @@
     "category": "Insurance",
     "gl_account": 6700,
     "budgeted_amount": "248385",
-    "actual_amount": "284824",
-    "variance": "36439",
-    "variance_percentage": 14.670370594037482,
-    "notes": "Over budget - requires review"
+    "actual_amount": "239026",
+    "variance": "-9359",
+    "variance_percentage": -3.7679408982023874,
+    "notes": null
   },
   {
     "month": "2024-12",
@@ -2337,10 +2337,10 @@
     "category": "Salaries & Wages",
     "gl_account": 6000,
     "budgeted_amount": "1987083",
-    "actual_amount": "2110357",
-    "variance": "123274",
-    "variance_percentage": 6.203767029359116,
-    "notes": "Over budget - requires review"
+    "actual_amount": "1919052",
+    "variance": "-68031",
+    "variance_percentage": -3.423661719213541,
+    "notes": null
   },
   {
     "month": "2024-12",
@@ -2348,10 +2348,10 @@
     "category": "Professional Services",
     "gl_account": 6300,
     "budgeted_amount": "397417",
-    "actual_amount": "355016",
-    "variance": "-42401",
-    "variance_percentage": -10.669146010361912,
-    "notes": "Under budget - cost savings achieved"
+    "actual_amount": "381120",
+    "variance": "-16297",
+    "variance_percentage": -4.1007304669905915,
+    "notes": null
   },
   {
     "month": "2024-12",
@@ -2359,9 +2359,9 @@
     "category": "Bank Fees",
     "gl_account": 6810,
     "budgeted_amount": "49677",
-    "actual_amount": "45390",
-    "variance": "-4287",
-    "variance_percentage": -8.629748173198864,
+    "actual_amount": "44412",
+    "variance": "-5265",
+    "variance_percentage": -10.598466090947522,
     "notes": "Under budget - cost savings achieved"
   },
   {
@@ -2370,9 +2370,9 @@
     "category": "Miscellaneous",
     "gl_account": 6900,
     "budgeted_amount": "99354",
-    "actual_amount": "114874",
-    "variance": "15520",
-    "variance_percentage": 15.62091108561306,
+    "actual_amount": "106023",
+    "variance": "6669",
+    "variance_percentage": 6.712361857600096,
     "notes": "Over budget - requires review"
   },
   {

@@ -12,6 +12,11 @@ import { report_routes } from './routes/reports';
 import { reconciliation_routes } from './routes/reconciliation';
 import { agent_routes } from './routes/agents';
 import { account_routes } from './routes/accounts';
+import { create_dashboard_routes } from './routes/dashboard';
+import { create_activity_routes } from './routes/activity';
+import { create_vendor_routes } from './routes/vendors';
+import { create_customer_routes } from './routes/customers';
+import { create_metrics_routes } from './routes/metrics';
 import type { AppEnv } from '../types/hono';
 
 // Database connection
@@ -73,34 +78,38 @@ app.get('/health', (c) => {
   });
 });
 
-// Agent status endpoint
+// Enhanced agent status endpoint
 app.get('/api/agents/status', async (c) => {
   const { agent_runtime } = await import('../agents/index');
   const profiles = agent_runtime.get_all_profiles();
+  const counts = agent_runtime.get_agent_count();
+  
+  // Organize agents by type
+  const ceo = profiles.filter(p => p.id === 'clawkeeper');
+  const orchestrators = profiles.filter(p => 
+    ['cfo', 'accounts_payable_lead', 'accounts_receivable_lead', 'reconciliation_lead',
+     'compliance_lead', 'reporting_lead', 'integration_lead', 'data_etl_lead', 'support_lead'].includes(p.id)
+  );
+  const workers = profiles.filter(p => 
+    !['clawkeeper', 'cfo', 'accounts_payable_lead', 'accounts_receivable_lead', 'reconciliation_lead',
+      'compliance_lead', 'reporting_lead', 'integration_lead', 'data_etl_lead', 'support_lead'].includes(p.id)
+  );
   
   return c.json({
     status: 'online',
-    total_agents: 110,
-    active_agents: profiles.length,
-    agents: profiles.map(p => ({
-      id: p.id,
-      name: p.name,
-      status: p.status,
-      capabilities: p.capabilities,
-      current_task: p.current_task,
-    })),
-    orchestrators: [
-      'clawkeeper',
-      'cfo',
-      'accounts_payable_lead',
-      'accounts_receivable_lead',
-      'reconciliation_lead',
-      'compliance_lead',
-      'reporting_lead',
-      'integration_lead',
-      'data_etl_lead',
-      'support_lead',
-    ],
+    counts,
+    agents: {
+      ceo,
+      orchestrators,
+      workers,
+    },
+    summary: {
+      total: profiles.length,
+      idle: profiles.filter(p => p.status === 'idle').length,
+      busy: profiles.filter(p => p.status === 'busy').length,
+      offline: profiles.filter(p => p.status === 'offline').length,
+      error: profiles.filter(p => p.status === 'error').length,
+    },
     timestamp: new Date().toISOString(),
   });
 });
@@ -112,6 +121,11 @@ app.route('/api/reports', report_routes(sql));
 app.route('/api/reconciliation', reconciliation_routes(sql));
 app.route('/api/agents', agent_routes(sql));
 app.route('/api/accounts', account_routes(sql));
+app.route('/api/dashboard', create_dashboard_routes(sql));
+app.route('/api/activity', create_activity_routes(sql));
+app.route('/api/vendors', create_vendor_routes(sql));
+app.route('/api/customers', create_customer_routes(sql));
+app.route('/api/metrics', create_metrics_routes(sql));
 
 // WebSocket endpoint (placeholder)
 app.get('/ws', (c) => {

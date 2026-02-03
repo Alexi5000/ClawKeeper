@@ -106,6 +106,82 @@ class ApiClient {
   async get_accounts() {
     return this.fetch_json('/api/accounts');
   }
+
+  // Dashboard
+  async get_dashboard_summary() {
+    return this.fetch_json('/api/dashboard/summary');
+  }
+
+  // Activity Feed
+  async get_activity(filters?: { limit?: number; offset?: number; agent_id?: string; entity_type?: string }) {
+    const params = new URLSearchParams(filters as any);
+    return this.fetch_json(`/api/activity?${params}`);
+  }
+
+  // Vendors
+  async get_vendors(filters?: { limit?: number; offset?: number; status?: string; search?: string }) {
+    const params = new URLSearchParams(filters as any);
+    return this.fetch_json(`/api/vendors?${params}`);
+  }
+
+  async get_vendor(vendor_id: string) {
+    return this.fetch_json(`/api/vendors/${vendor_id}`);
+  }
+
+  async create_vendor(vendor: any) {
+    return this.fetch_json('/api/vendors', {
+      method: 'POST',
+      body: JSON.stringify(vendor),
+    });
+  }
+
+  async update_vendor(vendor_id: string, vendor: any) {
+    return this.fetch_json(`/api/vendors/${vendor_id}`, {
+      method: 'PUT',
+      body: JSON.stringify(vendor),
+    });
+  }
+
+  async delete_vendor(vendor_id: string) {
+    return this.fetch_json(`/api/vendors/${vendor_id}`, {
+      method: 'DELETE',
+    });
+  }
+
+  // Customers
+  async get_customers(filters?: { limit?: number; offset?: number; status?: string; search?: string }) {
+    const params = new URLSearchParams(filters as any);
+    return this.fetch_json(`/api/customers?${params}`);
+  }
+
+  async get_customer(customer_id: string) {
+    return this.fetch_json(`/api/customers/${customer_id}`);
+  }
+
+  async create_customer(customer: any) {
+    return this.fetch_json('/api/customers', {
+      method: 'POST',
+      body: JSON.stringify(customer),
+    });
+  }
+
+  async update_customer(customer_id: string, customer: any) {
+    return this.fetch_json(`/api/customers/${customer_id}`, {
+      method: 'PUT',
+      body: JSON.stringify(customer),
+    });
+  }
+
+  async delete_customer(customer_id: string) {
+    return this.fetch_json(`/api/customers/${customer_id}`, {
+      method: 'DELETE',
+    });
+  }
+
+  // Metrics
+  async get_cash_flow(period: 'monthly' | 'quarterly' | 'yearly' = 'monthly', limit: number = 12) {
+    return this.fetch_json(`/api/metrics/cash-flow?period=${period}&limit=${limit}`);
+  }
 }
 
 export const api = new ApiClient();

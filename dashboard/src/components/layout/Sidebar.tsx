@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 import { 
   LayoutDashboard, 
   FileText, 
@@ -13,6 +14,7 @@ import {
 } from 'lucide-react';
 import { use_auth_store } from '@/stores/auth-store';
 import { cn } from '@/lib/utils';
+import { api } from '@/lib/api';
 
 const nav_sections = [
   {
@@ -39,17 +41,25 @@ const nav_sections = [
   {
     title: 'System',
     items: [
+      { name: 'Agents', path: '/agents', icon: Bot },
       { name: 'Settings', path: '/settings', icon: Settings },
     ],
   },
 ];
 
-// Mock active agents count
-const active_agents = 4;
-
 export function Sidebar() {
   const location = useLocation();
   const { user, logout } = use_auth_store();
+
+  // Fetch real agent status
+  const { data: agent_data } = useQuery<any>({
+    queryKey: ['agents-status-sidebar'],
+    queryFn: async () => await api.get_agent_status(),
+    refetchInterval: 15000,
+  });
+
+  const active_agents = agent_data?.summary?.busy || 0;
+  const total_agents = agent_data?.counts?.total || 110;
 
   return (
     <div className="w-64 border-r bg-card flex flex-col h-screen">
@@ -68,19 +78,25 @@ export function Sidebar() {
 
       {/* AI Status Badge */}
       <div className="px-4 py-3 border-b">
-        <div className="flex items-center justify-between p-2 rounded-lg bg-primary/5 border border-primary/20">
-          <div className="flex items-center gap-2">
-            <div className="relative">
-              <Bot className="h-5 w-5 text-primary" />
-              <span className="absolute -top-1 -right-1 h-2 w-2 rounded-full bg-green-500 animate-pulse" />
+        <Link to="/agents">
+          <div className="flex items-center justify-between p-2 rounded-lg bg-primary/5 border border-primary/20 hover:bg-primary/10 transition-colors cursor-pointer">
+            <div className="flex items-center gap-2">
+              <div className="relative">
+                <Bot className="h-5 w-5 text-primary" />
+                {active_agents > 0 && (
+                  <span className="absolute -top-1 -right-1 h-2 w-2 rounded-full bg-green-500 animate-pulse" />
+                )}
+              </div>
+              <div>
+                <p className="text-xs font-medium">{total_agents} AI Agents</p>
+                <p className="text-[10px] text-muted-foreground">
+                  {active_agents} active
+                </p>
+              </div>
             </div>
-            <div>
-              <p className="text-xs font-medium">{active_agents} AI Agents</p>
-              <p className="text-[10px] text-muted-foreground">Processing</p>
-            </div>
+            <Zap className="h-4 w-4 text-yellow-500" />
           </div>
-          <Zap className="h-4 w-4 text-yellow-500" />
-        </div>
+        </Link>
       </div>
 
       {/* Navigation */}

@@ -31,83 +31,13 @@ import {
 import { format_currency, format_datetime, cn } from '@/lib/utils';
 import { api } from '@/lib/api';
 
-// Mock data for the cash flow chart
-const cash_flow_data = [
-  { month: 'Jan', inflow: 45000, outflow: 32000 },
-  { month: 'Feb', inflow: 52000, outflow: 38000 },
-  { month: 'Mar', inflow: 48000, outflow: 35000 },
-  { month: 'Apr', inflow: 61000, outflow: 42000 },
-  { month: 'May', inflow: 55000, outflow: 40000 },
-  { month: 'Jun', inflow: 67000, outflow: 45000 },
-];
-
-// Mock recent activity
-const mock_activity = [
-  {
-    id: '1',
-    type: 'invoice_processed',
-    title: 'Invoice #INV-2024-0156 processed',
-    description: 'AI extracted $4,250.00 from vendor invoice',
-    timestamp: new Date(Date.now() - 1000 * 60 * 5).toISOString(),
-    icon: FileText,
-    status: 'success',
-  },
-  {
-    id: '2',
-    type: 'reconciliation',
-    title: 'Bank reconciliation complete',
-    description: '47 transactions matched automatically',
-    timestamp: new Date(Date.now() - 1000 * 60 * 32).toISOString(),
-    icon: GitCompare,
-    status: 'success',
-  },
-  {
-    id: '3',
-    type: 'payment',
-    title: 'Payment scheduled',
-    description: '$12,500.00 to Acme Supplies - Due in 3 days',
-    timestamp: new Date(Date.now() - 1000 * 60 * 60).toISOString(),
-    icon: DollarSign,
-    status: 'pending',
-  },
-  {
-    id: '4',
-    type: 'alert',
-    title: 'Duplicate invoice detected',
-    description: 'Potential duplicate: INV-2024-0142',
-    timestamp: new Date(Date.now() - 1000 * 60 * 90).toISOString(),
-    icon: AlertCircle,
-    status: 'warning',
-  },
-  {
-    id: '5',
-    type: 'report',
-    title: 'Monthly P&L generated',
-    description: 'May 2024 profit & loss statement ready',
-    timestamp: new Date(Date.now() - 1000 * 60 * 120).toISOString(),
-    icon: BarChart3,
-    status: 'success',
-  },
-];
-
-// Mock AI agents
-const ai_agents = [
-  { id: 'invoice-processor', name: 'Invoice Processor', status: 'active', tasks: 3 },
-  { id: 'reconciliation', name: 'Reconciliation Agent', status: 'idle', tasks: 0 },
-  { id: 'payment-scheduler', name: 'Payment Scheduler', status: 'active', tasks: 1 },
-  { id: 'compliance-checker', name: 'Compliance Checker', status: 'active', tasks: 2 },
-];
-
-interface Invoice {
-  id: string;
-  status: string;
-  amount: number;
-}
-
-interface Account {
-  id: string;
-  balance?: number;
-}
+const ACTION_ICONS: Record<string, any> = {
+  invoice_processed: FileText,
+  reconciliation: GitCompare,
+  payment: DollarSign,
+  alert: AlertCircle,
+  report: BarChart3,
+};
 
 export function DashboardHome() {
   useEffect(() => {
@@ -115,29 +45,54 @@ export function DashboardHome() {
     return () => clearInterval(timer);
   }, []);
 
-  const { data: invoices, isLoading: invoicesLoading } = useQuery<Invoice[]>({
-    queryKey: ['invoices'],
-    queryFn: async () => (await api.get_invoices()) as Invoice[],
+  // Fetch dashboard summary (includes all metrics)
+  const { data: summary, isLoading: summaryLoading } = useQuery<any>({
+    queryKey: ['dashboard-summary'],
+    queryFn: async () => await api.get_dashboard_summary(),
+    refetchInterval: 30000, // Refresh every 30 seconds
   });
 
-  const { data: accounts, isLoading: accountsLoading } = useQuery<Account[]>({
-    queryKey: ['accounts'],
-    queryFn: async () => (await api.get_accounts()) as Account[],
+  // Fetch activity feed
+  const { data: activity_data, isLoading: activityLoading } = useQuery<any>({
+    queryKey: ['activity-feed'],
+    queryFn: async () => await api.get_activity({ limit: 5 }),
+    refetchInterval: 15000, // Refresh every 15 seconds
   });
 
-  const isLoading = invoicesLoading || accountsLoading;
+  // Fetch agent status
+  const { data: agent_data, isLoading: agentsLoading } = useQuery<any>({
+    queryKey: ['agents-status'],
+    queryFn: async () => await api.get_agent_status(),
+    refetchInterval: 10000, // Refresh every 10 seconds
+  });
 
-  // Calculate summary stats
-  const total_revenue = invoices?.filter((inv) => inv.status === 'paid')
-    .reduce((sum, inv) => sum + inv.amount, 0) || 0;
+  const isLoading = summaryLoading || activityLoading || agentsLoading;
 
-  const outstanding_invoices = invoices?.filter((inv) => 
-    ['pending_approval', 'approved', 'overdue'].includes(inv.status)
-  ).reduce((sum, inv) => sum + inv.amount, 0) || 0;
+  // Extract data from summary
+  const total_revenue = summary?.total_revenue || 0;
+  const outstanding_invoices = summary?.outstanding_invoices?.amount || 0;
+  const bank_balance = summary?.bank_balance || 0;
+  const pending_tasks = summary?.pending_tasks || 0;
+  const cash_flow_data = summary?.cash_flow || [];
 
-  const bank_balance = accounts?.reduce((sum, acc) => sum + (acc.balance || 0), 0) || 0;
+  // Process activity feed
+  const recent_activity = activity_data?.activities?.map((act: any) => ({
+    id: act.id,
+    type: act.action,
+    title: act.description,
+    description: act.entity_type,
+    timestamp: act.created_at,
+    icon: ACTION_ICONS[act.action] || Activity,
+    status: 'success',
+  })) || [];
 
-  const pending_tasks = invoices?.filter((inv) => inv.status === 'pending_approval').length || 0;
+  // Process agents data
+  const ai_agents = agent_data?.agents?.orchestrators?.slice(0, 4).map((agent: any) => ({
+    id: agent.id,
+    name: agent.name,
+    status: agent.status === 'busy' ? 'active' : agent.status,
+    tasks: agent.status === 'busy' ? 1 : 0,
+  })) || [];
 
   const stats = [
     {
@@ -152,8 +107,8 @@ export function DashboardHome() {
     {
       title: 'Outstanding Invoices',
       value: format_currency(outstanding_invoices),
-      change: `${invoices?.filter((inv) => ['pending_approval', 'approved'].includes(inv.status)).length || 0} pending`,
-      changeType: 'neutral',
+      change: `${summary?.outstanding_invoices?.count || 0} pending`,
+      changeType: 'neutral' as const,
       icon: FileText,
       color: 'text-blue-500',
       bgColor: 'bg-blue-500/10',
@@ -161,17 +116,17 @@ export function DashboardHome() {
     {
       title: 'Bank Balance',
       value: format_currency(bank_balance),
-      change: `${(accounts?.length ?? 0)} accounts`,
-      changeType: 'neutral',
+      change: 'All accounts',
+      changeType: 'neutral' as const,
       icon: Landmark,
       color: 'text-purple-500',
       bgColor: 'bg-purple-500/10',
     },
     {
       title: 'Pending Tasks',
-      value: pending_tasks,
+      value: String(pending_tasks),
       change: 'Requires attention',
-      changeType: pending_tasks > 0 ? 'warning' : 'positive',
+      changeType: pending_tasks > 0 ? ('warning' as const) : ('positive' as const),
       icon: Clock,
       color: 'text-orange-500',
       bgColor: 'bg-orange-500/10',
@@ -344,7 +299,7 @@ export function DashboardHome() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              {ai_agents.map((agent) => (
+              {ai_agents.map((agent: any) => (
                 <div
                   key={agent.id}
                   className="flex items-center justify-between p-3 rounded-lg border bg-muted/30"
@@ -394,7 +349,7 @@ export function DashboardHome() {
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            {mock_activity.map((activity) => {
+            {recent_activity.slice(0, 5).map((activity: any) => {
               const Icon = activity.icon;
               return (
                 <div

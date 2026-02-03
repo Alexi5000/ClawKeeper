@@ -56,8 +56,11 @@ async function main() {
     console.log(`✅ Tenant created: ${tenant_id}`);
     
     console.log('\n2️⃣ Seeding users...');
-    await seed_users(sql, tenant_id);
+    const user_id = await seed_users(sql, tenant_id);
     console.log('✅ Users created');
+    
+    // Set user context for audit logging
+    await sql.unsafe(`SET app.current_user_id = '${user_id}'`);
     
     console.log('\n3️⃣ Seeding chart of accounts...');
     // Note: Chart of accounts stored in company settings for this schema
