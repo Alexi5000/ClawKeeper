@@ -37,8 +37,9 @@ export const use_auth_store = create<AuthState>((set) => ({
 
       const { user, token } = await response.json();
       
-      // Store token in localStorage
+      // Store token and user in localStorage
       localStorage.setItem('clawkeeper_token', token);
+      localStorage.setItem('clawkeeper_user', JSON.stringify(user));
       
       set({
         user,
@@ -53,6 +54,7 @@ export const use_auth_store = create<AuthState>((set) => ({
 
   logout: () => {
     localStorage.removeItem('clawkeeper_token');
+    localStorage.removeItem('clawkeeper_user');
     set({
       user: null,
       token: null,
@@ -71,13 +73,20 @@ export const use_auth_store = create<AuthState>((set) => ({
 
 // Initialize auth state from localStorage on app load
 const stored_token = localStorage.getItem('clawkeeper_token');
-if (stored_token) {
-  // Set authenticated state (token exists)
-  use_auth_store.setState({ 
-    token: stored_token,
-    is_authenticated: true,
-  });
-  
-  // TODO: Optionally verify token with /api/auth/me endpoint
-  // and load user data for better UX
+const stored_user_str = localStorage.getItem('clawkeeper_user');
+
+if (stored_token && stored_user_str) {
+  try {
+    const stored_user = JSON.parse(stored_user_str);
+    // Restore full auth state from localStorage
+    use_auth_store.setState({ 
+      token: stored_token,
+      user: stored_user,
+      is_authenticated: true,
+    });
+  } catch (error) {
+    // Invalid stored data, clear everything
+    localStorage.removeItem('clawkeeper_token');
+    localStorage.removeItem('clawkeeper_user');
+  }
 }

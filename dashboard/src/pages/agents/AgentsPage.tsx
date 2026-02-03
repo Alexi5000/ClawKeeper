@@ -52,28 +52,12 @@ export function AgentsPage() {
     refetchInterval: 30000, // Refresh every 30 seconds
   });
 
-  const toggle_section = (section: string) => {
-    const new_sections = new Set(expanded_sections);
-    if (new_sections.has(section)) {
-      new_sections.delete(section);
-    } else {
-      new_sections.add(section);
-    }
-    set_expanded_sections(new_sections);
-  };
-
-  if (isLoading) {
-    return (
-      <div className="flex items-center justify-center h-96">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" />
-      </div>
-    );
-  }
-
+  // Extract data (safe for undefined)
   const ceo_agents = agent_data?.agents?.ceo || [];
   const orchestrators = agent_data?.agents?.orchestrators || [];
   const workers = agent_data?.agents?.workers || [];
 
+  // ALL HOOKS MUST BE CALLED BEFORE ANY CONDITIONAL RETURNS
   // Group workers by parent (memoized)
   const workers_by_parent = useMemo(() => {
     return workers.reduce((acc: Record<string, any[]>, worker: any) => {
@@ -110,6 +94,25 @@ export function AgentsPage() {
       return acc;
     }, {});
   }, [workers_by_parent, search_query]);
+
+  const toggle_section = (section: string) => {
+    const new_sections = new Set(expanded_sections);
+    if (new_sections.has(section)) {
+      new_sections.delete(section);
+    } else {
+      new_sections.add(section);
+    }
+    set_expanded_sections(new_sections);
+  };
+
+  // NOW we can do conditional returns
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-96">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
