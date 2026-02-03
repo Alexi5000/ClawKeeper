@@ -10,6 +10,7 @@ import { SettingsPage } from './pages/settings/SettingsPage';
 import { CustomersPage } from './pages/customers/CustomersPage';
 import { VendorsPage } from './pages/vendors/VendorsPage';
 import { AgentsPage } from './pages/agents/AgentsPage';
+import { AgentConsolePage } from './pages/agents/AgentConsolePage';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { is_authenticated } = use_auth_store();
@@ -41,6 +42,7 @@ function App() {
         
         {/* System */}
         <Route path="/agents" element={<ProtectedRoute><AgentsPage /></ProtectedRoute>} />
+        <Route path="/agents/console" element={<ProtectedRoute><AgentConsolePage /></ProtectedRoute>} />
         <Route path="/settings" element={<ProtectedRoute><SettingsPage /></ProtectedRoute>} />
         
         {/* Catch-all redirect */}

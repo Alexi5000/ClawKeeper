@@ -102,6 +102,26 @@ class ApiClient {
     return this.fetch_json('/api/agents/status');
   }
 
+  async execute_agent_task(agent_id: string, task: {
+    task_name: string;
+    description: string;
+    parameters?: Record<string, any>;
+    priority?: 'low' | 'normal' | 'high' | 'critical';
+  }) {
+    return this.fetch_json(`/api/agents/${agent_id}/execute`, {
+      method: 'POST',
+      body: JSON.stringify(task),
+    });
+  }
+
+  async get_agent_runs(agent_id: string, limit: number = 20) {
+    return this.fetch_json(`/api/agents/${agent_id}/runs?limit=${limit}`);
+  }
+
+  async get_agent_templates(agent_id: string) {
+    return this.fetch_json(`/api/agents/${agent_id}/templates`);
+  }
+
   // Accounts
   async get_accounts() {
     return this.fetch_json('/api/accounts');

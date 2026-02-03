@@ -11,6 +11,7 @@ import {
   Truck,
   Bot,
   Zap,
+  Terminal,
 } from 'lucide-react';
 import { use_auth_store } from '@/stores/auth-store';
 import { cn } from '@/lib/utils';
@@ -42,6 +43,7 @@ const nav_sections = [
     title: 'System',
     items: [
       { name: 'Agents', path: '/agents', icon: Bot },
+      { name: 'Agent Console', path: '/agents/console', icon: Terminal },
       { name: 'Settings', path: '/settings', icon: Settings },
     ],
   },
