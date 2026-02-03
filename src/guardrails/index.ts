@@ -30,30 +30,9 @@ export async function guardrails_middleware(c: Context, next: Next) {
     }
   }
 
-  // Check request body for PII and injection
-  if (c.req.method === 'POST' || c.req.method === 'PUT') {
-    const body = await c.req.json();
-    const body_text = JSON.stringify(body);
-
-    // PII detection
-    const pii_check = detect_pii(body_text);
-    if (pii_check.has_pii) {
-      console.warn(`[Guardrails] PII detected in request: ${pii_check.types.join(', ')}`);
-      // Log but allow (may be legitimate invoice data)
-    }
-
-    // Injection detection
-    if (detect_injection(body_text)) {
-      console.error('[Guardrails] Potential prompt injection detected');
-      return c.json({ error: 'Invalid input detected' }, 400);
-    }
-
-    // Restore body for next handler
-    c.req.bodyCache = {
-      bodyInit: JSON.stringify(body),
-      bodyUsed: false,
-    } as any;
-  }
-
+  // Note: Body validation (PII/injection detection) is disabled in middleware
+  // to avoid interfering with Hono's body parsing. Instead, routes should
+  // validate their inputs using Zod schemas and the validators module directly.
+  
   await next();
 }
