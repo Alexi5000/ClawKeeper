@@ -53,11 +53,12 @@ export function Sidebar() {
   const location = useLocation();
   const { user, logout } = use_auth_store();
 
-  // Fetch real agent status
+  // Fetch real agent status (shared with other components)
   const { data: agent_data } = useQuery<any>({
-    queryKey: ['agents-status-sidebar'],
+    queryKey: ['agents-status'],
     queryFn: async () => await api.get_agent_status(),
-    refetchInterval: 15000,
+    staleTime: 30000,
+    refetchInterval: false, // Disable auto-refetch in sidebar
   });
 
   const active_agents = agent_data?.summary?.busy || 0;

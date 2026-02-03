@@ -2,7 +2,7 @@
 // description: Theme management hook with localStorage persistence and DOM updates
 // reference: dashboard/src/stores/tenant-store.ts, dashboard/src/pages/settings/SettingsPage.tsx
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { use_tenant_store } from '../stores/tenant-store';
 
 type Theme = 'light' | 'dark';
@@ -12,6 +12,7 @@ const STORAGE_KEY = 'clawkeeper-theme';
 export function use_theme() {
   const { tenant, update_settings } = use_tenant_store();
   const current_theme = tenant?.settings?.theme || 'dark';
+  const initialized = useRef(false);
 
   const set_theme = (theme: Theme) => {
     // Update Zustand store
@@ -28,24 +29,26 @@ export function use_theme() {
     set_theme(current_theme === 'dark' ? 'light' : 'dark');
   };
 
-  // Initialize theme on mount
+  // Initialize theme on mount only once
   useEffect(() => {
+    if (initialized.current) return;
+    initialized.current = true;
+
     const stored_theme = localStorage.getItem(STORAGE_KEY) as Theme | null;
-    const initial_theme = stored_theme || current_theme;
-
-    // Apply theme to DOM immediately
-    apply_theme_to_dom(initial_theme);
-
-    // Sync with store if different
-    if (stored_theme && stored_theme !== current_theme) {
-      update_settings({ theme: stored_theme });
+    
+    if (stored_theme) {
+      // Apply stored theme to DOM
+      apply_theme_to_dom(stored_theme);
+      
+      // Only update store if different (avoid triggering re-render)
+      if (stored_theme !== current_theme) {
+        update_settings({ theme: stored_theme });
+      }
+    } else {
+      // No stored theme, use current and apply to DOM
+      apply_theme_to_dom(current_theme);
     }
-  }, []); // Only run on mount
-
-  // Keep DOM in sync with store changes
-  useEffect(() => {
-    apply_theme_to_dom(current_theme);
-  }, [current_theme]);
+  }, []);
 
   return {
     theme: current_theme,

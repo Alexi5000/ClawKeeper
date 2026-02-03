@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
@@ -22,11 +22,12 @@ export function AgentConsolePage() {
   const [is_executing, set_is_executing] = useState(false);
   const [execution_start_time, set_execution_start_time] = useState<number | null>(null);
 
-  // Fetch agent status
+  // Fetch agent status (shared query key with other components)
   const { data: agent_data, isLoading: agents_loading } = useQuery<any>({
     queryKey: ['agents-status'],
     queryFn: async () => await api.get_agent_status(),
-    refetchInterval: 10000,
+    staleTime: 30000,
+    refetchInterval: false, // Disable auto-refetch, use manual refetch
   });
 
   // Fetch templates for selected agent
@@ -44,16 +45,23 @@ export function AgentConsolePage() {
     refetchInterval: is_executing ? 2000 : false,
   });
 
-  // Get all agents organized by type
-  const all_agents: Agent[] = agent_data
-    ? [
-        ...(agent_data.agents?.ceo || []),
-        ...(agent_data.agents?.orchestrators || []),
-        ...(agent_data.agents?.workers || []),
-      ]
-    : [];
+  // Get all agents organized by type (memoized to prevent array recreation)
+  const all_agents: Agent[] = useMemo(
+    () =>
+      agent_data
+        ? [
+            ...(agent_data.agents?.ceo || []),
+            ...(agent_data.agents?.orchestrators || []),
+            ...(agent_data.agents?.workers || []),
+          ]
+        : [],
+    [agent_data]
+  );
 
-  const selected_agent = all_agents.find((a) => a.id === selected_agent_id);
+  const selected_agent = useMemo(
+    () => all_agents.find((a) => a.id === selected_agent_id),
+    [all_agents, selected_agent_id]
+  );
 
   const handle_submit_task = async (task: {
     task_name: string;

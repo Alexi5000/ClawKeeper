@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
@@ -41,104 +41,114 @@ const ACTION_ICONS: Record<string, any> = {
 };
 
 export function DashboardHome() {
-  useEffect(() => {
-    const timer = setInterval(() => {}, 60000);
-    return () => clearInterval(timer);
-  }, []);
-
   // Fetch dashboard summary (includes all metrics)
   const { data: summary, isLoading: summaryLoading } = useQuery<any>({
     queryKey: ['dashboard-summary'],
     queryFn: async () => await api.get_dashboard_summary(),
-    refetchInterval: 30000, // Refresh every 30 seconds
+    refetchInterval: 60000, // Refresh every 60 seconds
   });
 
   // Fetch activity feed
   const { data: activity_data, isLoading: activityLoading } = useQuery<any>({
     queryKey: ['activity-feed'],
     queryFn: async () => await api.get_activity({ limit: 5 }),
-    refetchInterval: 15000, // Refresh every 15 seconds
+    refetchInterval: 60000, // Refresh every 60 seconds
   });
 
   // Fetch agent status
   const { data: agent_data, isLoading: agentsLoading } = useQuery<any>({
     queryKey: ['agents-status'],
     queryFn: async () => await api.get_agent_status(),
-    refetchInterval: 10000, // Refresh every 10 seconds
+    refetchInterval: 30000, // Refresh every 30 seconds
   });
 
   const isLoading = summaryLoading || activityLoading || agentsLoading;
 
-  // Extract data from summary
+  // Extract data from summary (memoized to prevent re-renders)
   const total_revenue = summary?.total_revenue || 0;
   const outstanding_invoices = summary?.outstanding_invoices?.amount || 0;
   const bank_balance = summary?.bank_balance || 0;
   const pending_tasks = summary?.pending_tasks || 0;
   const cash_flow_data = summary?.cash_flow || [];
 
-  // Process activity feed
-  const recent_activity = activity_data?.activities?.map((act: any) => ({
-    id: act.id,
-    type: act.action,
-    title: act.description,
-    description: act.entity_type,
-    timestamp: act.created_at,
-    icon: ACTION_ICONS[act.action] || Activity,
-    status: 'success',
-  })) || [];
+  // Process activity feed (memoized to prevent creating new arrays on every render)
+  const recent_activity = useMemo(
+    () =>
+      activity_data?.activities?.map((act: any) => ({
+        id: act.id,
+        type: act.action,
+        title: act.description,
+        description: act.entity_type,
+        timestamp: act.created_at,
+        icon: ACTION_ICONS[act.action] || Activity,
+        status: 'success',
+      })) || [],
+    [activity_data]
+  );
 
-  // Process agents data
-  const ai_agents = agent_data?.agents?.orchestrators?.slice(0, 4).map((agent: any) => ({
-    id: agent.id,
-    name: agent.name,
-    status: agent.status === 'busy' ? 'active' : agent.status,
-    tasks: agent.status === 'busy' ? 1 : 0,
-  })) || [];
+  // Process agents data (memoized)
+  const ai_agents = useMemo(
+    () =>
+      agent_data?.agents?.orchestrators?.slice(0, 4).map((agent: any) => ({
+        id: agent.id,
+        name: agent.name,
+        status: agent.status === 'busy' ? 'active' : agent.status,
+        tasks: agent.status === 'busy' ? 1 : 0,
+      })) || [],
+    [agent_data]
+  );
 
-  const stats = [
-    {
-      title: 'Total Revenue',
-      value: format_currency(total_revenue),
-      change: '+12.5%',
-      changeType: 'positive',
-      icon: DollarSign,
-      color: 'text-green-500',
-      bgColor: 'bg-green-500/10',
-    },
-    {
-      title: 'Outstanding Invoices',
-      value: format_currency(outstanding_invoices),
-      change: `${summary?.outstanding_invoices?.count || 0} pending`,
-      changeType: 'neutral' as const,
-      icon: FileText,
-      color: 'text-blue-500',
-      bgColor: 'bg-blue-500/10',
-    },
-    {
-      title: 'Bank Balance',
-      value: format_currency(bank_balance),
-      change: 'All accounts',
-      changeType: 'neutral' as const,
-      icon: Landmark,
-      color: 'text-purple-500',
-      bgColor: 'bg-purple-500/10',
-    },
-    {
-      title: 'Pending Tasks',
-      value: String(pending_tasks),
-      change: 'Requires attention',
-      changeType: pending_tasks > 0 ? ('warning' as const) : ('positive' as const),
-      icon: Clock,
-      color: 'text-orange-500',
-      bgColor: 'bg-orange-500/10',
-    },
-  ];
+  // Stats array (memoized to prevent re-creating on every render)
+  const stats = useMemo(
+    () => [
+      {
+        title: 'Total Revenue',
+        value: format_currency(total_revenue),
+        change: '+12.5%',
+        changeType: 'positive',
+        icon: DollarSign,
+        color: 'text-green-500',
+        bgColor: 'bg-green-500/10',
+      },
+      {
+        title: 'Outstanding Invoices',
+        value: format_currency(outstanding_invoices),
+        change: `${summary?.outstanding_invoices?.count || 0} pending`,
+        changeType: 'neutral' as const,
+        icon: FileText,
+        color: 'text-blue-500',
+        bgColor: 'bg-blue-500/10',
+      },
+      {
+        title: 'Bank Balance',
+        value: format_currency(bank_balance),
+        change: 'All accounts',
+        changeType: 'neutral' as const,
+        icon: Landmark,
+        color: 'text-purple-500',
+        bgColor: 'bg-purple-500/10',
+      },
+      {
+        title: 'Pending Tasks',
+        value: String(pending_tasks),
+        change: 'Requires attention',
+        changeType: pending_tasks > 0 ? ('warning' as const) : ('positive' as const),
+        icon: Clock,
+        color: 'text-orange-500',
+        bgColor: 'bg-orange-500/10',
+      },
+    ],
+    [total_revenue, outstanding_invoices, bank_balance, pending_tasks, summary]
+  );
 
-  const quick_actions = [
-    { label: 'Upload Invoice', icon: Upload, href: '/invoices' },
-    { label: 'Reconcile', icon: GitCompare, href: '/reconciliation' },
-    { label: 'View Reports', icon: BarChart3, href: '/reports' },
-  ];
+  const quick_actions = useMemo(
+    () => [
+      { label: 'Upload Invoice', icon: Upload, href: '/invoices' },
+      { label: 'Reconcile', icon: GitCompare, href: '/reconciliation' },
+      { label: 'View Reports', icon: BarChart3, href: '/reports' },
+    ],
+    []
+  );
 
   // Skeleton UI for loading state - show structure immediately
   if (isLoading) {

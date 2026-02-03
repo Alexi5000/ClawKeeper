@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
@@ -46,9 +46,10 @@ export function AgentsPage() {
   );
 
   const { data: agent_data, isLoading } = useQuery<any>({
-    queryKey: ['agents-full'],
+    queryKey: ['agents-status'],
     queryFn: async () => await api.get_agent_status(),
-    refetchInterval: 5000, // Refresh every 5 seconds
+    staleTime: 30000,
+    refetchInterval: 30000, // Refresh every 30 seconds
   });
 
   const toggle_section = (section: string) => {
@@ -73,28 +74,42 @@ export function AgentsPage() {
   const orchestrators = agent_data?.agents?.orchestrators || [];
   const workers = agent_data?.agents?.workers || [];
 
-  // Group workers by parent
-  const workers_by_parent = workers.reduce((acc: Record<string, any[]>, worker: any) => {
-    const parent = worker.metadata?.parent_id || 'unknown';
-    if (!acc[parent]) acc[parent] = [];
-    acc[parent].push(worker);
-    return acc;
-  }, {});
+  // Group workers by parent (memoized)
+  const workers_by_parent = useMemo(() => {
+    return workers.reduce((acc: Record<string, any[]>, worker: any) => {
+      const parent = worker.metadata?.parent_id || 'unknown';
+      if (!acc[parent]) acc[parent] = [];
+      acc[parent].push(worker);
+      return acc;
+    }, {});
+  }, [workers]);
 
-  // Filter agents by search
-  const filter_agents = (agents: any[]) => {
-    if (!search_query) return agents;
-    return agents.filter(agent => 
+  // Filter agents by search (memoized)
+  const filtered_orchestrators = useMemo(() => {
+    if (!search_query) return orchestrators;
+    return orchestrators.filter((agent: any) =>
       agent.name.toLowerCase().includes(search_query.toLowerCase()) ||
       agent.id.toLowerCase().includes(search_query.toLowerCase())
     );
-  };
+  }, [orchestrators, search_query]);
 
-  const filtered_orchestrators = filter_agents(orchestrators);
-  const filtered_workers = Object.keys(workers_by_parent).reduce((acc: Record<string, any[]>, key) => {
-    acc[key] = filter_agents(workers_by_parent[key]);
-    return acc;
-  }, {});
+  const filtered_workers = useMemo(() => {
+    return Object.keys(workers_by_parent).reduce((acc: Record<string, any[]>, key) => {
+      const agents = workers_by_parent[key];
+      if (!search_query) {
+        acc[key] = agents;
+      } else {
+        const filtered = agents.filter((agent: any) =>
+          agent.name.toLowerCase().includes(search_query.toLowerCase()) ||
+          agent.id.toLowerCase().includes(search_query.toLowerCase())
+        );
+        if (filtered.length > 0) {
+          acc[key] = filtered;
+        }
+      }
+      return acc;
+    }, {});
+  }, [workers_by_parent, search_query]);
 
   return (
     <div className="space-y-6">
