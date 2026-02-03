@@ -7,11 +7,28 @@ import './index.css';
 const query_client = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 1000,
-      refetchInterval: 30000, // Refetch every 30s
+      staleTime: 60000, // 1 minute - data is considered fresh for 60s
+      gcTime: 300000, // 5 minutes - cached data kept in memory for 5min
+      refetchOnWindowFocus: false, // Disable auto-refetch on window focus
+      retry: 1, // Only retry failed queries once
     },
   },
 });
+
+// Initialize theme before first render to prevent flash
+function init_theme() {
+  const stored_theme = localStorage.getItem('clawkeeper-theme');
+  const theme = stored_theme || 'dark';
+  
+  if (theme === 'dark') {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+}
+
+// Run theme initialization immediately
+init_theme();
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

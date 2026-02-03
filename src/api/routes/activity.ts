@@ -52,15 +52,21 @@ export function create_activity_routes(sql: Sql<Record<string, unknown>>) {
         OFFSET ${offset}
       `;
 
-      const [{ count }] = await sql`
-        SELECT COUNT(*) as count
-        FROM activity_log
-        WHERE tenant_id = ${tenant_id}
-      `;
+      // Only run COUNT query if pagination info is needed (offset > 0 or limit is high)
+      // This optimizes performance for simple recent activity queries
+      let total = null;
+      if (offset > 0 || limit > 20) {
+        const [{ count }] = await sql`
+          SELECT COUNT(*) as count
+          FROM activity_log
+          WHERE tenant_id = ${tenant_id}
+        `;
+        total = count;
+      }
 
       return c.json({
         activities,
-        total: count,
+        total,
         limit,
         offset,
       });

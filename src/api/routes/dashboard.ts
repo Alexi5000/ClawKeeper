@@ -18,39 +18,43 @@ export function create_dashboard_routes(sql: Sql<Record<string, unknown>>) {
     }
 
     try {
-      // Get invoices summary
-      const [invoice_stats] = await sql`
-        SELECT 
-          COALESCE(SUM(CASE WHEN status = 'paid' THEN amount ELSE 0 END), 0) as total_revenue,
-          COALESCE(SUM(CASE WHEN status IN ('pending_approval', 'approved', 'overdue') THEN amount ELSE 0 END), 0) as outstanding_amount,
-          COUNT(CASE WHEN status IN ('pending_approval', 'approved', 'overdue') THEN 1 END) as outstanding_count,
-          COUNT(CASE WHEN status = 'pending_approval' THEN 1 END) as pending_tasks
-        FROM invoices
-        WHERE tenant_id = ${tenant_id}
-      `;
+      // Run all database queries in parallel for better performance
+      const [invoice_stats_result, account_stats_result, cash_flow] = await Promise.all([
+        // Get invoices summary
+        sql`
+          SELECT 
+            COALESCE(SUM(CASE WHEN status = 'paid' THEN amount ELSE 0 END), 0) as total_revenue,
+            COALESCE(SUM(CASE WHEN status IN ('pending_approval', 'approved', 'overdue') THEN amount ELSE 0 END), 0) as outstanding_amount,
+            COUNT(CASE WHEN status IN ('pending_approval', 'approved', 'overdue') THEN 1 END) as outstanding_count,
+            COUNT(CASE WHEN status = 'pending_approval' THEN 1 END) as pending_tasks
+          FROM invoices
+          WHERE tenant_id = ${tenant_id}
+        `,
+        // Get bank balance
+        sql`
+          SELECT COALESCE(SUM(balance), 0) as total_balance
+          FROM accounts
+          WHERE tenant_id = ${tenant_id}
+        `,
+        // Get cash flow for last 6 months
+        sql`
+          SELECT 
+            TO_CHAR(DATE_TRUNC('month', date), 'Mon YYYY') as month,
+            COALESCE(SUM(CASE WHEN amount > 0 THEN amount ELSE 0 END), 0) as inflow,
+            COALESCE(SUM(CASE WHEN amount < 0 THEN ABS(amount) ELSE 0 END), 0) as outflow
+          FROM transactions
+          WHERE tenant_id = ${tenant_id}
+            AND date >= NOW() - INTERVAL '6 months'
+          GROUP BY DATE_TRUNC('month', date)
+          ORDER BY DATE_TRUNC('month', date) DESC
+          LIMIT 6
+        `,
+      ]);
 
-      // Get bank balance
-      const [account_stats] = await sql`
-        SELECT COALESCE(SUM(balance), 0) as total_balance
-        FROM accounts
-        WHERE tenant_id = ${tenant_id}
-      `;
+      const [invoice_stats] = invoice_stats_result;
+      const [account_stats] = account_stats_result;
 
-      // Get cash flow for last 6 months
-      const cash_flow = await sql`
-        SELECT 
-          TO_CHAR(DATE_TRUNC('month', date), 'Mon YYYY') as month,
-          COALESCE(SUM(CASE WHEN amount > 0 THEN amount ELSE 0 END), 0) as inflow,
-          COALESCE(SUM(CASE WHEN amount < 0 THEN ABS(amount) ELSE 0 END), 0) as outflow
-        FROM transactions
-        WHERE tenant_id = ${tenant_id}
-          AND date >= NOW() - INTERVAL '6 months'
-        GROUP BY DATE_TRUNC('month', date)
-        ORDER BY DATE_TRUNC('month', date) DESC
-        LIMIT 6
-      `;
-
-      // Get agent summary
+      // Get agent summary (in-memory, no DB query)
       const agent_counts = agent_runtime.get_agent_count();
       const all_profiles = agent_runtime.get_all_profiles();
       const agent_summary = {

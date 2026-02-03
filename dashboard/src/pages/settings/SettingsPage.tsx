@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { use_tenant_store } from '@/stores/tenant-store';
 import { use_auth_store } from '@/stores/auth-store';
+import { use_theme } from '@/hooks/use_theme';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
@@ -151,10 +151,9 @@ const billing_plan = {
 };
 
 export function SettingsPage() {
-  const { tenant, update_settings } = use_tenant_store();
   const { user } = use_auth_store();
+  const { theme, set_theme } = use_theme();
   const [active_tab, set_active_tab] = useState('profile');
-  const [theme, set_theme] = useState(tenant?.settings?.theme || 'dark');
   const [saving, set_saving] = useState(false);
 
   // Profile form state
@@ -170,10 +169,6 @@ export function SettingsPage() {
     setTimeout(() => {
       set_saving(false);
     }, 1000);
-  }
-
-  function handle_save_appearance() {
-    update_settings({ theme: theme as 'light' | 'dark' });
   }
 
   return (
@@ -289,9 +284,9 @@ export function SettingsPage() {
                       <span className="text-sm font-medium">Dark</span>
                     </button>
                   </div>
-                  <Button variant="outline" onClick={handle_save_appearance}>
-                    Apply Theme
-                  </Button>
+                  <p className="text-sm text-muted-foreground">
+                    Theme is applied automatically when you select it
+                  </p>
                 </CardContent>
               </Card>
 
