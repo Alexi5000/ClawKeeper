@@ -124,7 +124,43 @@ app.get('/ws', (c) => {
 // Start server
 const port = Number(process.env.PORT) || 4004;
 
-console.log(`🔐 ClawKeeper API Server starting on port ${port}...`);
+// Validate port configuration
+const EXPECTED_PORT = 4004;
+if (port !== EXPECTED_PORT) {
+  console.error(`
+╔═════════════════════════════════════════════════════════════════╗
+║  ⚠️  PORT CONFIGURATION MISMATCH DETECTED                       ║
+╚═════════════════════════════════════════════════════════════════╝
+
+Expected Port: ${EXPECTED_PORT}
+Current Port:  ${port}
+
+This mismatch will cause the dashboard to fail connecting to the API.
+
+ACTION REQUIRED:
+1. Update your .env file: PORT=${EXPECTED_PORT}
+2. Restart the API server
+
+Continuing with port ${port} anyway, but connections may fail...
+`);
+}
+
+console.log(`
+╔═════════════════════════════════════════════════════════════════╗
+║  🔐 ClawKeeper API Server                                       ║
+╚═════════════════════════════════════════════════════════════════╝
+
+Port:        ${port}
+Environment: ${process.env.NODE_ENV || 'development'}
+Database:    ${process.env.DATABASE_URL ? 'Connected' : 'Not configured'}
+JWT Secret:  ${process.env.JWT_SECRET ? 'Configured' : '⚠️  NOT CONFIGURED - Using default'}
+
+Health:      http://localhost:${port}/health
+API:         http://localhost:${port}/api
+Dashboard:   http://localhost:5174
+
+Ready for requests...
+`);
 
 export default {
   port,

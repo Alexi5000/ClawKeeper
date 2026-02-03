@@ -32,11 +32,21 @@ ClawKeeper CEO
 
 ## 🚀 Quick Start
 
+**📖 See [STARTUP.md](./STARTUP.md) for detailed instructions and troubleshooting.**
+
 ### Prerequisites
 
 - **Bun** >= 1.0.0
 - **PostgreSQL** >= 14
 - **Anthropic API Key** (for Claude)
+
+### Standard Ports (DO NOT CHANGE)
+
+- **API Server:** 4004
+- **Dashboard:** 5174  
+- **PostgreSQL:** 5432
+
+These ports are validated on startup. Mismatches will cause connection failures.
 
 ### 1. Clone and Install
 
