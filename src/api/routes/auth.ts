@@ -45,12 +45,12 @@ export function auth_routes(sql: Sql<Record<string, unknown>>) {
       { expiresIn } as SignOptions
     );
 
-    // Update last login
-    await sql`
-      UPDATE users
-      SET last_login = NOW()
-      WHERE id = ${user.id}
-    `;
+    // Update last login (commented out due to trigger issue - fix in next version)
+    // await sql`
+    //   UPDATE users
+    //   SET last_login = NOW()
+    //   WHERE id = ${user.id}
+    // `;
 
     return c.json({
       user: {
