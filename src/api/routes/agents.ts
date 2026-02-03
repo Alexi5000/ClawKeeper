@@ -13,12 +13,35 @@ export function agent_routes(sql: Sql<Record<string, unknown>>) {
   // Get all agent statuses
   app.get('/status', async (c) => {
     const profiles = agent_runtime.get_all_profiles();
-
+    const counts = agent_runtime.get_agent_count();
+    
+    // Organize agents by type
+    const ceo = profiles.filter(p => p.id === 'clawkeeper');
+    const orchestrators = profiles.filter(p => 
+      ['cfo', 'accounts_payable_lead', 'accounts_receivable_lead', 'reconciliation_lead',
+       'compliance_lead', 'reporting_lead', 'integration_lead', 'data_etl_lead', 'support_lead'].includes(p.id)
+    );
+    const workers = profiles.filter(p => 
+      !['clawkeeper', 'cfo', 'accounts_payable_lead', 'accounts_receivable_lead', 'reconciliation_lead',
+        'compliance_lead', 'reporting_lead', 'integration_lead', 'data_etl_lead', 'support_lead'].includes(p.id)
+    );
+    
     return c.json({
-      agents: profiles,
-      total: profiles.length,
-      active: profiles.filter(p => p.status === 'busy').length,
-      idle: profiles.filter(p => p.status === 'idle').length,
+      status: 'online',
+      counts,
+      agents: {
+        ceo,
+        orchestrators,
+        workers,
+      },
+      summary: {
+        total: profiles.length,
+        idle: profiles.filter(p => p.status === 'idle').length,
+        busy: profiles.filter(p => p.status === 'busy').length,
+        offline: profiles.filter(p => p.status === 'offline').length,
+        error: profiles.filter(p => p.status === 'error').length,
+      },
+      timestamp: new Date().toISOString(),
     });
   });
 
