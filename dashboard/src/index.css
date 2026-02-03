@@ -4,12 +4,12 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 0 0% 98%; /* #FAFAFA */
+    --foreground: 0 0% 6.7%; /* #111111 */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 6.7%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 6.7%;
     --primary: 221.2 83.2% 53.3%;
     --primary-foreground: 210 40% 98%;
     --secondary: 210 40% 96.1%;
@@ -20,7 +20,7 @@
     --accent-foreground: 222.2 47.4% 11.2%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
+    --border: 0 0% 91.8%; /* #EAEAEA */
     --input: 214.3 31.8% 91.4%;
     --ring: 221.2 83.2% 53.3%;
     --radius: 0.5rem;
@@ -53,9 +53,14 @@
   * {
     @apply border-border;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
 }
 
@@ -68,4 +73,124 @@
   .glass-card {
     @apply glass rounded-xl p-6;
   }
+
+  .technical-grid {
+    background-size: 40px 40px;
+    background-image:
+      linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+    mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
+  }
+
+  .premium-card {
+    background: #FFFFFF;
+    border: 1px solid #EAEAEA;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02), 0 8px 16px -4px rgba(0,0,0,0.04);
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .premium-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.03), 0 12px 24px -6px rgba(0,0,0,0.06);
+    border-color: #D4D4D4;
+  }
+
+  .node-line { 
+    stroke-dasharray: 4; 
+    animation: dash 30s linear infinite; 
+  }
+
+  .pricing-transition {
+    transition:
+      transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 300ms cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 500ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 500ms cubic-bezier(0.22, 1, 0.36, 1),
+      background-color 500ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform, opacity, box-shadow;
+  }
+
+  .shimmer-layer { 
+    transform: translateX(-100%); 
+  }
+  
+  .group:hover .shimmer-layer { 
+    animation: shimmer 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; 
+  }
+
+  /* Traceability Lifecycle Animations */
+  .def-active .def-num { 
+    border-color: #111; 
+    color: #111; 
+    background-color: #fff; 
+    transform: scale(1.1); 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
+  }
+  
+  .def-inactive .def-content { 
+    opacity: 0.4; 
+    filter: grayscale(100%); 
+  }
+  
+  .def-active .def-content { 
+    opacity: 1; 
+    filter: grayscale(0%); 
+    transform: translateY(0); 
+  }
+  
+  .def-step { 
+    transition: opacity 0.5s ease; 
+  }
+}
+
+/* Keyframes */
+@keyframes dash { to { stroke-dashoffset: -100; } }
+@keyframes shimmer { 100% { transform: translateX(100%); } }
+@keyframes signal-flow {
+  0% { stroke-dashoffset: 60; opacity: 0; }
+  5% { opacity: 1; }
+  90% { stroke-dashoffset: -360; opacity: 1; }
+  95% { opacity: 0; }
+  100% { stroke-dashoffset: -360; opacity: 0; }
+}
+@keyframes pulse-context {
+  0% { transform: scale(1); fill: #111; }
+  5% { transform: scale(1.4); fill: #000; }
+  15% { transform: scale(1); fill: #111; }
+}
+@keyframes pulse-assumptions {
+  25% { stroke-width: 1.5; transform: scale(1); }
+  30% { stroke-width: 2.5; transform: scale(1.05); stroke: #000; }
+  40% { stroke-width: 1.5; transform: scale(1); stroke: #111; }
+}
+@keyframes pulse-evidence {
+  55% { stroke-width: 1.5; transform: scale(1); }
+  60% { stroke-width: 2.5; transform: scale(1.05); stroke: #000; }
+  70% { stroke-width: 1.5; transform: scale(1); stroke: #111; }
+}
+@keyframes pulse-outcome {
+  85% { transform: scale(1); fill: #111; }
+  90% { transform: scale(1.25); fill: #000; }
+  100% { transform: scale(1); fill: #111; }
+}
+@keyframes check-draw {
+  0%, 88% { stroke-dashoffset: 12; opacity: 0; }
+  92% { stroke-dashoffset: 0; opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+/* SVG Animation Classes */
+.signal-path {
+  stroke-dasharray: 60 400;
+  stroke-dashoffset: 60;
+  animation: signal-flow 6s linear infinite;
+}
+.node-context { animation: pulse-context 6s infinite ease-out; transform-origin: 50px 150px; }
+.node-assumptions { animation: pulse-assumptions 6s infinite ease-out; transform-origin: 190px 80px; }
+.node-evidence { animation: pulse-evidence 6s infinite ease-out; transform-origin: 280px 120px; }
+.node-outcome { animation: pulse-outcome 6s infinite ease-out; transform-origin: 320px 150px; }
+.outcome-check {
+  stroke-dasharray: 12;
+  stroke-dashoffset: 12;
+  animation: check-draw 6s linear infinite;
 }

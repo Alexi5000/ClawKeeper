@@ -12,6 +12,8 @@ import { VendorsPage } from './pages/vendors/VendorsPage';
 import { AgentsPage } from './pages/agents/AgentsPage';
 import { AgentConsolePage } from './pages/agents/AgentConsolePage';
 
+import { LandingPage } from './pages/landing/LandingPage';
+
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { is_authenticated } = use_auth_store();
   
@@ -26,10 +28,12 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Public */}
+        <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
         
         {/* Dashboard */}
-        <Route path="/" element={<ProtectedRoute><DashboardHome /></ProtectedRoute>} />
+        <Route path="/dashboard" element={<ProtectedRoute><DashboardHome /></ProtectedRoute>} />
         
         {/* Finance */}
         <Route path="/invoices" element={<ProtectedRoute><InvoicesPage /></ProtectedRoute>} />

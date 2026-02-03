@@ -5,9 +5,10 @@
 import { Hono } from 'hono';
 import type { Sql } from 'postgres';
 import { agent_runtime } from '../../agents';
+import type { AppEnv } from '../../types/hono';
 
 export function create_dashboard_routes(sql: Sql<Record<string, unknown>>) {
-  const app = new Hono();
+  const app = new Hono<AppEnv>();
 
   // GET /api/dashboard/summary
   app.get('/summary', async (c) => {

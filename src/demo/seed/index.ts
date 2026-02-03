@@ -66,7 +66,7 @@ async function main() {
     // Note: Chart of accounts stored in company settings for this schema
     await sql`
       UPDATE tenants
-      SET settings = settings || ${{ chart_of_accounts: chart_of_accounts }}::jsonb
+      SET settings = settings || ${JSON.stringify({ chart_of_accounts })}::jsonb
       WHERE id = ${tenant_id}
     `;
     console.log(`✅ Chart of accounts: ${chart_of_accounts.length} accounts`);
@@ -87,12 +87,12 @@ async function main() {
     // Store in tenant settings
     await sql`
       UPDATE tenants
-      SET settings = settings || ${{
+      SET settings = settings || ${JSON.stringify({
         tax_filings,
         contractor_payments,
         policy_violations,
         budgets
-      }}::jsonb
+      })}::jsonb
       WHERE id = ${tenant_id}
     `;
     console.log('✅ Compliance data stored');
@@ -105,7 +105,7 @@ async function main() {
     // Store in tenant settings
     await sql`
       UPDATE tenants
-      SET settings = settings || ${{ support_tickets }}::jsonb
+      SET settings = settings || ${JSON.stringify({ support_tickets })}::jsonb
       WHERE id = ${tenant_id}
     `;
     console.log(`✅ Support tickets: ${support_tickets.length} tickets`);

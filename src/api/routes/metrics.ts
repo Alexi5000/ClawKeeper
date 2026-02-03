@@ -4,9 +4,10 @@
 
 import { Hono } from 'hono';
 import type { Sql } from 'postgres';
+import type { AppEnv } from '../../types/hono';
 
 export function create_metrics_routes(sql: Sql<Record<string, unknown>>) {
-  const app = new Hono();
+  const app = new Hono<AppEnv>();
 
   // GET /api/metrics/cash-flow
   app.get('/cash-flow', async (c) => {

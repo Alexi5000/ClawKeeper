@@ -16,6 +16,9 @@ export default {
     },
     extend: {
       colors: {
+        obsidian: '#111111',
+        canvas: '#FAFAFA',
+        subtle: '#666666',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -54,6 +57,11 @@ export default {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+      },
+      fontFamily: {
+        sans: ['Inter', 'Plus Jakarta Sans', 'sans-serif'],
+        serif: ['Cormorant Garamond', 'serif'],
+        mono: ['JetBrains Mono', 'monospace'],
       },
     },
   },

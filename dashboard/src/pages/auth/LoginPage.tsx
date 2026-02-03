@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { use_auth_store } from '@/stores/auth-store';
 import { Button } from '@/components/ui/Button';
@@ -10,8 +10,14 @@ export function LoginPage() {
   const [error, set_error] = useState('');
   const [is_loading, set_is_loading] = useState(false);
   
-  const { login } = use_auth_store();
+  const { login, is_authenticated } = use_auth_store();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (is_authenticated) {
+      navigate('/dashboard');
+    }
+  }, [is_authenticated, navigate]);
 
   async function handle_submit(e: React.FormEvent) {
     e.preventDefault();
@@ -20,7 +26,7 @@ export function LoginPage() {
 
     try {
       await login(email, password);
-      navigate('/');
+      navigate('/dashboard');
     } catch (err) {
       set_error('Invalid credentials. Please try again.');
     } finally {

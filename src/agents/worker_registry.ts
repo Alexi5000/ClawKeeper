@@ -90,7 +90,7 @@ const WORKER_TYPE_TO_CAPABILITIES: Record<string, LedgerCapability[]> = {
   // Compliance workers
   'tax-compliance-checker': ['tax_compliance_check'],
   'audit-preparer': ['audit_preparation'],
-  'policy-enforcer': ['policy_enforcement'],
+  'compliance-policy-enforcer': ['policy_enforcement'],
   'fraud-detector': ['discrepancy_detection'],
   'segregation-checker': ['policy_enforcement'],
   'approval-limit-enforcer': ['policy_enforcement'],
