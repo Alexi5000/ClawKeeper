@@ -89,7 +89,7 @@ export function ExecutionHistory({ runs, is_loading }: ExecutionHistoryProps) {
                     {run.tokens_used?.toLocaleString() || 0} tokens
                   </div>
                   <div>
-                    ${run.cost?.toFixed(3) || '0.000'}
+                    ${typeof run.cost === 'number' ? run.cost.toFixed(3) : Number(run.cost || 0).toFixed(3)}
                   </div>
                 </div>
                 <div className="text-xs text-muted-foreground mt-1">

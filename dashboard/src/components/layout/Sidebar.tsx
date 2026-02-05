@@ -12,6 +12,7 @@ import {
   Bot,
   Zap,
   Terminal,
+  Sparkles,
 } from 'lucide-react';
 import { use_auth_store } from '@/stores/auth-store';
 import { cn } from '@/lib/utils';
@@ -21,7 +22,7 @@ const nav_sections = [
   {
     title: 'Overview',
     items: [
-      { name: 'Dashboard', path: '/', icon: LayoutDashboard },
+      { name: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
     ],
   },
   {
@@ -40,10 +41,16 @@ const nav_sections = [
     ],
   },
   {
+    title: 'AI Agents',
+    items: [
+      { name: 'Command Center', path: '/agents/command-center', icon: Sparkles },
+      { name: 'Agent Console', path: '/agents/console', icon: Terminal },
+      { name: 'All Agents', path: '/agents', icon: Bot },
+    ],
+  },
+  {
     title: 'System',
     items: [
-      { name: 'Agents', path: '/agents', icon: Bot },
-      { name: 'Agent Console', path: '/agents/console', icon: Terminal },
       { name: 'Settings', path: '/settings', icon: Settings },
     ],
   },

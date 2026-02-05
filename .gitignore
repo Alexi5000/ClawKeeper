@@ -41,7 +41,6 @@ tmp/
 
 # Bun
 .bun/
-bun.lockb
 
 # TypeScript
 *.tsbuildinfo
@@ -69,3 +68,10 @@ tenants.json
 # Local development
 .local/
 *.local
+
+# Cursor/AI artifacts
+.cursor/
+*.plan.md
+
+# User-uploaded assets
+assets/

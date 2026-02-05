@@ -4,7 +4,7 @@
   "description": "ClawKeeper Admin Dashboard",
   "type": "module",
   "scripts": {
-    "dev": "vite --port 5174",
+    "dev": "vite --port 3000",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint src/"

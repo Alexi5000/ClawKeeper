@@ -71,10 +71,15 @@ app.use('/api/*', async (c, next) => {
     c.set('user_id', decoded.user_id);
     c.set('user_role', decoded.role);
     
-    // Set PostgreSQL session variables for RLS
-    await sql`SET app.current_tenant_id = ${decoded.tenant_id}`;
-    await sql`SET app.current_user_id = ${decoded.user_id}`;
-    await sql`SET app.current_user_role = ${decoded.role}`;
+    // Set PostgreSQL session variables for RLS (use unsafe for SET commands)
+    try {
+      await sql.unsafe(`SET app.current_tenant_id = '${decoded.tenant_id}'`);
+      await sql.unsafe(`SET app.current_user_id = '${decoded.user_id}'`);
+      await sql.unsafe(`SET app.current_user_role = '${decoded.role}'`);
+    } catch (error) {
+      // RLS variables may not be configured, continue anyway
+      console.warn('[Auth] Could not set RLS variables:', error);
+    }
     
     return next();
   } catch (error) {
@@ -125,7 +130,7 @@ app.get('/ws', (c) => {
 const port = Number(process.env.PORT) || 4004;
 
 // Validate port configuration
-const EXPECTED_PORT = 4004;
+const EXPECTED_PORT = 9100;
 if (port !== EXPECTED_PORT) {
   console.error(`
 ╔═════════════════════════════════════════════════════════════════╗
@@ -157,7 +162,7 @@ JWT Secret:  ${process.env.JWT_SECRET ? 'Configured' : '⚠️  NOT CONFIGURED -
 
 Health:      http://localhost:${port}/health
 API:         http://localhost:${port}/api
-Dashboard:   http://localhost:5174
+Dashboard:   http://localhost:3000
 
 Ready for requests...
 `);

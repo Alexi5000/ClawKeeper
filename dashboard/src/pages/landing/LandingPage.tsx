@@ -302,7 +302,7 @@ export function LandingPage() {
     <div className="w-full relative bg-canvas text-foreground font-sans">
       {/* Fixed Backgrounds */}
       <div className="fixed inset-0 z-0 technical-grid pointer-events-none"></div>
-      <div ref={canvasRef} className="fixed inset-0 z-0 opacity-100"></div>
+      <div ref={canvasRef} className="fixed inset-0 z-0 opacity-100 pointer-events-none"></div>
 
       {/* Navigation */}
       <header className="fixed top-0 left-0 right-0 z-50 w-full px-6 py-5 md:px-12 flex justify-between items-center bg-canvas/90 backdrop-blur-md border-b border-border/50 transition-all duration-300">

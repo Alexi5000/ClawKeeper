@@ -1,6 +1,6 @@
 // API client for ClawKeeper dashboard
 
-const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:4004';
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:9100';
 
 class ApiClient {
   private get_headers(): HeadersInit {
@@ -201,6 +201,95 @@ class ApiClient {
   // Metrics
   async get_cash_flow(period: 'monthly' | 'quarterly' | 'yearly' = 'monthly', limit: number = 12) {
     return this.fetch_json(`/api/metrics/cash-flow?period=${period}&limit=${limit}`);
+  }
+
+  // Orchestration - Command Center
+  async create_orchestration_plan(command: string) {
+    return this.fetch_json<{ plan: OrchestrationPlan }>('/api/agents/orchestrate/plan', {
+      method: 'POST',
+      body: JSON.stringify({ command }),
+    });
+  }
+
+  async get_orchestration_plan(plan_id: string) {
+    return this.fetch_json<{ plan: OrchestrationPlan }>(`/api/agents/orchestrate/plan/${plan_id}`);
+  }
+
+  async execute_orchestration_plan(plan_id: string) {
+    return this.fetch_json<{ result: OrchestrationResult }>(`/api/agents/orchestrate/execute/${plan_id}`, {
+      method: 'POST',
+    });
+  }
+
+  async execute_orchestration_plan_stream(
+    plan_id: string, 
+    on_event: (event: OrchestrationEvent) => void
+  ): Promise<OrchestrationResult> {
+    const token = localStorage.getItem('clawkeeper_token');
+    
+    const response = await fetch(`${BASE_URL}/api/agents/orchestrate/execute/${plan_id}/stream`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(token ? { 'Authorization': `Bearer ${token}` } : {}),
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to start streaming execution');
+    }
+
+    const reader = response.body?.getReader();
+    if (!reader) {
+      throw new Error('No response body');
+    }
+
+    const decoder = new TextDecoder();
+    let buffer = '';
+    let result: OrchestrationResult | null = null;
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split('\n');
+      buffer = lines.pop() || '';
+
+      for (const line of lines) {
+        if (line.startsWith('event:')) {
+          // Skip event type line, data follows
+        } else if (line.startsWith('data:')) {
+          const data = line.slice(5).trim();
+          if (data) {
+            try {
+              const event = JSON.parse(data);
+              if (event.plan_id) {
+                on_event(event);
+              } else if (event.status) {
+                // This is the final result
+                result = event;
+              }
+            } catch (e) {
+              console.warn('Failed to parse SSE event:', data);
+            }
+          }
+        }
+      }
+    }
+
+    if (!result) {
+      throw new Error('No result received from stream');
+    }
+
+    return result;
+  }
+
+  async orchestrate(command: string, auto_execute: boolean = false) {
+    return this.fetch_json<{ plan: OrchestrationPlan; result?: OrchestrationResult }>('/api/agents/orchestrate', {
+      method: 'POST',
+      body: JSON.stringify({ command, auto_execute }),
+    });
   }
 }
 

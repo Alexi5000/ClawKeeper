@@ -11,6 +11,7 @@ import { CustomersPage } from './pages/customers/CustomersPage';
 import { VendorsPage } from './pages/vendors/VendorsPage';
 import { AgentsPage } from './pages/agents/AgentsPage';
 import { AgentConsolePage } from './pages/agents/AgentConsolePage';
+import { CommandCenterPage } from './pages/agents/CommandCenterPage';
 
 import { LandingPage } from './pages/landing/LandingPage';
 
@@ -44,9 +45,12 @@ function App() {
         <Route path="/customers" element={<ProtectedRoute><CustomersPage /></ProtectedRoute>} />
         <Route path="/vendors" element={<ProtectedRoute><VendorsPage /></ProtectedRoute>} />
         
-        {/* System */}
-        <Route path="/agents" element={<ProtectedRoute><AgentsPage /></ProtectedRoute>} />
+        {/* AI Agents */}
+        <Route path="/agents/command-center" element={<ProtectedRoute><CommandCenterPage /></ProtectedRoute>} />
         <Route path="/agents/console" element={<ProtectedRoute><AgentConsolePage /></ProtectedRoute>} />
+        <Route path="/agents" element={<ProtectedRoute><AgentsPage /></ProtectedRoute>} />
+        
+        {/* System */}
         <Route path="/settings" element={<ProtectedRoute><SettingsPage /></ProtectedRoute>} />
         
         {/* Catch-all redirect */}

@@ -27,21 +27,23 @@
     "demo:generate": "bun run src/demo/generate/index.ts",
     "demo:seed": "bun run src/demo/seed/index.ts",
     "demo:setup": "bun run demo:download && bun run demo:transform && bun run demo:generate && bun run demo:seed",
-    "demo:quick": "bun run demo:transform && bun run demo:generate && bun run demo:seed"
+    "demo:quick": "bun run demo:transform && bun run demo:generate && bun run demo:seed",
+    "setup:demo": "bun run scripts/setup-demo.ts",
+    "setup:full": "bun run scripts/full-setup.ts"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.39.0",
     "@hono/node-server": "^1.19.9",
     "@types/ws": "^8.18.1",
+    "bcryptjs": "^2.4.3",
     "dotenv": "^17.2.3",
     "hono": "^4.11.7",
+    "jsonwebtoken": "^9.0.2",
+    "openai": "^6.17.0",
     "opik": "^1.0.0",
     "postgres": "^3.4.5",
     "uuid": "^9.0.0",
     "ws": "^8.19.0",
-    "zod": "^3.22.0",
-    "bcryptjs": "^2.4.3",
-    "jsonwebtoken": "^9.0.2"
+    "zod": "^3.22.0"
   },
   "devDependencies": {
     "@types/bun": "latest",

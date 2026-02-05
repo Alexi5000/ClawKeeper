@@ -10,8 +10,8 @@
     --card-foreground: 0 0% 6.7%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 6.7%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 0 0% 6.7%; /* Obsidian #111111 */
+    --primary-foreground: 0 0% 100%; /* White */
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
     --muted: 210 40% 96.1%;
@@ -21,8 +21,8 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 0 0% 91.8%; /* #EAEAEA */
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
+    --input: 0 0% 91.8%; /* #EAEAEA */
+    --ring: 0 0% 6.7%; /* Obsidian */
     --radius: 0.5rem;
   }
 

@@ -1,10 +1,13 @@
 // file: src/api/routes/agents.ts
 // description: Agent status and management routes for ClawKeeper API
-// reference: src/agents/index.ts
+// reference: src/agents/index.ts, src/agents/orchestration_service.ts
 
 import { Hono } from 'hono';
+import { streamSSE } from 'hono/streaming';
 import type { Sql } from 'postgres';
 import { agent_runtime } from '../../agents/index';
+import { orchestration_service } from '../../agents/orchestration_service';
+import type { ExecutionEvent } from '../../agents/orchestration_service';
 import type { AppEnv } from '../../types/hono';
 import type { LedgerTaskStar } from '../../core/types';
 import { get_agent_templates } from '../../agents/task_templates';
@@ -174,6 +177,210 @@ export function agent_routes(sql: Sql<Record<string, unknown>>) {
     } catch (error: any) {
       console.error('Get templates error:', error);
       return c.json({ templates: [] });
+    }
+  });
+
+  // ============================================================================
+  // Orchestration Endpoints - Command Center
+  // ============================================================================
+
+  // Create execution plan from natural language command
+  app.post('/orchestrate/plan', async (c) => {
+    const tenant_id = c.get('tenant_id');
+    const user_id = c.get('user_id');
+    const user_role = c.get('user_role') || 'tenant_admin';
+
+    if (!tenant_id || !user_id) {
+      return c.json({ error: 'Unauthorized' }, 401);
+    }
+
+    try {
+      const { command } = await c.req.json();
+
+      if (!command || typeof command !== 'string' || command.trim().length === 0) {
+        return c.json({ error: 'Command is required' }, 400);
+      }
+
+      const plan = await orchestration_service.create_plan(command.trim(), {
+        tenant_id,
+        user_id,
+        user_role,
+      });
+
+      return c.json({ plan });
+    } catch (error: any) {
+      console.error('Create plan error:', error);
+      return c.json({ 
+        error: 'Failed to create execution plan',
+        message: error.message 
+      }, 500);
+    }
+  });
+
+  // Get execution plan
+  app.get('/orchestrate/plan/:plan_id', async (c) => {
+    const plan_id = c.req.param('plan_id');
+
+    const plan = orchestration_service.get_plan(plan_id);
+    if (!plan) {
+      return c.json({ error: 'Plan not found' }, 404);
+    }
+
+    return c.json({ plan });
+  });
+
+  // Execute plan (non-streaming)
+  app.post('/orchestrate/execute/:plan_id', async (c) => {
+    const plan_id = c.req.param('plan_id');
+    const tenant_id = c.get('tenant_id');
+    const user_id = c.get('user_id');
+    const user_role = c.get('user_role') || 'tenant_admin';
+
+    if (!tenant_id || !user_id) {
+      return c.json({ error: 'Unauthorized' }, 401);
+    }
+
+    try {
+      const result = await orchestration_service.execute_plan(plan_id, {
+        tenant_id,
+        user_id,
+        user_role,
+      });
+
+      // Log orchestration run to database
+      await sql`
+        INSERT INTO agent_runs (
+          tenant_id, agent_id, task_id, status, started_at, completed_at,
+          duration_ms, tokens_used, cost, error
+        ) VALUES (
+          ${tenant_id}, 'clawkeeper', ${plan_id},
+          ${result.status === 'completed' ? 'completed' : 'failed'},
+          ${new Date().toISOString()},
+          ${new Date().toISOString()},
+          ${result.total_duration_ms},
+          ${0},
+          ${0},
+          ${result.status === 'failed' ? 'Orchestration failed' : null}
+        )
+      `;
+
+      return c.json({ result });
+    } catch (error: any) {
+      console.error('Execute plan error:', error);
+      return c.json({ 
+        error: 'Failed to execute plan',
+        message: error.message 
+      }, 500);
+    }
+  });
+
+  // Execute plan with SSE streaming
+  app.post('/orchestrate/execute/:plan_id/stream', async (c) => {
+    const plan_id = c.req.param('plan_id');
+    const tenant_id = c.get('tenant_id');
+    const user_id = c.get('user_id');
+    const user_role = c.get('user_role') || 'tenant_admin';
+
+    if (!tenant_id || !user_id) {
+      return c.json({ error: 'Unauthorized' }, 401);
+    }
+
+    return streamSSE(c, async (stream) => {
+      let is_closed = false;
+
+      const event_handler = (event: ExecutionEvent) => {
+        if (is_closed) return;
+        
+        stream.writeSSE({
+          event: event.type,
+          data: JSON.stringify(event),
+        }).catch(() => {
+          is_closed = true;
+        });
+      };
+
+      try {
+        // Start execution with event streaming
+        const result = await orchestration_service.execute_plan(
+          plan_id,
+          { tenant_id, user_id, user_role },
+          event_handler
+        );
+
+        // Send final result
+        await stream.writeSSE({
+          event: 'result',
+          data: JSON.stringify(result),
+        });
+
+        // Log to database
+        await sql`
+          INSERT INTO agent_runs (
+            tenant_id, agent_id, task_id, status, started_at, completed_at,
+            duration_ms, tokens_used, cost, error
+          ) VALUES (
+            ${tenant_id}, 'clawkeeper', ${plan_id},
+            ${result.status === 'completed' ? 'completed' : 'failed'},
+            ${new Date().toISOString()},
+            ${new Date().toISOString()},
+            ${result.total_duration_ms},
+            ${0},
+            ${0},
+            ${result.status === 'failed' ? 'Orchestration failed' : null}
+          )
+        `;
+
+      } catch (error: any) {
+        await stream.writeSSE({
+          event: 'error',
+          data: JSON.stringify({ error: error.message }),
+        });
+      }
+    });
+  });
+
+  // Quick orchestrate - create plan and execute immediately
+  app.post('/orchestrate', async (c) => {
+    const tenant_id = c.get('tenant_id');
+    const user_id = c.get('user_id');
+    const user_role = c.get('user_role') || 'tenant_admin';
+
+    if (!tenant_id || !user_id) {
+      return c.json({ error: 'Unauthorized' }, 401);
+    }
+
+    try {
+      const { command, auto_execute = false } = await c.req.json();
+
+      if (!command || typeof command !== 'string' || command.trim().length === 0) {
+        return c.json({ error: 'Command is required' }, 400);
+      }
+
+      // Create plan
+      const plan = await orchestration_service.create_plan(command.trim(), {
+        tenant_id,
+        user_id,
+        user_role,
+      });
+
+      // If auto_execute, run immediately
+      if (auto_execute) {
+        const result = await orchestration_service.execute_plan(plan.plan_id, {
+          tenant_id,
+          user_id,
+          user_role,
+        });
+
+        return c.json({ plan, result });
+      }
+
+      return c.json({ plan });
+    } catch (error: any) {
+      console.error('Orchestrate error:', error);
+      return c.json({ 
+        error: 'Failed to orchestrate command',
+        message: error.message 
+      }, 500);
     }
   });
 

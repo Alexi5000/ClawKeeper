@@ -6,14 +6,16 @@ ClawKeeper is a production-grade multi-tenant AI agent system that automates boo
 
 ## 🌟 Features
 
+- **One-Prompt Deployment** - Deploy 110 AI agents with a single natural language command
 - **Autonomous Invoice Processing** - AI-powered OCR, validation, and categorization
 - **Bank Reconciliation** - Automatic transaction matching and discrepancy detection
 - **Financial Reporting** - P&L, Balance Sheet, Cash Flow, and custom reports
 - **Multi-Tenant Architecture** - Complete tenant isolation with RLS and RBAC
-- **White-Label Ready** - Customizable branding and theming per tenant
 - **110-Agent System** - CEO + 9 orchestrators + 100 specialized workers
+- **DeepSeek AI Integration** - Cost-efficient AI reasoning (10-100x cheaper than alternatives)
+- **Real-Time Execution Streaming** - Watch agents work in real-time with SSE
 - **Production Security** - Rate limiting, circuit breakers, audit trails
-- **Real-Time Dashboard** - React/Vite/Tailwind/Shadcn admin interface
+- **Modern Dashboard** - React/Vite/Tailwind/Shadcn with Command Center UI
 
 ## 🏗️ Architecture
 
@@ -38,15 +40,13 @@ ClawKeeper CEO
 
 - **Bun** >= 1.0.0
 - **PostgreSQL** >= 14
-- **Anthropic API Key** (for Claude)
+- **DeepSeek API Key** - Get from https://platform.deepseek.com/api_keys
 
-### Standard Ports (DO NOT CHANGE)
+### Default Ports
 
-- **API Server:** 4004
-- **Dashboard:** 5174  
+- **API Server:** 9100
+- **Dashboard:** 3000  
 - **PostgreSQL:** 5432
-
-These ports are validated on startup. Mismatches will cause connection failures.
 
 ### 1. Clone and Install
 
@@ -60,17 +60,23 @@ bun install
 
 ```bash
 cp .env.example .env
-# Edit .env with your credentials
+# Add your DeepSeek API key to .env
 ```
+
+**Required:** Set `DEEPSEEK_API_KEY` in `.env`
 
 ### 3. Setup Database
 
 ```bash
-# Create database
-createdb clawkeeper
+# Quick setup (creates schema + demo users)
+bun run setup:full
+```
 
-# Run migrations
+Or manually:
+```bash
+createdb clawkeeper
 bun run db:setup
+bun run setup:demo
 ```
 
 ### 4. Start Services
@@ -85,11 +91,20 @@ bun run dashboard:dev
 
 ### 5. Access Dashboard
 
-Open http://localhost:5174
+Open http://localhost:3000
 
 **Demo Login:**
 - Email: `admin@demo.com`
 - Password: `password123`
+
+### 6. Test Command Center
+
+1. Navigate to **Command Center** in the sidebar
+2. Enter: `"Generate monthly P&L report and reconcile all accounts"`
+3. Click **"Create Execution Plan"**
+4. Review the task decomposition
+5. Click **"Execute Plan"**
+6. Watch 110 AI agents collaborate in real-time!
 
 ## 📁 Project Structure
 
@@ -203,4 +218,4 @@ Contributions welcome! Please read the contributing guidelines before submitting
 
 ---
 
-Built with Bun, TypeScript, React, and Claude
+Built with Bun, TypeScript, React, and DeepSeek AI

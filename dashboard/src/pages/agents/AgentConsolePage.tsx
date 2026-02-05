@@ -2,10 +2,20 @@ import { useState, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
+import { Input } from '@/components/ui/Input';
+import { 
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/Select';
 import { TaskSubmissionForm } from '@/components/agents/TaskSubmissionForm';
 import { ExecutionStatus } from '@/components/agents/ExecutionStatus';
 import { ExecutionHistory } from '@/components/agents/ExecutionHistory';
-import { Bot, Zap, Loader2 } from 'lucide-react';
+import { Bot, Zap, Loader2, Search } from 'lucide-react';
 import { api } from '@/lib/api';
 
 interface Agent {
@@ -21,6 +31,7 @@ export function AgentConsolePage() {
   const [task_result, set_task_result] = useState<any>(null);
   const [is_executing, set_is_executing] = useState(false);
   const [execution_start_time, set_execution_start_time] = useState<number | null>(null);
+  const [agent_search, set_agent_search] = useState('');
 
   // Fetch agent status (shared query key with other components)
   const { data: agent_data, isLoading: agents_loading } = useQuery<any>({
@@ -61,6 +72,31 @@ export function AgentConsolePage() {
   const selected_agent = useMemo(
     () => all_agents.find((a) => a.id === selected_agent_id),
     [all_agents, selected_agent_id]
+  );
+
+  // Filter agents by search query
+  const filtered_ceo = useMemo(
+    () => (agent_data?.agents?.ceo || []).filter((a: Agent) =>
+      a.name.toLowerCase().includes(agent_search.toLowerCase()) ||
+      a.id.toLowerCase().includes(agent_search.toLowerCase())
+    ),
+    [agent_data?.agents?.ceo, agent_search]
+  );
+
+  const filtered_orchestrators = useMemo(
+    () => (agent_data?.agents?.orchestrators || []).filter((a: Agent) =>
+      a.name.toLowerCase().includes(agent_search.toLowerCase()) ||
+      a.id.toLowerCase().includes(agent_search.toLowerCase())
+    ),
+    [agent_data?.agents?.orchestrators, agent_search]
+  );
+
+  const filtered_workers = useMemo(
+    () => (agent_data?.agents?.workers || []).filter((a: Agent) =>
+      a.name.toLowerCase().includes(agent_search.toLowerCase()) ||
+      a.id.toLowerCase().includes(agent_search.toLowerCase())
+    ),
+    [agent_data?.agents?.workers, agent_search]
   );
 
   const handle_submit_task = async (task: {
@@ -113,38 +149,88 @@ export function AgentConsolePage() {
               <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
             </div>
           ) : (
-            <div>
-              <select
-                value={selected_agent_id}
-                onChange={(e) => set_selected_agent_id(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg border bg-background text-sm"
-              >
-                <optgroup label="CEO">
-                  {agent_data?.agents?.ceo?.map((agent: Agent) => (
-                    <option key={agent.id} value={agent.id}>
-                      {agent.name} - {agent.description}
-                    </option>
-                  ))}
-                </optgroup>
-                <optgroup label="Orchestrators">
-                  {agent_data?.agents?.orchestrators?.map((agent: Agent) => (
-                    <option key={agent.id} value={agent.id}>
-                      {agent.name} - {agent.description}
-                    </option>
-                  ))}
-                </optgroup>
-                <optgroup label="Workers">
-                  {agent_data?.agents?.workers?.slice(0, 20).map((agent: Agent) => (
-                    <option key={agent.id} value={agent.id}>
-                      {agent.name} - {agent.description}
-                    </option>
-                  ))}
-                </optgroup>
-              </select>
+            <div className="space-y-4">
+              {/* Search Input */}
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Input
+                  placeholder="Search agents..."
+                  value={agent_search}
+                  onChange={(e) => set_agent_search(e.target.value)}
+                  className="pl-10"
+                />
+              </div>
+
+              {/* Agent Selector */}
+              <Select value={selected_agent_id} onValueChange={set_selected_agent_id}>
+                <SelectTrigger className="w-full h-auto py-3">
+                  <SelectValue placeholder="Select an agent..." />
+                </SelectTrigger>
+                <SelectContent>
+                  {filtered_ceo.length > 0 && (
+                    <SelectGroup>
+                      <SelectLabel>CEO</SelectLabel>
+                      {filtered_ceo.map((agent: Agent) => (
+                        <SelectItem key={agent.id} value={agent.id}>
+                          <div className="flex items-center gap-2">
+                            <Bot className="h-4 w-4 text-purple-500" />
+                            <span>{agent.name}</span>
+                            <Badge variant="outline" className="ml-auto text-xs">
+                              {agent.status}
+                            </Badge>
+                          </div>
+                        </SelectItem>
+                      ))}
+                    </SelectGroup>
+                  )}
+
+                  {filtered_orchestrators.length > 0 && (
+                    <SelectGroup>
+                      <SelectLabel>Orchestrators</SelectLabel>
+                      {filtered_orchestrators.map((agent: Agent) => (
+                        <SelectItem key={agent.id} value={agent.id}>
+                          <div className="flex items-center gap-2">
+                            <Zap className="h-4 w-4 text-orange-500" />
+                            <span>{agent.name}</span>
+                            <Badge variant="outline" className="ml-auto text-xs">
+                              {agent.status}
+                            </Badge>
+                          </div>
+                        </SelectItem>
+                      ))}
+                    </SelectGroup>
+                  )}
+
+                  {filtered_workers.length > 0 && (
+                    <SelectGroup>
+                      <SelectLabel>Workers ({filtered_workers.length})</SelectLabel>
+                      {filtered_workers.map((agent: Agent) => (
+                        <SelectItem key={agent.id} value={agent.id}>
+                          <div className="flex items-center gap-2">
+                            <Bot className="h-4 w-4 text-blue-500" />
+                            <span className="text-sm">{agent.name}</span>
+                            <Badge variant="outline" className="ml-auto text-xs">
+                              {agent.status}
+                            </Badge>
+                          </div>
+                        </SelectItem>
+                      ))}
+                    </SelectGroup>
+                  )}
+
+                  {filtered_ceo.length === 0 && 
+                   filtered_orchestrators.length === 0 && 
+                   filtered_workers.length === 0 && (
+                    <div className="p-4 text-center text-sm text-muted-foreground">
+                      No agents found matching "{agent_search}"
+                    </div>
+                  )}
+                </SelectContent>
+              </Select>
 
               {/* Selected Agent Info */}
               {selected_agent && (
-                <div className="mt-4 p-4 rounded-lg border bg-muted/30">
+                <div className="p-4 rounded-lg border bg-muted/30">
                   <div className="flex items-start gap-3">
                     <div className="p-2 rounded-lg bg-primary/10">
                       <Bot className="h-5 w-5 text-primary" />

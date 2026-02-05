@@ -11,7 +11,7 @@ const STORAGE_KEY = 'clawkeeper-theme';
 
 export function use_theme() {
   const { tenant, update_settings } = use_tenant_store();
-  const current_theme = tenant?.settings?.theme || 'dark';
+  const current_theme = tenant?.settings?.theme || 'light';
   const initialized = useRef(false);
 
   const set_theme = (theme: Theme) => {

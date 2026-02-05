@@ -78,11 +78,13 @@ export function ReconciliationPage() {
   const [matched_ids, set_matched_ids] = useState<string[]>([]);
   const [reconciling, set_reconciling] = useState(false);
 
-  const { data: accounts = mock_accounts } = useQuery({
+  const { data: accounts_data } = useQuery({
     queryKey: ['accounts'],
-    queryFn: () => api.get_accounts() as Promise<typeof mock_accounts>,
-    placeholderData: mock_accounts,
+    queryFn: () => api.get_accounts(),
+    placeholderData: { accounts: mock_accounts },
   });
+  
+  const accounts = Array.isArray(accounts_data) ? accounts_data : (accounts_data?.accounts || mock_accounts);
 
   // Filter suggested matches based on search
   const filtered_matches = useMemo(() => {

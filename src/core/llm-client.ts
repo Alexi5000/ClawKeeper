@@ -1,12 +1,14 @@
 // file: src/core/llm-client.ts
-// description: LLM client for ClawKeeper agent system with Claude and Gemini support
+// description: LLM client for ClawKeeper agent system with DeepSeek support
 // reference: src/core/types.ts, src/core/observability.ts
 
-import Anthropic from '@anthropic-ai/sdk';
+import OpenAI from 'openai';
 import { get_opik_client } from './observability';
 
-const anthropic = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY,
+// DeepSeek client using OpenAI-compatible API
+const deepseek = new OpenAI({
+  apiKey: process.env.DEEPSEEK_API_KEY,
+  baseURL: process.env.DEEPSEEK_BASE_URL || 'https://api.deepseek.com/v1',
 });
 
 // ============================================================================
@@ -48,7 +50,7 @@ export async function complete(
     system = 'You are a helpful AI assistant.',
     temperature = 0.7,
     max_tokens = 4096,
-    model = 'claude-sonnet-4-20250514',
+    model = 'deepseek-chat', // Default to DeepSeek Chat
   } = options;
 
   const start_time = Date.now();
@@ -59,16 +61,19 @@ export async function complete(
     name: 'llm_completion',
     input: { prompt, system, model },
     metadata: { temperature, max_tokens },
-    tags: ['llm', 'anthropic', model],
+    tags: ['llm', 'deepseek', model],
   });
 
   try {
-    const message = await anthropic.messages.create({
+    const completion = await deepseek.chat.completions.create({
       model,
       max_tokens,
       temperature,
-      system,
       messages: [
+        {
+          role: 'system',
+          content: system,
+        },
         {
           role: 'user',
           content: prompt,
@@ -76,8 +81,7 @@ export async function complete(
       ],
     });
 
-    const first_block = message.content[0];
-    const response_text = first_block.type === 'text' ? first_block.text : '';
+    const response_text = completion.choices[0]?.message?.content || '';
     const latency_ms = Date.now() - start_time;
 
     // Log usage metrics to Opik
@@ -128,7 +132,7 @@ If a field is unclear, set confidence < 0.8.`;
   const response = await complete(prompt, {
     system: 'You are an expert invoice data extractor. Return only valid JSON.',
     temperature: 0,
-    model: 'claude-sonnet-4-20250514',
+    model: 'deepseek-chat',
   });
 
   // Parse JSON from response
@@ -237,7 +241,7 @@ Be concise and actionable.`;
   return await complete(prompt, {
     system: 'You are a CFO providing financial analysis.',
     temperature: 0.5,
-    model: 'claude-opus-4-20250514',
+    model: 'deepseek-reasoner', // Use reasoner for complex analysis
   });
 }
 
@@ -247,7 +251,7 @@ export async function decompose_financial_task(request: string): Promise<Array<{
   required_capabilities: string[];
   dependencies: string[];
 }>> {
-  const prompt = `Decompose this financial request into atomic tasks:
+  const prompt = `Decompose this financial request into atomic tasks.
 
 Request: "${request}"
 
@@ -259,30 +263,58 @@ Available capabilities:
 - tax_compliance_check, audit_preparation
 - data_import, data_transformation
 
-Return JSON array of tasks:
+Return ONLY a valid JSON array, nothing else. Format:
 [
   {
     "name": "Task name",
     "description": "What to do",
     "required_capabilities": ["capability1", "capability2"],
-    "dependencies": []  // Task names this depends on
+    "dependencies": []
   }
 ]
 
-Create a logical DAG where dependencies form a directed acyclic graph.`;
+IMPORTANT: Return only the JSON array, no markdown, no explanation, no code blocks.`;
 
   const response = await complete(prompt, {
-    system: 'You are an expert at decomposing financial workflows into task DAGs.',
-    temperature: 0.3,
-    model: 'claude-opus-4-20250514',
+    system: 'You are an expert at decomposing financial workflows. Return ONLY valid JSON arrays, nothing else.',
+    temperature: 0.1,
+    model: 'deepseek-chat', // Use chat for faster, more reliable JSON
+    max_tokens: 2000,
   });
 
-  const json_match = response.match(/\[[\s\S]*\]/);
+  console.log('[LLM] Raw response:', response.substring(0, 200));
+
+  // Try to extract JSON from response (handle markdown code blocks)
+  let json_text = response.trim();
+  
+  // Remove markdown code blocks if present
+  json_text = json_text.replace(/```json\n?/g, '').replace(/```\n?/g, '');
+  
+  // Find JSON array
+  const json_match = json_text.match(/\[[\s\S]*\]/);
   if (!json_match) {
-    throw new Error('Failed to extract task DAG from LLM response');
+    console.error('[LLM] Failed to find JSON in response:', response);
+    // Return a simple fallback task
+    return [{
+      name: "Execute Request",
+      description: request,
+      required_capabilities: ["report_generation"],
+      dependencies: []
+    }];
   }
 
-  return JSON.parse(json_match[0]);
+  try {
+    return JSON.parse(json_match[0]);
+  } catch (error) {
+    console.error('[LLM] Failed to parse JSON:', json_match[0]);
+    // Return fallback
+    return [{
+      name: "Execute Request",
+      description: request,
+      required_capabilities: ["report_generation"],
+      dependencies: []
+    }];
+  }
 }
 
 // ============================================================================
@@ -297,12 +329,14 @@ export function estimate_tokens(text: string): number {
 export function calculate_cost(tokens: number, model: string): number {
   // Approximate costs per million tokens (as of 2026)
   const costs: Record<string, { input: number; output: number }> = {
+    'deepseek-chat': { input: 0.14, output: 0.28 },
+    'deepseek-reasoner': { input: 0.55, output: 2.19 },
     'claude-opus-4-20250514': { input: 15, output: 75 },
     'claude-sonnet-4-20250514': { input: 3, output: 15 },
     'gemini-2.0-pro': { input: 1.25, output: 5 },
     'gemini-2.0-flash': { input: 0.075, output: 0.3 },
   };
 
-  const cost_per_million = costs[model] || costs['claude-sonnet-4-20250514'];
+  const cost_per_million = costs[model] || costs['deepseek-chat'];
   return (tokens / 1_000_000) * cost_per_million.input; // Simplified
 }

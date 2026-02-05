@@ -20,7 +20,7 @@ const query_client = new QueryClient({
 // Initialize theme before first render to prevent flash
 function init_theme() {
   const stored_theme = localStorage.getItem('clawkeeper-theme');
-  const theme = stored_theme || 'dark';
+  const theme = stored_theme || 'light'; // Default to light mode for better login page visibility
   
   if (theme === 'dark') {
     document.documentElement.classList.add('dark');

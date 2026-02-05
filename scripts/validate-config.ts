@@ -5,8 +5,8 @@
 import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
 
-const EXPECTED_PORT = 4004;
-const EXPECTED_DASHBOARD_PORT = 5174;
+const EXPECTED_PORT = 9100;
+const EXPECTED_DASHBOARD_PORT = 3000;
 
 interface ValidationResult {
   valid: boolean;

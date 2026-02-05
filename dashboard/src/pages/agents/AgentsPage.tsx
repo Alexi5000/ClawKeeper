@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
@@ -14,6 +14,8 @@ import {
   AlertCircle,
   CheckCircle2,
   Loader2,
+  Play,
+  Square,
 } from 'lucide-react';
 import { api } from '@/lib/api';
 import { cn } from '@/lib/utils';
@@ -44,12 +46,30 @@ export function AgentsPage() {
   const [expanded_sections, set_expanded_sections] = useState<Set<string>>(
     new Set(['ceo', 'orchestrators'])
   );
+  
+  const query_client = useQueryClient();
 
   const { data: agent_data, isLoading } = useQuery<any>({
     queryKey: ['agents-status'],
     queryFn: async () => await api.get_agent_status(),
     staleTime: 30000,
     refetchInterval: 30000, // Refresh every 30 seconds
+  });
+
+  // Start agent mutation
+  const start_agent_mutation = useMutation({
+    mutationFn: async (agent_id: string) => await api.start_agent(agent_id),
+    onSuccess: () => {
+      query_client.invalidateQueries({ queryKey: ['agents-status'] });
+    },
+  });
+
+  // Stop agent mutation
+  const stop_agent_mutation = useMutation({
+    mutationFn: async (agent_id: string) => await api.stop_agent(agent_id),
+    onSuccess: () => {
+      query_client.invalidateQueries({ queryKey: ['agents-status'] });
+    },
   });
 
   // Extract data (safe for undefined)
@@ -211,7 +231,14 @@ export function AgentsPage() {
           {expanded_sections.has('ceo') && ceo_agents.length > 0 && (
             <CardContent>
               {ceo_agents.map((agent: any) => (
-                <AgentCard key={agent.id} agent={agent} level={0} />
+                <AgentCard 
+                  key={agent.id} 
+                  agent={agent} 
+                  level={0}
+                  on_start={() => start_agent_mutation.mutate(agent.id)}
+                  on_stop={() => stop_agent_mutation.mutate(agent.id)}
+                  is_loading={start_agent_mutation.isPending || stop_agent_mutation.isPending}
+                />
               ))}
             </CardContent>
           )}
@@ -242,13 +269,26 @@ export function AgentsPage() {
             <CardContent className="space-y-2">
               {filtered_orchestrators.map((orchestrator: any) => (
                 <div key={orchestrator.id} className="space-y-2">
-                  <AgentCard agent={orchestrator} level={0} />
+                  <AgentCard 
+                    agent={orchestrator} 
+                    level={0}
+                    on_start={() => start_agent_mutation.mutate(orchestrator.id)}
+                    on_stop={() => stop_agent_mutation.mutate(orchestrator.id)}
+                    is_loading={start_agent_mutation.isPending || stop_agent_mutation.isPending}
+                  />
                   
                   {/* Workers under this orchestrator */}
                   {filtered_workers[orchestrator.id]?.length > 0 && expanded_sections.has(orchestrator.id) && (
                     <div className="ml-8 space-y-2 border-l-2 border-muted pl-4">
                       {filtered_workers[orchestrator.id].map((worker: any) => (
-                        <AgentCard key={worker.id} agent={worker} level={1} />
+                        <AgentCard 
+                          key={worker.id} 
+                          agent={worker} 
+                          level={1}
+                          on_start={() => start_agent_mutation.mutate(worker.id)}
+                          on_stop={() => stop_agent_mutation.mutate(worker.id)}
+                          is_loading={start_agent_mutation.isPending || stop_agent_mutation.isPending}
+                        />
                       ))}
                     </div>
                   )}
@@ -287,9 +327,22 @@ export function AgentsPage() {
   );
 }
 
-function AgentCard({ agent, level }: { agent: any; level: number }) {
+function AgentCard({ 
+  agent, 
+  level, 
+  on_start, 
+  on_stop, 
+  is_loading 
+}: { 
+  agent: any; 
+  level: number;
+  on_start: () => void;
+  on_stop: () => void;
+  is_loading: boolean;
+}) {
   const StatusIcon = STATUS_ICONS[agent.status as keyof typeof STATUS_ICONS] || Activity;
   const is_busy = agent.status === 'busy';
+  const is_offline = agent.status === 'offline';
 
   return (
     <div className={cn(
@@ -318,6 +371,39 @@ function AgentCard({ agent, level }: { agent: any; level: number }) {
         </Badge>
         {agent.capabilities && agent.capabilities.length > 0 && (
           <Badge variant="outline">{agent.capabilities.length} skills</Badge>
+        )}
+        {is_offline ? (
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={(e) => {
+              e.stopPropagation();
+              on_start();
+            }}
+            disabled={is_loading}
+          >
+            {is_loading ? (
+              <Loader2 className="h-4 w-4 animate-spin" />
+            ) : (
+              <Play className="h-4 w-4" />
+            )}
+          </Button>
+        ) : (
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={(e) => {
+              e.stopPropagation();
+              on_stop();
+            }}
+            disabled={is_loading}
+          >
+            {is_loading ? (
+              <Loader2 className="h-4 w-4 animate-spin" />
+            ) : (
+              <Square className="h-4 w-4" />
+            )}
+          </Button>
         )}
       </div>
     </div>
