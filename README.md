@@ -1,3 +1,6 @@
+
+<img width="1592" height="729" alt="Screenshot 2026-02-04 225443" src="https://github.com/user-attachments/assets/12997761-c1f3-422b-bce5-3250b57cd39c" />
+
 # ClawKeeper
 
 **Autonomous AI Bookkeeping for Small and Medium Businesses**
