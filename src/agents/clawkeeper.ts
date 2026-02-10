@@ -3,8 +3,9 @@
 // reference: src/agents/base.ts, src/core/llm-client.ts
 
 import { BaseAgent, type AgentConfig } from './base';
-import type { LedgerTaskStar, LedgerAgentId } from '../core/types';
+import type { LedgerFlowNode, LedgerAgentId } from '../core/types';
 import * as llm from '../core/llm-client';
+import { agent_runtime } from './index';
 
 const CLAWKEEPER_CONFIG: AgentConfig = {
   id: 'clawkeeper',
@@ -24,8 +25,8 @@ const CLAWKEEPER_CONFIG: AgentConfig = {
   ],
 };
 
-interface ConstellationDAG {
-  tasks: LedgerTaskStar[];
+interface OrcaFlowDAG {
+  tasks: LedgerFlowNode[];
   edges: Array<{ from: string; to: string }>;
 }
 
@@ -36,7 +37,7 @@ export class ClawKeeperAgent extends BaseAgent {
     super({ ...CLAWKEEPER_CONFIG, ...config });
   }
 
-  protected async execute(task: LedgerTaskStar): Promise<Record<string, unknown>> {
+  protected async execute(task: LedgerFlowNode): Promise<Record<string, unknown>> {
     const { name, input, required_capabilities } = task;
     const tenant = this.ensure_tenant_context();
 
@@ -46,7 +47,7 @@ export class ClawKeeperAgent extends BaseAgent {
     // Route based on request type
     const request_text = String(input.request || input.description || "");
 
-    // Decompose into constellation DAG
+    // Decompose into orcaflow DAG
     if (this.is_complex_request(request_text)) {
       return await this.orchestrate_workflow(request_text, task);
     }
@@ -71,15 +72,15 @@ export class ClawKeeperAgent extends BaseAgent {
 
   private async orchestrate_workflow(
     request: string,
-    task: LedgerTaskStar
+    task: LedgerFlowNode
   ): Promise<Record<string, unknown>> {
     console.log('[ClawKeeper] Decomposing complex request into DAG...');
 
     // Use LLM to decompose request
     const tasks = await llm.decompose_financial_task(request);
 
-    // Build constellation DAG
-    const constellation: ConstellationDAG = {
+    // Build orcaflow DAG
+    const orcaflow: OrcaFlowDAG = {
       tasks: tasks.map(t => ({
         ...task,
         id: uuid(),
@@ -95,20 +96,20 @@ export class ClawKeeperAgent extends BaseAgent {
 
     // Execute DAG (simplified - execute sequentially for now)
     const results: Record<string, unknown>[] = [];
-    for (const subtask of constellation.tasks) {
+    for (const subtask of orcaflow.tasks) {
       const result = await this.route_to_orchestrator(subtask);
       results.push(result);
     }
 
     return {
-      constellation_id: uuid(),
-      tasks_completed: constellation.tasks.length,
+      orcaflow_id: uuid(),
+      tasks_completed: orcaflow.tasks.length,
       results,
       summary: 'Workflow completed successfully',
     };
   }
 
-  private async route_to_orchestrator(task: LedgerTaskStar): Promise<Record<string, unknown>> {
+  private async route_to_orchestrator(task: LedgerFlowNode): Promise<Record<string, unknown>> {
     const capabilities = task.required_capabilities;
 
     // Route based on primary capability
@@ -150,21 +151,66 @@ export class ClawKeeperAgent extends BaseAgent {
 
   private async delegate_to(
     orchestrator_id: LedgerAgentId,
-    task: LedgerTaskStar
+    task: LedgerFlowNode,
+    retries: number = 0,
+    maxRetries: number = 2
   ): Promise<Record<string, unknown>> {
-    console.log(`[ClawKeeper] Delegating to ${orchestrator_id}`);
+    console.log(`[ClawKeeper] Delegating to ${orchestrator_id} (attempt ${retries + 1}/${maxRetries + 1})`);
 
-    // In full implementation, this would call the actual orchestrator agent
-    // For now, return simulated result
-    return {
-      delegated_to: orchestrator_id,
-      task_id: task.id,
-      status: 'delegated',
-      message: `Task delegated to ${orchestrator_id}`,
-    };
+    try {
+      // Get orchestrator agent from runtime
+      const orchestrator = await agent_runtime.get_agent(orchestrator_id);
+      
+      // Execute task via orchestrator
+      const ledger_task = {
+        id: task.id,
+        description: task.description,
+        input: task.input,
+        required_capabilities: task.required_capabilities,
+      };
+      
+      const result = await orchestrator.execute_task(ledger_task, {
+        tenant_id: 'default',  // Would come from context in real system
+      });
+
+      // Validate result (orchestrator-worker pattern)
+      if (!result || result.error) {
+        throw new Error(result?.error || 'Orchestrator returned empty result');
+      }
+
+      console.log(`[ClawKeeper] Successfully delegated to ${orchestrator_id}`);
+      
+      return {
+        delegated_to: orchestrator_id,
+        task_id: task.id,
+        status: 'completed',
+        result: result.result || result,
+        success: true,
+      };
+
+    } catch (error) {
+      const errorMsg = error instanceof Error ? error.message : String(error);
+      console.error(`[ClawKeeper] Delegation to ${orchestrator_id} failed:`, errorMsg);
+
+      // Retry logic (orchestrator-worker pattern)
+      if (retries < maxRetries) {
+        console.log(`[ClawKeeper] Retrying delegation to ${orchestrator_id}...`);
+        return await this.delegate_to(orchestrator_id, task, retries + 1, maxRetries);
+      }
+
+      // Failed after retries
+      return {
+        delegated_to: orchestrator_id,
+        task_id: task.id,
+        status: 'failed',
+        error: errorMsg,
+        success: false,
+        retries,
+      };
+    }
   }
 
-  private async execute_directly(task: LedgerTaskStar): Promise<Record<string, unknown>> {
+  private async execute_directly(task: LedgerFlowNode): Promise<Record<string, unknown>> {
     // Handle simple tasks directly
     const request = String(task.input.request || task.description);
 
@@ -208,7 +254,7 @@ if (import.meta.main) {
     user_role: 'tenant_admin',
   };
 
-  const test_task: LedgerTaskStar = {
+  const test_task: LedgerFlowNode = {
     id: uuid(),
     tenant_id: test_context.tenant_id,
     name: 'Process Invoice',

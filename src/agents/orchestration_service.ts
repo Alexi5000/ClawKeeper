@@ -180,41 +180,52 @@ class OrchestrationService {
     let tasks_failed = 0;
 
     try {
-      // Execute tasks in dependency order (topological sort)
+      // Execute tasks in dependency order with parallelization
       const execution_order = this.topological_sort(plan.tasks, plan.edges);
+      
+      // Group tasks by depth (for parallel execution)
+      const task_depths = this.calculate_task_depths(plan.tasks, plan.edges);
+      const max_depth = Math.max(...Object.values(task_depths));
+      
+      // Execute tasks level by level (parallel within level, sequential across levels)
+      for (let depth = 0; depth <= max_depth; depth++) {
+        const tasks_at_depth = execution_order.filter(t => task_depths[t.task_id] === depth);
+        
+        if (tasks_at_depth.length === 0) continue;
 
-      for (const task of execution_order) {
-        // Check if dependencies succeeded
-        const deps_failed = task.dependencies.some(dep_id =>
-          plan.tasks.find(t => t.task_id === dep_id)?.status === 'failed'
-        );
+        // Execute independent tasks at this depth in parallel
+        const task_promises = tasks_at_depth.map(async (task) => {
+          // Check if dependencies succeeded
+          const deps_failed = task.dependencies.some(dep_id =>
+            plan.tasks.find(t => t.task_id === dep_id)?.status === 'failed'
+          );
 
-        if (deps_failed) {
-          task.status = 'skipped';
+          if (deps_failed) {
+            task.status = 'skipped';
+            this.emit_event(event_callback, {
+              type: 'task_skipped',
+              plan_id,
+              task_id: task.task_id,
+              reason: 'Dependency failed',
+              timestamp: new Date().toISOString(),
+            });
+            return;
+          }
+
+          // Execute task
+          task.status = 'running';
+          task.started_at = new Date().toISOString();
+
           this.emit_event(event_callback, {
-            type: 'task_skipped',
+            type: 'task_started',
             plan_id,
             task_id: task.task_id,
-            reason: 'Dependency failed',
+            agent_id: task.assigned_agent,
+            agent_name: task.agent_name,
             timestamp: new Date().toISOString(),
           });
-          continue;
-        }
 
-        // Execute task
-        task.status = 'running';
-        task.started_at = new Date().toISOString();
-
-        this.emit_event(event_callback, {
-          type: 'task_started',
-          plan_id,
-          task_id: task.task_id,
-          agent_id: task.assigned_agent,
-          agent_name: task.agent_name,
-          timestamp: new Date().toISOString(),
-        });
-
-        const task_start = Date.now();
+          const task_start = Date.now();
 
         try {
           // Get agent and execute
@@ -283,36 +294,40 @@ class OrchestrationService {
               timestamp: new Date().toISOString(),
             });
           }
-        } catch (error) {
-          const task_duration = Date.now() - task_start;
-          const error_msg = error instanceof Error ? error.message : String(error);
-          
-          task.status = 'failed';
-          task.completed_at = new Date().toISOString();
-          task.duration_ms = task_duration;
-          task.error = error_msg;
+          } catch (error) {
+            const task_duration = Date.now() - task_start;
+            const error_msg = error instanceof Error ? error.message : String(error);
+            
+            task.status = 'failed';
+            task.completed_at = new Date().toISOString();
+            task.duration_ms = task_duration;
+            task.error = error_msg;
 
-          tasks_failed++;
+            tasks_failed++;
 
-          results.push({
-            task_id: task.task_id,
-            agent_id: task.assigned_agent,
-            success: false,
-            output: {},
-            error: error_msg,
-            duration_ms: task_duration,
-          });
+            results.push({
+              task_id: task.task_id,
+              agent_id: task.assigned_agent,
+              success: false,
+              output: {},
+              error: error_msg,
+              duration_ms: task_duration,
+            });
 
-          this.emit_event(event_callback, {
-            type: 'task_failed',
-            plan_id,
-            task_id: task.task_id,
-            agent_id: task.assigned_agent,
-            error: error_msg,
-            duration_ms: task_duration,
-            timestamp: new Date().toISOString(),
-          });
-        }
+            this.emit_event(event_callback, {
+              type: 'task_failed',
+              plan_id,
+              task_id: task.task_id,
+              agent_id: task.assigned_agent,
+              error: error_msg,
+              duration_ms: task_duration,
+              timestamp: new Date().toISOString(),
+            });
+          }
+        });
+
+        // Wait for all tasks at this depth to complete (parallel execution)
+        await Promise.all(task_promises);
       }
 
       const total_duration = Date.now() - start_time;
@@ -452,6 +467,63 @@ class OrchestrationService {
     }
 
     return sorted;
+  }
+
+  /**
+   * Calculate task depths for parallel execution
+   * Tasks at the same depth can be executed in parallel
+   */
+  private calculate_task_depths(
+    tasks: OrchestrationTask[],
+    edges: Array<{ from: string; to: string }>
+  ): Record<string, number> {
+    const depths: Record<string, number> = {};
+    const adj_list = new Map<string, string[]>();
+
+    // Initialize
+    for (const task of tasks) {
+      depths[task.task_id] = 0;
+      adj_list.set(task.task_id, []);
+    }
+
+    // Build adjacency list (dependencies)
+    for (const edge of edges) {
+      adj_list.get(edge.from)?.push(edge.to);
+    }
+
+    // Calculate depths using BFS
+    const visited = new Set<string>();
+    const calculate_depth = (task_id: string): number => {
+      if (visited.has(task_id)) {
+        return depths[task_id];
+      }
+
+      visited.add(task_id);
+
+      // Find task's dependencies
+      const task = tasks.find(t => t.task_id === task_id);
+      if (!task || task.dependencies.length === 0) {
+        depths[task_id] = 0;
+        return 0;
+      }
+
+      // Depth is 1 + max depth of dependencies
+      let max_dep_depth = -1;
+      for (const dep_id of task.dependencies) {
+        const dep_depth = calculate_depth(dep_id);
+        max_dep_depth = Math.max(max_dep_depth, dep_depth);
+      }
+
+      depths[task_id] = max_dep_depth + 1;
+      return depths[task_id];
+    };
+
+    // Calculate depth for all tasks
+    for (const task of tasks) {
+      calculate_depth(task.task_id);
+    }
+
+    return depths;
   }
 
   /**
