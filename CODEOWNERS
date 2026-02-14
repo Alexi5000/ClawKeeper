@@ -1,0 +1,34 @@
+# Code owners for Clawkeeper repository
+# Review required from these teams/individuals for changes
+
+# Default owners for everything
+* @techtide/core
+
+# Agent definitions require agent team review
+/agents/ @techtide/agents
+
+# Core financial agents require finance team review
+/src/agents/cfo/ @techtide/finance
+/src/agents/ap_lead/ @techtide/finance
+/src/agents/ar_lead/ @techtide/finance
+
+# Database and schema changes require DBA approval
+/db/ @techtide/database-admins
+/src/db/ @techtide/database-admins
+
+# Integration code requires integration team review
+/src/integrations/ @techtide/integrations
+
+# Security and guardrails require security review
+/src/guardrails/ @techtide/security
+
+# Configuration and deployment
+/config/ @techtide/devops
+/scripts/ @techtide/devops
+
+# Documentation
+*.md @techtide/tech-writers
+
+# Security-sensitive files
+SECURITY.md @techtide/security
+/src/guardrails/validators.ts @techtide/security

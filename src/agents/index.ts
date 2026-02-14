@@ -1,6 +1,6 @@
 // file: src/agents/index.ts
 // description: Agent factory and registry for ClawKeeper system
-// reference: src/agents/base.ts, Constellation pattern
+// reference: src/agents/base.ts, orcaflow pattern
 
 import { BaseAgent } from './base';
 import { ClawKeeperAgent } from './clawkeeper';

@@ -1,0 +1,17 @@
+node_modules
+.env
+.env.local
+dist
+build
+*.log
+.DS_Store
+.git
+.gitignore
+.vscode
+.idea
+*.swp
+coverage
+*.tmp
+__pycache__
+*.pyc
+dashboard/node_modules

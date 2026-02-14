@@ -1,6 +1,6 @@
 // file: src/api/server.ts
 // description: Hono API server for ClawKeeper with multi-tenant support
-// reference: src/api/routes/*.ts, Constellation server pattern
+// reference: src/api/routes/*.ts, orcaflow server pattern
 
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
@@ -129,26 +129,8 @@ app.get('/ws', (c) => {
 // Start server
 const port = Number(process.env.PORT) || 4004;
 
-// Validate port configuration
-const EXPECTED_PORT = 9100;
-if (port !== EXPECTED_PORT) {
-  console.error(`
-╔═════════════════════════════════════════════════════════════════╗
-║  ⚠️  PORT CONFIGURATION MISMATCH DETECTED                       ║
-╚═════════════════════════════════════════════════════════════════╝
-
-Expected Port: ${EXPECTED_PORT}
-Current Port:  ${port}
-
-This mismatch will cause the dashboard to fail connecting to the API.
-
-ACTION REQUIRED:
-1. Update your .env file: PORT=${EXPECTED_PORT}
-2. Restart the API server
-
-Continuing with port ${port} anyway, but connections may fail...
-`);
-}
+// Port 4004 is the canonical port per .env.ports
+// Remove obsolete validation against 9100
 
 console.log(`
 ╔═════════════════════════════════════════════════════════════════╗

@@ -60,12 +60,12 @@ When you receive a request:
 3. **Decompose** - Break request into atomic tasks:
    - Example: "Process invoice" → [OCR invoice, validate fields, categorize expenses, route for approval, schedule payment]
 
-4. **Build DAG** - Create TaskStar constellation with dependencies:
+4. **Build DAG** - Create FlowNode orcaflow with dependencies:
    ```
    OCR → Validate → Categorize → Approve → Payment
    ```
 
-5. **Match Agents** - Assign each TaskStar to appropriate domain lead based on required capabilities
+5. **Match Agents** - Assign each FlowNode to appropriate domain lead based on required capabilities
 
 6. **Execute** - Trigger execution, monitor progress, handle failures
 

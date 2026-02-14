@@ -1,6 +1,6 @@
 // file: src/core/types.ts
 // description: Core type definitions for ClawKeeper Ledger domain
-// reference: Extends Constellation types for financial workflows
+// reference: Extends orcaflow types for financial workflows
 
 import { z } from 'zod';
 
@@ -267,7 +267,7 @@ export const AuditEntry = z.object({
 export type AuditEntry = z.infer<typeof AuditEntry>;
 
 // ============================================================================
-// Agent Types (extends Constellation)
+// Agent Types (extends orcaflow)
 // ============================================================================
 
 export const LedgerAgentId = z.enum([
@@ -340,7 +340,7 @@ export const AgentProfile = z.object({
 export type AgentProfile = z.infer<typeof AgentProfile>;
 
 // ============================================================================
-// Task Types (extends Constellation)
+// Task Types (extends orcaflow)
 // ============================================================================
 
 export const TaskStatus = z.enum([
@@ -357,7 +357,7 @@ export type TaskStatus = z.infer<typeof TaskStatus>;
 export const TaskPriority = z.enum(['low', 'normal', 'high', 'critical']);
 export type TaskPriority = z.infer<typeof TaskPriority>;
 
-export const LedgerTaskStar = z.object({
+export const LedgerFlowNode = z.object({
   id: z.string().uuid(),
   tenant_id: TenantId,
   name: z.string(),
@@ -377,7 +377,7 @@ export const LedgerTaskStar = z.object({
   retry_count: z.number().default(0),
   max_retries: z.number().default(3),
 });
-export type LedgerTaskStar = z.infer<typeof LedgerTaskStar>;
+export type LedgerFlowNode = z.infer<typeof LedgerFlowNode>;
 
 // ============================================================================
 // Agent Run Types (for tracking)

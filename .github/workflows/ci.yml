@@ -1,0 +1,82 @@
+name: CI
+
+on:
+  push:
+    branches: ['main', 'develop', 'feature/**']
+  pull_request:
+    branches: ['main', 'develop']
+
+jobs:
+  lint-and-test:
+    name: Lint and Test
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+      
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+      
+      - name: Type check
+        run: bun run typecheck
+      
+      - name: Run tests
+        run: bun test
+  
+  database-security-check:
+    name: Database RLS Validation
+    runs-on: ubuntu-latest
+    
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: clawkeeper_test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Apply schema with RLS
+        env:
+          DATABASE_URL: postgresql://test:test@localhost:5432/clawkeeper_test
+        run: |
+          cat db/schema.sql | psql $DATABASE_URL
+          cat db/rls.sql | psql $DATABASE_URL
+          cat db/rbac.sql | psql $DATABASE_URL
+
+  security-scan:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+      
+      - name: Upload Trivy results
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: 'trivy-results.sarif'
