@@ -66,4 +66,58 @@ describe('OCR Service', () => {
     expect(extracted.total).toBe(10800);
     expect(extracted.subtotal + extracted.tax).toBe(extracted.total);
   });
+
+  test('should throw validation error on line items subtotal mismatch', () => {
+    const service = new OpenAIOcrService();
+    const invalid: ExtractedInvoice = {
+      vendor_name: 'Acme Corp',
+      invoice_number: 'INV-12345',
+      date: '2024-01-15',
+      due_date: '2024-02-15',
+      line_items: [
+        {
+          description: 'Widget A',
+          quantity: 10,
+          unit_price: 1500,
+          total: 15000,
+        },
+      ],
+      subtotal: 14000, // Mismatch! 15000 != 14000
+      tax: 1200,
+      total: 15200,
+      currency: 'USD',
+      confidence: 0.95,
+    };
+
+    expect(() => (service as any).validate_extracted_invoice(invalid)).toThrow(
+      /Line items subtotal mismatch/
+    );
+  });
+
+  test('should throw validation error on total mismatch (subtotal + tax)', () => {
+    const service = new OpenAIOcrService();
+    const invalid: ExtractedInvoice = {
+      vendor_name: 'Acme Corp',
+      invoice_number: 'INV-12345',
+      date: '2024-01-15',
+      due_date: '2024-02-15',
+      line_items: [
+        {
+          description: 'Widget A',
+          quantity: 10,
+          unit_price: 1500,
+          total: 15000,
+        },
+      ],
+      subtotal: 15000,
+      tax: 1200,
+      total: 16000, // Mismatch! 15000 + 1200 != 16000
+      currency: 'USD',
+      confidence: 0.95,
+    };
+
+    expect(() => (service as any).validate_extracted_invoice(invalid)).toThrow(
+      /Invoice total mismatch/
+    );
+  });
 });

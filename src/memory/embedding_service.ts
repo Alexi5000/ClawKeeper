@@ -15,7 +15,7 @@ export class OpenAIEmbeddingService implements IEmbeddingService {
 
   constructor(api_key?: string) {
     this.client = new OpenAI({
-      apiKey: api_key || process.env.OPENAI_API_KEY,
+      apiKey: api_key || process.env.OPENAI_API_KEY || 'dummy-key-for-testing',
     });
   }
 

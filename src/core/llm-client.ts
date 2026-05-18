@@ -64,39 +64,54 @@ export async function complete(
     tags: ['llm', 'deepseek', model],
   });
 
-  try {
-    const completion = await deepseek.chat.completions.create({
-      model,
-      max_tokens,
-      temperature,
-      messages: [
-        {
-          role: 'system',
-          content: system,
-        },
-        {
-          role: 'user',
-          content: prompt,
-        },
-      ],
-    });
+  let last_error: any = null;
+  let delay = 1000;
+  const max_retries = 5;
 
-    const response_text = completion.choices[0]?.message?.content || '';
-    const latency_ms = Date.now() - start_time;
+  for (let attempt = 1; attempt <= max_retries; attempt++) {
+    try {
+      const completion = await deepseek.chat.completions.create({
+        model,
+        max_tokens,
+        temperature,
+        messages: [
+          {
+            role: 'system',
+            content: system,
+          },
+          {
+            role: 'user',
+            content: prompt,
+          },
+        ],
+      });
 
-    // Log usage metrics to Opik
-    if (trace) {
-      trace.end();
+      const response_text = completion.choices[0]?.message?.content || '';
+
+      if (trace) {
+        trace.end();
+      }
+
+      return response_text;
+    } catch (error: any) {
+      last_error = error;
+      const is_rate_limit = error.status === 429 || error.statusCode === 429 || String(error.message).includes('429');
+      const is_server_error = error.status >= 500 || error.statusCode >= 500;
+
+      if ((is_rate_limit || is_server_error) && attempt < max_retries) {
+        console.warn(`[LLM] DeepSeek Rate Limit or Server Error (HTTP ${error.status || 'unknown'}). Retrying in ${delay}ms... (Attempt ${attempt}/${max_retries})`);
+        await new Promise(resolve => setTimeout(resolve, delay));
+        delay *= 2;
+      } else {
+        if (trace) {
+          trace.end();
+        }
+        throw error;
+      }
     }
-
-    return response_text;
-  } catch (error) {
-    // Log error to Opik
-    if (trace) {
-      trace.end();
-    }
-    throw error;
   }
+
+  throw new Error('LLM completion failed after retries');
 }
 
 // ============================================================================

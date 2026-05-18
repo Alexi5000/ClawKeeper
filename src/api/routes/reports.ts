@@ -41,7 +41,7 @@ export function report_routes(sql: Sql<Record<string, unknown>>) {
         ORDER BY total DESC
       `;
 
-      const total_expenses = expenses.reduce((sum, e) => sum + Number(e.total), 0);
+      const total_expenses = expenses.reduce((sum, e) => sum + BigInt(e.total || 0), 0n);
 
       report_data = {
         revenue: Number(revenue_result.total),
@@ -49,8 +49,8 @@ export function report_routes(sql: Sql<Record<string, unknown>>) {
           category: e.subcategory,
           amount: Number(e.total),
         })),
-        total_expenses,
-        net_income: Number(revenue_result.total) - total_expenses,
+        total_expenses: Number(total_expenses),
+        net_income: Number(BigInt(revenue_result.total || 0) - total_expenses),
       };
     }
 

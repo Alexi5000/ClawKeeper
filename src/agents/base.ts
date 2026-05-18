@@ -3,6 +3,23 @@
 // reference: src/core/types.ts, src/core/observability.ts
 
 import { v4 as uuid } from 'uuid';
+import postgres from 'postgres';
+import type { Sql } from 'postgres';
+
+let _lazy_sql: Sql | null = null;
+function get_db_client(): Sql | null {
+  if (!_lazy_sql && process.env.DATABASE_URL) {
+    try {
+      _lazy_sql = postgres(process.env.DATABASE_URL, {
+        max: 2,
+        idle_timeout: 10,
+      });
+    } catch (err) {
+      console.error('[BaseAgent] Failed to initialize DB client:', err);
+    }
+  }
+  return _lazy_sql;
+}
 import type {
   AgentProfile,
   LedgerAgentId,
@@ -242,8 +259,6 @@ export abstract class BaseAgent {
     entity_id: string;
     details: Record<string, unknown>;
   }): Promise<void> {
-    // Audit logging will be implemented via database client
-    // For now, log to console
     const tenant = this.current_tenant;
     if (!tenant) return;
 
@@ -254,6 +269,66 @@ export abstract class BaseAgent {
       ...entry,
       timestamp: new Date().toISOString(),
     });
+
+    const sql = get_db_client();
+    if (!sql) return;
+
+    // Log to agent_runs table for run results
+    if (entry.entity_type === 'agent_runs') {
+      try {
+        const status = entry.action === 'task_completed' ? 'completed' : 'failed';
+        const duration_ms = entry.details?.duration_ms as number || 0;
+        const error = entry.details?.error as string || null;
+        await sql`
+          INSERT INTO agent_runs (
+            id, tenant_id, agent_id, task_id, status, started_at, completed_at, duration_ms, error
+          ) VALUES (
+            ${uuid()},
+            ${tenant.tenant_id},
+            ${this.config.id},
+            ${entry.entity_id},
+            ${status},
+            ${new Date(Date.now() - duration_ms).toISOString()},
+            ${new Date().toISOString()},
+            ${duration_ms},
+            ${error}
+          )
+        `;
+      } catch (db_err) {
+        console.error('[BaseAgent] Database agent runs logging failed:', db_err);
+      }
+    }
+
+    // Log to audit_log table, mapping actions to conform to the audit_log check constraint
+    try {
+      let db_action: 'create' | 'update' | 'delete' | 'approve' | 'reject' | 'export' | 'import' = 'approve';
+      if (entry.action === 'agent_policy_decision') {
+        const status = entry.details?.status;
+        db_action = status === 'deny' ? 'reject' : 'approve';
+      } else if (entry.action === 'task_failed') {
+        db_action = 'reject';
+      } else if (entry.action === 'task_completed') {
+        db_action = 'approve';
+      } else if (['create', 'update', 'delete', 'approve', 'reject', 'export', 'import'].includes(entry.action)) {
+        db_action = entry.action as any;
+      }
+
+      await sql`
+        INSERT INTO audit_log (
+          id, tenant_id, user_id, action, entity_type, entity_id, changes
+        ) VALUES (
+          ${uuid()},
+          ${tenant.tenant_id},
+          ${tenant.user_id},
+          ${db_action},
+          ${entry.entity_type},
+          ${entry.entity_id},
+          ${entry.details ? JSON.stringify(entry.details) : null}
+        )
+      `;
+    } catch (db_err) {
+      console.error('[BaseAgent] Database audit logging failed:', db_err);
+    }
   }
 
   // ===========================================================================

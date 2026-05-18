@@ -83,9 +83,13 @@ export class AccountsPayableLeadAgent extends BaseAgent {
 
     // Validate amounts
     if (invoice.line_items) {
-      const line_total = invoice.line_items.reduce((sum: number, item: any) => sum + item.amount, 0);
-      if (Math.abs(line_total - invoice.amount) > 1) {
-        errors.push('Line items do not sum to total amount');
+      try {
+        const line_total = invoice.line_items.reduce((sum: bigint, item: any) => sum + BigInt(Math.round(Number(item.amount) || 0)), 0n);
+        if (line_total !== BigInt(Math.round(Number(invoice.amount) || 0))) {
+          errors.push('Line items do not sum to total amount');
+        }
+      } catch (e) {
+        errors.push('Invalid numeric format in invoice amounts');
       }
     }
 

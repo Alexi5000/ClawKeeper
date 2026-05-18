@@ -32,7 +32,7 @@ Most SMB finance teams do not need a static dashboard; they need the work to hap
 |---|---|
 | **Agent identity** | OpenClaw-native application manifest in `src/openclaw/manifest.ts` defines runtime, agents, capabilities, approval policy, and observability contracts. |
 | **Execution guardrails** | `BaseAgent` now evaluates the OpenClaw finance policy before task execution and emits redacted policy audit events. |
-| **Finance safety** | Money movement, accounting-system writes, tax workflows, and destructive actions are approval-gated or denied when capability, tenant, or prompt-safety checks fail. |
+| **Finance safety** | Aggregations use precise BigInt integer cents math. Features strict programmatic OCR line-item guardrails, rate-limit backoff retry loops, and native append-only audit database triggers. |
 | **Backend surface** | Agent API routes expose manifest and dry-run policy evaluation endpoints for inspecting the control plane before execution. |
 | **Testing** | Node-compatible TypeScript tests cover manifest integrity, runtime adapter health, approvals, tenant isolation, missing capabilities, prompt-injection denial, and audit redaction. |
 | **Quality gate** | `npm run quality` runs TypeScript checking, ESLint, and the v1.5 test suite; `docs/templates/quality.workflow.yml` provides the GitHub Actions workflow template with `npm audit`. |
@@ -89,8 +89,10 @@ ClawKeeper is built for financial workloads where the agent cannot be treated as
 | **Capability boundary** | Every finance action is checked against the tenant/user capability set before execution. |
 | **Approval boundary** | Payment processing, accounting-system writes, tax workflows, and high-risk operations require approval metadata. |
 | **Prompt-safety boundary** | Prompt-injection and guardrail-bypass phrases are denied before execution. |
-| **Audit boundary** | Policy decisions are captured as audit events with PII and secrets redacted before persistence. |
+| **Audit boundary** | Policy decisions are captured as audit events with PII and secrets redacted. Audits are secured durably in the database using native PostgreSQL immutable, append-only triggers. |
 | **Integration boundary** | External systems remain behind typed clients and policy-gated agent tasks. |
+| **OCR validation** | Programmatic sum-matching guardrails compare line-item totals, subtotals, and totals, throwing validation errors on discrepancy to prevent junk ledger writes. |
+| **Rate-limit resilience** | Generic exponential backoff retry loop protects LLM completions from rate limits (429) or transient errors during highly concurrent multi-agent runs. |
 
 Security documentation is split between the operational model in [`SECURITY.md`](SECURITY.md) and the v1.5 OpenClaw agent boundary in [`docs/SECURITY_MODEL.md`](docs/SECURITY_MODEL.md).
 

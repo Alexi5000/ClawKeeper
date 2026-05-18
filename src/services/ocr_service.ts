@@ -31,7 +31,7 @@ export class OpenAIOcrService implements IOcrService {
 
   constructor(api_key?: string) {
     this.client = new OpenAI({
-      apiKey: api_key || process.env.OPENAI_API_KEY,
+      apiKey: api_key || process.env.OPENAI_API_KEY || 'dummy-key-for-testing',
     });
   }
 
@@ -157,6 +157,19 @@ Important: Convert all monetary amounts to cents (multiply dollars by 100). Be p
       const value = invoice[field as keyof ExtractedInvoice] as number;
       if (typeof value !== 'number' || value < 0) {
         throw new Error(`Invalid ${field}: must be a non-negative number`);
+      }
+    }
+
+    // Validate line items sum matches subtotal and total
+    if (invoice.line_items.length > 0) {
+      const computed_subtotal = invoice.line_items.reduce((sum, item) => sum + item.total, 0);
+      if (computed_subtotal !== invoice.subtotal) {
+        throw new Error(`Line items subtotal mismatch: items sum to ${computed_subtotal} cents, but subtotal is ${invoice.subtotal} cents`);
+      }
+
+      const computed_total = computed_subtotal + (invoice.tax || 0);
+      if (computed_total !== invoice.total) {
+        throw new Error(`Invoice total mismatch: computed total is ${computed_total} cents (subtotal ${computed_subtotal} + tax ${invoice.tax || 0}), but total is ${invoice.total} cents`);
       }
     }
   }

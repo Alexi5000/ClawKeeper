@@ -269,3 +269,18 @@ CREATE TRIGGER audit_transactions AFTER INSERT OR UPDATE OR DELETE ON transactio
 
 CREATE TRIGGER audit_accounts AFTER INSERT OR UPDATE OR DELETE ON accounts
     FOR EACH ROW EXECUTE FUNCTION log_audit_entry();
+
+-- ============================================================================
+-- Prevent modifications to Audit Log (Immutable Audit Trail)
+-- ============================================================================
+
+CREATE OR REPLACE FUNCTION prevent_audit_log_modification()
+RETURNS TRIGGER AS $$
+BEGIN
+    RAISE EXCEPTION 'Audit log entries are immutable and cannot be updated or deleted.';
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER enforce_immutable_audit_log
+    BEFORE UPDATE OR DELETE ON audit_log
+    FOR EACH ROW EXECUTE FUNCTION prevent_audit_log_modification();
