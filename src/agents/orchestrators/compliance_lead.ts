@@ -114,7 +114,7 @@ export class ComplianceLeadAgent extends BaseAgent {
           if (limit !== null && amount_cents > limit) {
             violations.push({
               code: 'APPROVAL_LIMIT_EXCEEDED',
-              message: `Approver role '${approver_role}' approved invoice of $${(Number(amount_cents) / 100).toFixed(2)}, which exceeds the limit of $${(Number(limit) / 100).toFixed(2)}.`,
+              message: `Approver role '${approver_role}' approved invoice of $${this.format_cents_bigint(amount_cents)}, which exceeds the limit of $${this.format_cents_bigint(limit)}.`,
             });
           }
         }
@@ -129,5 +129,14 @@ export class ComplianceLeadAgent extends BaseAgent {
         ? 'Policy enforcement completed with no violations' 
         : `Policy violations detected: ${violations.map(v => v.code).join(', ')}`,
     };
+  }
+
+  private format_cents_bigint(cents: bigint): string {
+    const absolute_cents = cents < 0n ? -cents : cents;
+    const dollars = absolute_cents / 100n;
+    const cents_remainder = absolute_cents % 100n;
+    const cents_string = cents_remainder.toString().padStart(2, '0');
+    const sign = cents < 0n ? '-' : '';
+    return `${sign}${dollars}.${cents_string}`;
   }
 }
