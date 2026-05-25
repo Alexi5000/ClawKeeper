@@ -223,6 +223,89 @@ describe('ComplianceLeadAgent', () => {
     expect(result.output.policy_id).toBe('pol_segregation');
     await agent.stop();
   });
+
+  test('should pass compliance policy checks on valid invoices', async () => {
+    const agent = new ComplianceLeadAgent();
+    await agent.start();
+    const task = create_test_task('compliance_lead', 'policy_enforcement', {
+      entity_type: 'invoice',
+      invoice: {
+        amount: 25000n, // $250.00 in cents
+        created_by: 'user_a',
+        approved_by: 'user_b',
+        approver_role: 'accountant',
+      },
+    });
+    const result = await agent.execute_task(task, dummy_tenant);
+    expect(result.success).toBe(true);
+    const output = result.output as any;
+    expect(output.success).toBe(true);
+    expect(output.violations).toHaveLength(0);
+    await agent.stop();
+  });
+
+  test('should report segregation of duties violation when creator and approver are identical', async () => {
+    const agent = new ComplianceLeadAgent();
+    await agent.start();
+    const task = create_test_task('compliance_lead', 'policy_enforcement', {
+      entity_type: 'invoice',
+      invoice: {
+        amount: 25000n,
+        created_by: 'user_a',
+        approved_by: 'user_a',
+        approver_role: 'accountant',
+      },
+    });
+    const result = await agent.execute_task(task, dummy_tenant);
+    expect(result.success).toBe(true); // Task execution is successful but policy has violations
+    const output = result.output as any;
+    expect(output.success).toBe(false);
+    expect(output.violations).toHaveLength(1);
+    expect(output.violations[0].code).toBe('SEGREGATION_OF_DUTIES_VIOLATION');
+    await agent.stop();
+  });
+
+  test('should report approval limit violation when amount exceeds accountant threshold', async () => {
+    const agent = new ComplianceLeadAgent();
+    await agent.start();
+    const task = create_test_task('compliance_lead', 'policy_enforcement', {
+      entity_type: 'invoice',
+      invoice: {
+        amount: 60000n, // $600.00 in cents (> $500.00 threshold)
+        created_by: 'user_a',
+        approved_by: 'user_b',
+        approver_role: 'accountant',
+      },
+    });
+    const result = await agent.execute_task(task, dummy_tenant);
+    expect(result.success).toBe(true);
+    const output = result.output as any;
+    expect(output.success).toBe(false);
+    expect(output.violations).toHaveLength(1);
+    expect(output.violations[0].code).toBe('APPROVAL_LIMIT_EXCEEDED');
+    await agent.stop();
+  });
+
+  test('should report violation when viewer role approves any invoice', async () => {
+    const agent = new ComplianceLeadAgent();
+    await agent.start();
+    const task = create_test_task('compliance_lead', 'policy_enforcement', {
+      entity_type: 'invoice',
+      invoice: {
+        amount: 100n, // $1.00 in cents
+        created_by: 'user_a',
+        approved_by: 'user_b',
+        approver_role: 'viewer', // viewer has 0n limit
+      },
+    });
+    const result = await agent.execute_task(task, dummy_tenant);
+    expect(result.success).toBe(true);
+    const output = result.output as any;
+    expect(output.success).toBe(false);
+    expect(output.violations).toHaveLength(1);
+    expect(output.violations[0].code).toBe('APPROVAL_LIMIT_EXCEEDED');
+    await agent.stop();
+  });
 });
 
 describe('ReportingLeadAgent', () => {

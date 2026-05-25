@@ -323,7 +323,7 @@ export abstract class BaseAgent {
           ${db_action},
           ${entry.entity_type},
           ${entry.entity_id},
-          ${entry.details ? JSON.stringify(entry.details) : null}
+          ${entry.details ? JSON.stringify(entry.details, (k, v) => typeof v === 'bigint' ? v.toString() : v) : null}
         )
       `;
     } catch (db_err) {
