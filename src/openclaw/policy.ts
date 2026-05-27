@@ -79,6 +79,11 @@ function stringify_task_payload(task: LedgerTaskStar): string {
     description: task.description,
     input: task.input,
     parameters: task.parameters,
+  }, (key, value) => {
+    if (typeof value === 'bigint') {
+      return value.toString();
+    }
+    return value;
   });
 }
 
