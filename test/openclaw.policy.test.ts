@@ -1,5 +1,5 @@
 // file: test/openclaw.policy.test.ts
-// description: Unit tests for ClawKeeper v1.5 OpenClaw policy decisions and redaction guarantees
+// description: Unit tests for ClawKeeper v2.0 OpenClaw policy decisions and redaction guarantees
 
 import test from 'node:test';
 import assert from 'node:assert/strict';

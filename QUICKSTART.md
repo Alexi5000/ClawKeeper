@@ -1,184 +1,87 @@
-# ClawKeeper Quick Start Guide
+# ClawKeeper v2.0 Quickstart
 
-## 🚨 Fixed Issues
+ClawKeeper is an auditable SMB finance-agent control plane. Agents can propose finance work; deterministic policy, tenant boundaries, approval gates, and evidence logs decide what can run.
 
-### Login Page Font Visibility
-The login page fonts are now **fully visible**:
-- ✅ Fixed invisible text caused by dark mode conflicts
-- ✅ Login page now forces light mode temporarily
-- ✅ Input fields have explicit text colors
-- ✅ App now defaults to light mode on first load
-
-### Authentication Errors
-You were getting 401 errors because you need to log in with valid credentials. Follow these steps:
-
-### Step 1: Clear Invalid Token (Automatic)
-
-The app now automatically clears expired tokens and redirects to login. Just refresh your browser:
+## 1. Install
 
 ```bash
-# The app will automatically redirect you to /login
+git clone https://github.com/Alexi5000/ClawKeeper.git
+cd ClawKeeper
+npm ci
+cd dashboard && npm install
+cd ..
 ```
 
-### Step 2: Set Up Database & Demo Users
+## 2. Verify The Offline Proof
 
-Run the all-in-one setup script:
+This path does not require a database, provider key, or live integration account.
 
 ```bash
-bun run setup:full
+npm run quality
+cd dashboard && npm run build
+cd ..
+npm audit --audit-level=moderate
+npm run fde:benchmark
+npm run proof:v2
+npm run proof:v2:validate
+npm run demo:offline
 ```
 
-This creates the database schema and 6 demo users in one command.
+Expected result:
 
-This will create two sets of demo users:
+- Backend typecheck, lint, and tests pass.
+- Dashboard production build passes.
+- Dependency audit reports 0 moderate-or-higher vulnerabilities.
+- FDE benchmark passes 4/4 deterministic finance scenarios.
+- Proof bundle validates under `docs/proof/v2.0/`.
 
-**Simple Credentials** (password123):
-- **admin@demo.com** (Tenant Admin - full access)
-- **accountant@demo.com** (Accountant - financial operations)
-- **viewer@demo.com** (Viewer - read-only access)
+## 3. Run The Database-Backed Demo
 
-**Meridian Tech Credentials** (Demo123!):
-- **admin@meridiantech.example** (Alex Rivera - Tenant Admin)
-- **accountant@meridiantech.example** (Jordan Chen - Accountant)
-- **viewer@meridiantech.example** (Sam Taylor - Viewer)
-
-### Step 3: Log In
-
-1. Navigate to `http://localhost:3000/login`
-2. Use these credentials:
-   - **Email**: `admin@demo.com`
-   - **Password**: `password123`
-3. Click "Sign In"
-
-### Step 4: Test the Command Center
-
-After logging in, you should be able to:
-
-✅ **Command Center** (`/agents/command-center`)
-- Type natural language commands
-- Deploy agents with one prompt
-- Watch real-time execution
-
-✅ **Agent Console** (`/agents/console`)
-- Select any agent (all 110 now visible!)
-- Execute tasks on specific agents
-- View execution history
-
-✅ **All Agents** (`/agents`)
-- See all agents organized by type
-- Start/Stop individual agents
-- View real-time status
-
-## 🔧 Alternative: If Database Isn't Set Up
-
-If you get database errors, run the full setup:
+Docker is required for the local Postgres path.
 
 ```bash
-# 1. Make sure PostgreSQL is running
-# 2. Create the database
-createdb clawkeeper
-
-# 3. Set up the database schema
-bun run db:setup
-
-# 4. Create demo users
-bun run setup:demo
+docker compose up -d postgres
+export DATABASE_URL=postgresql://clawkeeper:clawkeeper_local_password@localhost:5432/clawkeeper
+npm run demo:db
 ```
 
-## 🌐 Environment Variables
+Start the API:
 
-Your `.env` file should have:
-
-```env
-# Database
-DATABASE_URL=postgresql://localhost:5432/clawkeeper
-
-# API Server
-PORT=9100
-
-# JWT Authentication
-JWT_SECRET=your-secret-key-change-in-production
-JWT_EXPIRES_IN=7d
-
-# OpenAI-compatible LLM provider (Required for AI features)
-AI_PROVIDER=openai-compatible
-OPENAI_API_KEY=sk-your-key-here
-OPENAI_BASE_URL=https://api.openai.com/v1
-```
-
-**Configure your OpenAI-compatible provider** by setting `OPENAI_API_KEY` and, when using a non-default gateway, `OPENAI_BASE_URL`.
-
-## 🚀 Running the Application
-
-### Terminal 1: API Server
 ```bash
-bun run dev
+PORT=9100 bun run dev
 ```
 
-Wait for: "Ready for requests..."
+Start the dashboard:
 
-### Terminal 2: Dashboard
 ```bash
-bun run dashboard:dev
+cd dashboard
+npm run dev
 ```
 
-Wait for: "Local: http://localhost:3000"
+Open `http://localhost:3000`.
 
-Then open `http://localhost:3000` in your browser.
+## Demo Credentials
 
-## 📋 What Changed
+After `npm run demo:db`, use:
 
-I've fixed the agent deployment system:
-
-1. ✅ **Created Orchestration Service** - The missing file that was breaking the server
-2. ✅ **Added Command Center** - One-prompt agent deployment UI
-3. ✅ **Improved Agent Selector** - Search, filter, all workers visible
-4. ✅ **Added Agent Controls** - Start/Stop buttons on each agent
-5. ✅ **Better Auth Handling** - Automatic token cleanup and redirect
-
-## 🔍 Troubleshooting
-
-### Still Getting 401 Errors?
-1. Open browser DevTools (F12)
-2. Go to Application → Local Storage
-3. Delete `clawkeeper_token` and `clawkeeper_user`
-4. Refresh the page
-5. Log in again
-
-### Can't Connect to Database?
-```bash
-# Check if PostgreSQL is running
-psql --version
-pg_isready
-
-# Recreate database
-dropdb clawkeeper
-createdb clawkeeper
-bun run db:setup
-bun run setup:demo
+```text
+Email: admin@meridiantech.example
+Password: Demo123!
 ```
 
-### API Server Not Starting?
-```bash
-# Check if port 4004 is in use
-lsof -i :4004  # Mac/Linux
-netstat -ano | findstr :4004  # Windows
+## What v2.0 Proves
 
-# Kill the process or use a different port in .env
-```
+- Finance-agent work is evaluated through deterministic policy gates.
+- Approval-gated payment intent does not execute payment actions in the proof path.
+- Tenant/user evidence is redacted in the proof bundle.
+- The dashboard builds as a production artifact.
+- CI is configured for backend quality, dashboard build, dependency audit, Docker build, and FDE gates.
 
-## 🎉 You're Ready!
+## What v2.0 Does Not Claim
 
-Once logged in, try the Command Center:
+- No live payment execution.
+- No live Plaid, Stripe, QuickBooks, or Xero writeback in the proof path.
+- No real customer data.
+- No provider key required for the default proof.
 
-1. Go to `/agents/command-center`
-2. Type: "Generate monthly P&L report and reconcile all accounts"
-3. Click "Create Execution Plan"
-4. Review the plan
-5. Click "Execute Plan"
-
-Watch as ClawKeeper orchestrates multiple AI agents to complete your task!
-
----
-
-**Need Help?** Check the main README.md for detailed documentation.
+See `docs/proof/v2.0/README.md` for the proof bundle.

@@ -1,11 +1,10 @@
 # ClawKeeper Architecture
 
-
-> **v1.5 architecture context:** ClawKeeper is no longer framed as a dashboard-first bookkeeping product. The architecture centers on an OpenClaw-native finance-agent control plane with a CEO finance agent, domain leads, specialized workers, deterministic policy checks, tenant-aware boundaries, and auditable execution.
+> **v2.0 architecture context:** ClawKeeper is an auditable SMB finance-agent control plane. Agents can propose finance work; deterministic policy, tenant boundaries, approval gates, and evidence logs decide what can run.
 
 ## Overview
 
-ClawKeeper is a 110-agent OpenClaw-native finance operating system for SMBs, built on a multi-layer architecture with strict tenant isolation, comprehensive audit trails, and production-grade security.
+ClawKeeper is a 110-agent OpenClaw-native finance-agent control plane for SMBs, built on a multi-layer architecture with strict tenant isolation, policy-gated execution, and audit evidence.
 
 ## System Layers
 

@@ -1,5 +1,68 @@
 # ClawKeeper Release Notes
 
+## Version 2.0.0 - Proof-Backed Finance-Agent Control Plane
+
+**Release Date**: 2026-07-07
+
+### Release Focus
+
+ClawKeeper v2.0 packages the repository as an auditable SMB finance-agent control plane. Agents can propose finance work, but deterministic policy, tenant boundaries, approval gates, and evidence logs decide what can run.
+
+This release prioritizes proof over breadth. It does not add more agents or claim humanless payment execution.
+
+### What Is Proven
+
+- Backend quality gate passes with TypeScript checking, ESLint, and 147 tests.
+- Dashboard production build passes.
+- Root dependency audit reports 0 moderate-or-higher vulnerabilities.
+- FDE contracts and benchmark run offline with 4/4 deterministic scenarios passing.
+- v2 proof bundle exists at `docs/proof/v2.0/`.
+- Proof validator checks benchmark completeness, redacted synthetic audit evidence, and common secret patterns.
+- CI workflow covers backend quality, dashboard build, dependency audit, Docker build, and FDE gates after push to `main`.
+
+### New v2 Proof Surfaces
+
+- `packages/fde/src/contracts.ts` - versioned FDE scenario, plan, generation, and evaluation contracts.
+- `packages/fde/src/fixtures.ts` - four synthetic SMB finance scenarios.
+- `packages/fde/src/harness.ts` - deterministic Planner -> Generator -> Evaluator harness.
+- `packages/fde/benchmark/benchmark.json` - committed benchmark result.
+- `docs/proof/v2.0/README.md` - proof-bundle verification instructions.
+- `docs/proof/v2.0/audit-evidence.json` - redacted synthetic audit evidence.
+- `scripts/generate-proof-v2.ts` and `scripts/validate-proof-v2.ts` - proof generation and validation.
+
+### Demo and Verification
+
+Offline proof path:
+
+```bash
+npm ci
+npm run quality
+cd dashboard && npm install && npm run build
+cd ..
+npm run fde:benchmark
+npm run proof:v2
+npm run proof:v2:validate
+npm run demo:offline
+```
+
+Database-backed local demo path when Docker is available:
+
+```bash
+docker compose up -d postgres
+export DATABASE_URL=postgresql://clawkeeper:clawkeeper_local_password@localhost:5432/clawkeeper
+npm run demo:db
+docker build -t clawkeeper:v2 .
+```
+
+### Explicit Limits
+
+- No live payment execution is proven in v2.0.
+- No Plaid, Stripe, QuickBooks, or Xero writeback is performed by the proof path.
+- Demo and proof data are synthetic.
+- Docker build must be validated in GitHub CI or another environment with Docker installed; the local Zo shell used for this build does not expose Docker.
+
+---
+
 ## Version 0.2.0 - One-Prompt Agent Deployment
 
 **Release Date**: February 4, 2026

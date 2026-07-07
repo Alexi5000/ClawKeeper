@@ -4,14 +4,15 @@
 
 # ClawKeeper
 
-**OpenClaw-native SMB finance-agent platform.**<br/>
-110 TypeScript agents. Approval-gated. Audit-logged. Production-deployed.
+**Auditable SMB finance-agent control plane.**<br/>
+Agents can propose finance work; deterministic policy, tenant boundaries, approval gates, and evidence logs decide what can run.
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-3B82F6?style=flat-square)](LICENSE)
-[![Version](https://img.shields.io/badge/release-v1.5.0-16a34a?style=flat-square)](docs/RELEASE_1_5.md)
+[![Version](https://img.shields.io/badge/release-v2.0.0-16a34a?style=flat-square)](RELEASE_NOTES.md)
+[![CI](https://img.shields.io/badge/CI-backend%20%7C%20dashboard%20%7C%20audit%20%7C%20docker%20%7C%20FDE-16a34a?style=flat-square)](.github/workflows/ci.yml)
 [![OpenClaw](https://img.shields.io/badge/OpenClaw-native-16a34a?style=flat-square)](https://github.com/openclaw/openclaw)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-3178c6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Quality](https://img.shields.io/badge/gate-typecheck%20%7C%20lint%20%7C%20test-16a34a?style=flat-square)](#testing--quality-gates)
+[![Proof](https://img.shields.io/badge/proof-v2.0%20bundle-16a34a?style=flat-square)](docs/proof/v2.0/README.md)
 
 [Architecture](#agent-architecture) · [What It Does](#what-clawkeeper-does) · [What It Does Not Do](#what-clawkeeper-deliberately-does-not-do) · [Install](#install) · [Usage](#usage-examples) · [Security](#security-posture) · [Docs](#documentation)
 
@@ -28,6 +29,19 @@
 In benchmark testing against open-source baselines ([arXiv:2603.24414](https://arxiv.org/abs/2603.24414)), the ClawKeeper architecture demonstrated superior mitigation of autonomous LLM agent threats in financial execution contexts. The threat model targets prompt injection, cross-tenant data leakage, and unsanctioned money movement -- failure modes that remain under active research and are not considered solved.
 
 Agent security is continuous, not absolute. The benchmark results reflect a specific test harness against a specific set of baselines at a point in time. New attack vectors against autonomous financial agents emerge regularly. The architecture is designed to reduce the blast radius of agent misbehavior, not to eliminate it.
+
+## v2.0 proof status
+
+ClawKeeper v2.0 is packaged around an inspectable proof spine:
+
+- Backend quality gate: `npm run quality`
+- Dashboard production build: `cd dashboard && npm run build`
+- Dependency audit: `npm audit --audit-level=moderate`
+- FDE benchmark: `npm run fde:benchmark`
+- Proof bundle validation: `npm run proof:v2:validate`
+- Docker build gate: `.github/workflows/ci.yml`
+
+See [`docs/proof/v2.0/README.md`](docs/proof/v2.0/README.md) for the v2 proof bundle and verification commands. The proof bundle is deterministic, offline, synthetic, and redacted.
 
 <br/>
 
@@ -295,6 +309,8 @@ npm run typecheck          # TypeScript strict mode
 npm run lint               # ESLint
 npm test                   # OpenClaw manifest + policy tests
 npm run quality            # all three, sequential
+npm run fde:benchmark      # deterministic finance-agent benchmark
+npm run proof:v2:validate  # proof bundle validation
 ```
 
 | Test file | What it validates |
@@ -332,7 +348,8 @@ ClawKeeper/
 |----------|---------|
 | [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | System architecture and agent hierarchy |
 | [`docs/SECURITY_MODEL.md`](docs/SECURITY_MODEL.md) | OpenClaw agent boundary, approval gates, finance guardrails |
-| [`docs/RELEASE_1_5.md`](docs/RELEASE_1_5.md) | v1.5 release notes and validation evidence |
+| [`docs/proof/v2.0/README.md`](docs/proof/v2.0/README.md) | v2 proof bundle and verification commands |
+| [`docs/RELEASE_1_5.md`](docs/RELEASE_1_5.md) | Historical release notes and validation evidence |
 | [`docs/API.md`](docs/API.md) | API reference |
 | [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) | Deployment guidance |
 | [`docs/MULTI-TENANCY.md`](docs/MULTI-TENANCY.md) | Tenant isolation and RBAC model |
@@ -346,10 +363,10 @@ ClawKeeper/
 
 | Version | Direction | Open risk |
 |---------|-----------|-----------|
-| **v1.6** | Approval workbench -- human approval queue, reviewer comments, immutable approval evidence in dashboard | Approval UX latency for high-volume AP operations |
-| **v1.7** | Integration hardening -- contract tests for Plaid, Stripe, QuickBooks, Xero adapters | Third-party API schema drift between test and production |
-| **v1.8** | OpenClaw runtime expansion -- distributed agent scheduling, tool sandboxing, execution replay | Replay fidelity when external system state has changed |
-| **v2.0** | Finance autopilot -- end-to-end workflows combining approvals, reconciliation, reporting, and writeback | Compounding error rates across multi-step agent chains |
+| **v2.1** | Approval workbench -- human approval queue, reviewer comments, immutable approval evidence in dashboard | Approval UX latency for high-volume AP operations |
+| **v2.2** | Integration hardening -- contract tests for Plaid, Stripe, QuickBooks, Xero adapters | Third-party API schema drift between test and production |
+| **v2.3** | Runtime expansion -- distributed agent scheduling, tool sandboxing, execution replay | Replay fidelity when external system state has changed |
+| **v3.0** | Finance autopilot -- end-to-end workflows combining approvals, reconciliation, reporting, and writeback | Compounding error rates across multi-step agent chains |
 
 <br/>
 

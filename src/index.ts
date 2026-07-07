@@ -8,7 +8,7 @@ import { flush_opik } from './core/observability';
 console.log('');
 console.log('═'.repeat(50));
 console.log('  🔐 ClawKeeper');
-console.log('  Autonomous AI Bookkeeping for SMBs');
+console.log('  Policy-gated AI bookkeeping for SMBs');
 console.log('═'.repeat(50));
 console.log('');
 

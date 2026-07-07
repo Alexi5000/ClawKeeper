@@ -1,5 +1,5 @@
 // file: test/openclaw.manifest.test.ts
-// description: Contract tests for ClawKeeper v1.5 OpenClaw manifest and runtime adapter
+// description: Contract tests for ClawKeeper v2.0 OpenClaw manifest and runtime adapter
 
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -10,9 +10,9 @@ import {
   OpenClawRuntimeAdapter,
 } from '../src/openclaw';
 
-test('declares ClawKeeper as an OpenClaw-native v1.5 finance agent application', () => {
+test('declares ClawKeeper as an OpenClaw-native v2.0 finance agent application', () => {
   assert.equal(CLAWKEEPER_OPENCLAW_MANIFEST.app_id, 'clawkeeper');
-  assert.equal(CLAWKEEPER_OPENCLAW_MANIFEST.version, '1.5.0');
+  assert.equal(CLAWKEEPER_OPENCLAW_MANIFEST.version, '2.0.0');
   assert.equal(CLAWKEEPER_OPENCLAW_MANIFEST.runtime.provider, 'openclaw');
   assert.equal(CLAWKEEPER_OPENCLAW_MANIFEST.runtime.trust_model, 'tenant-scoped-financial-operator');
   assert.equal(CLAWKEEPER_OPENCLAW_MANIFEST.audit.required, true);
@@ -50,7 +50,7 @@ test('runtime adapter reports gateway configuration and manifest health', () => 
 
   assert.equal(degraded.status, 'degraded');
   assert.equal(degraded.gateway_url_configured, false);
-  assert.equal(degraded.manifest_version, '1.5.0');
+  assert.equal(degraded.manifest_version, '2.0.0');
   assert.ok(degraded.registered_agents >= 10);
 
   assert.equal(ready.status, 'ready');

@@ -323,3 +323,42 @@ Open risks:
 Next step:
 
 - Step 8: public packaging.
+
+## 2026-07-07 — Step 8 Public Packaging
+
+Step: 8 public packaging
+
+Agents:
+
+- Jun: scanned README, release notes, architecture, security, quickstart, and runtime metadata for stale v1.5 and overclaiming.
+- Noble Six: rewrote public lead, release notes, quickstart, proof links, and runtime manifest version.
+- Emile: ran docs scans, proof validation, dashboard build, and root quality.
+- Kat: checked public claims against available proof surfaces.
+- Cortana: run-log update.
+
+Changes:
+
+- Updated package metadata to `2.0.0`.
+- Reframed README around the v2.0 finance-agent control-plane proof story.
+- Added README links to the v2 proof bundle and local verification path.
+- Added v2.0 release notes with explicit proof surfaces and limits.
+- Rewrote `QUICKSTART.md` for v2 offline proof and database-backed demo paths.
+- Updated architecture and security docs from v1.5 positioning to v2.0 positioning.
+- Updated OpenClaw manifest runtime metadata and tests to `2.0.0`.
+- Replaced an overbroad runtime banner with policy-gated wording.
+
+Evidence:
+
+- Stale claim scan for `production-deployed`, `coming soon`, `autonomous payment`, and `zero manual`: no public overclaiming found.
+- `npm run proof:v2:validate`: passed.
+- `cd dashboard && npm run build`: passed. Vite emitted the existing large chunk warning only.
+- `npm run quality`: passed with typecheck, lint, and 147 tests.
+
+Open risks:
+
+- GitHub CI has not run on these local commits because push requires Alex approval.
+- Docker build still needs validation in GitHub CI or another Docker-capable environment.
+
+Next step:
+
+- Step 9: release gate.

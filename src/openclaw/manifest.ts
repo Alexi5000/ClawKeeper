@@ -28,7 +28,7 @@ export interface OpenClawAgentDefinition {
 
 export interface ClawKeeperOpenClawManifest {
   app_id: 'clawkeeper';
-  version: '1.5.0';
+  version: '2.0.0';
   name: 'ClawKeeper';
   description: string;
   runtime: {
@@ -218,7 +218,7 @@ const ORCHESTRATOR_AGENTS: OpenClawAgentDefinition[] = [
 
 export const CLAWKEEPER_OPENCLAW_MANIFEST: ClawKeeperOpenClawManifest = {
   app_id: 'clawkeeper',
-  version: '1.5.0',
+  version: '2.0.0',
   name: 'ClawKeeper',
   description: 'An OpenClaw-native autonomous finance operations arm for SMBs, coordinating payables, receivables, reconciliation, reporting, compliance, and integrations through tenant-scoped agents.',
   runtime: {
