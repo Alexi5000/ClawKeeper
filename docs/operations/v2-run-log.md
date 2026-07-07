@@ -136,3 +136,39 @@ Open risks:
 Next step:
 
 - Step 3: dependency security cleanup.
+
+## 2026-07-07 — Step 3 Dependency Security Cleanup
+
+Step: 3 dependency security cleanup
+
+Agents:
+
+- Jun: identified direct and transitive audit sources.
+- Noble Six: applied minimal dependency upgrades.
+- Emile: ran audit, backend quality, dashboard build, and dependency tree checks.
+- Kat: reviewed upgrade scope for major-version risk.
+- Cortana: run-log update.
+
+Changes:
+
+- Upgraded `hono` to `^4.12.28`.
+- Upgraded `ws` to `^8.21.0`.
+- Upgraded `tsx` to `^4.23.0`, which resolved `esbuild` to `0.28.1`.
+- Upgraded direct `uuid` dependency to `^11.1.1`; existing code only uses `v4` ESM imports.
+- `npm audit fix` updated transitive `js-yaml` to `4.3.0`.
+
+Evidence:
+
+- `npm audit --audit-level=moderate`: passed with 0 vulnerabilities.
+- `npm ls hono ws uuid js-yaml esbuild --all`: confirmed patched versions.
+- `npm run quality`: passed with typecheck, lint, and 139 tests.
+- `cd dashboard && npm run build`: passed. Vite emitted a large chunk warning only.
+
+Open risks:
+
+- Docker build still needs validation in GitHub or another environment with Docker installed.
+- Dashboard bundle size warning remains for a later performance/code-splitting pass if needed.
+
+Next step:
+
+- Step 4: add typed FDE contracts and offline scenario fixtures.
