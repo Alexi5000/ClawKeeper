@@ -196,51 +196,54 @@ export class MemoryStore {
       sortOrder = 'desc',
     } = options;
 
-    // Build dynamic query conditions
-    const conditions: string[] = [
-      `tenant_id = '${tenantId}'`,
-      `agent_id = '${agentId}'`,
-    ];
+    // Build dynamic query conditions using placeholders to prevent SQL injection
+    const conditions: string[] = [];
+    const values: any[] = [];
+    let paramIdx = 1;
+
+    conditions.push(`tenant_id = $${paramIdx++}`);
+    values.push(tenantId);
+
+    conditions.push(`agent_id = $${paramIdx++}`);
+    values.push(agentId);
 
     if (!includeDeleted) {
       conditions.push('deleted_at IS NULL');
     }
 
     if (types && types.length > 0) {
-      const typeList = types.map(t => `'${t}'`).join(', ');
-      conditions.push(`type IN (${typeList})`);
+      const placeholders = types.map(() => `$${paramIdx++}`).join(', ');
+      conditions.push(`type IN (${placeholders})`);
+      values.push(...types);
     }
 
     if (createdAfter) {
-      conditions.push(`created_at >= '${createdAfter}'`);
+      conditions.push(`created_at >= $${paramIdx++}`);
+      values.push(createdAfter);
     }
 
     if (createdBefore) {
-      conditions.push(`created_at <= '${createdBefore}'`);
+      conditions.push(`created_at <= $${paramIdx++}`);
+      values.push(createdBefore);
     }
 
     const whereClause = conditions.join(' AND ');
     const sortColumn = sortBy === 'createdAt' ? 'created_at' : 
-                       sortBy === 'importance' ? "metadata->>'importance'" : 'created_at';
+                       sortBy === 'importance' ? "(metadata->>'importance')::int" : 'created_at';
     const order = sortOrder === 'asc' ? 'ASC' : 'DESC';
 
-    // Get total count
-    const [countResult] = await this.sql<{ count: string }[]>`
-      SELECT COUNT(*) as count
-      FROM memories
-      WHERE ${this.sql.unsafe(whereClause)}
-    `;
+    // Get total count using parameterized query
+    const [countResult] = await this.sql.unsafe(
+      `SELECT COUNT(*) as count FROM memories WHERE ${whereClause}`,
+      values
+    ) as any[];
     const total = parseInt(countResult.count, 10);
 
-    // Get paginated results
-    const rows = await this.sql<MemoryRow[]>`
-      SELECT *
-      FROM memories
-      WHERE ${this.sql.unsafe(whereClause)}
-      ORDER BY ${this.sql.unsafe(sortColumn)} ${this.sql.unsafe(order)}
-      LIMIT ${limit}
-      OFFSET ${offset}
-    `;
+    // Get paginated results using parameterized query
+    const rows = await this.sql.unsafe(
+      `SELECT * FROM memories WHERE ${whereClause} ORDER BY ${sortColumn} ${order} LIMIT ${limit} OFFSET ${offset}`,
+      values
+    ) as MemoryRow[];
 
     return {
       memories: rows.map(row => this.rowToEntry(row)),
@@ -249,8 +252,7 @@ export class MemoryStore {
   }
 
   /**
-   * Search memories with semantic search placeholder
-   * TODO: Integrate with vector database (pgvector) for true semantic search
+   * Search memories with semantic search
    */
   async searchMemories(
     tenantId: string,
@@ -271,79 +273,194 @@ export class MemoryStore {
       includeDeleted = false,
     } = query;
 
-    // Build dynamic query conditions
-    const conditions: string[] = [`tenant_id = '${tenantId}'`];
+    // Build dynamic query conditions using placeholders to prevent SQL injection
+    const conditions: string[] = [];
+    const values: any[] = [];
+    let paramIdx = 1;
+
+    conditions.push(`tenant_id = $${paramIdx++}`);
+    values.push(tenantId);
 
     if (!includeDeleted) {
       conditions.push('deleted_at IS NULL');
     }
 
     if (agentIds && agentIds.length > 0) {
-      const agentList = agentIds.map(a => `'${a}'`).join(', ');
-      conditions.push(`agent_id IN (${agentList})`);
+      const placeholders = agentIds.map(() => `$${paramIdx++}`).join(', ');
+      conditions.push(`agent_id IN (${placeholders})`);
+      values.push(...agentIds);
     }
 
     if (types && types.length > 0) {
-      const typeList = types.map(t => `'${t}'`).join(', ');
-      conditions.push(`type IN (${typeList})`);
+      const placeholders = types.map(() => `$${paramIdx++}`).join(', ');
+      conditions.push(`type IN (${placeholders})`);
+      values.push(...types);
     }
 
     if (tags && tags.length > 0) {
-      const tagConditions = tags.map(t => `content->'tags' ? '${t}'`).join(' OR ');
+      const tagConditions = tags.map(() => `content->'tags' ? $${paramIdx++}`).join(' OR ');
       conditions.push(`(${tagConditions})`);
+      values.push(...tags);
     }
 
     if (createdAfter) {
-      conditions.push(`created_at >= '${createdAfter}'`);
+      conditions.push(`created_at >= $${paramIdx++}`);
+      values.push(createdAfter);
     }
 
     if (createdBefore) {
-      conditions.push(`created_at <= '${createdBefore}'`);
+      conditions.push(`created_at <= $${paramIdx++}`);
+      values.push(createdBefore);
     }
 
     if (minImportance !== undefined) {
-      conditions.push(`(metadata->>'importance')::int >= ${minImportance}`);
+      conditions.push(`(metadata->>'importance')::int >= $${paramIdx++}`);
+      values.push(minImportance);
     }
 
-    // Text search using PostgreSQL full-text search
+    // Try semantic hybrid search if text query is provided
+    let queryEmbedding: number[] | null = null;
     if (text) {
-      conditions.push(`(
-        content->>'text' ILIKE '%${text}%' OR 
-        content->>'summary' ILIKE '%${text}%'
-      )`);
+      try {
+        queryEmbedding = await this.embedding_service.generate(text);
+      } catch (err) {
+        console.error('[Memory] Failed to generate embedding for query search, falling back to text search:', err);
+      }
+    }
+
+    if (text && queryEmbedding) {
+      // 1. Vector similarity search using cosine distance
+      const vectorWhere = [...conditions, 'embedding IS NOT NULL'].join(' AND ');
+      const vectorValues = [...values, JSON.stringify(queryEmbedding)];
+      const vectorQuery = `
+        SELECT 
+          *,
+          1 - (embedding <=> $${paramIdx}::vector) as similarity
+        FROM memories
+        WHERE ${vectorWhere}
+        ORDER BY similarity DESC
+        LIMIT ${limit + offset}
+      `;
+      const vectorRows = await this.sql.unsafe(vectorQuery, vectorValues) as (MemoryRow & { similarity: number })[];
+
+      // 2. Keyword search for hybrid combination
+      const textWhere = [...conditions, `(content->>'text' ILIKE $${paramIdx} OR content->>'summary' ILIKE $${paramIdx})`].join(' AND ');
+      const textValues = [...values, `%${text}%`];
+      const textQuery = `
+        SELECT *
+        FROM memories
+        WHERE ${textWhere}
+        LIMIT ${limit + offset}
+      `;
+      const textRows = await this.sql.unsafe(textQuery, textValues) as MemoryRow[];
+
+      // 3. Merge and deduplicate
+      const seenIds = new Set<string>();
+      const merged: MemorySearchResult[] = [];
+
+      for (const row of vectorRows) {
+        if (!seenIds.has(row.id)) {
+          const contentText = this.extract_text_from_content(row.content);
+          merged.push({
+            memory: this.rowToEntry(row),
+            score: row.similarity,
+            highlights: this.extractHighlights(contentText, text),
+          });
+          seenIds.add(row.id);
+        }
+      }
+
+      for (const row of textRows) {
+        if (!seenIds.has(row.id)) {
+          const contentText = this.extract_text_from_content(row.content);
+          merged.push({
+            memory: this.rowToEntry(row),
+            score: this.calculateTextRelevance(contentText, text),
+            highlights: this.extractHighlights(contentText, text),
+          });
+          seenIds.add(row.id);
+        }
+      }
+
+      // Sort merged results
+      if (sortBy === 'importance') {
+        merged.sort((a, b) => {
+          const impA = a.memory.metadata.importance ?? 0;
+          const impB = b.memory.metadata.importance ?? 0;
+          return sortOrder === 'asc' ? impA - impB : impB - impA;
+        });
+      } else if (sortBy === 'createdAt') {
+        merged.sort((a, b) => {
+          const timeA = new Date(a.memory.createdAt).getTime();
+          const timeB = new Date(b.memory.createdAt).getTime();
+          return sortOrder === 'asc' ? timeA - timeB : timeB - timeA;
+        });
+      } else {
+        // default/relevance sorting
+        merged.sort((a, b) => {
+          const scoreA = a.score ?? 0;
+          const scoreB = b.score ?? 0;
+          return sortOrder === 'asc' ? scoreA - scoreB : scoreB - scoreA;
+        });
+      }
+
+      const total = merged.length;
+      const paginated = merged.slice(offset, offset + limit);
+
+      const fullQuery: MemoryQuery = {
+        text,
+        types,
+        tags,
+        agentIds,
+        createdAfter,
+        createdBefore,
+        minImportance,
+        limit,
+        offset,
+        sortBy,
+        sortOrder,
+        includeDeleted,
+      };
+
+      return {
+        results: paginated,
+        total,
+        hasMore: offset + paginated.length < total,
+        query: fullQuery,
+      };
+    }
+
+    // Fallback or non-text standard search
+    if (text) {
+      conditions.push(`(content->>'text' ILIKE $${paramIdx} OR content->>'summary' ILIKE $${paramIdx})`);
+      values.push(`%${text}%`);
+      paramIdx++;
     }
 
     const whereClause = conditions.join(' AND ');
     const sortColumn = sortBy === 'createdAt' ? 'created_at' :
-                       sortBy === 'importance' ? "COALESCE((metadata->>'importance')::int, 0)" :
-                       'created_at';
+                       sortBy === 'importance' ? "(metadata->>'importance')::int" : 'created_at';
     const order = sortOrder === 'asc' ? 'ASC' : 'DESC';
 
     // Get total count
-    const [countResult] = await this.sql<{ count: string }[]>`
-      SELECT COUNT(*) as count
-      FROM memories
-      WHERE ${this.sql.unsafe(whereClause)}
-    `;
+    const [countResult] = await this.sql.unsafe(
+      `SELECT COUNT(*) as count FROM memories WHERE ${whereClause}`,
+      values
+    ) as any[];
     const total = parseInt(countResult.count, 10);
 
     // Get paginated results
-    const rows = await this.sql<MemoryRow[]>`
-      SELECT *
-      FROM memories
-      WHERE ${this.sql.unsafe(whereClause)}
-      ORDER BY ${this.sql.unsafe(sortColumn)} ${this.sql.unsafe(order)}
-      LIMIT ${limit}
-      OFFSET ${offset}
-    `;
+    const rows = await this.sql.unsafe(
+      `SELECT * FROM memories WHERE ${whereClause} ORDER BY ${sortColumn} ${order} LIMIT ${limit} OFFSET ${offset}`,
+      values
+    ) as MemoryRow[];
 
     const results: MemorySearchResult[] = rows.map(row => ({
       memory: this.rowToEntry(row),
-      score: text ? this.calculateTextRelevance(row.content.text, text) : undefined,
-      highlights: text ? this.extractHighlights(row.content.text, text) : undefined,
+      score: text ? this.calculateTextRelevance(this.extract_text_from_content(row.content), text) : undefined,
+      highlights: text ? this.extractHighlights(this.extract_text_from_content(row.content), text) : undefined,
     }));
 
-    // Build full query with applied defaults for the response
     const fullQuery: MemoryQuery = {
       text,
       types,
@@ -542,44 +659,59 @@ export class MemoryStore {
       // Generate embedding for query
       const queryEmbedding = await this.embedding_service.generate(queryText);
 
-      // Build filter conditions
-      const filters: string[] = [`tenant_id = '${tenantId}'`, 'deleted_at IS NULL', 'embedding IS NOT NULL'];
-      
+      // Build filter conditions using parameters
+      const conditions: string[] = [];
+      const values: any[] = [];
+      let paramIdx = 1;
+
+      conditions.push(`tenant_id = $${paramIdx++}`);
+      values.push(tenantId);
+
+      conditions.push('deleted_at IS NULL');
+
       if (agentIds && agentIds.length > 0) {
-        const agentList = agentIds.map(a => `'${a}'`).join(', ');
-        filters.push(`agent_id IN (${agentList})`);
-      }
-      
-      if (types && types.length > 0) {
-        const typeList = types.map(t => `'${t}'`).join(', ');
-        filters.push(`type IN (${typeList})`);
+        const placeholders = agentIds.map(() => `$${paramIdx++}`).join(', ');
+        conditions.push(`agent_id IN (${placeholders})`);
+        values.push(...agentIds);
       }
 
-      const whereClause = filters.join(' AND ');
+      if (types && types.length > 0) {
+        const placeholders = types.map(() => `$${paramIdx++}`).join(', ');
+        conditions.push(`type IN (${placeholders})`);
+        values.push(...types);
+      }
 
       // Vector similarity search using cosine distance
-      const vectorResults = await this.sql<(MemoryRow & { similarity: number })[]>`
+      const vectorWhere = [...conditions, 'embedding IS NOT NULL'].join(' AND ');
+      const vectorValues = [...values, JSON.stringify(queryEmbedding)];
+      const vectorQuery = `
         SELECT 
           *,
-          1 - (embedding <=> ${JSON.stringify(queryEmbedding)}::vector) as similarity
+          1 - (embedding <=> $${paramIdx}::vector) as similarity
         FROM memories
-        WHERE ${this.sql.unsafe(whereClause)}
-          AND 1 - (embedding <=> ${JSON.stringify(queryEmbedding)}::vector) >= ${minSimilarity}
+        WHERE ${vectorWhere}
+          AND 1 - (embedding <=> $${paramIdx}::vector) >= ${minSimilarity}
         ORDER BY similarity DESC
         LIMIT ${limit}
       `;
 
-      // Text search fallback
-      const textResults = await this.sql<MemoryRow[]>`
+      const vectorResults = await this.sql.unsafe(vectorQuery, vectorValues) as (MemoryRow & { similarity: number })[];
+
+      // Text search fallback with parameters
+      const textWhere = conditions.join(' AND ');
+      const textValues = [...values, `%${queryText}%`, `%${queryText}%`];
+      const textQuery = `
         SELECT *
         FROM memories
-        WHERE ${this.sql.unsafe(whereClause.replace('embedding IS NOT NULL', '1=1'))}
+        WHERE ${textWhere}
           AND (
-            content::text ILIKE ${'%' + queryText + '%'}
-            OR metadata::text ILIKE ${'%' + queryText + '%'}
+            content::text ILIKE $${paramIdx}
+            OR metadata::text ILIKE $${paramIdx + 1}
           )
         LIMIT ${Math.floor(limit / 2)}
       `;
+
+      const textResults = await this.sql.unsafe(textQuery, textValues) as MemoryRow[];
 
       // Merge and deduplicate
       const seenIds = new Set<string>();
@@ -614,18 +746,20 @@ export class MemoryStore {
     } catch (error) {
       console.error('[Memory] Semantic search failed, falling back to text search:', error);
       
-      // Graceful fallback
-      const fallbackResults = await this.sql<MemoryRow[]>`
+      // Graceful fallback with parameters
+      const fallbackQuery = `
         SELECT *
         FROM memories
-        WHERE tenant_id = ${tenantId}
+        WHERE tenant_id = $1
           AND deleted_at IS NULL
           AND (
-            content::text ILIKE ${'%' + queryText + '%'}
-            OR metadata::text ILIKE ${'%' + queryText + '%'}
+            content::text ILIKE $2
+            OR metadata::text ILIKE $3
           )
-        LIMIT ${limit}
+        LIMIT $4
       `;
+      const fallbackValues = [tenantId, `%${queryText}%`, `%${queryText}%`, limit];
+      const fallbackResults = await this.sql.unsafe(fallbackQuery, fallbackValues) as MemoryRow[];
 
       return fallbackResults.map(row => {
         const contentText = typeof row.content === 'string' ? row.content : JSON.stringify(row.content);
