@@ -100,3 +100,39 @@ Open risks:
 Next step:
 
 - Step 2: restore CI after Step 1 is committed.
+
+## 2026-07-07 — Step 2 CI Restore
+
+Step: 2 CI restore
+
+Agents:
+
+- Jun: confirmed `.github/workflows` had issue/PR templates only and no active workflow files.
+- Noble Six: added the v2 CI workflow and fixed Dockerfile lockfile copy.
+- Emile: ran local gates available in the Zo shell.
+- Kat: reviewed workflow scope and called out the known failing gates.
+- Cortana: run-log update.
+
+Changes:
+
+- Added `.github/workflows/ci.yml`.
+- CI jobs cover backend quality, dashboard build, dependency audit, Docker build, and optional FDE gates.
+- Updated `Dockerfile` to copy committed `bun.lock` instead of non-existent `bun.lockb*`.
+
+Evidence:
+
+- `python3` + PyYAML parse check for `.github/workflows/ci.yml`: passed.
+- `npm run quality`: passed with typecheck, lint, and 139 tests.
+- `cd dashboard && npm run build`: passed. Vite emitted a large chunk warning only.
+- `npm run fde:contracts --if-present && npm run fde:test --if-present && npm run fde:benchmark --if-present`: passed as no-op because FDE scripts do not exist yet.
+- `npm audit --audit-level=moderate`: failed on the known Step 3 dependency findings.
+- `docker build -t clawkeeper:v2-ci .`: not runnable in this Zo shell because `docker` is not installed.
+
+Open risks:
+
+- The dependency-audit CI job is expected to fail until Step 3 resolves or documents the root audit findings.
+- Docker build is defined for GitHub runners but still needs validation after push or in an environment with Docker installed.
+
+Next step:
+
+- Step 3: dependency security cleanup.
