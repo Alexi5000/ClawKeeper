@@ -396,3 +396,37 @@ Release readiness:
 Next step:
 
 - Ask Alex whether to push `main`, watch GitHub CI, and complete tag/release after CI is green.
+
+## 2026-07-07 — v2.0.0 Release Completion
+
+Step: release execution
+
+Agents:
+
+- Jun: checked the pushed branch, GitHub CI runs, tag state, release state, open PRs, and branch surface.
+- Noble Six: fixed release-blocking CI parity issues found only on GitHub runners.
+- Emile: verified local gates after each fix and watched GitHub CI to completion.
+- Kat: prevented tagging until Docker, dashboard, dependency audit, FDE, and backend quality were all green on GitHub.
+- Cortana: recorded the release result.
+
+GitHub CI result:
+
+- Run: `28865639363`
+- Commit: `5eabc2e`
+- Workflow: `ClawKeeper CI`
+- Result: passed.
+- Jobs passed: dashboard build, dependency audit, Docker build, FDE gates, backend quality.
+
+Release actions:
+
+- Pushed `main` to `origin/main`.
+- Created GitHub release `v2.0.0`.
+- Created tag `v2.0.0`.
+- Release URL: `https://github.com/Alexi5000/ClawKeeper/releases/tag/v2.0.0`
+
+Final state at release:
+
+- Open PRs: none.
+- Branches: `main` only locally and remotely.
+- Tag and release initially pointed at green commit `5eabc2e`.
+- No deploy service was started from Zo; v2.0.0 is a GitHub release, not a hosted production deployment.
