@@ -13,6 +13,8 @@
     "start": "bun run src/index.ts",
     "test": "node --test --import tsx \"test/**/*.test.ts\" \"tests/**/*.test.ts\"",
     "test:unit": "node --test --import tsx \"test/**/*.test.ts\" \"tests/**/*.test.ts\"",
+    "fde:contracts": "tsx scripts/validate-fde-contracts.ts",
+    "fde:test": "node --test --import tsx \"tests/fde/**/*.test.ts\"",
     "quality": "npm run typecheck && npm run lint && npm run test",
     "lint": "eslint src/ test/ tests/",
     "typecheck": "tsc --noEmit",

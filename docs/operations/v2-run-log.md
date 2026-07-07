@@ -172,3 +172,42 @@ Open risks:
 Next step:
 
 - Step 4: add typed FDE contracts and offline scenario fixtures.
+
+## 2026-07-07 — Step 4 FDE Contract Package
+
+Step: 4 FDE contract package
+
+Agents:
+
+- Jun: read the v2 design and existing test/script conventions.
+- Noble Six: added offline FDE contracts, scenarios, validator, and tests.
+- Emile: ran FDE and root quality gates.
+- Kat: reviewed for live-provider creep and autonomous-payment overclaiming.
+- Cortana: run-log update.
+
+Changes:
+
+- Added `packages/fde/src/contracts.ts` with versioned Zod schemas for scenarios, plans, generations, evaluations, and four-axis scoring.
+- Added `packages/fde/src/fixtures.ts` with four deterministic finance scenarios:
+  - invoice intake and validation
+  - reconciliation exception review
+  - approval-gated payment intent
+  - audit-trail reconstruction
+- Added `scripts/validate-fde-contracts.ts`.
+- Added focused tests in `tests/fde/contracts.test.ts`.
+- Added root scripts `fde:contracts` and `fde:test`.
+
+Evidence:
+
+- `npm run fde:contracts`: passed and reported 4 scenarios with the v2 scoring axes.
+- `npm run fde:test`: passed 4 focused FDE tests.
+- `npm run quality`: passed with typecheck, lint, and 143 tests.
+
+Open risks:
+
+- Step 4 defines contracts and fixtures only. The Planner -> Generator -> Evaluator execution harness is Step 5.
+- Docker build still needs validation in GitHub or another environment with Docker installed.
+
+Next step:
+
+- Step 5: add Planner -> Generator -> Evaluator benchmark harness.
