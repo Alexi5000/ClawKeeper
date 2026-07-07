@@ -283,3 +283,43 @@ Open risks:
 Next step:
 
 - Step 7: Docker and demo validation.
+
+## 2026-07-07 — Step 7 Docker and Demo Validation
+
+Step: 7 Docker and demo validation
+
+Agents:
+
+- Jun: checked the existing demo scripts, database setup path, and Docker surface.
+- Noble Six: added a pgvector-backed local Postgres Compose file and clarified demo scripts.
+- Emile: ran local quality, dashboard, audit, proof, offline demo, and seed failure checks.
+- Kat: reviewed for false-success demo behavior and overclaiming around Docker.
+- Cortana: run-log update.
+
+Changes:
+
+- Added `docker-compose.yml` with a local pgvector Postgres service for the database-backed demo.
+- Added `db:migrations`, `demo:db`, and `demo:offline` scripts.
+- Updated `db:setup` to run base schema, migrations, RLS, RBAC, then seed data.
+- Updated demo transform/generate/seed scripts to exit non-zero on unhandled errors.
+- Forced the seed script to verify the database connection before logging success.
+- Added README instructions for offline proof verification and database-backed demo validation.
+
+Evidence:
+
+- `npm run quality`: passed with typecheck, lint, and 147 tests.
+- `cd dashboard && npm run build`: passed. Vite emitted the existing large chunk warning only.
+- `npm audit --audit-level=moderate`: passed with 0 vulnerabilities.
+- `npm run proof:v2:validate`: passed.
+- `npm run demo:offline`: passed.
+- `bun run src/demo/seed/index.ts` without Postgres: failed with exit code 1, confirming the demo no longer false-passes when the database is unavailable.
+- `python3` YAML parse check for `docker-compose.yml`: passed and confirmed the pgvector Postgres service.
+
+Open risks:
+
+- `docker build -t clawkeeper:v2 .` could not run in this Zo shell because `docker` is not installed.
+- The database-backed demo command still needs validation in an environment with Docker available, or after pushing to GitHub CI.
+
+Next step:
+
+- Step 8: public packaging.

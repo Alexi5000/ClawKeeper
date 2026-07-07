@@ -27,6 +27,7 @@ async function main() {
   const sql = postgres(DATABASE_URL);
   
   try {
+    await sql`SELECT 1`;
     console.log('\n🔌 Connected to database');
     
     // Load generated data
@@ -128,4 +129,7 @@ async function main() {
   }
 }
 
-main().catch(console.error);
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});

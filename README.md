@@ -178,6 +178,32 @@ bun run dashboard:dev       # React command center
 npm run quality             # typecheck + lint + test suite
 ```
 
+## Verify v2 locally
+
+Use the offline proof path when you want a no-database verification run:
+
+```bash
+npm ci
+npm run quality
+cd dashboard && npm install && npm run build
+cd ..
+npm run fde:benchmark
+npm run proof:v2
+npm run proof:v2:validate
+npm run demo:offline
+```
+
+Use the database-backed demo path when Docker is available:
+
+```bash
+docker compose up -d postgres
+export DATABASE_URL=postgresql://clawkeeper:clawkeeper_local_password@localhost:5432/clawkeeper
+npm run demo:db
+docker build -t clawkeeper:v2 .
+```
+
+The demo data is synthetic. The v2 proof path does not call Plaid, Stripe, QuickBooks, Xero, or live payment rails.
+
 <br/>
 
 ## Usage examples

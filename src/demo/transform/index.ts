@@ -140,4 +140,7 @@ async function main() {
   console.log('='.repeat(60) + '\n');
 }
 
-main().catch(console.error);
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});
