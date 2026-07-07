@@ -22,6 +22,18 @@ import {
 import { format_currency, format_date, cn } from '@/lib/utils';
 import { api } from '@/lib/api';
 
+type ReconciliationAccount = {
+  id: string;
+  name: string;
+  institution: string;
+  balance: number;
+  last_sync?: string;
+};
+
+type AccountsResponse =
+  | ReconciliationAccount[]
+  | { accounts?: ReconciliationAccount[]; data?: ReconciliationAccount[] };
+
 // Mock bank accounts
 const mock_accounts = [
   { id: 'acc-1', name: 'Business Checking', institution: 'Chase Bank', balance: 12450000, last_sync: new Date(Date.now() - 3600000).toISOString() },
@@ -78,13 +90,15 @@ export function ReconciliationPage() {
   const [matched_ids, set_matched_ids] = useState<string[]>([]);
   const [reconciling, set_reconciling] = useState(false);
 
-  const { data: accounts_data } = useQuery({
+  const { data: accounts_data } = useQuery<AccountsResponse>({
     queryKey: ['accounts'],
     queryFn: () => api.get_accounts(),
     placeholderData: { accounts: mock_accounts },
   });
   
-  const accounts = Array.isArray(accounts_data) ? accounts_data : (accounts_data?.accounts || mock_accounts);
+  const accounts = Array.isArray(accounts_data)
+    ? accounts_data
+    : (accounts_data?.accounts || accounts_data?.data || mock_accounts);
 
   // Filter suggested matches based on search
   const filtered_matches = useMemo(() => {
@@ -176,7 +190,7 @@ export function ReconciliationPage() {
                     <div className="text-right">
                       <p className="font-semibold">{format_currency(account.balance)}</p>
                       <p className="text-xs text-muted-foreground">
-                        Synced {format_date(account.last_sync)}
+                        Synced {format_date(account.last_sync || new Date().toISOString())}
                       </p>
                     </div>
                   </div>

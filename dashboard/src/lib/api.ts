@@ -2,7 +2,68 @@
 
 const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:9100';
 
-class ApiClient {
+export interface OrchestrationTask {
+  task_id: string;
+  name: string;
+  description: string;
+  assigned_agent: string;
+  agent_name: string;
+  required_capabilities: string[];
+  dependencies: string[];
+  status: 'pending' | 'running' | 'completed' | 'failed' | 'skipped';
+  result?: Record<string, unknown>;
+  error?: string;
+  started_at?: string;
+  completed_at?: string;
+  duration_ms?: number;
+}
+
+export interface OrchestrationPlan {
+  plan_id: string;
+  command: string;
+  created_at: string;
+  estimated_duration_ms: number;
+  tasks: OrchestrationTask[];
+  edges: Array<{ from: string; to: string }>;
+  status: 'pending' | 'approved' | 'executing' | 'completed' | 'failed';
+}
+
+export interface OrchestrationResult {
+  plan_id: string;
+  status: 'completed' | 'partial' | 'failed';
+  tasks_completed: number;
+  tasks_failed: number;
+  tasks_total: number;
+  results: Array<{
+    task_id: string;
+    agent_id: string;
+    success: boolean;
+    output: Record<string, unknown>;
+    error: string | null;
+    duration_ms: number;
+  }>;
+  total_duration_ms: number;
+  summary: string;
+}
+
+export type OrchestrationEvent =
+  | { type: 'plan_started'; plan_id: string; timestamp: string }
+  | { type: 'plan_completed'; plan_id: string; status: string; tasks_completed: number; tasks_failed: number; total_duration_ms: number; summary: string; timestamp: string }
+  | { type: 'plan_failed'; plan_id: string; error: string; timestamp: string }
+  | { type: 'task_started'; plan_id: string; task_id: string; agent_id: string; agent_name: string; timestamp: string }
+  | { type: 'task_completed'; plan_id: string; task_id: string; agent_id: string; result: Record<string, unknown>; error: string | null; duration_ms: number; timestamp: string }
+  | { type: 'task_failed'; plan_id: string; task_id: string; agent_id: string; error: string; duration_ms?: number; timestamp: string }
+  | { type: 'task_skipped'; plan_id: string; task_id: string; reason: string; timestamp: string };
+
+export interface AccountSummary {
+  id: string;
+  name: string;
+  institution: string;
+  balance: number;
+  last_sync?: string;
+}
+
+export class ApiClient {
   private get_headers(): HeadersInit {
     const token = localStorage.getItem('clawkeeper_token');
     return {
@@ -102,6 +163,18 @@ class ApiClient {
     return this.fetch_json('/api/agents/status');
   }
 
+  async start_agent(agent_id: string) {
+    return this.fetch_json(`/api/agents/${agent_id}/start`, {
+      method: 'POST',
+    });
+  }
+
+  async stop_agent(agent_id: string) {
+    return this.fetch_json(`/api/agents/${agent_id}/stop`, {
+      method: 'POST',
+    });
+  }
+
   async execute_agent_task(agent_id: string, task: {
     task_name: string;
     description: string;
@@ -123,8 +196,8 @@ class ApiClient {
   }
 
   // Accounts
-  async get_accounts() {
-    return this.fetch_json('/api/accounts');
+  async get_accounts(): Promise<{ data: AccountSummary[] }> {
+    return this.fetch_json<{ data: AccountSummary[] }>('/api/accounts');
   }
 
   // Dashboard
