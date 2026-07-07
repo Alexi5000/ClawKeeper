@@ -246,3 +246,40 @@ Open risks:
 Next step:
 
 - Step 6: generate and validate v2 proof bundle artifacts.
+
+## 2026-07-07 — Step 6 Proof Bundle Generator
+
+Step: 6 proof bundle generator
+
+Agents:
+
+- Jun: checked the benchmark output and proof-bundle requirements.
+- Noble Six: added deterministic proof generation and validation scripts.
+- Emile: ran proof, FDE, and root quality gates.
+- Kat: reviewed the proof bundle for secret leakage, live-payment overclaiming, and hand-written marketing drift.
+- Cortana: run-log update.
+
+Changes:
+
+- Added `scripts/generate-proof-v2.ts`.
+- Added `scripts/validate-proof-v2.ts`.
+- Added root scripts `proof:v2` and `proof:v2:validate`.
+- Generated `docs/proof/v2.0/README.md`.
+- Generated `docs/proof/v2.0/benchmark.json`.
+- Generated `docs/proof/v2.0/demo-run.md`.
+- Generated `docs/proof/v2.0/audit-evidence.json`.
+
+Evidence:
+
+- `npm run proof:v2 && npm run proof:v2:validate`: passed.
+- `npm run fde:benchmark && npm run fde:test`: passed with 4/4 scenarios and 8 focused FDE tests.
+- `npm run quality`: passed with typecheck, lint, and 147 tests.
+
+Open risks:
+
+- The proof bundle is deterministic and synthetic; it is not a live payment or live provider proof.
+- Docker build still needs validation in GitHub or another environment with Docker installed.
+
+Next step:
+
+- Step 7: Docker and demo validation.
