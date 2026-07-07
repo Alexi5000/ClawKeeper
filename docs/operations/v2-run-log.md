@@ -362,3 +362,37 @@ Open risks:
 Next step:
 
 - Step 9: release gate.
+
+## 2026-07-07 — Step 9 Release Gate
+
+Step: 9 release gate
+
+Agents:
+
+- Jun: checked final repo status and release-blocking surfaces.
+- Noble Six: ran the final local gate sequence.
+- Emile: verified quality, dashboard build, dependency audit, FDE, and proof bundle.
+- Kat: confirmed Docker remains an environment blocker, not a hidden passing claim.
+- Cortana: run-log update.
+
+Evidence:
+
+- `npm ci`: passed with 0 vulnerabilities.
+- `npm run quality`: passed with typecheck, lint, and 147 tests.
+- `cd dashboard && npm install && npm run build`: passed. Vite emitted the existing large chunk warning only.
+- `npm audit --audit-level=moderate`: passed with 0 vulnerabilities.
+- `npm run fde:test`: passed 8 focused FDE tests.
+- `npm run fde:benchmark`: passed with 4/4 scenarios and average score `1`.
+- `npm run proof:v2 && npm run proof:v2:validate`: passed.
+- `docker build -t clawkeeper:v2 .`: not runnable in this Zo shell because `docker` is not installed.
+- `git status --short --branch`: clean before this run-log entry, with local `main` ahead of `origin/main`.
+
+Release readiness:
+
+- Local gates are green except Docker, which must be validated by GitHub CI or another Docker-capable environment.
+- No push, PR, tag, GitHub release, or public deploy has been performed.
+- Alex approval is required before pushing the local v2 commit stack.
+
+Next step:
+
+- Ask Alex whether to push `main`, watch GitHub CI, and complete tag/release after CI is green.
