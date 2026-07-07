@@ -211,3 +211,38 @@ Open risks:
 Next step:
 
 - Step 5: add Planner -> Generator -> Evaluator benchmark harness.
+
+## 2026-07-07 — Step 5 FDE Benchmark Harness
+
+Step: 5 Planner -> Generator -> Evaluator benchmark harness
+
+Agents:
+
+- Jun: confirmed no existing FDE benchmark runner.
+- Noble Six: added deterministic planner, generator, evaluator, plateau detection, and benchmark script.
+- Emile: ran benchmark, focused FDE tests, and root quality.
+- Kat: reviewed generated benchmark for offline/no-secret behavior.
+- Cortana: run-log update.
+
+Changes:
+
+- Added `packages/fde/src/harness.ts`.
+- Added `scripts/run-fde-benchmark.ts`.
+- Added `tests/fde/harness.test.ts`.
+- Added root script `fde:benchmark`.
+- Generated committed benchmark artifact at `packages/fde/benchmark/benchmark.json`.
+
+Evidence:
+
+- `npm run fde:benchmark`: passed and wrote 4/4 passing scenarios with average score `1`.
+- `npm run fde:test`: passed 8 focused FDE tests.
+- `npm run quality`: passed with typecheck, lint, and 147 tests.
+
+Open risks:
+
+- Benchmark scoring is deterministic and offline; it is not yet packaged as the public proof bundle.
+- Docker build still needs validation in GitHub or another environment with Docker installed.
+
+Next step:
+
+- Step 6: generate and validate v2 proof bundle artifacts.
