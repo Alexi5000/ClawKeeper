@@ -1,13 +1,13 @@
-
-
 <div align="center">
+
+[English](README.md) | **Español** | [简体中文](README.zh-CN.md) | [Português](README.pt-BR.md) | [العربية](README.ar.md) | [Français](README.fr.md) | [Русский](README.ru.md)
 
 <img src="assets/icon.png" alt="ClawKeeper" width="120" />
 
 # ClawKeeper
 
-**Plano de control de agentes financieros para PYMEs con auditoría integrada.**<br/>
-Los agentes pueden proponer tareas financieras; las políticas deterministas, los límites de inquilino, las puertas de aprobación y los registros de evidencia deciden qué se puede ejecutar.
+**Plano de control auditable de agentes financieros para pymes.**<br/>
+Los agentes pueden proponer tareas financieras; las políticas deterministas, los límites entre inquilinos, las puertas de aprobación y los registros de evidencias deciden qué puede ejecutarse.
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-3B82F6?style=flat-square)](LICENSE)
 [![Version](https://img.shields.io/badge/release-v2.0.0-16a34a?style=flat-square)](RELEASE_NOTES.md)
@@ -16,11 +16,11 @@ Los agentes pueden proponer tareas financieras; las políticas deterministas, lo
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-3178c6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Proof](https://img.shields.io/badge/proof-v2.0%20bundle-16a34a?style=flat-square)](docs/proof/v2.0/README.md)
 
-[Arquitectura](#agent-architecture) · [Qué Hace](#what-clawkeeper-does) · [Qué NO Hace](#what-clawkeeper-deliberately-does-not-do) · [Instalación](#install) · [Uso](#usage-examples) · [Seguridad](#security-posture) · [Documentación](#documentation)
+[Arquitectura](#agent-architecture) · [Qué hace](#what-clawkeeper-does) · [Qué no hace](#what-clawkeeper-deliberately-does-not-do) · [Instalación](#install) · [Uso](#usage-examples) · [Seguridad](#security-posture) · [Documentación](#documentation)
 
 ---
 
-<img src="assets/cover.png" alt="ClawKeeper agent control surface" width="100%" />
+<img src="assets/cover.png" alt="Superficie de control de agentes de ClawKeeper" width="100%" />
 
 </div>
 
@@ -28,136 +28,141 @@ Los agentes pueden proponer tareas financieras; las políticas deterministas, lo
 
 ## Referencia de investigación
 
-En pruebas comparativas frente a líneas base de código abierto ([arXiv:2603.24414](https://arxiv.org/abs/2603.24414)), la arquitectura de ClawKeeper demostró una mitigación superior de las amenazas de agentes LLM autónomos en contextos de ejecución financiera. El modelo de amenazas se centra en la inyección de prompts, filtración de datos entre inquilinos y movimiento no autorizado de fondos; modos de fallo que siguen en investigación activa y que no se consideran resueltos.
+En pruebas comparativas frente a soluciones de referencia de código abierto ([arXiv:2603.24414](https://arxiv.org/abs/2603.24414)), la arquitectura de ClawKeeper demostró una mitigación superior de las amenazas de agentes LLM autónomos en contextos de ejecución financiera. El modelo de amenazas se centra en la inyección de instrucciones, la filtración de datos entre inquilinos y el movimiento de dinero no autorizado, modos de fallo que siguen siendo objeto de investigación activa y no se consideran resueltos.
 
-La seguridad de los agentes es continua, no absoluta. Los resultados de las pruebas comparativas reflejan un entorno de pruebas específico frente a un conjunto determinado de líneas base en un momento dado. Los nuevos vectores de ataque contra agentes financieros autónomos surgen regularmente. La arquitectura está diseñada para reducir el radio de impacto del comportamiento incorrecto de los agentes, no para eliminarlo.
+La seguridad de los agentes es continua, no absoluta. Los resultados de las pruebas comparativas reflejan un conjunto de pruebas específico frente a un conjunto concreto de soluciones de referencia en un momento determinado. Surgen con regularidad nuevos vectores de ataque contra agentes financieros autónomos. La arquitectura está diseñada para reducir el radio de impacto del comportamiento indebido de los agentes, no para eliminarlo.
 
-## Estado de la prueba v2.0
+## Estado de las pruebas de v2.0
 
-ClawKeeper v2.0 se empaqueta alrededor de una columna vertebral de pruebas inspeccionable:
+ClawKeeper v2.0 se distribuye en torno a una estructura de pruebas inspeccionable:
 
 - Control de calidad del backend: `npm run quality`
-- Compilación de producción del dashboard: `cd dashboard && npm run build`
+- Compilación de producción del panel: `cd dashboard && npm run build`
 - Auditoría de dependencias: `npm audit --audit-level=moderate`
-- Benchmark FDE: `npm run fde:benchmark`
+- Prueba comparativa FDE: `npm run fde:benchmark`
 - Validación del paquete de pruebas: `npm run proof:v2:validate`
-- Control de compilación Docker: `.github/workflows/ci.yml`
+- Control de compilación de Docker: `.github/workflows/ci.yml`
 
-Consulte [`docs/proof/v2.0/README.md`](docs/proof/v2.0/README.md) para el paquete de pruebas v2 y los comandos de verificación. El paquete de pruebas es determinista, offline, sintético y con datos anonimizados.
+Consulte [`docs/proof/v2.0/README.md`](docs/proof/v2.0/README.md) para ver el paquete de pruebas de v2 y los comandos de verificación. El paquete de pruebas es determinista, funciona sin conexión, es sintético y está censurado.
 
 <br/>
 
+<a id="agent-architecture"></a>
+
 ## Arquitectura de agentes
 
-ClawKeeper modela un departamento financiero como una jerarquía de agentes de tres capas: un orquestador CEO, nueve líderes de dominio y 100 trabajadores especializados. Cada agente hereda de `BaseAgent`, que evalúa el motor de políticas OpenClaw antes de la ejecución de tareas. Ningún agente toca un flujo de trabajo financiero de alto riesgo sin pasar por comprobaciones de políticas deterministas en el código, no en los prompts.
+ClawKeeper modela un departamento financiero como una jerarquía de agentes de tres niveles: un orquestador CEO, nueve responsables de dominio y 100 trabajadores especializados. Todos los agentes heredan de `BaseAgent`, que evalúa el motor de políticas OpenClaw antes de ejecutar una tarea. Ningún agente interviene en un flujo de trabajo financiero de alto riesgo sin superar comprobaciones deterministas de políticas en el código, no en las instrucciones.
 
 ```text
                           ClawKeeper CEO
-                     (orquestador de nivel superior)
+                     (top-level orchestrator)
                                |
             ┌──────────────────┼──────────────────┐
             |                  |                  |
      ┌──────┴──────┐    ┌─────┴─────┐    ┌───────┴───────┐
-     |   Líder CFO |    |  Líder CP |    |   Líder CC    |
-     |  (8 trabajadores)|    |(15 trabajadores)|   | (15 trabajadores)  |
+     |   CFO Lead  |    |  AP Lead  |    |   AR Lead     |
+     |  (8 workers)|    |(15 workers)|   | (15 workers)  |
      └─────────────┘    └───────────┘    └───────────────┘
             |                  |                  |
      ┌──────┴──────┐    ┌─────┴─────┐    ┌───────┴───────┐
-     | Líder Concil.|    |Cumplimiento|    | Informes      |
-     |(12 trabajadores)|    |   Líder   |    |    Líder      |
-     |             |    |(10 trabajadores)|   | (12 trabajadores)  |
+     | Recon Lead  |    |Compliance |    | Reporting     |
+     |(12 workers) |    |   Lead    |    |    Lead       |
+     |             |    |(10 workers)|   | (12 workers)  |
      └─────────────┘    └───────────┘    └───────────────┘
             |                  |                  |
      ┌──────┴──────┐    ┌─────┴─────┐    ┌───────┴───────┐
-     |Integración  |    | Datos/ETL |    |  Soporte      |
-     |   Líder     |    |   Líder   |    |    Líder      |
-     |(12 trabajadores)|    |(10 trabajadores)|   |  (6 trabajadores)  |
+     |Integration  |    | Data/ETL  |    |  Support      |
+     |   Lead      |    |   Lead    |    |    Lead       |
+     |(12 workers) |    |(10 workers)|   |  (6 workers)  |
      └─────────────┘    └───────────┘    └───────────────┘
 
-                    ── PUERTA DE APROBACIÓN ──
-     Cada acción de alto riesgo (pago, asiento contable, declaración fiscal,
-     operación entre inquilinos) requiere metadatos de aprobación antes
-     de que el motor de políticas permita la ejecución. La puerta es
-     código determinista en src/openclaw/policy.ts, no una decisión de LLM.
+                    ── APPROVAL GATE ──
+     Every high-risk action (payment, writeback, tax filing,
+     cross-tenant operation) requires approval metadata before
+     the policy engine permits execution. The gate is
+     deterministic code in src/openclaw/policy.ts, not an
+     LLM judgment call.
 ```
 
 ### Lógica de la puerta de aprobación
 
-La capa de políticas es deliberadamente determinista. No le pregunta a un LLM si un pago, un asiento contable o una acción entre inquilinos es segura.
+La capa de políticas es deliberadamente determinista. No pregunta a un LLM si un pago, una escritura o una acción que atraviesa inquilinos es segura.
 
 ```text
-El agente solicita ejecutar una tarea
+Agent requests task execution
         │
         ▼
 ┌─────────────────────┐     ┌─────────────────┐
-│ Comprobación de     │──X──│ DENEGADO:       │
-│ aislamiento          │     │ contexto de inquilino incorrecto │
+│ Tenant isolation    │──X──│ DENY: wrong     │
+│ check               │     │ tenant context   │
 └────────┬────────────┘     └─────────────────┘
-         │ pasa
+         │ pass
          ▼
 ┌─────────────────────┐     ┌─────────────────┐
-│ Comprobación de     │──X──│ DENEGADO:       │
-│ capacidad            │     │ capacidad faltante  │
-│ (rol + permisos)     │     │                     │
+│ Capability check    │──X──│ DENY: missing   │
+│ (role + permissions)│     │ capability       │
 └────────┬────────────┘     └─────────────────┘
-         │ pasa
+         │ pass
          ▼
 ┌─────────────────────┐     ┌─────────────────┐
-│ Escaneo de seguridad│──X──│ DENEGADO:       │
-│ del prompt           │     │ intento de inyección detectado │
-│ (inyección, bypass)  │     │                     │
+│ Prompt-safety scan  │──X──│ DENY: injection │
+│ (injection, bypass) │     │ attempt detected │
 └────────┬────────────┘     └─────────────────┘
-         │ pasa
+         │ pass
          ▼
 ┌─────────────────────┐     ┌──────────────────┐
-│ Nivel de riesgo +   │──?──│ PUERTA: se       │
-│ comprobación de     │     │ requiere metadatos│
-│ umbral de monto      │     │ de aprobación     │
+│ Risk tier + amount  │──?──│ GATE: approval   │
+│ threshold check     │     │ metadata required │
 └────────┬────────────┘     └──────────────────┘
-         │ aprobado o bajo riesgo
+         │ approved or low-risk
          ▼
 ┌─────────────────────┐
-│ EJECUTAR + emitir    │
-│ evento de auditoría  │
-│ con datos anonimizados│
+│ EXECUTE + emit      │
+│ redacted audit event│
 └─────────────────────┘
 ```
 
-Implementación de políticas: [`src/openclaw/policy.ts`](src/openclaw/policy.ts) · Adaptador de ejecución: [`src/openclaw/runtime.ts`](src/openclaw/runtime.ts) · Ejecución base del agente: [`src/agents/base.ts`](src/agents/base.ts)
+Implementación de políticas: [`src/openclaw/policy.ts`](src/openclaw/policy.ts) · Adaptador de ejecución: [`src/openclaw/runtime.ts`](src/openclaw/runtime.ts) · Aplicación en el agente base: [`src/agents/base.ts`](src/agents/base.ts)
 
 <br/>
+
+<a id="what-clawkeeper-does"></a>
 
 ## Qué hace ClawKeeper
 
-| Dominio | Agentes | Qué gestionan |
+| Dominio | Agentes | De qué se ocupan |
 |--------|-------:|-----------------|
-| **Cuentas por Pagar** | 15 | Análisis de facturas, validación OCR, conciliación triple (PO-factura-recibo), detección de duplicados, enrutamiento de aprobaciones, programación de pagos, gestión de proveedores |
-| **Cuentas por Cobrar** | 15 | Facturación a clientes, conciliación de pagos, seguimiento de cobros, manejo de disputas, reconocimiento de ingresos, análisis de antigüedad, generación de estados |
-| **Conciliación** | 12 | Importación de transacciones bancarias vía Plaid, coincidencia difusa por fecha/monto/destinatario, investigación de discrepancias, asientos de ajuste, manejo de excepciones |
-| **Informes** | 12 | Estados de resultados, balance general, estados de flujo de caja, construcción de informes personalizados, ratios financieros, generación de gráficos, entrega programada de informes |
-| **Integración** | 12 | Flujos bancarios Plaid, pagos Stripe, sincronización QuickBooks, sincronización Xero, gestión de flujo OAuth, procesamiento de webhooks, circuit breakers |
-| **Cumplimiento** | 10 | Verificaciones de cumplimiento fiscal, preparación de auditorías, verificación de segregación de funciones, detección de fraudes, retención de documentos, informes regulatorios |
-| **Datos / ETL** | 10 | Importación CSV/Excel/JSON, mapeo de esquemas, validación de datos, eliminación de duplicados, enriquecimiento, procesamiento por lotes, soporte para migraciones |
-| **CFO / Estrategia** | 8 | Pronóstico de flujo de caja, gestión presupuestaria, modelado financiero, seguimiento de KPIs, análisis de variaciones, evaluación de riesgos |
-| **Soporte** | 6 | Mesa de ayuda, diagnóstico de errores, recuperación, gestión de escalaciones, incorporación |
+| **Cuentas a pagar** | 15 | Análisis de facturas, validación OCR, conciliación a tres bandas (pedido-factura-recepción), detección de duplicados, enrutamiento de aprobaciones, programación de pagos, gestión de proveedores |
+| **Cuentas a cobrar** | 15 | Facturación a clientes, conciliación de pagos, seguimiento de cobros, gestión de disputas, reconocimiento de ingresos, análisis de antigüedad, generación de extractos |
+| **Conciliación** | 12 | Importación de transacciones bancarias mediante Plaid, conciliación aproximada por fecha/importe/beneficiario, investigación de discrepancias, asientos de ajuste, gestión de excepciones |
+| **Informes** | 12 | Pérdidas y ganancias, balance, estados de flujos de efectivo, creación de informes personalizados, ratios financieros, generación de gráficos, entrega programada de informes |
+| **Integración** | 12 | Fuentes bancarias de Plaid, pagos de Stripe, sincronización con QuickBooks, sincronización con Xero, gestión de flujos OAuth, procesamiento de webhooks, disyuntores |
+| **Cumplimiento** | 10 | Comprobaciones de cumplimiento fiscal, preparación de auditorías, verificación de la segregación de funciones, detección de fraude, conservación de documentos, informes normativos |
+| **Datos / ETL** | 10 | Importación de CSV/Excel/JSON, asignación de esquemas, validación de datos, deduplicación, enriquecimiento, procesamiento masivo, asistencia para migraciones |
+| **CFO / Estrategia** | 8 | Previsión de flujos de efectivo, gestión presupuestaria, modelización financiera, seguimiento de KPI, análisis de desviaciones, evaluación de riesgos |
+| **Soporte** | 6 | Servicio de asistencia, diagnóstico de errores, recuperación, gestión de escalados, incorporación |
 
-**Total: 110 agentes** (1 orquestador CEO + 9 líderes de dominio + 100 trabajadores especializados).
+**Total: 110 agentes** (1 orquestador CEO + 9 responsables de dominio + 100 trabajadores especializados).
 
 <br/>
+
+<a id="what-clawkeeper-deliberately-does-not-do"></a>
 
 ## Qué NO hace ClawKeeper deliberadamente
 
-Nombrar los modos de fallo es más importante que enumerar las características.
+Nombrar los modos de fallo importa más que nombrar las funciones.
 
 | Límite | Por qué existe |
 |----------|--------------|
-| **Sin ejecución financiera autónoma sin aprobación humana** | El procesamiento de pagos, escrituras en sistemas contables, declaraciones fiscales y operaciones de alto riesgo requieren metadatos de aprobación explícitos. El motor de políticas denegará la ejecución si falta la aprobación, incluso si el agente tiene la capacidad técnica. Esta es la restricción arquitectónica más importante. |
-| **Sin intercambio de datos entre inquilinos** | Los agentes tienen alcance a nivel de inquilino. El motor de políticas deniega cualquier solicitud donde el contexto de inquilino del agente no coincida con el recurso objetivo. La ejecución RLS en PostgreSQL proporciona una segunda frontera a nivel de datos. |
-| **Sin decisiones de seguridad basadas en LLM** | El motor de políticas es código TypeScript determinista, no un prompt. La detección de inyección de prompts, las comprobaciones de capacidad y las puertas de aprobación se evalúan en `src/openclaw/policy.ts` antes de invocar cualquier LLM. Esto no hace que el sistema sea inmune a inyecciones, sino que reduce la superficie de ataque al eliminar al LLM de la ruta de decisión de seguridad. |
-| **Sin registro de auditoría sin anonimizar** | Los datos PII y secretos se anonimizan de los eventos de auditoría antes de la persistencia en la base de datos. Los registros de auditoría usan triggers de solo append en PostgreSQL; una vez escritos, no pueden modificarse ni eliminarse a través de la capa de aplicación. |
-| **Sin gasto ilimitado en LLM** | La configuración del cliente LLM sensible a costos y el reintento con límite de tasa previenen costos descontrolados de API durante ejecuciones concurrentes multi-agente. Esto mitiga, pero no elimina, el riesgo de costos en escenarios de alto volumen. |
+| **No ejecuta operaciones financieras autónomas sin aprobación humana** | El procesamiento de pagos, las escrituras en sistemas contables, las declaraciones fiscales y las operaciones de alto riesgo requieren metadatos de aprobación explícitos. El motor de políticas denegará la ejecución si falta la aprobación, incluso si el agente dispone de la capacidad técnica. Esta es la restricción arquitectónica más importante. |
+| **No comparte datos entre inquilinos** | Los agentes están restringidos a un inquilino. El motor de políticas deniega cualquier solicitud en la que el contexto de inquilino del agente no coincida con el recurso de destino. La aplicación de RLS en PostgreSQL proporciona un segundo límite en la capa de datos. |
+| **No toma decisiones de seguridad basadas en LLM** | El motor de políticas es código TypeScript determinista, no una instrucción. La detección de inyección de instrucciones, las comprobaciones de capacidades y las puertas de aprobación se evalúan en `src/openclaw/policy.ts` antes de invocar cualquier LLM. Esto no hace que el sistema sea inmune a las inyecciones: reduce la superficie de ataque al retirar el LLM de la ruta de decisión de seguridad. |
+| **No registra auditorías sin censurar** | Los datos personales y los secretos se censuran en los eventos de auditoría antes de almacenarlos en la base de datos. Los registros de auditoría utilizan desencadenadores de solo adición de PostgreSQL: una vez escritos, no pueden modificarse ni eliminarse desde la capa de aplicación. |
+| **No permite un gasto ilimitado en LLM** | La configuración del cliente LLM sensible a los costes y el retroceso ante límites de frecuencia evitan costes descontrolados de API durante ejecuciones multiagente concurrentes. Esto mitiga el riesgo de costes en escenarios de gran volumen, pero no lo elimina. |
 
 <br/>
+
+<a id="install"></a>
 
 ## Instalación
 
@@ -171,19 +176,19 @@ cp .env.example .env
 ### Variables de entorno mínimas
 
 ```bash
-# Requeridas
+# Required
 DATABASE_URL=postgresql://clawkeeper:password@localhost:5432/clawkeeper
 JWT_SECRET=<random-string-minimum-32-chars>
 OPENAI_API_KEY=<your-key>        # or ANTHROPIC_API_KEY
 
-# Integraciones opcionales
+# Optional integrations
 PLAID_CLIENT_ID=                 # bank feeds
 STRIPE_API_KEY=                  # payment processing
 QUICKBOOKS_CLIENT_ID=            # accounting sync
 XERO_CLIENT_ID=                  # accounting sync
 ```
 
-### Iniciar servicios
+### Iniciar los servicios
 
 ```bash
 bun run setup:full          # schema, RLS, RBAC, seed data
@@ -199,7 +204,7 @@ npm run quality             # typecheck + lint + test suite
 
 ## Verificar v2 localmente
 
-Use el camino de pruebas offline cuando desee una ejecución de verificación sin base de datos:
+Utilice la ruta de pruebas sin conexión cuando quiera realizar una verificación sin base de datos:
 
 ```bash
 npm ci
@@ -212,7 +217,7 @@ npm run proof:v2:validate
 npm run demo:offline
 ```
 
-Use el camino de demostración con base de datos cuando Docker esté disponible:
+Utilice la ruta de demostración respaldada por base de datos cuando Docker esté disponible:
 
 ```bash
 docker compose up -d postgres
@@ -221,15 +226,17 @@ npm run demo:db
 docker build -t clawkeeper:v2 .
 ```
 
-Los datos de demostración son sintéticos. El camino de prueba v2 no llama a Plaid, Stripe, QuickBooks, Xero ni a pasarelas de pago en vivo.
+Los datos de demostración son sintéticos. La ruta de pruebas de v2 no llama a Plaid, Stripe, QuickBooks, Xero ni a redes de pago reales.
 
 <br/>
 
+<a id="usage-examples"></a>
+
 ## Ejemplos de uso
 
-### Evaluar una decisión de política (ejecución en seco)
+### Evaluar una decisión de política (simulación)
 
-Compruebe si una acción propuesta por un agente sería permitida, requeriría aprobación o sería denegada, sin ejecutar nada.
+Compruebe si una acción propuesta por un agente estaría permitida, sujeta a aprobación o denegada, sin ejecutar nada.
 
 ```bash
 curl -X POST http://localhost:4004/api/agents/openclaw/policy/evaluate \
@@ -255,33 +262,35 @@ curl http://localhost:4004/api/agents/openclaw/manifest \
 # Returns: full agent registry, capabilities, risk tiers, approval rules
 ```
 
-### Subir y procesar una factura
+### Cargar y procesar una factura
 
 ```bash
 curl -X POST http://localhost:4004/api/invoices/upload \
   -H "Authorization: Bearer $TOKEN" \
   -F "file=@invoice.pdf"
 
-# Dispara: extracción OCR → validación de partidas → comprobación de duplicados
-#           → categorización de gastos → enrutamiento de aprobación
-# Modo de fallo: la valla de coincidencia de sumas OCR rechazará la factura
-# si los totales de las partidas no coinciden con el total declarado.
+# Triggers: OCR extraction → line-item validation → duplicate check
+#           → expense categorization → approval routing
+# Failure mode: OCR sum-matching guardrail will reject the invoice
+# if line-item totals do not match the stated total.
 ```
 
 <br/>
 
+<a id="security-posture"></a>
+
 ## Postura de seguridad
 
-La seguridad de los agentes es una práctica continua, no una función entregada. El modelo de amenazas de ClawKeeper se centra en las superficies de ataque específicas de los agentes financieros autónomos: inyección de prompts, filtración entre inquilinos, movimiento no autorizado de fondos y manipulación de auditorías.
+La seguridad de los agentes es una práctica continua, no una función terminada. El modelo de amenazas de ClawKeeper se centra en las superficies de ataque específicas de los agentes financieros autónomos: inyección de instrucciones, filtraciones entre inquilinos, movimientos de dinero no autorizados y manipulación de auditorías.
 
-| Valla | Implementación | Limitación conocida |
+| Mecanismo de protección | Implementación | Limitación conocida |
 |-----------|---------------|-----------------|
-| **Aislamiento de inquilino** | Motor de políticas + RLS de PostgreSQL | El bypass de RLS es posible si se concede acceso a SQL crudo fuera de la capa de aplicación |
-| **Puertas de aprobación** | Comprobaciones de políticas deterministas en `src/openclaw/policy.ts` | Los metadatos de aprobación se confían una vez proporcionados; la UI del flujo de aprobación está en la hoja de ruta v1.6 |
-| **Denegación de inyección de prompt** | Vallas de coincidencia de patrones evaluadas antes de la invocación del LLM | La detección basada en patrones no captura técnicas de inyección novedosas; esto es un área de investigación activa |
-| **Inmutabilidad de auditoría** | Triggers de solo append en PostgreSQL; anonimización de PII/secretos antes de escribir | El bypass a nivel de base de datos (SQL directo) puede eludir los triggers; mitigado por controles de acceso a red |
-| **Validación OCR** | Coincidencia programática de sumas de partidas frente a totales declarados | Las facturas adversarias diseñadas para pasar las comprobaciones de sumas mientras contienen partidas individuales incorrectas son una brecha conocida |
-| **Resiliencia al límite de tasa** | Reintento con backoff exponencial en errores 429/transitorios | Existen límites de backoff, pero la limitación de tasa sostenida durante la concurrencia pico puede degradar el rendimiento de los agentes |
+| **Aislamiento de inquilinos** | Motor de políticas + RLS de PostgreSQL | Es posible eludir RLS si se concede acceso SQL sin procesar fuera de la capa de aplicación |
+| **Puertas de aprobación** | Comprobaciones deterministas de políticas en `src/openclaw/policy.ts` | Los metadatos de aprobación se consideran fiables una vez proporcionados; la interfaz de usuario del flujo de aprobación está prevista para v1.6 |
+| **Denegación de inyección de instrucciones** | Mecanismos de protección por coincidencia de patrones evaluados antes de invocar el LLM | La detección basada en patrones no identifica técnicas de inyección nuevas; se trata de un área de investigación activa |
+| **Inmutabilidad de auditoría** | Desencadenadores de solo adición de PostgreSQL; censura de datos personales/secretos antes de escribir | Una elusión en el nivel de base de datos (SQL directo) puede sortear los desencadenadores; se mitiga mediante controles de acceso a la red |
+| **Validación OCR** | Comprobación programática de la suma de las partidas frente a los totales declarados | Las facturas maliciosas diseñadas para superar las comprobaciones de suma pero que contienen partidas individuales incorrectas constituyen una deficiencia conocida |
+| **Resiliencia ante límites de frecuencia** | Reintentos con retroceso exponencial ante errores 429/transitorios | Existen límites de retroceso, pero una limitación de frecuencia sostenida durante picos de concurrencia puede reducir el rendimiento de los agentes |
 
 Contexto de investigación: [arXiv:2603.24414](https://arxiv.org/abs/2603.24414) · Modelo de seguridad: [`docs/SECURITY_MODEL.md`](docs/SECURITY_MODEL.md) · Informes de vulnerabilidades: [`SECURITY.md`](SECURITY.md)
 
@@ -290,24 +299,24 @@ Contexto de investigación: [arXiv:2603.24414](https://arxiv.org/abs/2603.24414)
 ## Superficie de la API
 
 ```text
-GET  /health                                 # estado de actividad
-POST /api/auth/login                         # autenticación JWT
-POST /api/auth/register                      # registro de inquilino
-GET  /api/agents                             # registro de agentes
-GET  /api/agents/openclaw/manifest           # inspección del manifiesto OpenClaw
-POST /api/agents/openclaw/policy/evaluate    # evaluación de política en seco
-GET  /api/invoices                           # lista de facturas
-POST /api/invoices/upload                    # procesamiento de facturas OCR
-POST /api/reconciliation/start              # conciliación bancaria
-GET  /api/reports/:type                      # informes financieros
-WS   /ws                                     # eventos de agentes en tiempo real
+GET  /health                                 # liveness
+POST /api/auth/login                         # JWT authentication
+POST /api/auth/register                      # tenant registration
+GET  /api/agents                             # agent registry
+GET  /api/agents/openclaw/manifest           # OpenClaw manifest inspection
+POST /api/agents/openclaw/policy/evaluate    # dry-run policy evaluation
+GET  /api/invoices                           # invoice list
+POST /api/invoices/upload                    # OCR invoice processing
+POST /api/reconciliation/start              # bank reconciliation
+GET  /api/reports/:type                      # financial reports
+WS   /ws                                     # real-time agent events
 ```
 
 <br/>
 
 ## Pruebas y controles de calidad
 
-El conjunto de pruebas valida las partes del sistema que importan para un lanzamiento de agente financiero: corrección del manifiesto, decisiones de política, requisitos de aprobación, aislamiento de inquilino, denegación de inyección de prompts y anonimización de auditoría. Las pruebas de comportamiento del dashboard son secundarias.
+El conjunto de pruebas valida las partes del sistema que importan para una versión de agentes financieros: la corrección del manifiesto, las decisiones de políticas, los requisitos de aprobación, el aislamiento de inquilinos, la denegación de inyecciones de instrucciones y la censura de auditorías. Las pruebas de comportamiento del panel son secundarias.
 
 ```bash
 npm run typecheck          # TypeScript strict mode
@@ -320,58 +329,60 @@ npm run proof:v2:validate  # proof bundle validation
 
 | Archivo de prueba | Qué valida |
 |-----------|------------------|
-| `test/openclaw.manifest.test.ts` | Identidad de la app, registro de agentes, política de capacidades de alto riesgo, salud del adaptador de ejecución |
-| `test/openclaw.policy.test.ts` | Informes autónomos, flujos de pago que requieren aprobación, denegación de aislamiento de inquilino, denegación de capacidad faltante, denegación de inyección de prompt, anonimización de auditoría |
+| `test/openclaw.manifest.test.ts` | Identidad de la aplicación, registro de agentes, política de capacidades de alto riesgo, estado del adaptador de ejecución |
+| `test/openclaw.policy.test.ts` | Informes autónomos, flujos de pagos sujetos a aprobación, denegación por aislamiento de inquilinos, denegación por falta de capacidad, denegación de inyección de instrucciones, censura de auditorías |
 
 <br/>
+
+<a id="documentation"></a>
 
 ## Estructura del repositorio
 
 ```text
 ClawKeeper/
 ├── src/
-│   ├── agents/          # CEO, orquestador, trabajador, ejecución BaseAgent
-│   ├── api/             # Servidor Hono, rutas de finanzas y plano de control
-│   ├── core/            # Tipos, cliente LLM, observabilidad, programación
-│   ├── guardrails/      # Validación, detección PII, comprobaciones de inyección
+│   ├── agents/          # CEO, orchestrator, worker, BaseAgent execution
+│   ├── api/             # Hono server, finance + control-plane routes
+│   ├── core/            # Types, LLM client, observability, scheduling
+│   ├── guardrails/      # Validation, PII detection, injection checks
 │   ├── integrations/    # Plaid, Stripe, QuickBooks, Xero, Document AI
-│   ├── memory/          # Primitivas de memoria y contexto de agente
-│   └── openclaw/        # Manifiesto, motor de políticas, adaptador de ejecución
-├── agents/              # 110 definiciones AGENT.md (CEO + líderes + trabajadores)
-├── test/                # Pruebas de manifiesto y política OpenClaw
-├── dashboard/           # Centro de comandos React/Vite/Tailwind
-├── db/                  # Esquema PostgreSQL, RLS, RBAC, datos iniciales
-├── docs/                # Arquitectura, modelo de seguridad, API, despliegue
-└── skills/              # Definiciones de habilidades financieras
+│   ├── memory/          # Agent memory and context primitives
+│   └── openclaw/        # Manifest, policy engine, runtime adapter
+├── agents/              # 110 AGENT.md definitions (CEO + leads + workers)
+├── test/                # OpenClaw manifest + policy tests
+├── dashboard/           # React/Vite/Tailwind command center
+├── db/                  # PostgreSQL schema, RLS, RBAC, seed data
+├── docs/                # Architecture, security model, API, deployment
+└── skills/              # Finance skill definitions
 ```
 
 <br/>
 
 ## Documentación
 
-| Documento | Propósito |
+| Documento | Finalidad |
 |----------|---------|
 | [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | Arquitectura del sistema y jerarquía de agentes |
-| [`docs/SECURITY_MODEL.md`](docs/SECURITY_MODEL.md) | Límite de agente OpenClaw, puertas de aprobación, vallas financieras |
-| [`docs/proof/v2.0/README.md`](docs/proof/v2.0/README.md) | Paquete de pruebas v2 y comandos de verificación |
-| [`docs/RELEASE_1_5.md`](docs/RELEASE_1_5.md) | Notas de lanzamiento históricas y evidencia de validación |
-| [`docs/API.md`](docs/API.md) | Referencia de API |
-| [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) | Guía de despliegue |
-| [`docs/MULTI-TENANCY.md`](docs/MULTI-TENANCY.md) | Aislamiento de inquilinos y modelo RBAC |
-| [`AGENTS.md`](AGENTS.md) | Índice completo de 110 agentes con jerarquía |
-| [`SECURITY.md`](SECURITY.md) | Política de informes de vulnerabilidades |
-| [`CONTRIBUTING.md`](CONTRIBUTING.md) | Flujo de contribución |
+| [`docs/SECURITY_MODEL.md`](docs/SECURITY_MODEL.md) | Límite de agentes de OpenClaw, puertas de aprobación, mecanismos de protección financieros |
+| [`docs/proof/v2.0/README.md`](docs/proof/v2.0/README.md) | Paquete de pruebas de v2 y comandos de verificación |
+| [`docs/RELEASE_1_5.md`](docs/RELEASE_1_5.md) | Notas históricas de la versión y evidencias de validación |
+| [`docs/API.md`](docs/API.md) | Referencia de la API |
+| [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) | Orientación para el despliegue |
+| [`docs/MULTI-TENANCY.md`](docs/MULTI-TENANCY.md) | Modelo de aislamiento de inquilinos y RBAC |
+| [`AGENTS.md`](AGENTS.md) | Índice completo de los 110 agentes con su jerarquía |
+| [`SECURITY.md`](SECURITY.md) | Política de notificación de vulnerabilidades |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | Flujo de trabajo para contribuciones |
 
 <br/>
 
 ## Hoja de ruta
 
-| Versión | Dirección | Riesgo abierto |
+| Versión | Dirección | Riesgo pendiente |
 |---------|-----------|-----------|
-| **v2.1** | Banco de trabajo de aprobaciones: cola de aprobación humana, comentarios de revisores, evidencia de aprobación inmutable en el dashboard | Latencia de UX de aprobación para operaciones de CP de alto volumen |
-| **v2.2** | Endurecimiento de integración: pruebas de contrato para adaptadores Plaid, Stripe, QuickBooks, Xero | Deriva de esquemas de API de terceros entre pruebas y producción |
-| **v2.3** | Expansión de ejecución: programación distribuida de agentes, sandboxing de herramientas, reproducción de ejecución | Fidelidad de reproducción cuando el estado del sistema externo ha cambiado |
-| **v3.0** | Piloto automático financiero: flujos de trabajo de extremo a extremo que combinan aprobaciones, conciliación, informes y asientos | Tasas de error compuestas en cadenas multi-paso de agentes |
+| **v2.1** | Banco de trabajo de aprobaciones: cola de aprobación humana, comentarios de revisores, evidencias de aprobación inmutables en el panel | Latencia de la experiencia de aprobación para operaciones de cuentas a pagar de gran volumen |
+| **v2.2** | Refuerzo de integraciones: pruebas de contrato para los adaptadores de Plaid, Stripe, QuickBooks y Xero | Deriva de los esquemas de API de terceros entre las pruebas y la producción |
+| **v2.3** | Ampliación de la ejecución: programación distribuida de agentes, aislamiento de herramientas, reproducción de ejecuciones | Fidelidad de la reproducción cuando ha cambiado el estado del sistema externo |
+| **v3.0** | Piloto automático financiero: flujos de trabajo integrales que combinan aprobaciones, conciliación, informes y escritura | Tasas de error acumuladas en cadenas de agentes de varios pasos |
 
 <br/>
 
@@ -385,6 +396,6 @@ MIT. Consulte [`LICENSE`](LICENSE).
 
 **[Alex Cinovoj](https://www.linkedin.com/in/alexcinovoj)** · [TechTide AI](https://techtideai.io/) · Columbus, Ohio
 
-Para implementación en producción, revisión de seguridad o soporte de integración: [techtideai.io](https://techtideai.io/)
+Para despliegues en producción, revisiones de seguridad o asistencia con integraciones: [techtideai.io](https://techtideai.io/)
 
 </div>

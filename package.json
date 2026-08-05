@@ -19,6 +19,7 @@
     "proof:v2": "tsx scripts/generate-proof-v2.ts",
     "proof:v2:validate": "tsx scripts/validate-proof-v2.ts",
     "quality": "npm run typecheck && npm run lint && npm run test",
+    "docs:validate": "node scripts/validate-readme-localizations.mjs",
     "lint": "eslint src/ test/ tests/",
     "typecheck": "tsc --noEmit",
     "validate": "bun run scripts/validate-config.ts",
