@@ -1,5 +1,7 @@
 <div align="center">
 
+**English** | [Español](README.es-ES.md) | [简体中文](README.zh-CN.md) | [Português](README.pt-BR.md) | [العربية](README.ar.md) | [Français](README.fr.md) | [Русский](README.ru.md)
+
 <img src="assets/icon.png" alt="ClawKeeper" width="120" />
 
 # ClawKeeper
