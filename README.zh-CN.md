@@ -372,6 +372,7 @@ ClawKeeper/
 | [`AGENTS.md`](AGENTS.md) | 包含层级结构的完整 110 智能体索引 |
 | [`SECURITY.md`](SECURITY.md) | 漏洞报告政策 |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | 贡献工作流 |
+| [`CONTRIBUTORS.md`](CONTRIBUTORS.md) | 贡献者致谢 |
 
 <br/>
 

@@ -372,6 +372,7 @@ ClawKeeper/
 |[`AGENTS.md`](AGENTS.md)|فهرس وكيل 110 كامل مع التسلسل الهرمي|
 |[`SECURITY.md`](SECURITY.md)|سياسة الإبلاغ عن نقاط الضعف|
 |[`CONTRIBUTING.md`](CONTRIBUTING.md)|سير عمل المساهمة|
+|[`CONTRIBUTORS.md`](CONTRIBUTORS.md)|شكر وتقدير للمساهمين|
 
 <br/>
 

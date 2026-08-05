@@ -372,6 +372,7 @@ ClawKeeper/
 | [`AGENTS.md`](AGENTS.md) | Índice completo de los 110 agentes con su jerarquía |
 | [`SECURITY.md`](SECURITY.md) | Política de notificación de vulnerabilidades |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | Flujo de trabajo para contribuciones |
+| [`CONTRIBUTORS.md`](CONTRIBUTORS.md) | Reconocimientos a las personas colaboradoras |
 
 <br/>
 
