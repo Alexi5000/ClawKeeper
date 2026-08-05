@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router';
 import { use_auth_store } from './stores/auth-store';
 import { AppShell } from './components/layout/AppShell';
 import { LoginPage } from './pages/auth/LoginPage';

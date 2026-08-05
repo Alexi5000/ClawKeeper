@@ -372,6 +372,7 @@ ClawKeeper/
 | [`AGENTS.md`](AGENTS.md) | Полный индекс 110 агентов с иерархией |
 | [`SECURITY.md`](SECURITY.md) | Политика сообщения об уязвимостях |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | Порядок внесения изменений |
+| [`CONTRIBUTORS.md`](CONTRIBUTORS.md) | Благодарности участникам проекта |
 
 <br/>
 

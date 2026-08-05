@@ -358,6 +358,7 @@ ClawKeeper/
 | [`AGENTS.md`](AGENTS.md) | Full 110-agent index with hierarchy |
 | [`SECURITY.md`](SECURITY.md) | Vulnerability reporting policy |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | Contribution workflow |
+| [`CONTRIBUTORS.md`](CONTRIBUTORS.md) | Contributor acknowledgments |
 
 <br/>
 
