@@ -1,26 +1,26 @@
 <div align="center">
 
-[English](README.md) | [Español](README.es-ES.md) | [简体中文](README.zh-CN.md) | [Português](README.pt-BR.md) | [العربية](README.ar.md) | [Français](README.fr.md) | **Русский**
+[English](../../README.md) | [Español](README.es-ES.md) | [简体中文](README.zh-CN.md) | [Português](README.pt-BR.md) | [العربية](README.ar.md) | [Français](README.fr.md) | **Русский**
 
-<img src="assets/icon.png" alt="ClawKeeper" width="120" />
+<img src="../../assets/icon.png" alt="ClawKeeper" width="120" />
 
 # ClawKeeper
 
 **Аудируемая платформа управления финансовыми агентами для малого и среднего бизнеса.**<br/>
 Агенты могут предлагать выполнение финансовых операций, но решение о том, что разрешено запускать, принимают детерминированные политики, границы арендаторов, шлюзы согласования и журналы доказательств.
 
-[![License: MIT](https://img.shields.io/badge/license-MIT-3B82F6?style=flat-square)](LICENSE)
-[![Version](https://img.shields.io/badge/release-v2.0.1-16a34a?style=flat-square)](RELEASE_NOTES.md)
-[![CI](https://img.shields.io/badge/CI-backend%20%7C%20dashboard%20%7C%20audit%20%7C%20docker%20%7C%20FDE-16a34a?style=flat-square)](.github/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-3B82F6?style=flat-square)](../../LICENSE)
+[![Version](https://img.shields.io/badge/release-v2.0.1-16a34a?style=flat-square)](../../RELEASE_NOTES.md)
+[![CI](https://img.shields.io/badge/CI-backend%20%7C%20dashboard%20%7C%20audit%20%7C%20docker%20%7C%20FDE-16a34a?style=flat-square)](../../.github/workflows/ci.yml)
 [![OpenClaw](https://img.shields.io/badge/OpenClaw-native-16a34a?style=flat-square)](https://github.com/openclaw/openclaw)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-3178c6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Proof](https://img.shields.io/badge/proof-v2.0%20bundle-16a34a?style=flat-square)](docs/proof/v2.0/README.md)
+[![Proof](https://img.shields.io/badge/proof-v2.0%20bundle-16a34a?style=flat-square)](../proof/v2.0/README.md)
 
 [Архитектура](#agent-architecture) · [Возможности](#what-clawkeeper-does) · [Ограничения](#what-clawkeeper-deliberately-does-not-do) · [Установка](#install) · [Примеры использования](#usage-examples) · [Безопасность](#security-posture) · [Документация](#documentation)
 
 ---
 
-<img src="assets/cover.png" alt="ClawKeeper agent control surface" width="100%" />
+<img src="../../assets/cover.png" alt="ClawKeeper agent control surface" width="100%" />
 
 </div>
 
@@ -43,7 +43,7 @@ ClawKeeper v2.0 построен вокруг доступного для про
 - Проверка набора доказательств: `npm run proof:v2:validate`
 - Проверка сборки Docker: `.github/workflows/ci.yml`
 
-Набор доказательств v2 и команды проверки приведены в [`docs/proof/v2.0/README.md`](docs/proof/v2.0/README.md). Этот набор детерминирован, работает автономно, использует синтетические данные и не содержит конфиденциальной информации.
+Набор доказательств v2 и команды проверки приведены в [`docs/proof/v2.0/README.md`](../proof/v2.0/README.md). Этот набор детерминирован, работает автономно, использует синтетические данные и не содержит конфиденциальной информации.
 
 <br/>
 
@@ -122,7 +122,7 @@ Agent requests task execution
 └─────────────────────┘
 ```
 
-Реализация политик: [`src/openclaw/policy.ts`](src/openclaw/policy.ts) · Адаптер среды выполнения: [`src/openclaw/runtime.ts`](src/openclaw/runtime.ts) · Применение правил базовым агентом: [`src/agents/base.ts`](src/agents/base.ts)
+Реализация политик: [`src/openclaw/policy.ts`](../../src/openclaw/policy.ts) · Адаптер среды выполнения: [`src/openclaw/runtime.ts`](../../src/openclaw/runtime.ts) · Применение правил базовым агентом: [`src/agents/base.ts`](../../src/agents/base.ts)
 
 <br/>
 
@@ -292,7 +292,7 @@ curl -X POST http://localhost:4004/api/invoices/upload \
 | **Проверка OCR** | Программное сопоставление суммы позиций с заявленной итоговой суммой | Известным пробелом остаются состязательные счета, составленные так, чтобы пройти проверку суммы при неверных отдельных позициях |
 | **Устойчивость к ограничению частоты** | Экспоненциальная задержка повторных запросов при ошибках 429 и временных сбоях | Задержка ограничена сверху, однако длительное ограничение частоты при пиковой параллельной нагрузке может снизить пропускную способность агентов |
 
-Контекст исследования: [arXiv:2603.24414](https://arxiv.org/abs/2603.24414) · Модель безопасности: [`docs/SECURITY_MODEL.md`](docs/SECURITY_MODEL.md) · Сообщения об уязвимостях: [`SECURITY.md`](SECURITY.md)
+Контекст исследования: [arXiv:2603.24414](https://arxiv.org/abs/2603.24414) · Модель безопасности: [`docs/SECURITY_MODEL.md`](../SECURITY_MODEL.md) · Сообщения об уязвимостях: [`SECURITY.md`](../../SECURITY.md)
 
 <br/>
 
@@ -362,17 +362,16 @@ ClawKeeper/
 
 | Документ | Назначение |
 |----------|---------|
-| [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | Архитектура системы и иерархия агентов |
-| [`docs/SECURITY_MODEL.md`](docs/SECURITY_MODEL.md) | Граница агента OpenClaw, шлюзы согласования, защитные механизмы для финансовых операций |
-| [`docs/proof/v2.0/README.md`](docs/proof/v2.0/README.md) | Набор доказательств v2 и команды проверки |
-| [`docs/RELEASE_1_5.md`](docs/RELEASE_1_5.md) | Исторические примечания к выпуску и свидетельства проверки |
-| [`docs/API.md`](docs/API.md) | Справочник API |
-| [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) | Руководство по развёртыванию |
-| [`docs/MULTI-TENANCY.md`](docs/MULTI-TENANCY.md) | Изоляция арендаторов и модель RBAC |
-| [`AGENTS.md`](AGENTS.md) | Полный индекс 110 агентов с иерархией |
-| [`SECURITY.md`](SECURITY.md) | Политика сообщения об уязвимостях |
-| [`CONTRIBUTING.md`](CONTRIBUTING.md) | Порядок внесения изменений |
-| [`CONTRIBUTORS.md`](CONTRIBUTORS.md) | Благодарности участникам проекта |
+| [`docs/ARCHITECTURE.md`](../ARCHITECTURE.md) | Архитектура системы и иерархия агентов |
+| [`docs/SECURITY_MODEL.md`](../SECURITY_MODEL.md) | Граница агента OpenClaw, шлюзы согласования, защитные механизмы для финансовых операций |
+| [`docs/proof/v2.0/README.md`](../proof/v2.0/README.md) | Набор доказательств v2 и команды проверки |
+| [`docs/API.md`](../API.md) | Справочник API |
+| [`docs/DEPLOYMENT.md`](../DEPLOYMENT.md) | Руководство по развёртыванию |
+| [`docs/MULTI-TENANCY.md`](../MULTI-TENANCY.md) | Изоляция арендаторов и модель RBAC |
+| [`AGENTS.md`](../../AGENTS.md) | Полный индекс 110 агентов с иерархией |
+| [`SECURITY.md`](../../SECURITY.md) | Политика сообщения об уязвимостях |
+| [`CONTRIBUTING.md`](../../CONTRIBUTING.md) | Порядок внесения изменений |
+| [`CONTRIBUTORS.md`](../../CONTRIBUTORS.md) | Благодарности участникам проекта |
 
 <br/>
 
@@ -389,7 +388,7 @@ ClawKeeper/
 
 ## Лицензия
 
-MIT. См. [`LICENSE`](LICENSE).
+MIT. См. [`LICENSE`](../../LICENSE).
 
 ---
 

@@ -1,26 +1,26 @@
 <div align="center">
 
-[English](README.md) | **Español** | [简体中文](README.zh-CN.md) | [Português](README.pt-BR.md) | [العربية](README.ar.md) | [Français](README.fr.md) | [Русский](README.ru.md)
+[English](../../README.md) | **Español** | [简体中文](README.zh-CN.md) | [Português](README.pt-BR.md) | [العربية](README.ar.md) | [Français](README.fr.md) | [Русский](README.ru.md)
 
-<img src="assets/icon.png" alt="ClawKeeper" width="120" />
+<img src="../../assets/icon.png" alt="ClawKeeper" width="120" />
 
 # ClawKeeper
 
 **Plano de control auditable de agentes financieros para pymes.**<br/>
 Los agentes pueden proponer tareas financieras; las políticas deterministas, los límites entre inquilinos, las puertas de aprobación y los registros de evidencias deciden qué puede ejecutarse.
 
-[![License: MIT](https://img.shields.io/badge/license-MIT-3B82F6?style=flat-square)](LICENSE)
-[![Version](https://img.shields.io/badge/release-v2.0.1-16a34a?style=flat-square)](RELEASE_NOTES.md)
-[![CI](https://img.shields.io/badge/CI-backend%20%7C%20dashboard%20%7C%20audit%20%7C%20docker%20%7C%20FDE-16a34a?style=flat-square)](.github/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-3B82F6?style=flat-square)](../../LICENSE)
+[![Version](https://img.shields.io/badge/release-v2.0.1-16a34a?style=flat-square)](../../RELEASE_NOTES.md)
+[![CI](https://img.shields.io/badge/CI-backend%20%7C%20dashboard%20%7C%20audit%20%7C%20docker%20%7C%20FDE-16a34a?style=flat-square)](../../.github/workflows/ci.yml)
 [![OpenClaw](https://img.shields.io/badge/OpenClaw-native-16a34a?style=flat-square)](https://github.com/openclaw/openclaw)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-3178c6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Proof](https://img.shields.io/badge/proof-v2.0%20bundle-16a34a?style=flat-square)](docs/proof/v2.0/README.md)
+[![Proof](https://img.shields.io/badge/proof-v2.0%20bundle-16a34a?style=flat-square)](../proof/v2.0/README.md)
 
 [Arquitectura](#agent-architecture) · [Qué hace](#what-clawkeeper-does) · [Qué no hace](#what-clawkeeper-deliberately-does-not-do) · [Instalación](#install) · [Uso](#usage-examples) · [Seguridad](#security-posture) · [Documentación](#documentation)
 
 ---
 
-<img src="assets/cover.png" alt="Superficie de control de agentes de ClawKeeper" width="100%" />
+<img src="../../assets/cover.png" alt="Superficie de control de agentes de ClawKeeper" width="100%" />
 
 </div>
 
@@ -43,7 +43,7 @@ ClawKeeper v2.0 se distribuye en torno a una estructura de pruebas inspeccionabl
 - Validación del paquete de pruebas: `npm run proof:v2:validate`
 - Control de compilación de Docker: `.github/workflows/ci.yml`
 
-Consulte [`docs/proof/v2.0/README.md`](docs/proof/v2.0/README.md) para ver el paquete de pruebas de v2 y los comandos de verificación. El paquete de pruebas es determinista, funciona sin conexión, es sintético y está censurado.
+Consulte [`docs/proof/v2.0/README.md`](../proof/v2.0/README.md) para ver el paquete de pruebas de v2 y los comandos de verificación. El paquete de pruebas es determinista, funciona sin conexión, es sintético y está censurado.
 
 <br/>
 
@@ -122,7 +122,7 @@ Agent requests task execution
 └─────────────────────┘
 ```
 
-Implementación de políticas: [`src/openclaw/policy.ts`](src/openclaw/policy.ts) · Adaptador de ejecución: [`src/openclaw/runtime.ts`](src/openclaw/runtime.ts) · Aplicación en el agente base: [`src/agents/base.ts`](src/agents/base.ts)
+Implementación de políticas: [`src/openclaw/policy.ts`](../../src/openclaw/policy.ts) · Adaptador de ejecución: [`src/openclaw/runtime.ts`](../../src/openclaw/runtime.ts) · Aplicación en el agente base: [`src/agents/base.ts`](../../src/agents/base.ts)
 
 <br/>
 
@@ -292,7 +292,7 @@ La seguridad de los agentes es una práctica continua, no una función terminada
 | **Validación OCR** | Comprobación programática de la suma de las partidas frente a los totales declarados | Las facturas maliciosas diseñadas para superar las comprobaciones de suma pero que contienen partidas individuales incorrectas constituyen una deficiencia conocida |
 | **Resiliencia ante límites de frecuencia** | Reintentos con retroceso exponencial ante errores 429/transitorios | Existen límites de retroceso, pero una limitación de frecuencia sostenida durante picos de concurrencia puede reducir el rendimiento de los agentes |
 
-Contexto de investigación: [arXiv:2603.24414](https://arxiv.org/abs/2603.24414) · Modelo de seguridad: [`docs/SECURITY_MODEL.md`](docs/SECURITY_MODEL.md) · Informes de vulnerabilidades: [`SECURITY.md`](SECURITY.md)
+Contexto de investigación: [arXiv:2603.24414](https://arxiv.org/abs/2603.24414) · Modelo de seguridad: [`docs/SECURITY_MODEL.md`](../SECURITY_MODEL.md) · Informes de vulnerabilidades: [`SECURITY.md`](../../SECURITY.md)
 
 <br/>
 
@@ -362,17 +362,16 @@ ClawKeeper/
 
 | Documento | Finalidad |
 |----------|---------|
-| [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | Arquitectura del sistema y jerarquía de agentes |
-| [`docs/SECURITY_MODEL.md`](docs/SECURITY_MODEL.md) | Límite de agentes de OpenClaw, puertas de aprobación, mecanismos de protección financieros |
-| [`docs/proof/v2.0/README.md`](docs/proof/v2.0/README.md) | Paquete de pruebas de v2 y comandos de verificación |
-| [`docs/RELEASE_1_5.md`](docs/RELEASE_1_5.md) | Notas históricas de la versión y evidencias de validación |
-| [`docs/API.md`](docs/API.md) | Referencia de la API |
-| [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) | Orientación para el despliegue |
-| [`docs/MULTI-TENANCY.md`](docs/MULTI-TENANCY.md) | Modelo de aislamiento de inquilinos y RBAC |
-| [`AGENTS.md`](AGENTS.md) | Índice completo de los 110 agentes con su jerarquía |
-| [`SECURITY.md`](SECURITY.md) | Política de notificación de vulnerabilidades |
-| [`CONTRIBUTING.md`](CONTRIBUTING.md) | Flujo de trabajo para contribuciones |
-| [`CONTRIBUTORS.md`](CONTRIBUTORS.md) | Reconocimientos a las personas colaboradoras |
+| [`docs/ARCHITECTURE.md`](../ARCHITECTURE.md) | Arquitectura del sistema y jerarquía de agentes |
+| [`docs/SECURITY_MODEL.md`](../SECURITY_MODEL.md) | Límite de agentes de OpenClaw, puertas de aprobación, mecanismos de protección financieros |
+| [`docs/proof/v2.0/README.md`](../proof/v2.0/README.md) | Paquete de pruebas de v2 y comandos de verificación |
+| [`docs/API.md`](../API.md) | Referencia de la API |
+| [`docs/DEPLOYMENT.md`](../DEPLOYMENT.md) | Orientación para el despliegue |
+| [`docs/MULTI-TENANCY.md`](../MULTI-TENANCY.md) | Modelo de aislamiento de inquilinos y RBAC |
+| [`AGENTS.md`](../../AGENTS.md) | Índice completo de los 110 agentes con su jerarquía |
+| [`SECURITY.md`](../../SECURITY.md) | Política de notificación de vulnerabilidades |
+| [`CONTRIBUTING.md`](../../CONTRIBUTING.md) | Flujo de trabajo para contribuciones |
+| [`CONTRIBUTORS.md`](../../CONTRIBUTORS.md) | Reconocimientos a las personas colaboradoras |
 
 <br/>
 
@@ -389,7 +388,7 @@ ClawKeeper/
 
 ## Licencia
 
-MIT. Consulte [`LICENSE`](LICENSE).
+MIT. Consulte [`LICENSE`](../../LICENSE).
 
 ---
 

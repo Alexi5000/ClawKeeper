@@ -1,26 +1,26 @@
 <div align="center">
 
-[English](README.md) | [Español](README.es-ES.md) | **简体中文** | [Português](README.pt-BR.md) | [العربية](README.ar.md) | [Français](README.fr.md) | [Русский](README.ru.md)
+[English](../../README.md) | [Español](README.es-ES.md) | **简体中文** | [Português](README.pt-BR.md) | [العربية](README.ar.md) | [Français](README.fr.md) | [Русский](README.ru.md)
 
-<img src="assets/icon.png" alt="ClawKeeper" width="120" />
+<img src="../../assets/icon.png" alt="ClawKeeper" width="120" />
 
 # ClawKeeper
 
 **可审计的中小企业财务智能体控制平面。**<br/>
 智能体可以提出财务工作建议；确定性的策略、租户边界、审批关卡和证据日志将决定哪些工作可以执行。
 
-[![License: MIT](https://img.shields.io/badge/license-MIT-3B82F6?style=flat-square)](LICENSE)
-[![Version](https://img.shields.io/badge/release-v2.0.1-16a34a?style=flat-square)](RELEASE_NOTES.md)
-[![CI](https://img.shields.io/badge/CI-backend%20%7C%20dashboard%20%7C%20audit%20%7C%20docker%20%7C%20FDE-16a34a?style=flat-square)](.github/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-3B82F6?style=flat-square)](../../LICENSE)
+[![Version](https://img.shields.io/badge/release-v2.0.1-16a34a?style=flat-square)](../../RELEASE_NOTES.md)
+[![CI](https://img.shields.io/badge/CI-backend%20%7C%20dashboard%20%7C%20audit%20%7C%20docker%20%7C%20FDE-16a34a?style=flat-square)](../../.github/workflows/ci.yml)
 [![OpenClaw](https://img.shields.io/badge/OpenClaw-native-16a34a?style=flat-square)](https://github.com/openclaw/openclaw)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-3178c6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Proof](https://img.shields.io/badge/proof-v2.0%20bundle-16a34a?style=flat-square)](docs/proof/v2.0/README.md)
+[![Proof](https://img.shields.io/badge/proof-v2.0%20bundle-16a34a?style=flat-square)](../proof/v2.0/README.md)
 
 [智能体架构](#agent-architecture) · [ClawKeeper 的功能](#what-clawkeeper-does) · [ClawKeeper 明确不做的事](#what-clawkeeper-deliberately-does-not-do) · [安装](#install) · [使用示例](#usage-examples) · [安全态势](#security-posture) · [文档](#documentation)
 
 ---
 
-<img src="assets/cover.png" alt="ClawKeeper 智能体控制界面" width="100%" />
+<img src="../../assets/cover.png" alt="ClawKeeper 智能体控制界面" width="100%" />
 
 </div>
 
@@ -43,7 +43,7 @@ ClawKeeper v2.0 围绕一套可检查的核心证明链进行打包：
 - 证明包验证：`npm run proof:v2:validate`
 - Docker 构建关卡：`.github/workflows/ci.yml`
 
-有关 v2 证明包和验证命令，请参阅 [`docs/proof/v2.0/README.md`](docs/proof/v2.0/README.md)。该证明包具有确定性、可离线运行，使用合成数据并经过脱敏处理。
+有关 v2 证明包和验证命令，请参阅 [`docs/proof/v2.0/README.md`](../proof/v2.0/README.md)。该证明包具有确定性、可离线运行，使用合成数据并经过脱敏处理。
 
 <br/>
 
@@ -122,7 +122,7 @@ Agent requests task execution
 └─────────────────────┘
 ```
 
-策略实现：[`src/openclaw/policy.ts`](src/openclaw/policy.ts) · 运行时适配器：[`src/openclaw/runtime.ts`](src/openclaw/runtime.ts) · 基础智能体强制执行：[`src/agents/base.ts`](src/agents/base.ts)
+策略实现：[`src/openclaw/policy.ts`](../../src/openclaw/policy.ts) · 运行时适配器：[`src/openclaw/runtime.ts`](../../src/openclaw/runtime.ts) · 基础智能体强制执行：[`src/agents/base.ts`](../../src/agents/base.ts)
 
 <br/>
 
@@ -292,7 +292,7 @@ curl -X POST http://localhost:4004/api/invoices/upload \
 | **OCR 验证** | 通过程序匹配各行项目之和与所述总额 | 专门设计成可通过总和检查、但个别行项目有误的对抗性发票，是一个已知缺口 |
 | **速率限制韧性** | 遇到 429/瞬态错误时采用指数退避重试 | 退避设有上限，但峰值并发期间持续遭遇速率限制会降低智能体吞吐量 |
 
-研究背景：[arXiv:2603.24414](https://arxiv.org/abs/2603.24414) · 安全模型：[`docs/SECURITY_MODEL.md`](docs/SECURITY_MODEL.md) · 漏洞报告：[`SECURITY.md`](SECURITY.md)
+研究背景：[arXiv:2603.24414](https://arxiv.org/abs/2603.24414) · 安全模型：[`docs/SECURITY_MODEL.md`](../SECURITY_MODEL.md) · 漏洞报告：[`SECURITY.md`](../../SECURITY.md)
 
 <br/>
 
@@ -362,17 +362,16 @@ ClawKeeper/
 
 | 文档 | 用途 |
 |----------|---------|
-| [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | 系统架构和智能体层级 |
-| [`docs/SECURITY_MODEL.md`](docs/SECURITY_MODEL.md) | OpenClaw 智能体边界、审批关卡、财务防护措施 |
-| [`docs/proof/v2.0/README.md`](docs/proof/v2.0/README.md) | v2 证明包和验证命令 |
-| [`docs/RELEASE_1_5.md`](docs/RELEASE_1_5.md) | 历史版本说明和验证证据 |
-| [`docs/API.md`](docs/API.md) | API 参考 |
-| [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) | 部署指南 |
-| [`docs/MULTI-TENANCY.md`](docs/MULTI-TENANCY.md) | 租户隔离和 RBAC 模型 |
-| [`AGENTS.md`](AGENTS.md) | 包含层级结构的完整 110 智能体索引 |
-| [`SECURITY.md`](SECURITY.md) | 漏洞报告政策 |
-| [`CONTRIBUTING.md`](CONTRIBUTING.md) | 贡献工作流 |
-| [`CONTRIBUTORS.md`](CONTRIBUTORS.md) | 贡献者致谢 |
+| [`docs/ARCHITECTURE.md`](../ARCHITECTURE.md) | 系统架构和智能体层级 |
+| [`docs/SECURITY_MODEL.md`](../SECURITY_MODEL.md) | OpenClaw 智能体边界、审批关卡、财务防护措施 |
+| [`docs/proof/v2.0/README.md`](../proof/v2.0/README.md) | v2 证明包和验证命令 |
+| [`docs/API.md`](../API.md) | API 参考 |
+| [`docs/DEPLOYMENT.md`](../DEPLOYMENT.md) | 部署指南 |
+| [`docs/MULTI-TENANCY.md`](../MULTI-TENANCY.md) | 租户隔离和 RBAC 模型 |
+| [`AGENTS.md`](../../AGENTS.md) | 包含层级结构的完整 110 智能体索引 |
+| [`SECURITY.md`](../../SECURITY.md) | 漏洞报告政策 |
+| [`CONTRIBUTING.md`](../../CONTRIBUTING.md) | 贡献工作流 |
+| [`CONTRIBUTORS.md`](../../CONTRIBUTORS.md) | 贡献者致谢 |
 
 <br/>
 
@@ -389,7 +388,7 @@ ClawKeeper/
 
 ## 许可证
 
-MIT。参见 [`LICENSE`](LICENSE)。
+MIT。参见 [`LICENSE`](../../LICENSE)。
 
 ---
 

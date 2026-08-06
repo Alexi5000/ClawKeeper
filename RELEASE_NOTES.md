@@ -15,6 +15,8 @@ ClawKeeper v2.0.1 is a maintenance release that makes the public repository easi
 - Stale v0.2 release-checklist and duplicate startup documentation were removed.
 - Runtime helper scripts now use the dashboard's actual port, 3000.
 - Package and README release metadata now identify v2.0.1.
+- Localized READMEs now live under `docs/i18n/`, with a single current documentation index at `docs/README.md`.
+- Superseded v1.5 assessments, verification snapshots, and completed v2 build-loop plans were removed from the default branch and remain available in Git history.
 
 ### Verification
 
