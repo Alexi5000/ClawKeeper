@@ -8,8 +8,20 @@ import { transform_transactions } from './transactions';
 import { transform_invoices } from './invoices';
 import { transform_support_tickets } from './support';
 
-const RAW_DIR = join(__dirname, '../download/raw');
-const NORMALIZED_DIR = join(__dirname, 'normalized');
+const RAW_DIR = join(import.meta.dirname, '../download/raw');
+const NORMALIZED_DIR = join(import.meta.dirname, 'normalized');
+const FIXTURE_TIMESTAMP = '2026-08-06T00:00:00.000Z';
+
+function use_deterministic_random(seed = 0x434c4157) {
+  let state = seed >>> 0;
+  Math.random = () => {
+    state = (state + 0x6d2b79f5) >>> 0;
+    let value = state;
+    value = Math.imul(value ^ (value >>> 15), value | 1);
+    value ^= value + Math.imul(value ^ (value >>> 7), value | 61);
+    return ((value ^ (value >>> 14)) >>> 0) / 4294967296;
+  };
+}
 
 // Ensure normalized directory exists
 if (!existsSync(NORMALIZED_DIR)) {
@@ -27,6 +39,7 @@ interface TransformResult {
 }
 
 async function main() {
+  use_deterministic_random();
   console.log(`
 ╔═══════════════════════════════════════════════════════════╗
 ║  ClawKeeper Data Transform                                ║
@@ -95,7 +108,7 @@ async function main() {
 
   // Save transform metadata
   const metadata = {
-    transformed_at: new Date().toISOString(),
+    transformed_at: FIXTURE_TIMESTAMP,
     results,
     summary: {
       total_datasets: results.length,

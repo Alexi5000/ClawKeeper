@@ -1,5 +1,30 @@
 # ClawKeeper Release Notes
 
+## Version 2.0.1 - Repository Readiness
+
+**Release Date**: 2026-08-06
+
+### Release Focus
+
+ClawKeeper v2.0.1 is a maintenance release that makes the public repository easier to clone, verify, and maintain without changing the v2 control-plane architecture.
+
+### Improvements
+
+- Canonical demo fixtures now use seeded randomness and fixed metadata timestamps.
+- `npm run demo:fixtures:verify` regenerates fixtures twice and fails if the outputs drift.
+- Stale v0.2 release-checklist and duplicate startup documentation were removed.
+- Runtime helper scripts now use the dashboard's actual port, 3000.
+- Package and README release metadata now identify v2.0.1.
+
+### Verification
+
+- README localization parity across all seven languages
+- Typecheck, lint, and full backend test suite
+- Dashboard production build
+- Root and dashboard dependency audits
+- FDE contracts, tests, benchmark, and proof validation
+- Docker build in GitHub Actions
+
 ## Version 2.0.0 - Proof-Backed Finance-Agent Control Plane
 
 **Release Date**: 2026-07-07

@@ -143,11 +143,12 @@ export function generate_stripe_invoices(): StripeInvoice[] {
   const customers = ['cus_acme', 'cus_techstart', 'cus_lonestar', 'cus_schools'];
   
   for (let i = 0; i < 500; i++) {
-    const created = Date.now() - (Math.random() * 365 * 24 * 60 * 60 * 1000);
+    const fixture_now = new Date('2025-02-01T00:00:00.000Z').getTime();
+    const created = fixture_now - (Math.random() * 365 * 24 * 60 * 60 * 1000);
     const due_date = created + (30 * 24 * 60 * 60 * 1000);
     
     const amount = Math.floor(Math.random() * 50000 + 5000);
-    const is_paid = due_date < Date.now() && Math.random() > 0.2;
+    const is_paid = due_date < fixture_now && Math.random() > 0.2;
     
     invoices.push({
       id: `in_${String(i + 100000)}`,
@@ -174,13 +175,14 @@ export function generate_stripe_invoices(): StripeInvoice[] {
 
 export function generate_stripe_subscriptions(): StripeSubscription[] {
   const customers = ['cus_acme', 'cus_techstart', 'cus_lonestar'];
+  const fixture_now = Math.floor(new Date('2025-02-01T00:00:00.000Z').getTime() / 1000);
   
   return customers.map((customer, idx) => ({
     id: `sub_${String(idx + 1000)}`,
     customer,
     status: 'active',
-    current_period_start: Math.floor(Date.now() / 1000) - (15 * 24 * 60 * 60),
-    current_period_end: Math.floor(Date.now() / 1000) + (15 * 24 * 60 * 60),
+    current_period_start: fixture_now - (15 * 24 * 60 * 60),
+    current_period_end: fixture_now + (15 * 24 * 60 * 60),
     amount: 15000 + Math.floor(Math.random() * 20000),
     currency: 'usd',
     interval: 'month'

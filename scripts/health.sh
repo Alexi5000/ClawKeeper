@@ -7,7 +7,7 @@ echo ""
 
 REPO_DIR="$(pwd)"
 API_URL="http://localhost:4004"
-DASHBOARD_URL="http://localhost:5174"
+DASHBOARD_URL="http://localhost:3000"
 
 # Check API server
 echo -n "API Server ($API_URL): "

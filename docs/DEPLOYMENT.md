@@ -102,7 +102,7 @@ bun run dashboard:dev
 | Service | URL |
 |---------|-----|
 | API Server | http://localhost:4004 |
-| Dashboard | http://localhost:5174 |
+| Dashboard | http://localhost:3000 |
 | Clawdbot Gateway | http://localhost:19789 |
 | Control UI | http://localhost:19790 |
 | Database | localhost:5432 |

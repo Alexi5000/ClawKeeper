@@ -90,7 +90,7 @@
   clawkeeper: {
     mode: "prod",
     api_port: 4004,
-    dashboard_port: 5174,
+    dashboard_port: 3000,
     database_url: "SET_VIA_DATABASE_URL_ENV",
     
     // Multi-tenant configuration

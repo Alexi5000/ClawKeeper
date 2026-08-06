@@ -102,7 +102,7 @@ async function setup_demo() {
     console.log('');
     console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
     console.log('');
-    console.log('🌐 Login at: http://localhost:5174/login');
+    console.log('🌐 Login at: http://localhost:3000/login');
     console.log('');
 
   } catch (error) {
