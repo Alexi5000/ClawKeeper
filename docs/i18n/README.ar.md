@@ -1,26 +1,26 @@
 <div align="center">
 
-[English](README.md) | [Español](README.es-ES.md) | [简体中文](README.zh-CN.md) | [Português](README.pt-BR.md) | **العربية** | [Français](README.fr.md) | [Русский](README.ru.md)
+[English](../../README.md) | [Español](README.es-ES.md) | [简体中文](README.zh-CN.md) | [Português](README.pt-BR.md) | **العربية** | [Français](README.fr.md) | [Русский](README.ru.md)
 
-<img src="assets/icon.png" alt="ClawKeeper" width="120" />
+<img src="../../assets/icon.png" alt="ClawKeeper" width="120" />
 
 # ClawKeeper
 
 **منصة تحكّم قابلة للتدقيق في الوكلاء الماليين للشركات الصغيرة والمتوسطة.**<br/>
 يمكن للوكلاء اقتراح مهام مالية؛ بينما تحدد السياسات الحتمية وحدود المستأجرين وبوابات الموافقة وسجلات الأدلة ما يجوز تنفيذه.
 
-[![License: MIT](https://img.shields.io/badge/license-MIT-3B82F6?style=flat-square)](LICENSE)
-[![Version](https://img.shields.io/badge/release-v2.0.1-16a34a?style=flat-square)](RELEASE_NOTES.md)
-[![CI](https://img.shields.io/badge/CI-backend%20%7C%20dashboard%20%7C%20audit%20%7C%20docker%20%7C%20FDE-16a34a?style=flat-square)](.github/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-3B82F6?style=flat-square)](../../LICENSE)
+[![Version](https://img.shields.io/badge/release-v2.0.1-16a34a?style=flat-square)](../../RELEASE_NOTES.md)
+[![CI](https://img.shields.io/badge/CI-backend%20%7C%20dashboard%20%7C%20audit%20%7C%20docker%20%7C%20FDE-16a34a?style=flat-square)](../../.github/workflows/ci.yml)
 [![OpenClaw](https://img.shields.io/badge/OpenClaw-native-16a34a?style=flat-square)](https://github.com/openclaw/openclaw)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-3178c6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Proof](https://img.shields.io/badge/proof-v2.0%20bundle-16a34a?style=flat-square)](docs/proof/v2.0/README.md)
+[![Proof](https://img.shields.io/badge/proof-v2.0%20bundle-16a34a?style=flat-square)](../proof/v2.0/README.md)
 
 [بنية الوكلاء](#agent-architecture) · [ما الذي يفعله ClawKeeper](#what-clawkeeper-does) · [ما الذي يتعمّد ClawKeeper عدم فعله](#what-clawkeeper-deliberately-does-not-do) · [التثبيت](#install) · [أمثلة الاستخدام](#usage-examples) · [الوضع الأمني](#security-posture) · [الوثائق](#documentation)
 
 ---
 
-<img src="assets/cover.png" alt="ClawKeeper agent control surface" width="100%" />
+<img src="../../assets/cover.png" alt="ClawKeeper agent control surface" width="100%" />
 
 </div>
 
@@ -43,7 +43,7 @@
 - التحقق من صحة حزمة الإثبات: `npm run proof:v2:validate`
 - بوابة بناء Docker: `.github/workflows/ci.yml`
 
-راجع [`docs/proof/v2.0/README.md`](docs/proof/v2.0/README.md) للاطلاع على حزمة إثبات v2 وأوامر التحقق. حزمة الإثبات حتمية، وغير متصلة بالشبكة، واصطناعية، ومنقّحة.
+راجع [`docs/proof/v2.0/README.md`](../proof/v2.0/README.md) للاطلاع على حزمة إثبات v2 وأوامر التحقق. حزمة الإثبات حتمية، وغير متصلة بالشبكة، واصطناعية، ومنقّحة.
 
 <br/>
 
@@ -122,7 +122,7 @@ Agent requests task execution
 └─────────────────────┘
 ```
 
-تنفيذ السياسة: [`src/openclaw/policy.ts`](src/openclaw/policy.ts) · محول وقت التشغيل: [`src/openclaw/runtime.ts`](src/openclaw/runtime.ts) · إنفاذ الوكيل الأساسي: [`src/agents/base.ts`](src/agents/base.ts)
+تنفيذ السياسة: [`src/openclaw/policy.ts`](../../src/openclaw/policy.ts) · محول وقت التشغيل: [`src/openclaw/runtime.ts`](../../src/openclaw/runtime.ts) · إنفاذ الوكيل الأساسي: [`src/agents/base.ts`](../../src/agents/base.ts)
 
 <br/>
 
@@ -292,7 +292,7 @@ curl -X POST http://localhost:4004/api/invoices/upload \
 | **التحقق من OCR** | مطابقة برمجية لمجموع البنود مع الإجماليات المعلنة | تمثّل الفواتير الخبيثة المصممة لاجتياز فحوصات المجموع مع احتوائها على بنود فردية غير صحيحة ثغرة معروفة |
 | **المرونة أمام حدود المعدل** | إعادة المحاولة بتراجع أُسّي عند أخطاء 429/الأخطاء العابرة | توجد حدود قصوى للتراجع، لكن استمرار تقييد المعدل في ذروة التزامن قد يخفض إنتاجية الوكلاء |
 
-سياق البحث: [arXiv:2603.24414](https://arxiv.org/abs/2603.24414) · نموذج الأمان: [`docs/SECURITY_MODEL.md`](docs/SECURITY_MODEL.md) · تقارير الثغرات الأمنية: [`SECURITY.md`](SECURITY.md)
+سياق البحث: [arXiv:2603.24414](https://arxiv.org/abs/2603.24414) · نموذج الأمان: [`docs/SECURITY_MODEL.md`](../SECURITY_MODEL.md) · تقارير الثغرات الأمنية: [`SECURITY.md`](../../SECURITY.md)
 
 <br/>
 
@@ -362,17 +362,16 @@ ClawKeeper/
 
 |وثيقة|غاية|
 |----------|---------|
-|[`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)|بنية النظام والتسلسل الهرمي للوكيل|
-|[`docs/SECURITY_MODEL.md`](docs/SECURITY_MODEL.md)|OpenClaw حدود الوكيل، بوابات الموافقة، حواجز الحماية المالية|
-|[`docs/proof/v2.0/README.md`](docs/proof/v2.0/README.md)|حزمة إثبات v2 وأوامر التحقق|
-|[`docs/RELEASE_1_5.md`](docs/RELEASE_1_5.md)|ملاحظات الإصدار التاريخية وأدلة التحقق من الصحة|
-|[`docs/API.md`](docs/API.md)|مرجع API|
-|[`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md)|توجيه النشر|
-|[`docs/MULTI-TENANCY.md`](docs/MULTI-TENANCY.md)|عزل المستأجر ونموذج RBAC|
-|[`AGENTS.md`](AGENTS.md)|فهرس وكيل 110 كامل مع التسلسل الهرمي|
-|[`SECURITY.md`](SECURITY.md)|سياسة الإبلاغ عن نقاط الضعف|
-|[`CONTRIBUTING.md`](CONTRIBUTING.md)|سير عمل المساهمة|
-|[`CONTRIBUTORS.md`](CONTRIBUTORS.md)|شكر وتقدير للمساهمين|
+|[`docs/ARCHITECTURE.md`](../ARCHITECTURE.md)|بنية النظام والتسلسل الهرمي للوكيل|
+|[`docs/SECURITY_MODEL.md`](../SECURITY_MODEL.md)|OpenClaw حدود الوكيل، بوابات الموافقة، حواجز الحماية المالية|
+|[`docs/proof/v2.0/README.md`](../proof/v2.0/README.md)|حزمة إثبات v2 وأوامر التحقق|
+|[`docs/API.md`](../API.md)|مرجع API|
+|[`docs/DEPLOYMENT.md`](../DEPLOYMENT.md)|توجيه النشر|
+|[`docs/MULTI-TENANCY.md`](../MULTI-TENANCY.md)|عزل المستأجر ونموذج RBAC|
+|[`AGENTS.md`](../../AGENTS.md)|فهرس وكيل 110 كامل مع التسلسل الهرمي|
+|[`SECURITY.md`](../../SECURITY.md)|سياسة الإبلاغ عن نقاط الضعف|
+|[`CONTRIBUTING.md`](../../CONTRIBUTING.md)|سير عمل المساهمة|
+|[`CONTRIBUTORS.md`](../../CONTRIBUTORS.md)|شكر وتقدير للمساهمين|
 
 <br/>
 
@@ -389,7 +388,7 @@ ClawKeeper/
 
 ## رخصة
 
-MIT. انظر [`LICENSE`](LICENSE).
+MIT. انظر [`LICENSE`](../../LICENSE).
 
 ---
 

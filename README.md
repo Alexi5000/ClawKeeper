@@ -1,6 +1,6 @@
 <div align="center">
 
-**English** | [Español](README.es-ES.md) | [简体中文](README.zh-CN.md) | [Português](README.pt-BR.md) | [العربية](README.ar.md) | [Français](README.fr.md) | [Русский](README.ru.md)
+**English** | [Español](docs/i18n/README.es-ES.md) | [简体中文](docs/i18n/README.zh-CN.md) | [Português](docs/i18n/README.pt-BR.md) | [العربية](docs/i18n/README.ar.md) | [Français](docs/i18n/README.fr.md) | [Русский](docs/i18n/README.ru.md)
 
 <img src="assets/icon.png" alt="ClawKeeper" width="120" />
 
@@ -348,10 +348,10 @@ ClawKeeper/
 
 | Document | Purpose |
 |----------|---------|
+| [`docs/README.md`](docs/README.md) | Current documentation index |
 | [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | System architecture and agent hierarchy |
 | [`docs/SECURITY_MODEL.md`](docs/SECURITY_MODEL.md) | OpenClaw agent boundary, approval gates, finance guardrails |
 | [`docs/proof/v2.0/README.md`](docs/proof/v2.0/README.md) | v2 proof bundle and verification commands |
-| [`docs/RELEASE_1_5.md`](docs/RELEASE_1_5.md) | Historical release notes and validation evidence |
 | [`docs/API.md`](docs/API.md) | API reference |
 | [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) | Deployment guidance |
 | [`docs/MULTI-TENANCY.md`](docs/MULTI-TENANCY.md) | Tenant isolation and RBAC model |
