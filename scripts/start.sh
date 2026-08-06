@@ -21,7 +21,7 @@ API_PID=$!
 sleep 3
 
 # Start dashboard (background)
-echo "💻 Starting dashboard on port 5174..."
+echo "💻 Starting dashboard on port 3000..."
 cd "$REPO_DIR"
 bun run dashboard:dev &
 DASHBOARD_PID=$!
@@ -31,7 +31,7 @@ echo "✅ ClawKeeper started!"
 echo ""
 echo "Services:"
 echo "  API: http://localhost:${PORT:-4004}"
-echo "  Dashboard: http://localhost:5174"
+echo "  Dashboard: http://localhost:3000"
 echo ""
 echo "PIDs: API=$API_PID, Dashboard=$DASHBOARD_PID"
 echo ""

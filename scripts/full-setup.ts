@@ -84,7 +84,7 @@ async function full_setup() {
     console.log('🚀 Ready to Deploy!\n');
     console.log('1. Start API:       bun run dev');
     console.log('2. Start Dashboard: bun run dashboard:dev');
-    console.log('3. Login at:        http://localhost:5174/login');
+    console.log('3. Login at:        http://localhost:3000/login');
     console.log('');
 
   } catch (error) {

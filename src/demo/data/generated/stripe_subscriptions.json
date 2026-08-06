@@ -3,9 +3,9 @@
     "id": "sub_1000",
     "customer": "cus_acme",
     "status": "active",
-    "current_period_start": 1768792237,
-    "current_period_end": 1771384237,
-    "amount": 30480,
+    "current_period_start": 1737072000,
+    "current_period_end": 1739664000,
+    "amount": 27405,
     "currency": "usd",
     "interval": "month"
   },
@@ -13,9 +13,9 @@
     "id": "sub_1001",
     "customer": "cus_techstart",
     "status": "active",
-    "current_period_start": 1768792237,
-    "current_period_end": 1771384237,
-    "amount": 32342,
+    "current_period_start": 1737072000,
+    "current_period_end": 1739664000,
+    "amount": 18812,
     "currency": "usd",
     "interval": "month"
   },
@@ -23,9 +23,9 @@
     "id": "sub_1002",
     "customer": "cus_lonestar",
     "status": "active",
-    "current_period_start": 1768792237,
-    "current_period_end": 1771384237,
-    "amount": 28130,
+    "current_period_start": 1737072000,
+    "current_period_end": 1739664000,
+    "amount": 23085,
     "currency": "usd",
     "interval": "month"
   }

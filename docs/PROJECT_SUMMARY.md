@@ -220,7 +220,7 @@ ClawKeeper is a production-ready, multi-tenant AI agent system for OpenClaw-nati
    ```
 
 4. **Test login**:
-   - Open http://localhost:5174
+   - Open http://localhost:3000
    - Login: admin@demo.com / password123
 
 ### Production Deployment

@@ -3,7 +3,7 @@ import fs from "node:fs";
 
 const files = ["README.md", "README.es-ES.md", "README.zh-CN.md", "README.pt-BR.md", "README.ar.md", "README.fr.md", "README.ru.md"];
 const anchors = ["agent-architecture", "what-clawkeeper-does", "what-clawkeeper-deliberately-does-not-do", "install", "usage-examples", "security-posture", "documentation"];
-const tokens = ["v2.0.0", "npm run quality", "npm run fde:benchmark", "npm run proof:v2:validate", "src/openclaw/policy.ts", "docs/proof/v2.0/README.md", "CONTRIBUTORS.md", "assets/icon.png", "assets/cover.png"];
+const tokens = ["v2.0.1", "npm run quality", "npm run fde:benchmark", "npm run proof:v2:validate", "src/openclaw/policy.ts", "docs/proof/v2.0/README.md", "CONTRIBUTORS.md", "assets/icon.png", "assets/cover.png"];
 const matches = (text, pattern) => [...text.matchAll(pattern)];
 const blocks = (text) => matches(text, /```[^\n]*\n[\s\S]*?```/g).map((match) => match[0]);
 const englishBlocks = blocks(fs.readFileSync("README.md", "utf8"));

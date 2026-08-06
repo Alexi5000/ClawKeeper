@@ -1,227 +1,227 @@
 [
   {
-    "violation_type": "foreign_transaction",
+    "violation_type": "late_invoice",
     "severity": "low",
-    "entity_type": "invoice",
+    "entity_type": "transaction",
     "entity_id": "demo-1000",
-    "description": "Foreign currency transaction not pre-approved",
-    "detected_at": "2024-12-13T00:00:00.000Z",
+    "description": "Invoice paid after due date - late fee risk",
+    "detected_at": "2024-09-14T00:00:00.000Z",
     "resolved": true
   },
   {
-    "violation_type": "missing_receipt",
-    "severity": "medium",
+    "violation_type": "foreign_transaction",
+    "severity": "low",
     "entity_type": "transaction",
     "entity_id": "demo-1001",
-    "description": "Expense over $25 without receipt",
-    "detected_at": "2024-08-11T23:00:00.000Z",
+    "description": "Foreign currency transaction not pre-approved",
+    "detected_at": "2024-10-29T00:00:00.000Z",
     "resolved": true
   },
   {
     "violation_type": "tax_classification",
     "severity": "medium",
-    "entity_type": "transaction",
+    "entity_type": "invoice",
     "entity_id": "demo-1002",
     "description": "Incorrect tax category assigned",
-    "detected_at": "2024-10-19T23:00:00.000Z",
+    "detected_at": "2024-09-13T00:00:00.000Z",
     "resolved": true
   },
   {
-    "violation_type": "weekend_transaction",
+    "violation_type": "late_invoice",
     "severity": "low",
     "entity_type": "transaction",
     "entity_id": "demo-1003",
-    "description": "Transaction on weekend - requires verification",
-    "detected_at": "2024-12-16T00:00:00.000Z",
+    "description": "Invoice paid after due date - late fee risk",
+    "detected_at": "2024-08-31T00:00:00.000Z",
+    "resolved": true
+  },
+  {
+    "violation_type": "split_transaction",
+    "severity": "medium",
+    "entity_type": "transaction",
+    "entity_id": "demo-1004",
+    "description": "Transaction split to avoid approval limit",
+    "detected_at": "2024-09-19T00:00:00.000Z",
     "resolved": true
   },
   {
     "violation_type": "unapproved_expense",
     "severity": "high",
     "entity_type": "transaction",
-    "entity_id": "demo-1004",
+    "entity_id": "demo-1005",
     "description": "Expense exceeds approval threshold",
-    "detected_at": "2024-10-27T23:00:00.000Z",
+    "detected_at": "2024-12-23T00:00:00.000Z",
     "resolved": true
   },
   {
-    "violation_type": "tax_classification",
-    "severity": "medium",
-    "entity_type": "invoice",
-    "entity_id": "demo-1005",
-    "description": "Incorrect tax category assigned",
-    "detected_at": "2025-01-08T00:00:00.000Z",
-    "resolved": false
-  },
-  {
-    "violation_type": "weekend_transaction",
-    "severity": "low",
+    "violation_type": "duplicate_payment",
+    "severity": "high",
     "entity_type": "invoice",
     "entity_id": "demo-1006",
-    "description": "Transaction on weekend - requires verification",
-    "detected_at": "2025-01-06T00:00:00.000Z",
-    "resolved": false
+    "description": "Possible duplicate invoice payment",
+    "detected_at": "2024-08-13T00:00:00.000Z",
+    "resolved": true
   },
   {
-    "violation_type": "split_transaction",
-    "severity": "medium",
+    "violation_type": "unapproved_expense",
+    "severity": "high",
     "entity_type": "invoice",
     "entity_id": "demo-1007",
-    "description": "Transaction split to avoid approval limit",
-    "detected_at": "2024-11-06T00:00:00.000Z",
-    "resolved": true
-  },
-  {
-    "violation_type": "foreign_transaction",
-    "severity": "low",
-    "entity_type": "transaction",
-    "entity_id": "demo-1008",
-    "description": "Foreign currency transaction not pre-approved",
-    "detected_at": "2024-10-10T23:00:00.000Z",
-    "resolved": true
-  },
-  {
-    "violation_type": "tax_classification",
-    "severity": "medium",
-    "entity_type": "invoice",
-    "entity_id": "demo-1009",
-    "description": "Incorrect tax category assigned",
-    "detected_at": "2024-10-07T23:00:00.000Z",
-    "resolved": true
-  },
-  {
-    "violation_type": "missing_receipt",
-    "severity": "medium",
-    "entity_type": "invoice",
-    "entity_id": "demo-1010",
-    "description": "Expense over $25 without receipt",
-    "detected_at": "2024-12-25T00:00:00.000Z",
-    "resolved": true
-  },
-  {
-    "violation_type": "missing_receipt",
-    "severity": "medium",
-    "entity_type": "invoice",
-    "entity_id": "demo-1011",
-    "description": "Expense over $25 without receipt",
-    "detected_at": "2024-12-18T00:00:00.000Z",
-    "resolved": true
-  },
-  {
-    "violation_type": "foreign_transaction",
-    "severity": "low",
-    "entity_type": "transaction",
-    "entity_id": "demo-1012",
-    "description": "Foreign currency transaction not pre-approved",
-    "detected_at": "2024-10-21T23:00:00.000Z",
-    "resolved": true
-  },
-  {
-    "violation_type": "foreign_transaction",
-    "severity": "low",
-    "entity_type": "transaction",
-    "entity_id": "demo-1013",
-    "description": "Foreign currency transaction not pre-approved",
+    "description": "Expense exceeds approval threshold",
     "detected_at": "2024-11-29T00:00:00.000Z",
     "resolved": true
   },
   {
+    "violation_type": "duplicate_payment",
+    "severity": "high",
+    "entity_type": "transaction",
+    "entity_id": "demo-1008",
+    "description": "Possible duplicate invoice payment",
+    "detected_at": "2025-01-18T00:00:00.000Z",
+    "resolved": false
+  },
+  {
+    "violation_type": "foreign_transaction",
+    "severity": "low",
+    "entity_type": "invoice",
+    "entity_id": "demo-1009",
+    "description": "Foreign currency transaction not pre-approved",
+    "detected_at": "2024-08-23T00:00:00.000Z",
+    "resolved": true
+  },
+  {
+    "violation_type": "missing_receipt",
+    "severity": "medium",
+    "entity_type": "transaction",
+    "entity_id": "demo-1010",
+    "description": "Expense over $25 without receipt",
+    "detected_at": "2024-10-08T00:00:00.000Z",
+    "resolved": true
+  },
+  {
     "violation_type": "tax_classification",
     "severity": "medium",
-    "entity_type": "invoice",
-    "entity_id": "demo-1014",
+    "entity_type": "transaction",
+    "entity_id": "demo-1011",
     "description": "Incorrect tax category assigned",
-    "detected_at": "2024-10-27T23:00:00.000Z",
+    "detected_at": "2024-11-12T00:00:00.000Z",
+    "resolved": true
+  },
+  {
+    "violation_type": "late_invoice",
+    "severity": "low",
+    "entity_type": "transaction",
+    "entity_id": "demo-1012",
+    "description": "Invoice paid after due date - late fee risk",
+    "detected_at": "2024-09-03T00:00:00.000Z",
     "resolved": true
   },
   {
     "violation_type": "unusual_vendor",
     "severity": "medium",
     "entity_type": "transaction",
+    "entity_id": "demo-1013",
+    "description": "Payment to new/unknown vendor",
+    "detected_at": "2024-11-04T00:00:00.000Z",
+    "resolved": true
+  },
+  {
+    "violation_type": "foreign_transaction",
+    "severity": "low",
+    "entity_type": "invoice",
+    "entity_id": "demo-1014",
+    "description": "Foreign currency transaction not pre-approved",
+    "detected_at": "2024-12-22T00:00:00.000Z",
+    "resolved": true
+  },
+  {
+    "violation_type": "unusual_vendor",
+    "severity": "medium",
+    "entity_type": "invoice",
     "entity_id": "demo-1015",
     "description": "Payment to new/unknown vendor",
-    "detected_at": "2024-08-09T23:00:00.000Z",
+    "detected_at": "2024-12-14T00:00:00.000Z",
+    "resolved": true
+  },
+  {
+    "violation_type": "unusual_vendor",
+    "severity": "medium",
+    "entity_type": "invoice",
+    "entity_id": "demo-1016",
+    "description": "Payment to new/unknown vendor",
+    "detected_at": "2024-09-14T00:00:00.000Z",
+    "resolved": true
+  },
+  {
+    "violation_type": "late_invoice",
+    "severity": "low",
+    "entity_type": "transaction",
+    "entity_id": "demo-1017",
+    "description": "Invoice paid after due date - late fee risk",
+    "detected_at": "2024-10-31T00:00:00.000Z",
     "resolved": true
   },
   {
     "violation_type": "split_transaction",
     "severity": "medium",
     "entity_type": "transaction",
-    "entity_id": "demo-1016",
+    "entity_id": "demo-1018",
     "description": "Transaction split to avoid approval limit",
-    "detected_at": "2024-10-25T23:00:00.000Z",
+    "detected_at": "2024-11-17T00:00:00.000Z",
     "resolved": true
   },
   {
     "violation_type": "unapproved_expense",
     "severity": "high",
     "entity_type": "transaction",
-    "entity_id": "demo-1017",
-    "description": "Expense exceeds approval threshold",
-    "detected_at": "2025-01-10T00:00:00.000Z",
-    "resolved": false
-  },
-  {
-    "violation_type": "duplicate_payment",
-    "severity": "high",
-    "entity_type": "invoice",
-    "entity_id": "demo-1018",
-    "description": "Possible duplicate invoice payment",
-    "detected_at": "2024-12-29T00:00:00.000Z",
-    "resolved": true
-  },
-  {
-    "violation_type": "split_transaction",
-    "severity": "medium",
-    "entity_type": "invoice",
     "entity_id": "demo-1019",
-    "description": "Transaction split to avoid approval limit",
-    "detected_at": "2025-01-18T00:00:00.000Z",
+    "description": "Expense exceeds approval threshold",
+    "detected_at": "2025-02-01T00:00:00.000Z",
     "resolved": false
-  },
-  {
-    "violation_type": "late_invoice",
-    "severity": "low",
-    "entity_type": "transaction",
-    "entity_id": "demo-1020",
-    "description": "Invoice paid after due date - late fee risk",
-    "detected_at": "2025-01-09T00:00:00.000Z",
-    "resolved": false
-  },
-  {
-    "violation_type": "late_invoice",
-    "severity": "low",
-    "entity_type": "transaction",
-    "entity_id": "demo-1021",
-    "description": "Invoice paid after due date - late fee risk",
-    "detected_at": "2025-01-23T00:00:00.000Z",
-    "resolved": false
-  },
-  {
-    "violation_type": "foreign_transaction",
-    "severity": "low",
-    "entity_type": "invoice",
-    "entity_id": "demo-1022",
-    "description": "Foreign currency transaction not pre-approved",
-    "detected_at": "2024-11-23T00:00:00.000Z",
-    "resolved": true
   },
   {
     "violation_type": "weekend_transaction",
     "severity": "low",
-    "entity_type": "transaction",
-    "entity_id": "demo-1023",
+    "entity_type": "invoice",
+    "entity_id": "demo-1020",
     "description": "Transaction on weekend - requires verification",
-    "detected_at": "2024-08-24T23:00:00.000Z",
+    "detected_at": "2024-10-23T00:00:00.000Z",
     "resolved": true
   },
   {
-    "violation_type": "missing_receipt",
+    "violation_type": "tax_classification",
     "severity": "medium",
     "entity_type": "invoice",
+    "entity_id": "demo-1021",
+    "description": "Incorrect tax category assigned",
+    "detected_at": "2024-10-28T00:00:00.000Z",
+    "resolved": true
+  },
+  {
+    "violation_type": "late_invoice",
+    "severity": "low",
+    "entity_type": "invoice",
+    "entity_id": "demo-1022",
+    "description": "Invoice paid after due date - late fee risk",
+    "detected_at": "2024-09-04T00:00:00.000Z",
+    "resolved": true
+  },
+  {
+    "violation_type": "unapproved_expense",
+    "severity": "high",
+    "entity_type": "invoice",
+    "entity_id": "demo-1023",
+    "description": "Expense exceeds approval threshold",
+    "detected_at": "2024-11-09T00:00:00.000Z",
+    "resolved": true
+  },
+  {
+    "violation_type": "late_invoice",
+    "severity": "low",
+    "entity_type": "invoice",
     "entity_id": "demo-1024",
-    "description": "Expense over $25 without receipt",
-    "detected_at": "2024-11-07T00:00:00.000Z",
+    "description": "Invoice paid after due date - late fee risk",
+    "detected_at": "2024-12-07T00:00:00.000Z",
     "resolved": true
   }
 ]

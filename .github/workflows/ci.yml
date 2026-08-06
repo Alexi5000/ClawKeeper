@@ -30,6 +30,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Verify canonical demo fixtures
+        run: npm run demo:fixtures:verify
+
       - name: Typecheck, lint, and test
         run: npm run quality
 

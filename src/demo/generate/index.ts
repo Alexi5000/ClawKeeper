@@ -21,6 +21,18 @@ import {
 import { generate_agent_scenarios } from './scenarios';
 
 const OUTPUT_DIR = join(__dirname, '../data/generated');
+const FIXTURE_TIMESTAMP = '2026-08-06T00:00:00.000Z';
+
+function use_deterministic_random(seed = 0x434c4157) {
+  let state = seed >>> 0;
+  Math.random = () => {
+    state = (state + 0x6d2b79f5) >>> 0;
+    let value = state;
+    value = Math.imul(value ^ (value >>> 15), value | 1);
+    value ^= value + Math.imul(value ^ (value >>> 7), value | 61);
+    return ((value ^ (value >>> 14)) >>> 0) / 4294967296;
+  };
+}
 
 // Ensure output directory exists
 if (!existsSync(OUTPUT_DIR)) {
@@ -36,6 +48,7 @@ function save_json(filename: string, data: any) {
 }
 
 async function main() {
+  use_deterministic_random();
   console.log(`
 ╔═══════════════════════════════════════════════════════════╗
 ║  ClawKeeper Synthetic Data Generation                     ║
@@ -72,13 +85,10 @@ async function main() {
   save_json('agent_scenarios.json', generate_agent_scenarios());
   
   // Generate summary metadata
-  const metadata = {
-    generated_at: new Date().toISOString(),
-    company: COMPANY_PROFILE.name,
-    datasets: {
+  const datasets = {
       company_profile: 1,
-      chart_of_accounts: 50,
-      vendors: 40,
+      chart_of_accounts: 44,
+      vendors: 38,
       customers: 15,
       budgets: budgets.length,
       tax_filings: generate_tax_filings().length,
@@ -87,10 +97,14 @@ async function main() {
       plaid_accounts: 3,
       plaid_transactions: 5000,
       stripe_invoices: 500,
-      stripe_subscriptions: 20,
+      stripe_subscriptions: 3,
       agent_scenarios: generate_agent_scenarios().length
-    },
-    total_records: budgets.length + 5000 + 500 + 25 + 40 + 15 + 50 + 3 + 20 + 10,
+  };
+  const metadata = {
+    generated_at: FIXTURE_TIMESTAMP,
+    company: COMPANY_PROFILE.name,
+    datasets,
+    total_records: Object.values(datasets).reduce((sum, count) => sum + count, 0),
     agent_coverage: {
       cfo: 8,
       accounts_payable: 15,

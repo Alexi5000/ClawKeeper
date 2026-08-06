@@ -118,7 +118,7 @@ async function main() {
     console.log('  Email: admin@meridiantech.example');
     console.log('  Password: Demo123!');
     console.log('\nAccess the dashboard:');
-    console.log('  http://localhost:5174');
+    console.log('  http://localhost:3000');
     console.log('\n' + '='.repeat(60) + '\n');
     
   } catch (error) {
