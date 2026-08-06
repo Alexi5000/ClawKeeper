@@ -20,7 +20,7 @@ import {
 } from './integrations';
 import { generate_agent_scenarios } from './scenarios';
 
-const OUTPUT_DIR = join(__dirname, '../data/generated');
+const OUTPUT_DIR = join(import.meta.dirname, '../data/generated');
 const FIXTURE_TIMESTAMP = '2026-08-06T00:00:00.000Z';
 
 function use_deterministic_random(seed = 0x434c4157) {

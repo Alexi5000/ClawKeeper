@@ -39,7 +39,7 @@
     "demo:quick": "bun run demo:transform && bun run demo:generate && bun run demo:seed",
     "demo:db": "bun run db:setup && bun run demo:quick",
     "demo:offline": "bun run demo:transform && bun run demo:generate && npm run proof:v2 && npm run proof:v2:validate",
-    "demo:fixtures": "bun run demo:transform && bun run demo:generate",
+    "demo:fixtures": "tsx src/demo/transform/index.ts && tsx src/demo/generate/index.ts",
     "demo:fixtures:verify": "node scripts/verify-demo-fixtures.mjs",
     "setup:demo": "bun run scripts/setup-demo.ts",
     "setup:full": "bun run scripts/full-setup.ts"

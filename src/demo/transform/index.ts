@@ -8,8 +8,8 @@ import { transform_transactions } from './transactions';
 import { transform_invoices } from './invoices';
 import { transform_support_tickets } from './support';
 
-const RAW_DIR = join(__dirname, '../download/raw');
-const NORMALIZED_DIR = join(__dirname, 'normalized');
+const RAW_DIR = join(import.meta.dirname, '../download/raw');
+const NORMALIZED_DIR = join(import.meta.dirname, 'normalized');
 const FIXTURE_TIMESTAMP = '2026-08-06T00:00:00.000Z';
 
 function use_deterministic_random(seed = 0x434c4157) {
