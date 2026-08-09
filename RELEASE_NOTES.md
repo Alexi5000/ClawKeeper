@@ -1,5 +1,30 @@
 # ClawKeeper Release Notes
 
+## Version 2.0.2 - Security and Hygiene Rollup
+
+**Release Date**: 2026-08-09
+
+### Release Focus
+
+ClawKeeper v2.0.2 rolls the repository hygiene work from PRs #8 and #9 into a published release and refreshes the root dependency lockfiles to resolve GHSA-5p4m-2wfm-xmqj in `js-yaml`.
+
+### Improvements
+
+- Localized READMEs remain organized under `docs/i18n/` with validated navigation.
+- Superseded planning and verification artifacts remain removed from the default branch.
+- GitHub Actions use the current Node 24-compatible action runtimes.
+- Root dependency resolution upgrades `js-yaml` to 4.3.1.
+
+### Verification
+
+- README localization parity across all seven languages
+- Deterministic canonical fixture verification
+- Typecheck, lint, and full backend test suite
+- Dashboard production build
+- Root and dashboard dependency audits
+- FDE contracts, tests, benchmark, and proof validation
+- Docker build in GitHub Actions
+
 ## Version 2.0.1 - Repository Readiness
 
 **Release Date**: 2026-08-06
