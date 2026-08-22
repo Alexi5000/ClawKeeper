@@ -4,7 +4,7 @@ import path from "node:path";
 
 const files = ["README.md", "docs/i18n/README.es-ES.md", "docs/i18n/README.zh-CN.md", "docs/i18n/README.pt-BR.md", "docs/i18n/README.ar.md", "docs/i18n/README.fr.md", "docs/i18n/README.ru.md"];
 const anchors = ["agent-architecture", "what-clawkeeper-does", "what-clawkeeper-deliberately-does-not-do", "install", "usage-examples", "security-posture", "documentation"];
-const tokens = ["v2.0.2", "npm run quality", "npm run fde:benchmark", "npm run proof:v2:validate", "src/openclaw/policy.ts", "CONTRIBUTORS.md", "assets/icon.png", "assets/cover.png"];
+const tokens = ["v2.0.3", "npm run quality", "npm run fde:benchmark", "npm run proof:v2:validate", "src/openclaw/policy.ts", "CONTRIBUTORS.md", "assets/icon.png", "assets/cover.png"];
 const matches = (text, pattern) => [...text.matchAll(pattern)];
 const blocks = (text) => matches(text, /```[^\n]*\n[\s\S]*?```/g).map((match) => match[0]);
 const englishBlocks = blocks(fs.readFileSync("README.md", "utf8"));

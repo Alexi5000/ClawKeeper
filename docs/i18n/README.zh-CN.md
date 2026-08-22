@@ -10,7 +10,7 @@
 智能体可以提出财务工作建议；确定性的策略、租户边界、审批关卡和证据日志将决定哪些工作可以执行。
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-3B82F6?style=flat-square)](../../LICENSE)
-[![Version](https://img.shields.io/badge/release-v2.0.2-16a34a?style=flat-square)](../../RELEASE_NOTES.md)
+[![Version](https://img.shields.io/badge/release-v2.0.3-16a34a?style=flat-square)](../../RELEASE_NOTES.md)
 [![CI](https://img.shields.io/badge/CI-backend%20%7C%20dashboard%20%7C%20audit%20%7C%20docker%20%7C%20FDE-16a34a?style=flat-square)](../../.github/workflows/ci.yml)
 [![OpenClaw](https://img.shields.io/badge/OpenClaw-native-16a34a?style=flat-square)](https://github.com/openclaw/openclaw)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-3178c6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
