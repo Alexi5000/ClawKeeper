@@ -1,5 +1,29 @@
 # ClawKeeper Release Notes
 
+## Version 2.0.3 - Dependency Monitoring
+
+**Release Date**: 2026-08-22
+
+### Release Focus
+
+ClawKeeper v2.0.3 patches the dashboard Nano ID advisory and adds scheduled dependency monitoring so future npm and GitHub Actions updates open actionable pull requests.
+
+### Improvements
+
+- Dashboard dependency resolution upgrades `nanoid` to 3.3.18 or later within the supported 3.x line.
+- Dependabot checks root npm dependencies, dashboard npm dependencies, and GitHub Actions every Monday.
+- Dependabot pull requests carry dependency labels and use grouped non-major updates to keep maintenance reviewable.
+
+### Verification
+
+- README localization parity across all seven languages
+- Deterministic canonical fixture verification
+- Typecheck, lint, and full backend test suite
+- Dashboard production build
+- Root and dashboard dependency audits
+- FDE contracts, tests, benchmark, and proof validation
+- Docker build in GitHub Actions
+
 ## Version 2.0.2 - Security and Hygiene Rollup
 
 **Release Date**: 2026-08-09
