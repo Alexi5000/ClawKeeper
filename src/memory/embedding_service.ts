@@ -40,7 +40,7 @@ export class OpenAIEmbeddingService implements IEmbeddingService {
     } catch (error) {
       if (error instanceof OpenAI.APIError) {
         console.error('[Embedding] OpenAI API error:', error.message, error.status);
-        throw new Error(`Embedding generation failed: ${error.message}`);
+        throw new Error(`Embedding generation failed: ${error.message}`, { cause: error });
       }
       throw error;
     }
@@ -68,7 +68,7 @@ export class OpenAIEmbeddingService implements IEmbeddingService {
     } catch (error) {
       if (error instanceof OpenAI.APIError) {
         console.error('[Embedding] Batch OpenAI API error:', error.message);
-        throw new Error(`Batch embedding generation failed: ${error.message}`);
+        throw new Error(`Batch embedding generation failed: ${error.message}`, { cause: error });
       }
       throw error;
     }
