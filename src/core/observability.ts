@@ -99,10 +99,10 @@ export function end_trace(
 
   const { trace } = context;
   
-  if (output) {
-    // Update trace with output
-    // Note: Opik SDK handles this via trace.end()
-  }
+  trace.update({
+    output,
+    ...(error ? { errorInfo: { exceptionType: 'Error', message: error, traceback: '' } } : {}),
+  });
   
   trace.end();
   active_traces.delete(task_id);
@@ -188,8 +188,15 @@ export function record_llm_usage(
   span: Span,
   metrics: UsageMetrics
 ): void {
-  // Log metrics before ending span
-  // Note: Opik SDK span.end() doesn't take output args - set output via span properties if needed
+  span.update({
+    usage: {
+      prompt_tokens: metrics.input_tokens,
+      completion_tokens: metrics.output_tokens,
+      total_tokens: metrics.total_tokens,
+    },
+    totalEstimatedCost: metrics.cost_usd,
+    metadata: { ...span.data.metadata as Record<string, unknown>, latency_ms: metrics.latency_ms },
+  });
   span.end();
 }
 
@@ -202,8 +209,11 @@ export function record_agent_result(
     duration_ms: number;
   }
 ): void {
-  // Log result before ending span
-  // Note: Opik SDK span.end() doesn't take output args - set output via span properties if needed
+  span.update({
+    output: result.output,
+    metadata: { ...span.data.metadata as Record<string, unknown>, success: result.success, duration_ms: result.duration_ms },
+    ...(result.error ? { errorInfo: { exceptionType: 'Error', message: result.error, traceback: '' } } : {}),
+  });
   span.end();
 }
 
