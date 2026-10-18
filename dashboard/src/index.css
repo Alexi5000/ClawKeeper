@@ -1,6 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../tailwind.config.ts";
+
+@layer base {
+  *, ::before, ::after {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
 
 @layer base {
   :root {
@@ -71,7 +76,7 @@
   }
   
   .glass-card {
-    @apply glass rounded-xl p-6;
+    @apply bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl p-6;
   }
 
   .technical-grid {
