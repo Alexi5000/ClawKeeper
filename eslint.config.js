@@ -9,6 +9,14 @@ import ts_plugin from '@typescript-eslint/eslint-plugin';
 export default [
   js.configs.recommended,
   {
+    rules: {
+      'no-extra-semi': 'error',
+      'no-inner-declarations': 'error',
+      'no-mixed-spaces-and-tabs': 'error',
+      'no-new-symbol': 'error',
+    },
+  },
+  {
     files: ['src/**/*.ts', 'src/**/*.js', 'test/**/*.ts', 'tests/**/*.ts'],
     languageOptions: {
       parser: ts_parser,

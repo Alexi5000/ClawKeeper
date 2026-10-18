@@ -113,7 +113,7 @@ Important: Convert all monetary amounts to cents (multiply dollars by 100). Be p
     } catch (error) {
       if (error instanceof OpenAI.APIError) {
         console.error('[OCR] OpenAI API error:', error.message, error.status);
-        throw new Error(`OCR failed: ${error.message}`);
+        throw new Error(`OCR failed: ${error.message}`, { cause: error });
       }
       throw error;
     }
