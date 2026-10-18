@@ -20,7 +20,7 @@ export type UserRole = z.infer<typeof UserRole>;
 export const Tenant = z.object({
   id: TenantId,
   name: z.string(),
-  settings: z.record(z.unknown()),
+  settings: z.record(z.string(), z.unknown()),
   status: z.enum(['active', 'suspended', 'deleted']),
   created_at: z.string().datetime(),
   updated_at: z.string().datetime(),
@@ -211,7 +211,7 @@ export const FinancialReport = z.object({
   tenant_id: TenantId,
   type: ReportType,
   period: ReportPeriod,
-  data: z.record(z.unknown()),
+  data: z.record(z.string(), z.unknown()),
   generated_at: z.string().datetime(),
   generated_by: UserId.nullable(),
 });
@@ -259,7 +259,7 @@ export const AuditEntry = z.object({
   action: AuditAction,
   entity_type: z.string(),
   entity_id: z.string().uuid(),
-  changes: z.record(z.unknown()).nullable(),
+  changes: z.record(z.string(), z.unknown()).nullable(),
   ip_address: z.string().nullable(),
   user_agent: z.string().nullable(),
   timestamp: z.string().datetime(),
@@ -339,7 +339,7 @@ export const AgentProfile = z.object({
   capabilities: z.array(LedgerCapability),
   status: AgentStatus,
   current_task: z.string().nullable(),
-  metadata: z.record(z.unknown()).optional(),
+  metadata: z.record(z.string(), z.unknown()).optional(),
 });
 export type AgentProfile = z.infer<typeof AgentProfile>;
 
@@ -370,9 +370,9 @@ export const LedgerFlowNode = z.object({
   assigned_agent: LedgerAgentId.nullable(),
   status: TaskStatus,
   priority: TaskPriority,
-  input: z.record(z.unknown()),
-  output: z.record(z.unknown()).nullable(),
-  parameters: z.record(z.unknown()).optional(),
+  input: z.record(z.string(), z.unknown()),
+  output: z.record(z.string(), z.unknown()).nullable(),
+  parameters: z.record(z.string(), z.unknown()).optional(),
   dependencies: z.array(z.string().uuid()),
   created_at: z.string().datetime(),
   started_at: z.string().datetime().nullable(),
