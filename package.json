@@ -63,11 +63,11 @@
     "@types/bcryptjs": "^2.4.6",
     "@types/bun": "latest",
     "@types/jsonwebtoken": "^9.0.5",
-    "@typescript-eslint/eslint-plugin": "^8.59.3",
-    "@typescript-eslint/parser": "^8.59.3",
+    "@typescript-eslint/eslint-plugin": "8.71.2",
+    "@typescript-eslint/parser": "8.71.2",
     "eslint": "^10.13.0",
     "tsx": "^4.23.0",
-    "typescript": "^5.3.0"
+    "typescript": "6.0.3"
   },
   "keywords": [
     "openclaw",
