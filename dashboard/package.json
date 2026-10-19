@@ -35,7 +35,7 @@
     "react-hook-form": "^7.90.0",
     "react-router": "^8.4.0",
     "recharts": "^2.12.0",
-    "tailwind-merge": "^2.6.0",
+    "tailwind-merge": "^3.7.0",
     "three": "^0.186.1",
     "zod": "^4.6.7",
     "zustand": "^4.5.0"
