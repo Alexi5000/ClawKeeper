@@ -207,9 +207,9 @@ npm run quality             # typecheck + lint + test suite
 Use o fluxo de provas offline quando quiser executar uma verificação sem banco de dados:
 
 ```bash
-npm ci
+bun install --frozen-lockfile
 npm run quality
-cd dashboard && npm install && npm run build
+cd dashboard && npm ci && npm run build
 cd ..
 npm run fde:benchmark
 npm run proof:v2

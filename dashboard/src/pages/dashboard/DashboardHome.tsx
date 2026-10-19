@@ -323,7 +323,7 @@ export function DashboardHome() {
                       border: '1px solid hsl(var(--border))',
                       borderRadius: '8px',
                     }}
-                    formatter={(value: number) => [`$${(value / 100).toLocaleString()}`, '']}
+                    formatter={(value) => [typeof value === 'number' ? `$${(value / 100).toLocaleString()}` : 'Unavailable', '']}
                   />
                   <Area
                     type="monotone"

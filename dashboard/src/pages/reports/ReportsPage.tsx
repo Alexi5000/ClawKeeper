@@ -214,14 +214,14 @@ export function ReportsPage() {
                     cx="50%"
                     cy="50%"
                     outerRadius={80}
-                    label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                    label={({ name, percent }) => `${name} ${typeof percent === 'number' ? `${(percent * 100).toFixed(0)}%` : 'Unavailable'}`}
                     labelLine={false}
                   >
                     {generated_data.revenue.map((_: any, index: number) => (
                       <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                     ))}
                   </Pie>
-                  <Tooltip formatter={(value: number) => format_currency(value)} />
+                  <Tooltip formatter={(value) => typeof value === 'number' ? format_currency(value) : 'Unavailable'} />
                 </PieChart>
               </ResponsiveContainer>
             </div>
@@ -236,7 +236,7 @@ export function ReportsPage() {
                   <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
                   <XAxis type="number" tickFormatter={(v) => `$${v / 100000}k`} />
                   <YAxis dataKey="category" type="category" width={100} />
-                  <Tooltip formatter={(value: number) => format_currency(value)} />
+                  <Tooltip formatter={(value) => typeof value === 'number' ? format_currency(value) : 'Unavailable'} />
                   <Bar dataKey="amount" fill="#ef4444" radius={[0, 4, 4, 0]} />
                 </BarChart>
               </ResponsiveContainer>
@@ -285,7 +285,7 @@ export function ReportsPage() {
               <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
               <XAxis dataKey="period" />
               <YAxis tickFormatter={(v) => `$${v / 100000}k`} />
-              <Tooltip formatter={(value: number) => format_currency(value)} />
+              <Tooltip formatter={(value) => typeof value === 'number' ? format_currency(value) : 'Unavailable'} />
               <Bar dataKey="amount" fill="#3b82f6" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>

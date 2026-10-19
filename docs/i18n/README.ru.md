@@ -207,9 +207,9 @@ npm run quality             # typecheck + lint + test suite
 Для проверки без базы данных используйте автономный набор доказательств:
 
 ```bash
-npm ci
+bun install --frozen-lockfile
 npm run quality
-cd dashboard && npm install && npm run build
+cd dashboard && npm ci && npm run build
 cd ..
 npm run fde:benchmark
 npm run proof:v2

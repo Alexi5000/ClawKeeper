@@ -40,7 +40,7 @@ STRIPE_SECRET_KEY=...
 
 ```bash
 bun install
-cd dashboard && bun install
+cd dashboard && npm ci
 ```
 
 ## Database Setup
