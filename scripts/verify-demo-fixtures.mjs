@@ -13,7 +13,7 @@ function fixtureHash() {
   for (const directory of fixtureDirectories) {
     for (const name of readdirSync(directory).sort()) {
       const path = join(directory, name);
-      const descriptor = openSync(path, constants.O_RDONLY | constants.O_NOFOLLOW);
+      const descriptor = openSync(path, constants.O_RDONLY | constants.O_NOFOLLOW | constants.O_NONBLOCK);
       try {
         if (!fstatSync(descriptor).isFile()) continue;
         hash.update(path);
