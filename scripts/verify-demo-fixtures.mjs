@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { readdirSync, readFileSync, statSync } from 'node:fs';
+import { closeSync, constants, fstatSync, openSync, readdirSync, readFileSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import { join } from 'node:path';
 
@@ -13,9 +13,14 @@ function fixtureHash() {
   for (const directory of fixtureDirectories) {
     for (const name of readdirSync(directory).sort()) {
       const path = join(directory, name);
-      if (!statSync(path).isFile()) continue;
-      hash.update(path);
-      hash.update(readFileSync(path));
+      const descriptor = openSync(path, constants.O_RDONLY | constants.O_NOFOLLOW | constants.O_NONBLOCK);
+      try {
+        if (!fstatSync(descriptor).isFile()) continue;
+        hash.update(path);
+        hash.update(readFileSync(descriptor));
+      } finally {
+        closeSync(descriptor);
+      }
     }
   }
   return hash.digest('hex');
