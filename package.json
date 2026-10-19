@@ -45,17 +45,17 @@
     "setup:full": "bun run scripts/full-setup.ts"
   },
   "dependencies": {
-    "@hono/node-server": "^2.1.0",
-    "@types/ws": "^8.18.1",
+    "@hono/node-server": "^2.1.5",
+    "@types/ws": "^8.18.2",
     "bcryptjs": "^2.4.3",
     "dotenv": "^17.2.3",
-    "hono": "^4.13.0",
+    "hono": "^4.13.13",
     "jsonwebtoken": "^9.0.2",
     "openai": "^6.17.0",
     "opik": "^2.2.103",
-    "postgres": "^3.4.5",
+    "postgres": "^3.4.9",
     "uuid": "^11.1.1",
-    "ws": "^8.21.0",
+    "ws": "^8.22.0",
     "zod": "^4.6.7"
   },
   "devDependencies": {
@@ -66,7 +66,7 @@
     "@typescript-eslint/eslint-plugin": "8.71.2",
     "@typescript-eslint/parser": "8.71.2",
     "eslint": "^10.13.0",
-    "tsx": "^4.23.0",
+    "tsx": "^4.23.15",
     "typescript": "6.0.3"
   },
   "keywords": [
