@@ -207,9 +207,9 @@ npm run quality             # typecheck + lint + test suite
 如需在不使用数据库的情况下运行验证，请使用离线证明路径：
 
 ```bash
-npm ci
+bun install --frozen-lockfile
 npm run quality
-cd dashboard && npm install && npm run build
+cd dashboard && npm ci && npm run build
 cd ..
 npm run fde:benchmark
 npm run proof:v2

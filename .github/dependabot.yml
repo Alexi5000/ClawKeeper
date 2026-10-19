@@ -3,6 +3,9 @@ version: 2
 updates:
   - package-ecosystem: bun
     directory: /
+    ignore:
+      - dependency-name: typescript
+        versions: [">=7.0.0 <8.0.0"]
     schedule:
       interval: weekly
       day: monday

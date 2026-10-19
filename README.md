@@ -199,9 +199,9 @@ npm run quality             # typecheck + lint + test suite
 Use the offline proof path when you want a no-database verification run:
 
 ```bash
-npm ci
+bun install --frozen-lockfile
 npm run quality
-cd dashboard && npm install && npm run build
+cd dashboard && npm ci && npm run build
 cd ..
 npm run fde:benchmark
 npm run proof:v2
@@ -266,6 +266,8 @@ curl -X POST http://localhost:4004/api/invoices/upload \
 ```
 
 <br/>
+
+The backend uses `bun.lock` as its canonical dependency lock for development, CI, Docker, and Dependabot. The dashboard independently uses `dashboard/package-lock.json` with `npm ci`. CI retains the full typecheck, lint, test, FDE, build, and moderate-severity dependency audit gates.
 
 ## Security posture
 

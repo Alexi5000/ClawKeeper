@@ -25,10 +25,14 @@ jobs:
         uses: actions/setup-node@v7
         with:
           node-version: 22
-          cache: npm
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2.2.0
+        with:
+          bun-version: 1.3.11
 
       - name: Install dependencies
-        run: npm ci
+        run: bun install --frozen-lockfile
 
       - name: Verify canonical demo fixtures
         run: npm run demo:fixtures:verify
@@ -52,7 +56,7 @@ jobs:
           node-version: 22
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build dashboard
         run: npm run build
@@ -68,18 +72,22 @@ jobs:
         uses: actions/setup-node@v7
         with:
           node-version: 22
-          cache: npm
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2.2.0
+        with:
+          bun-version: 1.3.11
 
       - name: Install dependencies
-        run: npm ci
+        run: bun install --frozen-lockfile
 
       - name: Audit root dependencies
-        run: npm audit --audit-level=moderate
+        run: bun audit --audit-level=moderate
 
       - name: Audit dashboard dependencies
         working-directory: dashboard
         run: |
-          npm install
+          npm ci
           npm audit --audit-level=moderate
 
   docker-build:
@@ -103,10 +111,14 @@ jobs:
         uses: actions/setup-node@v7
         with:
           node-version: 22
-          cache: npm
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2.2.0
+        with:
+          bun-version: 1.3.11
 
       - name: Install dependencies
-        run: npm ci
+        run: bun install --frozen-lockfile
 
       - name: Run FDE gates when available
         run: |
