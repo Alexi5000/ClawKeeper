@@ -47,7 +47,7 @@
   "dependencies": {
     "@hono/node-server": "^2.1.0",
     "@types/ws": "^8.18.1",
-    "bcryptjs": "^2.4.3",
+    "bcryptjs": "^3.0.3",
     "dotenv": "^17.2.3",
     "hono": "^4.13.0",
     "jsonwebtoken": "^9.0.2",
@@ -60,7 +60,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@types/bcryptjs": "^2.4.6",
+    "@types/bcryptjs": "^3.0.0",
     "@types/bun": "latest",
     "@types/jsonwebtoken": "^9.0.5",
     "@typescript-eslint/eslint-plugin": "8.71.2",
