@@ -5,6 +5,7 @@
 import { Hono } from 'hono';
 import { streamSSE } from 'hono/streaming';
 import type { Sql } from 'postgres';
+import type { TenantTransactionRunner } from '../tenant-database';
 import { agent_runtime } from '../../agents/index';
 import { orchestration_service } from '../../agents/orchestration_service';
 import type { ExecutionEvent } from '../../agents/orchestration_service';
@@ -17,7 +18,7 @@ import {
   get_openclaw_agent_definition,
 } from '../../openclaw';
 
-export function agent_routes(sql: Sql<Record<string, unknown>>) {
+export function agent_routes(sql: Sql<Record<string, unknown>>, runTenantTransaction: TenantTransactionRunner) {
   const app = new Hono<AppEnv>();
 
   // Get all agent statuses
@@ -371,8 +372,8 @@ export function agent_routes(sql: Sql<Record<string, unknown>>) {
           data: JSON.stringify(result),
         });
 
-        // Log to database
-        await sql`
+        await runTenantTransaction({ tenant_id, user_id, role: user_role }, async transaction => {
+          await transaction`
           INSERT INTO agent_runs (
             tenant_id, agent_id, task_id, status, started_at, completed_at,
             duration_ms, tokens_used, cost, error
@@ -386,7 +387,8 @@ export function agent_routes(sql: Sql<Record<string, unknown>>) {
             ${0},
             ${result.status === 'failed' ? 'Orchestration failed' : null}
           )
-        `;
+          `;
+        });
 
       } catch (error: any) {
         await stream.writeSSE({

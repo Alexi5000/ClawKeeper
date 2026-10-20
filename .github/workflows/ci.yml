@@ -17,6 +17,21 @@ jobs:
   backend-quality:
     name: Backend quality
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_PASSWORD: rls-test-only
+          POSTGRES_DB: rls_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      RLS_TEST_DATABASE: postgres://postgres:rls-test-only@localhost:5432/rls_test
     steps:
       - name: Checkout
         uses: actions/checkout@v7

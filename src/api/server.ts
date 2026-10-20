@@ -6,7 +6,7 @@ import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 import { logger } from 'hono/logger';
 import postgres from 'postgres';
-import jwt from 'jsonwebtoken';
+import { createTenantDatabase } from './tenant-database';
 import { guardrails_middleware } from '../guardrails';
 import { auth_routes } from './routes/auth';
 import { invoice_routes } from './routes/invoices';
@@ -24,10 +24,11 @@ import { websocket_handler } from './websocket_handler';
 import type { AppEnv } from '../types/hono';
 
 // Database connection
-const sql = postgres(process.env.DATABASE_URL!, {
+const pool = postgres(process.env.DATABASE_URL!, {
   max: 10,
   idle_timeout: 20,
 });
+const { sql, middleware: tenantMiddleware, run: runTenantTransaction } = createTenantDatabase(pool);
 
 // Create Hono app with typed environment
 const app = new Hono<AppEnv>();
@@ -39,62 +40,7 @@ app.use('*', logger());
 // Guardrails middleware (rate limiting, PII detection, injection detection)
 app.use('/api/*', guardrails_middleware);
 
-// Tenant context middleware
-app.use('/api/*', async (c, next) => {
-  const auth_header = c.req.header('Authorization');
-  
-  if (!auth_header || !auth_header.startsWith('Bearer ')) {
-    // Skip for public endpoints
-    if (c.req.path === '/api/auth/login' || c.req.path === '/api/health' || c.req.path === '/api/agents/status' || c.req.path === '/api/admin/molten-sync') {
-      return next();
-    }
-    
-    return c.json({ error: 'Unauthorized' }, 401);
-  }
-
-  const token = auth_header.substring(7);
-  
-  // Verify JWT signature and expiration
-  try {
-    const jwt_secret = process.env.JWT_SECRET;
-    if (!jwt_secret) {
-      console.error('[Auth] JWT_SECRET not configured');
-      return c.json({ error: 'Server configuration error' }, 500);
-    }
-
-    const decoded = jwt.verify(token, jwt_secret) as {
-      tenant_id: string;
-      user_id: string;
-      role: string;
-    };
-    
-    // Set context for this request
-    c.set('tenant_id', decoded.tenant_id);
-    c.set('user_id', decoded.user_id);
-    c.set('user_role', decoded.role);
-    
-    // Set PostgreSQL session variables for RLS (use unsafe for SET commands)
-    try {
-      await sql.unsafe(`SET app.current_tenant_id = '${decoded.tenant_id}'`);
-      await sql.unsafe(`SET app.current_user_id = '${decoded.user_id}'`);
-      await sql.unsafe(`SET app.current_user_role = '${decoded.role}'`);
-    } catch (error) {
-      // RLS variables may not be configured, continue anyway
-      console.warn('[Auth] Could not set RLS variables:', error);
-    }
-    
-    return next();
-  } catch (error) {
-    if (error instanceof jwt.JsonWebTokenError) {
-      return c.json({ error: 'Invalid token' }, 401);
-    }
-    if (error instanceof jwt.TokenExpiredError) {
-      return c.json({ error: 'Token expired' }, 401);
-    }
-    console.error('[Auth] Token verification error:', error);
-    return c.json({ error: 'Authentication failed' }, 401);
-  }
-});
+app.use('/api/*', tenantMiddleware);
 
 // Health check
 app.get('/health', (c) => {
@@ -111,7 +57,7 @@ app.route('/api/auth', auth_routes(sql));
 app.route('/api/invoices', invoice_routes(sql));
 app.route('/api/reports', report_routes(sql));
 app.route('/api/reconciliation', reconciliation_routes(sql));
-app.route('/api/agents', agent_routes(sql));
+app.route('/api/agents', agent_routes(sql, runTenantTransaction));
 app.route('/api/accounts', account_routes(sql));
 app.route('/api/dashboard', create_dashboard_routes(sql));
 app.route('/api/activity', create_activity_routes(sql));
