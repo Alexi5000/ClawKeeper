@@ -94,10 +94,15 @@ CREATE POLICY transaction_tenant_isolation ON transactions
 -- ============================================================================
 
 CREATE POLICY invoice_tenant_isolation ON invoices
-    FOR ALL
+    AS RESTRICTIVE FOR ALL
     USING (
         is_super_admin() OR tenant_id = current_tenant_id()
     );
+
+CREATE POLICY invoice_super_admin ON invoices
+    FOR ALL
+    USING (is_super_admin())
+    WITH CHECK (is_super_admin());
 
 -- Viewers can only read invoices
 CREATE POLICY invoice_viewer_read ON invoices

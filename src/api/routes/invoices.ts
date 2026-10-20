@@ -54,6 +54,10 @@ export function invoice_routes(sql: Sql<Record<string, unknown>>) {
         return c.json({ error: 'Unauthorized' }, 401);
       }
 
+      if (!['accountant', 'tenant_admin', 'super_admin'].includes(c.get('user_role'))) {
+        return c.json({ error: 'Invoice upload requires an accountant or administrator' }, 403);
+      }
+
       // Parse multipart form data
       const body = await c.req.parseBody();
       const file = body.file;
