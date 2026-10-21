@@ -13,7 +13,7 @@ Agents can propose finance work; deterministic policy, tenant boundaries, approv
 [![Version](https://img.shields.io/badge/release-v2.0.3-16a34a?style=flat-square)](RELEASE_NOTES.md)
 [![CI](https://img.shields.io/badge/CI-backend%20%7C%20dashboard%20%7C%20audit%20%7C%20docker%20%7C%20FDE-16a34a?style=flat-square)](.github/workflows/ci.yml)
 [![OpenClaw](https://img.shields.io/badge/OpenClaw-native-16a34a?style=flat-square)](https://github.com/openclaw/openclaw)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.3-3178c6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-6.0-3178c6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Proof](https://img.shields.io/badge/proof-v2.0%20bundle-16a34a?style=flat-square)](docs/proof/v2.0/README.md)
 
 [Architecture](#agent-architecture) · [What It Does](#what-clawkeeper-does) · [What It Does Not Do](#what-clawkeeper-deliberately-does-not-do) · [Install](#install) · [Usage](#usage-examples) · [Security](#security-posture) · [Docs](#documentation)
@@ -26,11 +26,17 @@ Agents can propose finance work; deterministic policy, tenant boundaries, approv
 
 <br/>
 
-## Research anchor
+## Why this exists
 
-In benchmark testing against open-source baselines ([arXiv:2603.24414](https://arxiv.org/abs/2603.24414)), the ClawKeeper architecture demonstrated superior mitigation of autonomous LLM agent threats in financial execution contexts. The threat model targets prompt injection, cross-tenant data leakage, and unsanctioned money movement -- failure modes that remain under active research and are not considered solved.
+**What it does.** ClawKeeper is a control plane for finance agents in small and medium businesses. Agents propose accounts payable, accounts receivable, reconciliation, and reporting work; a deterministic policy engine (`src/openclaw/policy.ts`), PostgreSQL row-level security, approval gates, and a redacted append-only audit log decide what is allowed to run.
 
-Agent security is continuous, not absolute. The benchmark results reflect a specific test harness against a specific set of baselines at a point in time. New attack vectors against autonomous financial agents emerge regularly. The architecture is designed to reduce the blast radius of agent misbehavior, not to eliminate it.
+**Who it serves.** Operators and developers who want to put LLM agents on SMB bookkeeping tasks without granting them autonomous money movement or cross-tenant data access: an accounting team running several client tenants, or a builder evaluating guardrail patterns for finance agents.
+
+**Why Alex built it.** The repository was created on 2026-02-02 (GitHub `created_at`). The first commit `38226cf` (2026-02-02, "feat: initial ClawKeeper MVP release") describes "a production-grade multi-tenant AI agent system that automates bookkeeping, invoice processing, bank reconciliation, and financial reporting for SMBs" with row-level security, RBAC, and audit trails from the start. Later history narrowed the thesis to governance: v1.5 (`10f86fa`, 2026-05-17, "Release ClawKeeper v1.5 OpenClaw agent infrastructure") and PR #2 (2026-05-27) frame the project as "an OpenClaw-native SMB finance-agent platform with TypeScript-first agents, deterministic policy guardrails, tenant isolation, and auditable financial execution", and PRs #54 and #55 (2026-10-20) moved invoice write authorization and per-request tenant context into database-enforced boundaries.
+
+**Real-world use case (2025–2026 evidence).** **Verified in this repository.** An SMB finance operator onboards a tenant, uploads supplier invoices for OCR, and asks agents to schedule payments. Viewer roles are rejected before OCR runs, cross-tenant reads are denied by RLS, and payments above the configured threshold return `approval_required` instead of executing. This path is exercised by `tests/api/invoice-upload-roles.test.ts`, `tests/api/tenant-database.test.ts` (against a real PostgreSQL service in CI), `test/openclaw.policy.test.ts`, and the four deterministic FDE benchmark scenarios behind `npm run fde:benchmark`; all demo data is synthetic. The threat model follows the risks catalogued for autonomous agents in the OWASP Top 10 for Agentic Applications for 2026[^1] and the agent-runtime threats described for OpenClaw in 2026[^2]. CI exercises the RLS boundary on PostgreSQL 15 while PostgreSQL 18 is the current major release line[^3], and CI pins Bun 1.3.11 (`.github/workflows/ci.yml`), from the Bun 1.3 line released in October 2025[^4].
+
+**Related research, not an evaluation of this code.** [arXiv:2603.24414](https://arxiv.org/abs/2603.24414) (Liu et al., 2026-03-25) describes an independent safety framework for OpenClaw agents that is also named ClawKeeper. That paper did not benchmark this repository, and no claim of superior performance is made here; it is cited only as threat-model context. Agent security is continuous, not absolute: prompt injection, cross-tenant leakage, and unsanctioned money movement remain under active research and are not considered solved.
 
 ## v2.0 proof status
 
@@ -276,13 +282,13 @@ Agent security is a continuous practice, not a shipped feature. The ClawKeeper t
 | Guardrail | Implementation | Known limitation |
 |-----------|---------------|-----------------|
 | **Tenant isolation** | Policy engine + PostgreSQL RLS | RLS bypass is possible if raw SQL access is granted outside the application layer |
-| **Approval gates** | Deterministic policy checks in `src/openclaw/policy.ts` | Approval metadata is trusted once provided -- the approval workflow UI is roadmap v1.6 |
+| **Approval gates** | Deterministic policy checks in `src/openclaw/policy.ts` | Approval metadata is trusted once provided -- the approval workbench is roadmap v2.1 |
 | **Prompt-injection denial** | Pattern-matching guardrails evaluated before LLM invocation | Pattern-based detection does not catch novel injection techniques; this is an active research area |
 | **Audit immutability** | PostgreSQL append-only triggers; PII/secret redaction before write | Database-level bypass (direct SQL) can circumvent triggers; mitigated by network access controls |
 | **OCR validation** | Programmatic sum-matching of line items vs. stated totals | Adversarial invoices designed to pass sum checks while containing incorrect individual line items are a known gap |
 | **Rate-limit resilience** | Exponential backoff retry on 429/transient errors | Backoff caps exist but sustained rate limiting during peak concurrency can degrade agent throughput |
 
-Research context: [arXiv:2603.24414](https://arxiv.org/abs/2603.24414) · Security model: [`docs/SECURITY_MODEL.md`](docs/SECURITY_MODEL.md) · Vulnerability reports: [`SECURITY.md`](SECURITY.md)
+Related research (independent framework with the same name, not an evaluation of this code): [arXiv:2603.24414](https://arxiv.org/abs/2603.24414) · Security model: [`docs/SECURITY_MODEL.md`](docs/SECURITY_MODEL.md) · Vulnerability reports: [`SECURITY.md`](SECURITY.md)
 
 <br/>
 
@@ -306,7 +312,7 @@ WS   /ws                                     # real-time agent events
 
 ## Testing & quality gates
 
-The test suite validates the parts of the system that matter for a finance-agent release: manifest correctness, policy decisions, approval requirements, tenant isolation, prompt-injection denial, and audit redaction. Dashboard behavior tests are secondary.
+The test suite validates the parts of the system that matter for a finance-agent release: manifest correctness, policy decisions, approval requirements, tenant isolation, prompt-injection denial, and audit redaction. Dashboard behavior tests are secondary. As of 2026-10-20 `npm test` runs 164 tests in 41 suites; 163 pass and the PostgreSQL-backed RLS suite is skipped unless `RLS_TEST_DATABASE` is set (CI provides it).
 
 ```bash
 npm run typecheck          # TypeScript strict mode
@@ -321,6 +327,11 @@ npm run proof:v2:validate  # proof bundle validation
 |-----------|------------------|
 | `test/openclaw.manifest.test.ts` | App identity, agent registration, high-risk capability policy, runtime adapter health |
 | `test/openclaw.policy.test.ts` | Autonomous reporting, approval-required payment flows, tenant isolation denial, missing capability denial, prompt-injection denial, audit redaction |
+| `test/schema-records.test.ts` | Database schema record contracts |
+| `tests/api/*.test.ts` | Invoice upload role enforcement, per-request tenant database context against PostgreSQL (skipped locally without `RLS_TEST_DATABASE`), health route, WebSocket events |
+| `tests/agents/*`, `tests/guardrails/*`, `tests/memory/*`, `tests/services/*`, `tests/integrations/*` | Orchestrator and worker behavior, validators, pgvector semantic search, OCR service, Molten bridge, observability |
+| `tests/fde/*.test.ts` | Finance-agent (FDE) contracts and harness |
+| `tests/dependency-compatibility.test.ts` | Runtime lock and chart API compatibility |
 
 <br/>
 
@@ -383,8 +394,13 @@ MIT. See [`LICENSE`](LICENSE).
 
 <div align="center">
 
-**[Alex Cinovoj](https://www.linkedin.com/in/alexcinovoj)** · [TechTide AI](https://techtideai.io/) · Columbus, Ohio
+**[Alex Cinovoj](https://www.linkedin.com/in/alexcinovoj)**, Founder & CTO of [TechTide AI](https://techtideai.io/) · Columbus, Ohio
 
 For production deployment, security review, or integration support: [techtideai.io](https://techtideai.io/)
 
 </div>
+
+[^1]: OWASP Gen AI Security Project, "OWASP Top 10 for Agentic Applications for 2026", published 2025-12-09. https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/
+[^2]: Liu et al., "ClawKeeper: Comprehensive Safety Protection for OpenClaw Agents Through Skills, Plugins, and Watchers", arXiv:2603.24414, 2026-03-25. https://arxiv.org/abs/2603.24414
+[^3]: PostgreSQL Global Development Group, "PostgreSQL 18 Released!", 2025-09-25. https://www.postgresql.org/about/news/postgresql-18-released-3142/
+[^4]: Bun, "Bun 1.3", 2025-10-10. https://bun.com/blog/bun-v1.3
