@@ -28,7 +28,7 @@ Les agents peuvent proposer des opérations financières ; une politique déterm
 
 ## Point d’ancrage de la recherche
 
-Lors de tests comparatifs face à des références open source ([arXiv:2603.24414](https://arxiv.org/abs/2603.24414)), l’architecture ClawKeeper a démontré une meilleure atténuation des menaces liées aux agents LLM autonomes dans des contextes d’exécution financière. Le modèle de menace cible l’injection de prompts, les fuites de données entre locataires et les mouvements de fonds non autorisés -- des modes de défaillance qui font toujours l’objet de recherches actives et ne sont pas considérés comme résolus.
+Un article indépendant de 2026 ([arXiv:2603.24414](https://arxiv.org/abs/2603.24414), Liu et al., 25 mars 2026) décrit un cadre de sécurité pour agents OpenClaw qui porte aussi le nom ClawKeeper ; cet article n’a pas évalué ce dépôt et aucune performance supérieure n’est revendiquée ici. Il est cité uniquement comme contexte du modèle de menace. Le modèle de menace cible l’injection de prompts, les fuites de données entre locataires et les mouvements de fonds non autorisés -- des modes de défaillance qui font toujours l’objet de recherches actives et ne sont pas considérés comme résolus.
 
 La sécurité des agents est continue, non absolue. Les résultats du benchmark correspondent à un banc d’essai précis, comparé à un ensemble précis de références, à un instant donné. De nouveaux vecteurs d’attaque contre les agents financiers autonomes apparaissent régulièrement. L’architecture vise à limiter le rayon d’impact des comportements indésirables des agents, et non à les éliminer.
 
