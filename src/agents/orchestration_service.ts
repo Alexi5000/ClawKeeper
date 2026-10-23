@@ -66,12 +66,21 @@ export type ExecutionEvent =
   | { type: 'task_failed'; plan_id: string; task_id: string; agent_id: string; error: string; duration_ms?: number; timestamp: string }
   | { type: 'task_skipped'; plan_id: string; task_id: string; reason: string; timestamp: string };
 
+export class PlanNotFoundError extends Error {
+  constructor(plan_id: string) {
+    super(`Plan not found: ${plan_id}`);
+    this.name = 'PlanNotFoundError';
+  }
+}
+
 // ============================================================================
 // Orchestration Service
 // ============================================================================
 
 class OrchestrationService {
   private plans: Map<string, OrchestrationPlan> = new Map();
+  // Owning tenant per plan. Kept outside the plan object so API responses keep their shape.
+  private plan_owners: Map<string, string> = new Map();
 
   /**
    * Create an execution plan from a natural language command
@@ -132,16 +141,22 @@ class OrchestrationService {
 
     // Store plan
     this.plans.set(plan.plan_id, plan);
+    this.plan_owners.set(plan.plan_id, tenant_context.tenant_id);
 
     console.log(`[Orchestration] Plan created: ${plan.plan_id} with ${tasks.length} tasks`);
     return plan;
   }
 
   /**
-   * Get a stored plan
+   * Get a stored plan owned by the given tenant.
+   * Returns null when the plan does not exist or belongs to another tenant,
+   * so callers cannot distinguish foreign plans from missing ones.
    */
-  get_plan(plan_id: string): OrchestrationPlan | null {
-    return this.plans.get(plan_id) || null;
+  get_plan(plan_id: string, tenant_id: string): OrchestrationPlan | null {
+    if (!tenant_id) return null;
+    const plan = this.plans.get(plan_id);
+    if (!plan || this.plan_owners.get(plan_id) !== tenant_id) return null;
+    return plan;
   }
 
   /**
@@ -152,9 +167,9 @@ class OrchestrationService {
     tenant_context: TenantContext,
     event_callback?: (event: ExecutionEvent) => void
   ): Promise<OrchestrationResult> {
-    const plan = this.plans.get(plan_id);
+    const plan = this.get_plan(plan_id, tenant_context?.tenant_id);
     if (!plan) {
-      throw new Error(`Plan not found: ${plan_id}`);
+      throw new PlanNotFoundError(plan_id);
     }
 
     const start_time = Date.now();
