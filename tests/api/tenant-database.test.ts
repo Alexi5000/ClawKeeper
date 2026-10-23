@@ -82,6 +82,8 @@ test('tenant transactions isolate pooled PostgreSQL requests', {
       const { agent_routes } = await import('../../src/api/routes/agents');
       const { orchestration_service } = await import('../../src/agents/orchestration_service');
       const original = orchestration_service.execute_plan;
+      const originalGetPlan = orchestration_service.get_plan;
+      orchestration_service.get_plan = (plan_id: string) => ({ plan_id } as ReturnType<typeof originalGetPlan>);
       orchestration_service.execute_plan = async () => {
         await new Promise(resolve => setTimeout(resolve, 10));
         return { status: 'completed', total_duration_ms: 1 } as Awaited<ReturnType<typeof original>>;
@@ -104,6 +106,7 @@ test('tenant transactions isolate pooled PostgreSQL requests', {
         assert.deepEqual(rows.map(row => row.tenant_id), [tenantA, tenantB]);
       } finally {
         orchestration_service.execute_plan = original;
+        orchestration_service.get_plan = originalGetPlan;
       }
     });
     await t.test('context is reset before pool reuse and public requests', async () => {

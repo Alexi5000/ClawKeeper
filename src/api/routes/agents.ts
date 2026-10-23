@@ -7,7 +7,7 @@ import { streamSSE } from 'hono/streaming';
 import type { Sql } from 'postgres';
 import type { TenantTransactionRunner } from '../tenant-database';
 import { agent_runtime } from '../../agents/index';
-import { orchestration_service } from '../../agents/orchestration_service';
+import { orchestration_service, PlanNotFoundError } from '../../agents/orchestration_service';
 import type { ExecutionEvent } from '../../agents/orchestration_service';
 import type { AppEnv } from '../../types/hono';
 import type { LedgerTaskStar } from '../../core/types';
@@ -279,8 +279,13 @@ export function agent_routes(sql: Sql<Record<string, unknown>>, runTenantTransac
   // Get execution plan
   app.get('/orchestrate/plan/:plan_id', async (c) => {
     const plan_id = c.req.param('plan_id');
+    const tenant_id = c.get('tenant_id');
 
-    const plan = orchestration_service.get_plan(plan_id);
+    if (!tenant_id) {
+      return c.json({ error: 'Unauthorized' }, 401);
+    }
+
+    const plan = orchestration_service.get_plan(plan_id, tenant_id);
     if (!plan) {
       return c.json({ error: 'Plan not found' }, 404);
     }
@@ -325,6 +330,9 @@ export function agent_routes(sql: Sql<Record<string, unknown>>, runTenantTransac
 
       return c.json({ result });
     } catch (error: any) {
+      if (error instanceof PlanNotFoundError) {
+        return c.json({ error: 'Plan not found' }, 404);
+      }
       console.error('Execute plan error:', error);
       return c.json({ 
         error: 'Failed to execute plan',
@@ -342,6 +350,10 @@ export function agent_routes(sql: Sql<Record<string, unknown>>, runTenantTransac
 
     if (!tenant_id || !user_id) {
       return c.json({ error: 'Unauthorized' }, 401);
+    }
+
+    if (!orchestration_service.get_plan(plan_id, tenant_id)) {
+      return c.json({ error: 'Plan not found' }, 404);
     }
 
     return streamSSE(c, async (stream) => {
