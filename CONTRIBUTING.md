@@ -38,7 +38,7 @@ By participating in this project, you agree to maintain a respectful and inclusi
 
 - [Bun](https://bun.sh/) v1.1.0 or later
 - PostgreSQL 15+ (or use Docker)
-- Node.js 20+ (for some tooling)
+- Node.js 22+ (for some tooling; required by openai v7)
 
 ### Setup
 
