@@ -91,12 +91,9 @@ We enforce consistent code style across the project:
 
 ### Formatting & Linting
 
-We use Prettier and ESLint:
+We use ESLint (`eslint.config.js`); there is no separate formatter:
 
 ```bash
-# Format code
-bun run format
-
 # Lint code
 bun run lint
 
@@ -123,16 +120,16 @@ chore: upgrade dependencies
 # Run all tests
 bun run test
 
-# Run with coverage
+# Run with coverage (Node's built-in test coverage)
 bun run test:coverage
 
-# Run specific test file
-bun test src/skills/__tests__/invoice-processor.test.ts
+# Run specific test file (tests use node:test, not bun test)
+node --test --import tsx tests/guardrails/validators.test.ts
 ```
 
 ### Writing Tests
 
-- Place tests in `__tests__` directories or use `.test.ts` suffix
+- Place tests under `test/` or `tests/` with a `.test.ts` suffix (the test scripts only collect those)
 - Test file structure should mirror source structure
 - Include unit tests for utilities and integration tests for skills
 - Mock external services (Plaid, Stripe, etc.)
