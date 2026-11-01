@@ -91,12 +91,9 @@ We enforce consistent code style across the project:
 
 ### Formatting & Linting
 
-We use Prettier and ESLint:
+We use ESLint (`eslint.config.js`):
 
 ```bash
-# Format code
-bun run format
-
 # Lint code
 bun run lint
 
@@ -127,12 +124,14 @@ bun run test
 bun run test:coverage
 
 # Run specific test file
-bun test src/skills/__tests__/invoice-processor.test.ts
+node --test --import tsx test/openclaw.manifest.test.ts
 ```
+
+Tests run on Node's built-in test runner through `tsx`, not `bun test`.
 
 ### Writing Tests
 
-- Place tests in `__tests__` directories or use `.test.ts` suffix
+- Place tests under `test/` or `tests/` with a `.test.ts` suffix (the test scripts only pick up those)
 - Test file structure should mirror source structure
 - Include unit tests for utilities and integration tests for skills
 - Mock external services (Plaid, Stripe, etc.)
