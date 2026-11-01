@@ -157,14 +157,14 @@ echo $DATABASE_URL
 ```bash
 cd dashboard
 
-# Install dependencies
-bun install
+# Install dependencies (npm; dashboard/package-lock.json is the lockfile)
+npm ci
 
-# Check for TypeScript errors
-bun run typecheck
+# Typecheck and build (runs tsc, then vite build)
+npm run build
 
 # Try dev mode
-bun run dev
+npm run dev
 ```
 
 ### Clawdbot Gateway Issues

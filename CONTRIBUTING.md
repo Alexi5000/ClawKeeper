@@ -70,12 +70,12 @@ By participating in this project, you agree to maintain a respectful and inclusi
 
 ### Dashboard Development
 
-The dashboard is a separate React application:
+The dashboard is a separate React application. It uses npm and `dashboard/package-lock.json` as its only lockfile (this is what CI and Dependabot use):
 
 ```bash
 cd dashboard
-bun install
-bun run dev
+npm ci
+npm run dev
 ```
 
 ## Code Style

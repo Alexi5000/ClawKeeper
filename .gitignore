@@ -73,3 +73,6 @@ tenants.json
 .cursor/
 *.plan.md
 
+
+# Dashboard uses npm only (dashboard/package-lock.json); see issue #62
+dashboard/bun.lock
