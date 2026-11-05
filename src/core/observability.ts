@@ -9,31 +9,30 @@ import type { TenantId, LedgerAgentId } from './types';
 // Configuration (Self-Hosted Open Source Opik)
 // ============================================================================
 
-const OPIK_ENABLED = process.env.OPIK_ENABLED === 'true';
-const OPIK_BASE_URL = process.env.OPIK_BASE_URL || 'http://localhost:5173/api';
-const OPIK_PROJECT_NAME = process.env.OPIK_PROJECT_NAME || 'clawkeeper';
-
 let opik_client: Opik | null = null;
 
+export function is_opik_enabled(): boolean {
+  return process.env.OPIK_ENABLED === 'true';
+}
+
 export function get_opik_client(): Opik | null {
-  if (!OPIK_ENABLED) {
+  if (!is_opik_enabled()) {
     return null;
   }
+
+  const baseUrl = process.env.OPIK_BASE_URL || 'http://localhost:5173/api';
+  const projectName = process.env.OPIK_PROJECT_NAME || 'clawkeeper';
 
   if (!opik_client) {
     opik_client = new Opik({
       // Self-hosted Opik does not require API key
-      apiUrl: OPIK_BASE_URL,
-      projectName: OPIK_PROJECT_NAME,
+      apiUrl: baseUrl,
+      projectName: projectName,
     });
-    console.log(`[Opik] Self-hosted observability initialized at ${OPIK_BASE_URL}`);
+    console.log(`[Opik] Self-hosted observability initialized at ${baseUrl}`);
   }
 
   return opik_client;
-}
-
-export function is_opik_enabled(): boolean {
-  return OPIK_ENABLED;
 }
 
 // ============================================================================

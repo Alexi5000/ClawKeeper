@@ -2,13 +2,18 @@
 // description: Unit tests for Molten bridge (URL construction, error handling, sync logic)
 // reference: src/integrations/molten_bridge.ts
 
-import { describe, test, beforeEach } from "node:test";
+import { describe, test, beforeEach, afterEach } from "node:test";
 import { expect } from "../support/expect";
 
 // Import the functions (note: actual import path may vary)
 // For now, we'll test the structure and expected behavior
 describe("Molten Bridge", () => {
   let mockFetch: any;
+  const originalFetch = global.fetch;
+
+  afterEach(() => {
+    global.fetch = originalFetch;
+  });
 
   beforeEach(() => {
     // Mock fetch for testing with a small Jest/Bun-compatible one-shot override.
