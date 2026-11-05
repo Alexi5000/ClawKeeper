@@ -73,3 +73,6 @@ tenants.json
 .cursor/
 *.plan.md
 
+
+# Dashboard is locked by dashboard/package-lock.json (npm ci); do not commit a second lockfile
+dashboard/bun.lock
