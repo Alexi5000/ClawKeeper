@@ -11,9 +11,9 @@
         "dotenv": "^18.0.9",
         "hono": "^4.13.16",
         "jsonwebtoken": "^9.0.3",
-        "openai": "^7.47.0",
-        "opik": "^2.2.138",
-        "postgres": "4.0.0",
+        "openai": "^7.53.0",
+        "opik": "^2.2.143",
+        "postgres": "4.1.0",
         "uuid": "^14.0.3",
         "ws": "^8.22.1",
         "zod": "^4.6.7",
@@ -446,9 +446,9 @@
 
     "onetime": ["onetime@7.0.0", "", { "dependencies": { "mimic-function": "^5.0.0" } }, "sha512-VXJjc87FScF88uafS3JllDgvAm+c/Slfz06lorj2uAY34rlUu0Nt+v8wreiImcrgAjjIHp1rXpTDlLOGw29WwQ=="],
 
-    "openai": ["openai@7.47.0", "", { "peerDependencies": { "@aws-sdk/credential-provider-node": ">=3.972.0 <4", "@smithy/hash-node": ">=4.3.0 <5", "@smithy/signature-v4": ">=5.4.0 <6", "google-auth-library": ">=9.15.1 <12", "undici": ">=5 <9", "ws": "^8.21.0", "zod": "^3.25 || ^4.0" }, "optionalPeers": ["@aws-sdk/credential-provider-node", "@smithy/hash-node", "@smithy/signature-v4", "google-auth-library", "undici", "ws", "zod"] }, "sha512-BYa2RYgocAv9WjPUJmNu8fICuA1fFhkTBEpiR3sC5L1K6v8Hnhc8pcnQEhu8l/+W1XKA+JUaBa7HpT+AK1s77w=="],
+    "openai": ["openai@7.53.0", "", { "peerDependencies": { "@aws-sdk/credential-provider-node": ">=3.972.0 <4", "@smithy/hash-node": ">=4.3.0 <5", "@smithy/signature-v4": ">=5.4.0 <6", "google-auth-library": ">=9.15.1 <12", "undici": ">=5 <9", "ws": "^8.21.0", "zod": "^3.25 || ^4.0" }, "optionalPeers": ["@aws-sdk/credential-provider-node", "@smithy/hash-node", "@smithy/signature-v4", "google-auth-library", "undici", "ws", "zod"] }, "sha512-PXiIZraFYMb2QYgTtWqDA16Oszj4fWRZNn7qLIAddmiJxM5uQPWBFaxp9O8MhLfTUOQ+iQsnFSRJhLPecsGovQ=="],
 
-    "opik": ["opik@2.2.138", "", { "dependencies": { "@ai-sdk/anthropic": "^3.0.1", "@ai-sdk/google": "^3.0.5", "@ai-sdk/google-vertex": "^4.0.1", "@ai-sdk/openai": "^3.0.7", "ai": "^6.0.13", "ansi-escapes": "^7.0.0", "boxen": "^8.0.1", "chalk": "^5.4.1", "date-fns": "^3.5.0", "dotenv": "^16.5.0", "fast-deep-equal": "^3.1.3", "fast-json-stable-stringify": "^2.1.0", "form-data-encoder": "^4.0.2", "formdata-node": "^6.0.3", "ini": "^5.0.0", "jest-diff": "^29.7.0", "mustache": "^4.2.0", "node-fetch": "^3.3.2", "nunjucks": "^3.2.4", "ora": "^8.2.0", "qs": "^6.13.1", "readable-stream": "^4.7.0", "tslog": "^4.9.3", "url-join": "^5.0.0", "uuid": "^11.0.3", "xxhash-wasm": "^1.1.0" }, "peerDependencies": { "zod": "^3.25.55 || ^4.0.0" }, "bin": { "opik": "dist/cli.js" } }, "sha512-B+XHYoI8m0ZjSb3L8xYPpwEubgdCuKSgQoLD1Szgo4+TC66VINPCl0sH4uW9GzJd+xHWGAi3EMbpkCIkFiTy6g=="],
+    "opik": ["opik@2.2.143", "", { "dependencies": { "@ai-sdk/anthropic": "^3.0.1", "@ai-sdk/google": "^3.0.5", "@ai-sdk/google-vertex": "^4.0.1", "@ai-sdk/openai": "^3.0.7", "ai": "^6.0.13", "ansi-escapes": "^7.0.0", "boxen": "^8.0.1", "chalk": "^5.4.1", "date-fns": "^3.5.0", "dotenv": "^16.5.0", "fast-deep-equal": "^3.1.3", "fast-json-stable-stringify": "^2.1.0", "form-data-encoder": "^4.0.2", "formdata-node": "^6.0.3", "ini": "^5.0.0", "jest-diff": "^29.7.0", "mustache": "^4.2.0", "node-fetch": "^3.3.2", "nunjucks": "^3.2.4", "ora": "^8.2.0", "qs": "^6.13.1", "readable-stream": "^4.7.0", "tslog": "^4.9.3", "url-join": "^5.0.0", "uuid": "^11.0.3", "xxhash-wasm": "^1.1.0" }, "peerDependencies": { "zod": "^3.25.55 || ^4.0.0" }, "bin": { "opik": "dist/cli.js" } }, "sha512-iwQ2VgnNZFHeZteBZuq07MiOT2n28yGwg4NoNxpD4QbkYhizHDdL9XtdqbwZPfqu6jtyArOTEdkiiXQLXnBKSw=="],
 
     "optionator": ["optionator@0.9.4", "", { "dependencies": { "deep-is": "^0.1.3", "fast-levenshtein": "^2.0.6", "levn": "^0.4.1", "prelude-ls": "^1.2.1", "type-check": "^0.4.0", "word-wrap": "^1.2.5" } }, "sha512-6IpQ7mKUxRcZNLIObR0hz7lxsapSSIYNZJwXPGeF0mTVqGKFIXj1DQcMoT22S3ROcLyY/rz0PWaWZ9ayWmad9g=="],
 
@@ -464,7 +464,7 @@
 
     "picomatch": ["picomatch@4.0.7", "", {}, "sha512-qcJu88Q2IWqJsDD529JKMdwGm/dvInW4HvQnRwiH9JtihJvzGOscDtHE3x1pBKeUOTysQ8kVmLnJ2kJu7yhcGA=="],
 
-    "postgres": ["postgres@4.0.0", "", {}, "sha512-kBh8qXtcvvIAc00DftQyOxz7M/3Zxww1tRMXZPLzipNXXl5PIzHml+9zB3Mrge2U8ldc0WF1ZdLp1iYQi7Kh3A=="],
+    "postgres": ["postgres@4.1.0", "", {}, "sha512-s+0WH67YAyLdBQUb6XczbziBhY+C9uiQsg9S8R5RHdZhk6sdyK6202E+T2tXpiInSEEjDLRSJ3OpYBe3PN6MsQ=="],
 
     "prelude-ls": ["prelude-ls@1.2.1", "", {}, "sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g=="],
 
